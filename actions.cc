@@ -1,9 +1,5 @@
 #include "actions.h"
 
-static bool stats = false;
-
-void enable_statistics() { stats = true; }
-
 G4Run* RunAction::GenerateRun() { return nullptr; }
 void RunAction::BeginOfRunAction(const G4Run*) { }
 void RunAction::EndOfRunAction(const G4Run*) { }

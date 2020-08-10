@@ -17,6 +17,7 @@ using RunManager = G4MTRunManager;
 #include "primary.h"
 #include "geometry.h"
 
+#include <chrono>
 #include <cstdio>
 
 #include <err.h>
@@ -24,9 +25,27 @@ using RunManager = G4MTRunManager;
 #include <getopt.h>
 #include <unistd.h>
 
+#include <sys/time.h>
+#include <sys/resource.h>
+
+/* globals */
+
+int nthreads = 1;
+int verbose = false;
+int cdash = false;
+int stats = false;
+int interactive = false;
+long long seed = 0;
+long long nevents = 0;
+const char *physics_list = "FTFP_BERT";
+char *gdml_filename = nullptr;
+char *macro = nullptr;
+double Bz = 0.0; /* in Tesla */
+
 /* command line options */
 
 struct option options[] = {
+	{ "cdash",        no_argument,       &cdash, true},
 	{ "help",         no_argument,       NULL, 'h'},
 	{ "interactive",  no_argument,       NULL, 'i'},
 	{ "quiet",        no_argument,       NULL, 'q'},
@@ -43,18 +62,6 @@ struct option options[] = {
 	{ "seed",         required_argument, NULL, 's'},
 	{ "threads",      required_argument, NULL, 't'},
 };
-
-/* globals */
-
-int nthreads = 1;
-int verbose = false;
-bool interactive = false;
-long long seed = 0;
-long long nevents = 0;
-const char *physics_list = "FTFP_BERT";
-char *gdml_filename = nullptr;
-char *macro = nullptr;
-double Bz = 0.0; /* in Tesla */
 
 void help(const char *name)
 {
@@ -145,7 +152,7 @@ void parse_options(int argc, char **argv)
 			break;
 
 		case 'S':
-			enable_statistics();
+			stats = true;
 			break;
 
 		case 't':
@@ -179,6 +186,22 @@ void enable_stdout()
 {
 	if(!freopen(tty, "w", stdout))
 		errx(1, "failed to enable stdout");
+}
+
+void measurement_double(const char *name, double value)
+{
+	if (cdash)
+		printf("<DartMeasurement name=\"%s\" type=\"numeric/double\">%g</DartMeasurement>\n", name, value);
+	else
+		printf("%30s  %g\n", name, value);
+}
+
+void measurement_string(const char *name, const char *value)
+{
+	if (cdash)
+		printf("<DartMeasurement name=\"%s\" type=\"text/string\">%s</DartMeasurement>\n", name, value);
+	else
+		printf("%30s  %s\n", name, value);
 }
 
 int main(int argc, char **argv)
@@ -224,7 +247,23 @@ int main(int argc, char **argv)
 	runManager->SetUserInitialization(factory.GetReferencePhysList(physics_list));
 	runManager->SetUserInitialization(new InitializationAction());
 
+	struct rusage usage;
+
+	if (getrusage(RUSAGE_SELF, &usage) != 0)
+		errx(1, "Failed to get resource usage information for current process");
+
+	double rss_before_init = (double) usage.ru_maxrss / 1024.0;
+
+	auto t0 = std::chrono::high_resolution_clock::now();
+
 	runManager->Initialize();
+
+	auto t1 = std::chrono::high_resolution_clock::now();
+
+	if (getrusage(RUSAGE_SELF, &usage) != 0)
+		errx(1, "Failed to get resource usage information for current process");
+
+	double rss_after_init = (double) usage.ru_maxrss / 1024.0;
 
 	if (!runManager->ConfirmBeamOnCondition())
 		errx(1, "Geant4 is not fully initialized");
@@ -234,6 +273,13 @@ int main(int argc, char **argv)
 
 	if (nevents >= 0)
 		runManager->BeamOn(nevents);
+
+	auto t2 = std::chrono::high_resolution_clock::now();
+
+	if (getrusage(RUSAGE_SELF, &usage) != 0)
+		errx(1, "Failed to get resource usage information for current process");
+
+	double rss_after_loop = (double) usage.ru_maxrss / 1024.0;
 
 	if (interactive) {
 		enable_stdout();
@@ -247,7 +293,24 @@ int main(int argc, char **argv)
 		}
 		if (!verbose)
 			disable_stdout();
+	} else if (stats) {
+		enable_stdout();
+		double t_init = std::chrono::duration<double>(t1 - t0).count();
+		double t_loop = std::chrono::duration<double>(t2 - t1).count();
+		double t_both = std::chrono::duration<double>(t2 - t0).count();
+		measurement_double("Initialization Cost (%)", 100.0 * t_init/t_both);
+		measurement_double("Initialization Time (s)", t_init);
+		measurement_double("Event Loop Run Time (s)", t_loop);
+		measurement_double("Throughput (events/sec)", nevents/t_loop);
+		if (nthreads > 1)
+			measurement_double("Throughput (events/thread/sec)", nevents/(nthreads*t_loop));
+		measurement_double("Maximum RSS Before Init (MB)", rss_before_init);
+		measurement_double("Maximum RSS  After Init (MB)", rss_after_init);
+		measurement_double("Maximum RSS  After Loop (MB)", rss_after_loop);
 	}
+
+	if (!verbose)
+		disable_stdout();
 
 	delete runManager;
 	return 0;

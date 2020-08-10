@@ -11,8 +11,6 @@ class G4Event;
 class G4Track;
 class G4Step;
 
-void enable_statistics();
-
 class RunAction final : public G4UserRunAction {
 public:
 	G4Run* GenerateRun() override;
