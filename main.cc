@@ -17,8 +17,11 @@ using RunManager = G4MTRunManager;
 #include "primary.h"
 #include "geometry.h"
 
+#include <cerrno>
 #include <chrono>
 #include <cstdio>
+#include <cstdint>
+#include <cstdlib>
 
 #include <err.h>
 #include <libgen.h>
@@ -27,40 +30,41 @@ using RunManager = G4MTRunManager;
 
 #include <sys/time.h>
 #include <sys/resource.h>
+#include <sys/sysinfo.h>
 
 /* globals */
 
+bool cdash = false;
+bool stats = false;
+bool interactive = false;
+int verbose = 0;
 int nthreads = 1;
-int verbose = false;
-int cdash = false;
-int stats = false;
-int interactive = false;
-long long seed = 0;
-long long nevents = 0;
+uint64_t seed = 0;
+uint64_t nevents = 0;
 const char *physics_list = "FTFP_BERT";
-char *gdml_filename = nullptr;
+char *gdml = nullptr;
 char *macro = nullptr;
 double Bz = 0.0; /* in Tesla */
 
 /* command line options */
 
 struct option options[] = {
-	{ "cdash",        no_argument,       &cdash, true},
+	{ "cdash",        no_argument,       NULL, 'd'},
 	{ "help",         no_argument,       NULL, 'h'},
 	{ "interactive",  no_argument,       NULL, 'i'},
 	{ "quiet",        no_argument,       NULL, 'q'},
-	{ "stats",        no_argument,       NULL, 'S'},
+	{ "stats",        no_argument,       NULL, 's'},
 	{ "verbose",      no_argument,       NULL, 'v'},
 	{ "version",      no_argument,       NULL, 'V'},
-	{ "events",       required_argument, NULL, 'e'},
 	{ "energy",       required_argument, NULL, 'E'},
+	{ "events",       required_argument, NULL, 'e'},
 	{ "field",        required_argument, NULL, 'f'},
-	{ "geometry",     required_argument, NULL, 'g'},
+	{ "gdml",         required_argument, NULL, 'g'},
 	{ "macro",        required_argument, NULL, 'm'},
 	{ "particle",     required_argument, NULL, 'p'},
-	{ "physics-list", required_argument, NULL, 'l'},
-	{ "seed",         required_argument, NULL, 's'},
-	{ "threads",      required_argument, NULL, 't'},
+	{ "physics-list", required_argument, NULL, 'L'},
+	{ "seed",         required_argument, NULL, 'S'},
+	{ "threads",      required_argument, NULL, 'j'},
 };
 
 void help(const char *name)
@@ -79,20 +83,26 @@ void parse_options(int argc, char **argv)
 		exit(0);
 	}
 
-	int optidx = 0;
-
 	for(;;) {
-		switch(getopt_long(argc, argv, "hiqSvVe:E:f:g:m:p:l:s:t:", options, &optidx)) {
+		switch(getopt_long(argc, argv, "dhiqsvVE:e:f:g:m:p:L:S:j:", options, NULL)) {
 		case -1:
 			return;
 
-		case 'h':
-			help(basename(argv[0]));
-			exit(0);
+		case 'd':
+			cdash = true;
+			break;
 
 		case 'i':
 			interactive = true;
 			break;
+
+		case 's':
+			stats = true;
+			break;
+
+		case 'h':
+			help(basename(argv[0]));
+			exit(0);
 
 		case 'q':
 			verbose = 0;
@@ -112,27 +122,27 @@ void parse_options(int argc, char **argv)
 		}
 
 		case 'e':
-			nevents = (long long) strtol(optarg, nullptr, 10);
+			errno = 0; nevents = strtoull(optarg, nullptr, 10);
 
-			if (nevents < 0)
-				errx(EINVAL, "invalid number of events: %lld", nevents);
+			if (errno)
+				errx(errno, "%s: %lu", strerror(errno), nevents);
 			break;
 
 		case 'E': {
-			double E = (double) strtod(optarg, nullptr);
+			double E = strtod(optarg, nullptr);
 			if (E >= 0.0)
 				set_primary_energy(E);
 			else
-				errx(EINVAL, "invalid value for the energy: %s", optarg);
+				errx(EINVAL, "invalid value for energy: %s GeV", optarg);
 			break;
 		}
 
 		case 'f':
-			Bz = (double) strtod(optarg, nullptr);
+			Bz = strtod(optarg, nullptr);
 			break;
 
 		case 'g':
-			gdml_filename = optarg;
+			gdml = optarg;
 			break;
 
 		case 'm':
@@ -143,24 +153,23 @@ void parse_options(int argc, char **argv)
 			set_primary_name(optarg);
 			break;
 
-		case 'l':
+		case 'L':
 			physics_list = optarg;
 			break;
 
-		case 's':
-			seed = strtoll(optarg, nullptr, 10);
-			break;
-
 		case 'S':
-			stats = true;
+			seed = strtoull(optarg, nullptr, 10);
 			break;
 
-		case 't':
+		case 'j':
 #ifdef G4MULTITHREADED
-			nthreads = (int) strtol(optarg, nullptr, 10);
+			nthreads = atoi(optarg);
 
 			if (nthreads <= 0)
 				errx(EINVAL, "invalid number of threads");
+
+            if (nthreads > get_nprocs())
+                warnx("Using more threads than available processors in the system");
 #else
 			warnx("Geant4 has multithreading disabled");
 #endif
@@ -214,7 +223,7 @@ int main(int argc, char **argv)
 	if (seed)
 		G4Random::setTheSeed(seed);
 
-	if (!gdml_filename)
+	if (!gdml)
 		errx(1, "no geometry file specified");
 
 	G4PhysListFactory factory;
@@ -243,7 +252,7 @@ int main(int argc, char **argv)
 		runManager->SetNumberOfThreads(nthreads);
 #endif
 
-	runManager->SetUserInitialization(new DetectorConstruction(gdml_filename));
+	runManager->SetUserInitialization(new DetectorConstruction(gdml));
 	runManager->SetUserInitialization(factory.GetReferencePhysList(physics_list));
 	runManager->SetUserInitialization(new InitializationAction());
 
@@ -271,7 +280,7 @@ int main(int argc, char **argv)
 	if (macro)
 		UI->ApplyCommand(G4String("/control/execute ") + macro);
 
-	if (nevents >= 0)
+	if (nevents > 0)
 		runManager->BeamOn(nevents);
 
 	auto t2 = std::chrono::high_resolution_clock::now();
