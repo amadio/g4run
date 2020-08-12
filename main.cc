@@ -67,6 +67,54 @@ struct option options[] = {
 	{ "threads",      required_argument, NULL, 'j'},
 };
 
+int outfd = STDOUT_FILENO;
+
+void disable_stdout()
+{
+	if (verbose)
+		return;
+
+	FILE* tmp = fopen("/dev/null", "a+");
+
+	fflush(stdout);
+
+	outfd = dup(STDOUT_FILENO);
+
+	if (outfd == -1 || dup2(fileno(tmp), STDOUT_FILENO) == -1)
+		errx(1, "failed to disable stdout");
+
+	fclose(tmp);
+}
+
+void enable_stdout()
+{
+	if (verbose)
+		return;
+
+	fflush(stdout);
+
+	if (dup2(outfd, STDOUT_FILENO) == -1)
+		errx(1, "failed to enable stdout");
+
+	close(outfd);
+}
+
+void measurement_double(const char *name, double value)
+{
+	if (cdash)
+		printf("\n<DartMeasurement name=\"%s\" type=\"numeric/double\">%g</DartMeasurement>\n", name, value);
+	else
+		printf("%30s  %g\n", name, value);
+}
+
+void measurement_string(const char *name, const char *value)
+{
+	if (cdash)
+		printf("\n<DartMeasurement name=\"%s\" type=\"text/string\">%s</DartMeasurement>\n", name, value);
+	else
+		printf("%30s  %s\n", name, value);
+}
+
 void help(const char *name)
 {
 	printf("Usage: %s [OPTIONS]\n\n", name);
@@ -181,43 +229,11 @@ void parse_options(int argc, char **argv)
 	}
 }
 
-static const char *tty;
-
-void disable_stdout()
-{
-	tty = ttyname(fileno(stdout));
-	if(!freopen("/dev/null", "a+", stdout))
-		errx(1, "failed to disable stdout");
-}
-
-void enable_stdout()
-{
-	if(!freopen(tty, "w", stdout))
-		errx(1, "failed to enable stdout");
-}
-
-void measurement_double(const char *name, double value)
-{
-	if (cdash)
-		printf("<DartMeasurement name=\"%s\" type=\"numeric/double\">%g</DartMeasurement>\n", name, value);
-	else
-		printf("%30s  %g\n", name, value);
-}
-
-void measurement_string(const char *name, const char *value)
-{
-	if (cdash)
-		printf("<DartMeasurement name=\"%s\" type=\"text/string\">%s</DartMeasurement>\n", name, value);
-	else
-		printf("%30s  %s\n", name, value);
-}
-
 int main(int argc, char **argv)
 {
 	parse_options(argc, argv);
 
-	if (!verbose)
-		disable_stdout();
+	disable_stdout();
 
 	if (seed)
 		G4Random::setTheSeed(seed);
@@ -289,8 +305,9 @@ int main(int argc, char **argv)
 
 	double rss_after_loop = (double) usage.ru_maxrss / 1024.0;
 
+	enable_stdout();
+
 	if (interactive) {
-		enable_stdout();
 		for (;;) {
 			char command[1024];
 			fprintf(stdout, ">>> ");
@@ -299,10 +316,7 @@ int main(int argc, char **argv)
 			fprintf(stderr, "command = '%s'\n", command);
 			UI->ApplyCommand(command);
 		}
-		if (!verbose)
-			disable_stdout();
 	} else if (stats) {
-		enable_stdout();
 		double t_init = std::chrono::duration<double>(t1 - t0).count();
 		double t_loop = std::chrono::duration<double>(t2 - t1).count();
 		double t_both = std::chrono::duration<double>(t2 - t0).count();
@@ -317,8 +331,7 @@ int main(int argc, char **argv)
 		measurement_double("Maximum RSS  After Loop (MB)", rss_after_loop);
 	}
 
-	if (!verbose)
-		disable_stdout();
+	disable_stdout();
 
 	delete runManager;
 	return 0;
