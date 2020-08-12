@@ -24,3 +24,9 @@ target_link_libraries(g4run PRIVATE ${Geant4_LIBRARIES})
 include(GNUInstallDirs)
 
 install(TARGETS g4run RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+include(CTest)
+
+if(BUILD_TESTING)
+  add_subdirectory(perf)
+endif()
