@@ -72,8 +72,7 @@ void help(const char *name)
 	printf("Usage: %s [OPTIONS]\n\n", name);
 
 	for (auto& opt : options)
-		printf("\t-%c  --%-20s%-20s\n\n",
-			opt.val, opt.name, opt.has_arg ? opt.name : "");
+		printf("\t-%c  --%-20s%-20s\n\n", opt.val, opt.name, opt.has_arg ? opt.name : "");
 }
 
 void parse_options(int argc, char **argv)
@@ -83,7 +82,7 @@ void parse_options(int argc, char **argv)
 		exit(0);
 	}
 
-	for(;;) {
+	for (;;) {
 		switch(getopt_long(argc, argv, "dhiqsvVE:e:f:g:m:p:L:S:j:", options, NULL)) {
 		case -1:
 			return;
@@ -168,8 +167,8 @@ void parse_options(int argc, char **argv)
 			if (nthreads <= 0)
 				errx(EINVAL, "invalid number of threads");
 
-            if (nthreads > get_nprocs())
-                warnx("Using more threads than available processors in the system");
+			if (nthreads > get_nprocs())
+				warnx("Using more threads than available processors in the system");
 #else
 			warnx("Geant4 has multithreading disabled");
 #endif
