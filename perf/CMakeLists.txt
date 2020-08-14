@@ -21,7 +21,7 @@ if(NOT DEFINED GDML)
 endif()
 
 if(NOT DEFINED NEVENTS)
-  math(EXPR NEVENTS "100 * ${NCORES}")
+  math(EXPR NEVENTS "256 * ${NCORES}")
 endif()
 
 if(NOT DEFINED PARTICLES)
