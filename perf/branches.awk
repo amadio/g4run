@@ -1,8 +1,8 @@
 #!/usr/bin/env -S awk -f
 BEGIN {
 	n = 1
-	print "Branch%   Miss%  Symbol"
-	print ".......   .....  ............"
+	print "Inst/Br  Miss%  Symbol"
+	print ".......  .....  ............"
 }
 
 /name =/ {
@@ -18,8 +18,8 @@ BEGIN {
 }
 
 /\[\.\]/ {
-	branch_percent = 100 * $ev["branches"] / $ev["instructions"]
+	instructions_per_branch = $ev["instructions"] / $ev["branches"]
 	branch_miss_percent = 100 * $ev["branch-misses"] / $ev["branches"]
-	printf("%6.2f%% %6.2f%%  %s\n", branch_percent, branch_miss_percent, $NF) | "sort -rn +1 | c++filt"
+	printf("%7.2f %5.2f%%  %s\n", instructions_per_branch, branch_miss_percent, $NF) | "sort -rn +1 | c++filt"
 }
 
