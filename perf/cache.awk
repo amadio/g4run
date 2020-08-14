@@ -1,8 +1,8 @@
 #!/usr/bin/env -S awk -f
 BEGIN {
 	n = 1
-	print "Cache Ref%   Miss%  Symbol"
-	print ".......... .......  ............"
+	print " Miss%  Symbol"
+	print "....... ............"
 }
 
 /name =/ {
@@ -11,15 +11,14 @@ BEGIN {
 }
 
 /Total/ {
-	if (! ev["cache-references"] || ! ev["cache-misses"] || ! ev["instructions"]) {
+	if (! ev["cache-references"] || ! ev["cache-misses"]) {
 		print "Input file does not have necessary data"
 		exit (1)
 	}
 }
 
 /\[\.\]/ {
-	cache_percent = 100 * $ev["cache-references"] / $ev["instructions"]
 	cache_miss_percent = 100 * $ev["cache-misses"] / $ev["cache-references"]
-	printf("%9.2f%% %6.2f%%  %s\n", cache_percent, cache_miss_percent, $NF) | "sort -nr +1 | c++filt"
+	printf("%6.2f%%  %s\n", cache_miss_percent, $NF) | "sort -nr +1 | c++filt"
 }
 
