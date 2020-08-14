@@ -5,7 +5,7 @@ if(NOT EXISTS ${PERF_EXECUTABLE})
 endif()
 
 if(NOT DEFINED METRICS)
-  set(METRICS {cycles,instructions}:S)
+  set(METRICS {cycles,instructions,branches,branch-misses,cache-misses,cache-references}:S)
 endif()
 
 if(NOT DEFINED NCORES)
@@ -38,11 +38,24 @@ foreach(ENERGY ${ENERGIES})
     set_tests_properties(${TEST_NAME} PROPERTIES PROCESSORS ${NCORES} PROCESSOR_AFFINITY TRUE LABELS "perf;record")
 
     add_test(NAME ${TEST_NAME}-report
-      COMMAND ${PERF_EXECUTABLE} report -i ${TEST_NAME}.data --stdio -F overhead,dso,symbol -w 0,0,80 --percent-limit 1)
+      COMMAND sh -c "${PERF_EXECUTABLE} report -i ${TEST_NAME}.data --header --no-demangle -F period,dso,symbol --percent-limit 0.5 > ${TEST_NAME}.txt")
     set_tests_properties(${TEST_NAME}-report PROPERTIES REQUIRED_FILES "${TEST_NAME}.data"
       DEPENDS ${TEST_NAME} LABELS "perf;report")
 
-    add_test(NAME ${TEST_NAME}-diff COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/report.sh ${TEST_NAME}.data.old ${TEST_NAME}.data)
+    add_test(NAME ${TEST_NAME}-report-ipc COMMAND awk -f ${CMAKE_CURRENT_SOURCE_DIR}/ipc.awk ${TEST_NAME}.txt)
+    set_tests_properties(${TEST_NAME}-report-ipc PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
+      DEPENDS ${TEST_NAME}-report LABELS "perf;report;ipc")
+
+    add_test(NAME ${TEST_NAME}-report-branches COMMAND awk -f ${CMAKE_CURRENT_SOURCE_DIR}/branches.awk ${TEST_NAME}.txt)
+    set_tests_properties(${TEST_NAME}-report-branches PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
+      DEPENDS ${TEST_NAME}-report LABELS "perf;report;branches")
+
+    add_test(NAME ${TEST_NAME}-report-cache COMMAND awk -f ${CMAKE_CURRENT_SOURCE_DIR}/cache.awk ${TEST_NAME}.txt)
+    set_tests_properties(${TEST_NAME}-report-cache PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
+      DEPENDS ${TEST_NAME}-report LABELS "perf;report;cache")
+
+    add_test(NAME ${TEST_NAME}-diff
+      COMMAND sh -c "perf diff -c delta ${TEST_NAME}.data.old ${TEST_NAME}.data | awk -f ${CMAKE_CURRENT_SOURCE_DIR}/filter.awk")
     set_tests_properties(${TEST_NAME}-diff PROPERTIES REQUIRED_FILES "${TEST_NAME}.data;${TEST_NAME}.data.old"
       DEPENDS ${TEST_NAME} FAIL_REGULAR_EXPRESSION "\\[F\\]" LABELS "perf;diff")
   endforeach()
