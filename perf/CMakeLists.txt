@@ -42,7 +42,7 @@ foreach(ENERGY ${ENERGIES})
     set_tests_properties(${TEST_NAME} PROPERTIES PROCESSORS ${NCORES} PROCESSOR_AFFINITY TRUE LABELS "perf;record")
 
     add_test(NAME ${TEST_NAME}-report
-      COMMAND sh -c "${PERF_EXECUTABLE} report -i ${TEST_NAME}.data --header --no-demangle -F period,dso,symbol --percent-limit 0.5 > ${TEST_NAME}.txt")
+      COMMAND sh -c "${PERF_EXECUTABLE} report -i ${TEST_NAME}.data --header --no-demangle -F period,dso,symbol --percent-limit 0.1 > ${TEST_NAME}.txt")
     set_tests_properties(${TEST_NAME}-report PROPERTIES REQUIRED_FILES "${TEST_NAME}.data"
       DEPENDS ${TEST_NAME} LABELS "perf;report")
 
@@ -70,7 +70,7 @@ foreach(ENERGY ${ENERGIES})
     set_tests_properties(${TEST_NAME}-cache PROPERTIES PROCESSORS ${NCORES} PROCESSOR_AFFINITY TRUE LABELS "perf;record")
 
     add_test(NAME ${TEST_NAME}-cache-report COMMAND sh -c
-      "${PERF_EXECUTABLE} report -i ${TEST_NAME}.cache.data --header --no-demangle -F period,dso,symbol --percent-limit 0.5 > ${TEST_NAME}.cache.txt")
+      "${PERF_EXECUTABLE} report -i ${TEST_NAME}.cache.data --header --no-demangle -F period,dso,symbol --percent-limit 0.1 > ${TEST_NAME}.cache.txt")
     set_tests_properties(${TEST_NAME}-cache-report PROPERTIES REQUIRED_FILES "${TEST_NAME}.cache.data"
       DEPENDS ${TEST_NAME}-cache LABELS "perf;report")
 
