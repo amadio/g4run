@@ -5,7 +5,7 @@ if(NOT EXISTS ${PERF_EXECUTABLE})
 endif()
 
 if(NOT DEFINED HW_METRICS)
-  set(HW_METRICS {cycles,instructions,branches,branch-misses,cache-references,cache-misses}:S)
+  set(HW_METRICS {cycles,instructions,branches,branch-misses,stalled-cycles-backend,stalled-cycles-frontend}:S)
 endif()
 
 if(NOT DEFINED CACHE_METRICS)
@@ -55,9 +55,9 @@ foreach(ENERGY ${ENERGIES})
     set_tests_properties(${TEST_NAME}-report-ipc PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
       DEPENDS ${TEST_NAME}-report LABELS "perf;report;ipc")
 
-    add_test(NAME ${TEST_NAME}-report-cache COMMAND awk -f ${CMAKE_CURRENT_SOURCE_DIR}/cache.awk ${TEST_NAME}.txt)
-    set_tests_properties(${TEST_NAME}-report-cache PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
-      DEPENDS ${TEST_NAME}-report LABELS "perf;report;cache")
+    add_test(NAME ${TEST_NAME}-report-stalls COMMAND awk -f ${CMAKE_CURRENT_SOURCE_DIR}/stalls.awk ${TEST_NAME}.txt)
+    set_tests_properties(${TEST_NAME}-report-stalls PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
+      DEPENDS ${TEST_NAME}-report LABELS "perf;report;stalls")
 
     add_test(NAME ${TEST_NAME}-report-branches COMMAND awk -f ${CMAKE_CURRENT_SOURCE_DIR}/branches.awk ${TEST_NAME}.txt)
     set_tests_properties(${TEST_NAME}-report-branches PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
