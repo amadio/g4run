@@ -22,6 +22,7 @@ using RunManager = G4MTRunManager;
 #include <cstdio>
 #include <cstdint>
 #include <cstdlib>
+#include <cstring>
 
 #include <err.h>
 #include <libgen.h>
@@ -61,7 +62,7 @@ struct option options[] = {
 	{ "field",        required_argument, NULL, 'f'},
 	{ "gdml",         required_argument, NULL, 'g'},
 	{ "macro",        required_argument, NULL, 'm'},
-	{ "particle",     required_argument, NULL, 'p'},
+	{ "primary",      required_argument, NULL, 'p'},
 	{ "physics-list", required_argument, NULL, 'L'},
 	{ "seed",         required_argument, NULL, 'S'},
 	{ "threads",      required_argument, NULL, 'j'},
@@ -196,9 +197,19 @@ void parse_options(int argc, char **argv)
 			macro = optarg;
 			break;
 
-		case 'p':
-			set_primary_name(optarg);
+		case 'p': {
+			if (strncmp(optarg, "pythia", 6) == 0) {
+#if USE_PYTHIA
+				char *conf = strchr(optarg, ':');
+				set_pythia_config(conf ? conf+1 : "minbias");
+#else
+				errx(1, "Pythia support is disabled");
+#endif
+			} else {
+				set_primary_name(optarg);
+			}
 			break;
+		}
 
 		case 'L':
 			physics_list = optarg;
