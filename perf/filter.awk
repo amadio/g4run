@@ -1,6 +1,6 @@
 #!/usr/bin/env awk -f
 BEGIN {
-	min_delta = 0.2
+	min_delta = 0.5
 	max_delta = 2.0
 	min_overhead = 0.5
 }
