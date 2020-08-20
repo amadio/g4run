@@ -14,18 +14,18 @@ static const G4ParticleDefinition *primary;
 
 void set_primary_name(const char *name)
 {
-    primary_name = name;
+	primary_name = name;
 }
 
 void set_primary_energy(double E)
 {
-    primary_energy = E * GeV;
+	primary_energy = E * GeV;
 }
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
 {
-    if (!(primary = G4ParticleTable::GetParticleTable()->FindParticle(primary_name)))
-        errx(1, "unknown particle type: %s", primary_name);
+	if (!(primary = G4ParticleTable::GetParticleTable()->FindParticle(primary_name)))
+		errx(1, "unknown particle type: %s", primary_name);
 }
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* event)

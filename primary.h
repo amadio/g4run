@@ -10,7 +10,7 @@ class G4Event;
 
 class PrimaryGeneratorAction final : public G4VUserPrimaryGeneratorAction {
 public:
-    PrimaryGeneratorAction();
+	PrimaryGeneratorAction();
 	void GeneratePrimaries(G4Event*) override;
 };
 
