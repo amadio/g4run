@@ -331,15 +331,14 @@ int main(int argc, char **argv)
 		double t_init = std::chrono::duration<double>(t1 - t0).count();
 		double t_loop = std::chrono::duration<double>(t2 - t1).count();
 		double t_both = std::chrono::duration<double>(t2 - t0).count();
-		measurement_double("Initialization Cost (%)", 100.0 * t_init/t_both);
-		measurement_double("Initialization Time (s)", t_init);
-		measurement_double("Event Loop Run Time (s)", t_loop);
-		measurement_double("Throughput (events/sec)", nevents/t_loop);
-		if (nthreads > 1)
-			measurement_double("Throughput (events/thread/sec)", nevents/(nthreads*t_loop));
-		measurement_double("Maximum RSS Before Init (MB)", rss_before_init);
-		measurement_double("Maximum RSS  After Init (MB)", rss_after_init);
-		measurement_double("Maximum RSS  After Loop (MB)", rss_after_loop);
+		measurement_double("Throughput [events/min]", nevents * 60.0/t_loop);
+		measurement_double("Initialization Cost [%]", 100.0 * t_init/t_both);
+		measurement_double("Initialization Time [s]", t_init);
+		measurement_double("Event Loop Run Time [s]", t_loop);
+		measurement_double("Init + Ev.Loop Time [s]", t_both);
+		measurement_double("Max RSS Before Init [M]", rss_before_init);
+		measurement_double("Max RSS  After Init [M]", rss_after_init);
+		measurement_double("Max RSS  After Loop [M]", rss_after_loop);
 	}
 
 	disable_stdout();
