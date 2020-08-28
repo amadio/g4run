@@ -5,11 +5,11 @@ if(NOT EXISTS ${PERF_EXECUTABLE})
 endif()
 
 if(NOT DEFINED HW_METRICS)
-  set(HW_METRICS {cycles,instructions,branches,branch-misses,stalled-cycles-backend,stalled-cycles-frontend}:S)
+  set(HW_METRICS {cycles,instructions,branches,branch-misses,stalled-cycles-backend,stalled-cycles-frontend})
 endif()
 
 if(NOT DEFINED CACHE_METRICS)
-  set(CACHE_METRICS {instructions,L1-dcache-load-misses,L1-dcache-loads,L1-icache-load-misses,L1-icache-loads}:S)
+  set(CACHE_METRICS {instructions,L1-dcache-load-misses,L1-dcache-loads,L1-icache-load-misses,L1-icache-loads})
 endif()
 
 if(NOT DEFINED NCORES)
