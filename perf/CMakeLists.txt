@@ -26,9 +26,9 @@ if(NOT DEFINED NEVENTS)
   else()
     set(EVENTS_PER_CORE 256)
   endif()
-endif()
 
-math(EXPR NEVENTS "${EVENTS_PER_CORE} * ${NCORES}")
+  math(EXPR NEVENTS "${EVENTS_PER_CORE} * ${NCORES}")
+endif()
 
 if(NOT DEFINED PRIMARIES)
   if(Pythia_FOUND)
