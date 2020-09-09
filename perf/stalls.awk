@@ -22,6 +22,6 @@ BEGIN {
 	stalls_b = 100 * $ev["stalled-cycles-backend"] / $ev["cycles"]
 	stalls_f = 100 * $ev["stalled-cycles-frontend"] / $ev["cycles"]
 	unstalled = 100 - stalls_b - stalls_f
-	printf("%7.2f%% %6.2f%% %6.2f%% %s\n", stalls_f, stalls_b, unstalled, $NF) | "sort -n +2 | c++filt"
+	printf("%7.2f%% %6.2f%% %6.2f%% %s\n", stalls_f, stalls_b, unstalled, $NF) | "sort -n +2 | c++filt -p"
 }
 

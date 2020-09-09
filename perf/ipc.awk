@@ -19,6 +19,6 @@ BEGIN {
 
 /\[\.\]/ {
 	ipc = $ev["instructions"] / $ev["cycles"]
-	printf("%6.3f %s\n", ipc, $NF) | "sort -n | c++filt"
+	printf("%6.3f %s\n", ipc, $NF) | "sort -n | c++filt -p"
 }
 

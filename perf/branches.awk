@@ -20,6 +20,6 @@ BEGIN {
 /\[\.\]/ {
 	instructions_per_branch = $ev["instructions"] / $ev["branches"]
 	branch_miss_percent = 100 * $ev["branch-misses"] / $ev["branches"]
-	printf("%7.2f %5.2f%%  %s\n", instructions_per_branch, branch_miss_percent, $NF) | "sort -rn +1 | c++filt"
+	printf("%7.2f %5.2f%%  %s\n", instructions_per_branch, branch_miss_percent, $NF) | "sort -rn +1 | c++filt -p"
 }
 

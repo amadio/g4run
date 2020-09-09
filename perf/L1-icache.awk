@@ -19,6 +19,6 @@ BEGIN {
 
 /\[\.\]/ {
 	cache_miss_percent = 100 * $ev["L1-icache-load-misses"] / $ev["L1-icache-loads"]
-	printf("%6.2f%%  %s\n", cache_miss_percent, $NF) | "sort -nr +1 | c++filt"
+	printf("%6.2f%%  %s\n", cache_miss_percent, $NF) | "sort -nr +1 | c++filt -p"
 }
 
