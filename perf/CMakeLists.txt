@@ -53,11 +53,15 @@ execute_process(COMMAND sh -c "${GEANT4_CONFIG} --datasets | awk '{ printf \"%s=
 
 foreach(PRIMARY ${PRIMARIES})
   string(REGEX REPLACE ":" "-" TEST_NAME ${PRIMARY})
+  set(TEST_COMMAND $<TARGET_FILE:g4run> --stats --cdash -g ${GDML} -e ${NEVENTS} -p ${PRIMARY} -E ${ENERGY} -j ${NCORES})
 
   add_test(NAME ${TEST_NAME}
-    COMMAND ${PERF_EXECUTABLE} record -e ${HW_METRICS} -o ${TEST_NAME}.data
-    $<TARGET_FILE:g4run> --stats --cdash -g ${GDML} -e ${NEVENTS} -p ${PRIMARY} -E ${ENERGY} -j ${NCORES})
+    COMMAND ${PERF_EXECUTABLE} record -e ${HW_METRICS} -o ${TEST_NAME}.data ${TEST_COMMAND})
   set_tests_properties(${TEST_NAME} PROPERTIES PROCESSORS ${NCORES} PROCESSOR_AFFINITY TRUE ENVIRONMENT "${GEANT4_DATASETS}" LABELS "perf;record")
+
+  add_test(NAME ${TEST_NAME}-cache
+    COMMAND ${PERF_EXECUTABLE} record -e ${CACHE_METRICS} -o ${TEST_NAME}.cache.data ${TEST_COMMAND})
+  set_tests_properties(${TEST_NAME}-cache PROPERTIES PROCESSORS ${NCORES} PROCESSOR_AFFINITY TRUE ENVIRONMENT "${GEANT4_DATASETS}" LABELS "perf;record")
 
   add_test(NAME ${TEST_NAME}-report
     COMMAND sh -c "${PERF_EXECUTABLE} report -i ${TEST_NAME}.data --header --no-demangle -F period,dso,symbol --percent-limit 0.1 > ${TEST_NAME}.txt")
@@ -80,12 +84,6 @@ foreach(PRIMARY ${PRIMARIES})
   add_test(NAME ${TEST_NAME}-report-branches COMMAND awk -f ${CMAKE_CURRENT_SOURCE_DIR}/branches.awk ${TEST_NAME}.txt)
   set_tests_properties(${TEST_NAME}-report-branches PROPERTIES REQUIRED_FILES "${TEST_NAME}.txt"
     DEPENDS ${TEST_NAME}-report LABELS "perf;report;branches")
-
-
-  add_test(NAME ${TEST_NAME}-cache
-    COMMAND ${PERF_EXECUTABLE} record -e ${CACHE_METRICS} -o ${TEST_NAME}.cache.data
-    $<TARGET_FILE:g4run> --stats --cdash -g ${GDML} -e ${NEVENTS} -p ${PRIMARY} -E ${ENERGY} -j ${NCORES})
-  set_tests_properties(${TEST_NAME}-cache PROPERTIES PROCESSORS ${NCORES} PROCESSOR_AFFINITY TRUE ENVIRONMENT "${GEANT4_DATASETS}" LABELS "perf;record")
 
   add_test(NAME ${TEST_NAME}-cache-report COMMAND sh -c
     "${PERF_EXECUTABLE} report -i ${TEST_NAME}.cache.data --header --no-demangle -F period,dso,symbol --percent-limit 0.1 > ${TEST_NAME}.cache.txt")
