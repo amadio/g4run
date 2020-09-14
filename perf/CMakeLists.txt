@@ -69,6 +69,7 @@ foreach(PRIMARY ${PRIMARIES})
       PROPERTIES LABELS "perf;record" ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE)
   endforeach()
 
+  file(COPY treemap/ DESTINATION ${TEST}-treemap)
   add_test(NAME ${TEST}-report COMMAND sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/report.sh ${TEST}")
   set_tests_properties(${TEST}-report PROPERTIES LABELS "perf;report"
     ATTACHED_FILES "${CMAKE_CURRENT_BINARY_DIR}/${TEST}.svg" REQUIRED_FILES "${TEST}.perf;${TEST}-core.perf;${TEST}-L1.perf"
