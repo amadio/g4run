@@ -6,6 +6,7 @@ export PATH=$(realpath $(dirname "${BASH_SOURCE[0]}")):$PATH
 
 for TEST in $@; do
 	[[ -f ${TEST}.perf ]] && flamegraph.sh ${TEST}.perf
+	[[ -d ${TEST}-treemap ]] && treemap.sh ${TEST}.perf ${TEST}-treemap/treemap.json
 
 	for M in core L1; do
 		if [[ ${TEST}-${M}.perf -nt ${TEST}-${M}.txt ]]; then
