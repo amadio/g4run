@@ -41,11 +41,11 @@ if(NOT DEFINED ENERGY)
 endif()
 
 if(NOT DEFINED METRICS_CORE)
-  set(METRICS_CORE {cycles,instructions,branches,branch-misses,stalled-cycles-backend,stalled-cycles-frontend})
+  set(METRICS_CORE {cycles,instructions,branches,branch-misses,resource_stalls.any,icache.ifetch_stall})
 endif()
 
 if(NOT DEFINED METRICS_L1)
-  set(METRICS_L1 {instructions,L1-dcache-load-misses,L1-dcache-loads,L1-icache-load-misses,L1-icache-loads})
+  set(METRICS_L1 {instructions,L1-dcache-load-misses,L1-dcache-loads,icache.misses,icache.hit})
 endif()
 
 execute_process(COMMAND sh -c "${GEANT4_CONFIG} --datasets | awk '{ printf \"%s=%s;\", \$2, \$3 }'"

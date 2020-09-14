@@ -15,7 +15,7 @@ BEGIN {
 	if (! ev["L1-dcache-loads"] || ! ev["L1-dcache-load-misses"]) {
 		data_unavailable = 1
 	}
-	if (! ev["L1-icache-loads"] || ! ev["L1-icache-load-misses"]) {
+	if (! ev["icache.hit"] || ! ev["icache.misses"]) {
 		data_unavailable = 1
 	}
 	if (data_unavailable) {
@@ -29,11 +29,11 @@ BEGIN {
 	total_period += $ev["instructions"]
 	period[symbol] = $ev["instructions"]
 	dloads = $ev["L1-dcache-loads"] > 0 ? $ev["L1-dcache-loads"] : 1e100
-	iloads = $ev["L1-icache-loads"] > 0 ? $ev["L1-icache-loads"] : 1e100
+	iloads = $ev["icache.hit"] > 0 ? $ev["icache.hit"] : 1e100
 	dIpL[symbol] = $ev["instructions"] / dloads
 	iIpL[symbol] = $ev["instructions"] / iloads
 	L1d_miss[symbol] = 100 * $ev["L1-dcache-load-misses"] / dloads
-	L1i_miss[symbol] = 100 * $ev["L1-icache-load-misses"] / iloads
+	L1i_miss[symbol] = 100 * $ev["icache.misses"] / iloads
 }
 
 END {

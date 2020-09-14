@@ -23,7 +23,7 @@ BEGINFILE {
         if (! event["L1-dcache-loads"] || ! event["L1-dcache-load-misses"]) {
                 data_unavailable = 1
         }
-        if (! event["L1-icache-loads"] || ! event["L1-icache-load-misses"]) {
+        if (! event["icache.hit"] || ! event["icache.misses"]) {
                 data_unavailable = 1
         }
         if (data_unavailable) {
@@ -39,10 +39,10 @@ BEGINFILE {
 	total_instructions[curr_file] += $event["instructions"]
 
 	dloads = $event["L1-dcache-loads"] > 0 ? $event["L1-dcache-loads"] : 1e100
-        iloads = $event["L1-icache-loads"] > 0 ? $event["L1-icache-loads"] : 1e100
+        iloads = $event["icache.hit"] > 0 ? $event["icache.hit"] : 1e100
 
 	L1d_miss[curr_file][symbol] = 100 * $event["L1-dcache-load-misses"] / dloads
-	L1i_miss[curr_file][symbol] = 100 * $event["L1-icache-load-misses"] / iloads
+	L1i_miss[curr_file][symbol] = 100 * $event["icache.misses"] / iloads
 }
 
 ENDFILE {

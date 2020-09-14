@@ -24,8 +24,8 @@ BEGIN {
 	ipb[symbol] = $ev["instructions"] / branches
 	ipc[symbol] = $ev["instructions"] / $ev["cycles"]
 	brmiss[symbol] = 100 * $ev["branch-misses"] / branches
-	stalls_b[symbol] = 100 * $ev["stalled-cycles-backend"] / $ev["cycles"]
-	stalls_f[symbol] = 100 * $ev["stalled-cycles-frontend"] / $ev["cycles"]
+	stalls_b[symbol] = 100 * $ev["resource_stalls.any"] / $ev["cycles"]
+	stalls_f[symbol] = 100 * $ev["icache.ifetch_stall"] / $ev["cycles"]
 }
 
 END {
