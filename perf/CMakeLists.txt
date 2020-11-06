@@ -56,7 +56,7 @@ foreach(PRIMARY ${PRIMARIES})
   set(COMMAND $<TARGET_FILE:g4run> --stats --cdash -g ${GDML} -e ${NEVENTS} -p ${PRIMARY} -E ${ENERGY} -j ${NCORES})
 
   add_test(NAME ${TEST}-record-callgraph COMMAND
-    ${PERF_EXECUTABLE} record -e cycles --call-graph=dwarf -F100 -o ${TEST}.perf ${COMMAND})
+    ${PERF_EXECUTABLE} record -e cycles -g -F100 -o ${TEST}.perf ${COMMAND})
 
   add_test(NAME ${TEST}-record-core COMMAND
     ${PERF_EXECUTABLE} record -e ${METRICS_CORE} -o ${TEST}-core.perf ${COMMAND})
