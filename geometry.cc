@@ -12,7 +12,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 	G4GDMLParser p;
 
-	p.Read(gdml, /* validate */ true);
+	p.Read(gdml, /* validate */ false);
 
 	auto world = p.GetWorldVolume();
 
