@@ -7,14 +7,19 @@ PNG=${1%.*}.png
 # add directory where this script is located to PATH
 PATH=$(realpath $(dirname "${BASH_SOURCE[0]}")):$PATH
 
+echo
+echo " Call Graph Report"
+echo
+
 if [[ -f ${INPUT}.old ]]; then
-	TIME_OLD=$(perf report --header-only -i ${INPUT}.old 2>/dev/null | awk '/duration/{ print $(NF-1) }')
-	TIME_NEW=$(perf report --header-only -i ${INPUT}     2>/dev/null | awk '/duration/{ print $(NF-1) }')
-	SPEEDUP=$(printf "%+.2f%%" $(bc -l <<< "100 * (${TIME_OLD} - ${TIME_NEW}) / ${TIME_OLD}"))
+	TIME_OLD=$(perf report --header-only -i ${INPUT}.old 2>/dev/null | awk '/duration/{ print $(NF-1)/1000.0 }')
+	TIME_NEW=$(perf report --header-only -i ${INPUT}     2>/dev/null | awk '/duration/{ print $(NF-1)/1000.0 }')
+	SPEEDUP=$(bc -l <<< "100.0 * (${TIME_OLD} - ${TIME_NEW}) / ${TIME_OLD}")
+
+	printf "   Before: %.2fs   After: %.2fs   Speedup: %.2f%%\n" ${TIME_OLD} ${TIME_NEW} ${SPEEDUP}
+
 	echo
-	echo " Performance changes: callgraph (cycles)"
-	echo
-	echo "  Overall speedup: $SPEEDUP (time)"
+	echo " Runtime: Differences per Function (cycles, negative means faster)"
 	echo
 
 	if [[ ${INPUT} -nt ${INPUT}.stacks ]]; then
@@ -25,22 +30,29 @@ if [[ -f ${INPUT}.old ]]; then
 		perf script -i ${INPUT}.old 2>/dev/null | stackcollapse.pl >| ${INPUT}.stacks.old
 	fi
 
-	perf diff ${INPUT}.old ${INPUT} 2>/dev/null |
-	awk '/%/{ if ($1 > 0.5 && (strtonum($2) < -0.1 || strtonum($2) > 0.1)) print }'
-	diff.pl ${INPUT}.stacks.old ${INPUT}.stacks | flamegraph.pl > ${SVG}
-	echo
-	echo
-	echo "<DartMeasurement name=\"Speedup\" type=\"numeric/float\">$SPEEDUP</DartMeasurement>"
+	if [[ ${INPUT} -nt ${SVG} ]]; then
+		perf diff --stdio ${INPUT}.old ${INPUT} 2>/dev/null |
+		awk '/^# (B|\.)/{ printf " "; print substr($0,2,80) } \
+		     /%/{ if ($1 > 0.5 && (strtonum($2) < -0.1 || strtonum($2) > 0.1)) print }'
+		diff.pl ${INPUT}.stacks.old ${INPUT}.stacks | flamegraph.pl > ${SVG}
+	fi
 else
+	TIME=$(perf report --header-only -i ${INPUT} 2>/dev/null | awk '/duration/{ print $(NF-1)/1000.0 }')
+
 	echo
-	echo " Performance report: callgraph"
-	echo
-	perf report -i ${INPUT} -F overhead,comm --percent-limit 2
-	perf script -i ${INPUT} | stackcollapse.pl | flamegraph.pl > ${SVG}
+        echo " Runtime: ${TIME}s"
+        echo
+
+	if [[ ${INPUT} -nt ${SVG} ]]; then
+		perf script -i ${INPUT} | stackcollapse.pl | flamegraph.pl > ${SVG}
+	fi
 fi
 
-if command -v convert >/dev/null; then
-	# make plot show in CDash as a PNG if ImageMagick is available
-	convert -size 1920 ${SVG} ${PNG}
-	echo "<DartMeasurementFile name=\"Flame Graph\" type=\"image/png\">${PWD}/${PNG}</DartMeasurementFile>"
-fi
+echo
+echo " Hierarchical Profile"
+echo
+perf report -i ${INPUT} -q --stdio -g none --hierarchy --percent-limit 0.5
+
+echo " Geant4 Stepping Call Graph"
+echo
+perf report -i ${INPUT} -q --stdio -F overhead -x -p 'G4SteppingManager::Stepping' --percent-limit 3
