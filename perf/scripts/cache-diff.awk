@@ -110,6 +110,6 @@ END {
 		printf("%6.3f%% %6.3f%% %7.3f%% %7.2f  %6.3f%% %6.3f%% %7.3f%% %7.2f   %s\n",
 			L1d_miss1, L1d_miss2, L1d_miss_diff, L1d_miss_ratio,
 			L1i_miss1, L1i_miss2, L1i_miss_diff, L1i_miss_ratio,
-			symbol) | "sort -nr"
+			symbol) | "sort -n -r -k4"
 	}
 }

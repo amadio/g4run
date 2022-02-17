@@ -86,6 +86,6 @@ END {
 
 		printf("%6.3f%% %6.3f%% %7.3f%% %7.2f  %6.3f%% %6.3f%% %7.3f%% %7.2f  %s\n",
 			overhead_c_old, overhead_c_new, overhead_c, ratio_c,
-			overhead_i_old, overhead_i_new, overhead_i, ratio_i, symbol) | "sort -n +2"
+			overhead_i_old, overhead_i_new, overhead_i, ratio_i, symbol) | "sort -n -r -k4"
 	}
 }
