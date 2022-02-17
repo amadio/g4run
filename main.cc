@@ -43,9 +43,9 @@ int nthreads = 1;
 uint64_t seed = 1;
 uint64_t nevents = 0;
 const char *physics_list = "FTFP_BERT";
+char *field = nullptr;
 char *gdml = nullptr;
 char *macro = nullptr;
-double Bz = 0.0; /* in Tesla */
 
 /* command line options */
 
@@ -57,9 +57,9 @@ struct option options[] = {
 	{ "stats",        no_argument,       NULL, 's'},
 	{ "verbose",      no_argument,       NULL, 'v'},
 	{ "version",      no_argument,       NULL, 'V'},
+	{ "field",        required_argument, NULL, 'f'},
 	{ "energy",       required_argument, NULL, 'E'},
 	{ "events",       required_argument, NULL, 'e'},
-	{ "field",        required_argument, NULL, 'f'},
 	{ "gdml",         required_argument, NULL, 'g'},
 	{ "macro",        required_argument, NULL, 'm'},
 	{ "primary",      required_argument, NULL, 'p'},
@@ -186,7 +186,7 @@ void parse_options(int argc, char **argv)
 		}
 
 		case 'f':
-			Bz = strtod(optarg, nullptr);
+			field = optarg;
 			break;
 
 		case 'g':
@@ -278,7 +278,7 @@ int main(int argc, char **argv)
 		runManager->SetNumberOfThreads(nthreads);
 #endif
 
-	runManager->SetUserInitialization(new DetectorConstruction(gdml));
+	runManager->SetUserInitialization(new DetectorConstruction(gdml, field));
 	runManager->SetUserInitialization(factory.GetReferencePhysList(physics_list));
 	runManager->SetUserInitialization(new InitializationAction());
 
