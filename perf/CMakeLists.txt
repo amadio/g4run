@@ -18,9 +18,13 @@ if(NOT DEFINED GDML)
   set(GDML ${PROJECT_SOURCE_DIR}/CMS.gdml)
 endif()
 
+if(NOT DEFINED FIELD)
+  set(FIELD "file:${PROJECT_SOURCE_DIR}/CMS.fmap")
+endif()
+
 if(NOT DEFINED NEVENTS)
   if(Pythia_FOUND)
-    set(EVENTS_PER_CORE 4)
+    set(EVENTS_PER_CORE 2)
   else()
     set(EVENTS_PER_CORE 256)
   endif()
@@ -28,24 +32,24 @@ if(NOT DEFINED NEVENTS)
   math(EXPR NEVENTS "${EVENTS_PER_CORE} * ${NCORES}")
 endif()
 
+if(NOT DEFINED ENERGY)
+  set(ENERGY 50)
+endif()
+
 if(NOT DEFINED PRIMARIES)
   if(Pythia_FOUND)
-    set(PRIMARIES pythia:ttbar)
+    set(PRIMARIES pythia)
   else()
     set(PRIMARIES e+ e- pi+ pi- mu- gamma neutron proton)
   endif()
 endif()
 
-if(NOT DEFINED ENERGY)
-  set(ENERGY 50)
+if(NOT DEFINED METRICS_CPU)
+  set(METRICS_CPU {cycles,instructions,branches,branch-misses})
 endif()
 
-if(NOT DEFINED METRICS_CORE)
-  set(METRICS_CORE {cycles,instructions,branches,branch-misses,stalled-cycles-backend,stalled-cycles-frontend})
-endif()
-
-if(NOT DEFINED METRICS_L1)
-  set(METRICS_L1 {instructions,L1-dcache-load-misses,L1-dcache-loads,L1-icache-load-misses,L1-icache-loads})
+if(NOT DEFINED METRICS_CACHE)
+  set(METRICS_CACHE {instructions,L1-dcache-loads,L1-dcache-load-misses,L1-icache-load-misses})
 endif()
 
 execute_process(COMMAND sh -c "${GEANT4_CONFIG} --datasets | awk '{ printf \"%s=%s;\", \$2, \$3 }'"
@@ -53,25 +57,33 @@ execute_process(COMMAND sh -c "${GEANT4_CONFIG} --datasets | awk '{ printf \"%s=
 
 foreach(PRIMARY ${PRIMARIES})
   string(REGEX REPLACE ":" "-" TEST ${PRIMARY})
-  set(COMMAND $<TARGET_FILE:g4run> --stats --cdash -g ${GDML} -e ${NEVENTS} -p ${PRIMARY} -E ${ENERGY} -j ${NCORES})
+  set(COMMAND $<TARGET_FILE:g4run> --cdash --stats -g ${GDML} -f ${FIELD} -E ${ENERGY} -p ${PRIMARY} -e ${NEVENTS} -j ${NCORES})
 
-  add_test(NAME ${TEST}-record-callgraph COMMAND
-    ${PERF_EXECUTABLE} record -e cycles -g -F100 -o ${TEST}.perf ${COMMAND})
+  add_test(NAME ${TEST}-record-cpu
+    COMMAND ${PERF_EXECUTABLE} record -e ${METRICS_CPU} -o ${TEST}-cpu.perf ${COMMAND})
 
-  add_test(NAME ${TEST}-record-core COMMAND
-    ${PERF_EXECUTABLE} record -e ${METRICS_CORE} -o ${TEST}-core.perf ${COMMAND})
+  add_test(NAME ${TEST}-record-cache
+    COMMAND ${PERF_EXECUTABLE} record -e ${METRICS_CACHE} -o ${TEST}-cache.perf ${COMMAND})
 
-  add_test(NAME ${TEST}-record-L1 COMMAND
-    ${PERF_EXECUTABLE} record -e ${METRICS_L1} -o ${TEST}-L1.perf ${COMMAND})
+  add_test(NAME ${TEST}-record-callgraph
+    COMMAND ${PERF_EXECUTABLE} record -e cycles -g -F100 -o ${TEST}.perf ${COMMAND})
 
-  foreach(METRIC callgraph core L1)
+  foreach(METRIC callgraph cpu cache)
     set_tests_properties(${TEST}-record-${METRIC}
-      PROPERTIES LABELS "perf;record" ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE)
+      PROPERTIES
+        LABELS "perf;record"
+        ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE)
   endforeach()
 
   file(COPY treemap/ DESTINATION ${TEST}-treemap)
-  add_test(NAME ${TEST}-report COMMAND sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/report.sh ${TEST} | tee ${TEST}.txt")
-  set_tests_properties(${TEST}-report PROPERTIES LABELS "perf;report"
-    ATTACHED_FILES "${CMAKE_CURRENT_BINARY_DIR}/${TEST}.svg" REQUIRED_FILES "${TEST}.perf;${TEST}-core.perf;${TEST}-L1.perf"
-    DEPENDS "${TEST}-record-callgraph;${TEST}-record-core;${TEST}-record-L1")
+
+  add_test(NAME ${TEST}-report COMMAND
+    sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/report.sh ${TEST} | tee ${TEST}.txt")
+
+  set_tests_properties(${TEST}-report
+    PROPERTIES
+      LABELS "perf;report"
+      ATTACHED_FILES "${CMAKE_CURRENT_BINARY_DIR}/${TEST}.svg"
+      REQUIRED_FILES "${TEST}.perf;${TEST}-cpu.perf;${TEST}-cache.perf"
+      DEPENDS "${TEST}-record-callgraph;${TEST}-record-cpu;${TEST}-record-cache")
 endforeach()
