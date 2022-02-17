@@ -1,1 +1,2 @@
+*.fmap filter=lfs diff=lfs merge=lfs
 *.gdml filter=lfs diff=lfs merge=lfs
