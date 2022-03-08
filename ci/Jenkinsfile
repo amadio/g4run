@@ -1,0 +1,86 @@
+// vim:syntax=groovy ts=4 sts=4 sw=4 noet:
+
+pipeline {
+	agent { node { label 'performance' } }
+
+	parameters {
+		string(name: 'GIT_PREVIOUS_COMMIT' ,
+			defaultValue: 'geant4-11-00',
+			description: 'Git commit, tag, or branch of the baseline'
+		)
+
+		string(name: 'GIT_COMMIT' ,
+			defaultValue: 'master',
+			description: 'Git commit, tag, or branch to compare with the baseline'
+		)
+	}
+
+	options {
+		buildDiscarder(
+			logRotator( daysToKeepStr: '7' )
+		)
+		gitLabConnection(
+			gitLabConnection: 'https://gitlab.cern.ch',
+			jobCredentialId: 'jenkins',
+			useAlternativeCredential: true
+		)
+		timestamps()
+	}
+
+	environment {
+		GIT_COMMIT = "${params.GIT_COMMIT}"
+		GIT_PREVIOUS_COMMIT = "${params.GIT_PREVIOUS_COMMIT}"
+	}
+
+	stages {
+		stage("env") {
+			steps {
+				sh 'printenv'
+			}
+		}
+
+		stage("git") {
+			steps {
+				dir("git") {
+					withCredentials([string(credentialsId: 'geant4-gitlab-token', variable: 'TOKEN')]) {
+						sh '''
+							if [[ ! -d geant4.git ]]; then
+								git clone --mirror https://oauth2:${TOKEN}@gitlab.cern.ch/geant4/geant4-dev.git geant4.git
+							else
+								git -C geant4.git remote update
+							fi
+						'''
+					}
+				}
+			}
+		}
+
+		stage("build") {
+			steps {
+				sh 'ci/jenkins.sh'
+			}
+		}
+	}
+
+	post {
+		failure {
+			updateGitlabCommitStatus name: 'build', state: 'failed'
+		}
+		success {
+			updateGitlabCommitStatus name: 'build', state: 'success'
+
+			addGitLabMRComment(comment: "A performance report for this merge request is available [here](${BUILD_URL}/Performance_20Report).")
+
+			publishHTML (target : [
+				keepAll: true,
+				allowMissing: false,
+				alwaysLinkToLastBuild: true,
+				includes: '**/*.svg,**/*.txt',
+				reportDir: 'build/g4run/perf',
+				reportFiles: 'pythia.txt,pythia.svg,pythia-inv.svg',
+				reportTitles: 'Performance Report,FlameGraph,Inverted FlameGraph',
+				reportName: 'Performance Report'
+			])
+		}
+	}
+}
