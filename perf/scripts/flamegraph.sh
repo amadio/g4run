@@ -36,6 +36,12 @@ if [[ -f ${INPUT}.old ]]; then
 		     /%/{ if ($1 > 0.5 && (strtonum($2) < -0.1 || strtonum($2) > 0.1)) print }'
 		diff.pl ${INPUT}.stacks.old ${INPUT}.stacks | flamegraph.pl > ${SVG}
 	fi
+
+	# inverted flamegraph
+	perf diff ${INPUT} ${INPUT}.old 2>/dev/null |
+	awk '/^# (B|\.)/{ printf " "; print substr($0,2,80) } \
+		/%/{ if ($1 > 0.25 && (strtonum($2) < -0.05 || strtonum($2) > 0.05)) print }'
+	diff.pl ${INPUT}.stacks ${INPUT}.stacks.old | flamegraph.pl > ${1%.*}-inv.svg
 else
 	TIME=$(perf report --header-only -i ${INPUT} 2>/dev/null | awk '/duration/{ print $(NF-1)/1000.0 }')
 
