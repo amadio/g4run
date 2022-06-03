@@ -1,0 +1,70 @@
+body {
+    background-color: black;
+    margin: 20px;
+    overflow: hidden;
+}
+
+#root {
+    position: fixed;
+    background-color: white;
+    width: 1880px;
+    height: 900px;
+}
+
+header {
+    height: 150px;
+    padding-left: 20px;
+}
+
+main {
+    height: 725px;
+    margin: 0 15px;
+    background-color: red;
+    overflow-y: scroll;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+#commit {
+    color: grey;
+    margin-left: 50px;
+    font-size: 30px;
+}
+
+.title {
+    display: flex;
+    align-items: baseline;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(189, 189, 125);
+    border-radius: 5px;
+}
+
+.visual-tab-content {
+    display: none;
+    margin: 20px;
+}
+
+.visual-tabs:hover {
+    cursor: pointer;
+}
+
+.report-contents{
+    margin: 20px;
+    display: none;
+}
+
+.active {
+    background-color: yellow;
+}
+
+pre{
+    background-color: blue;
+}

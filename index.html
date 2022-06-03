@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performatic Visuals G4</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <div class="title">
+                <h1>g4 Performance</h1>
+                <p id="commit">Comparing commit {before} with commit {after}</p>
+            </div>
+            <button class="visual-tabs" onclick="openTab( this,'performance-report')" id="defaultOpenTab">Performance
+                Report</button>
+            <button class="visual-tabs" onclick="openTab(this,'flamegraph')">Flamegraph</button>
+            <button class="visual-tabs" onclick="openTab(this,'scatter-plot')">Scatter Plot</button>
+            <button class="visual-tabs" onclick="openTab(this,'treemaps')">TreeMaps</button>
+            <button class="visual-tabs" onclick="openTab(this,'spider-plot')">Spider Plot</button>
+            <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
+            <button class="visual-tabs" onclick="openTab(this,'html-report')">HTML Report</button>
+        </header>
+        <hr>
+        <main class="tab-content">
+            <div id="performance-report" class="visual-tab-content">
+                <div class="report-type"> 
+                    <button class="report-tabs" onclick="openReport(this,'text-report')"  id="defaultOpenReport">Text</button>
+                    <button class="report-tabs" onclick="openReport(this,'csv-report')">CSV</button>
+                    <button class="report-tabs" onclick="openReport(this,'html-table-report')">HTML Table</button>
+                </div>
+                <div id="text-report" class="report-contents">
+                    <embed src="demo.txt" height="30800" width="1000">
+                </div>
+                <div id="csv-report"  class="report-contents">
+                    <embed src="csv.txt" width="10000" height="1000">
+                </div>
+                <div id="html-table-report"  class="report-contents">
+                    <embed src="Table.html" width="1000" height="2500">
+                </div>
+            </div>
+            <div id="flamegraph" class="visual-tab-content">
+                <h1>FG</h1>
+            </div>
+            <div id="scatter-plot" class="visual-tab-content">
+                <h1>SP</h1>
+            </div>
+            <div id="treemaps" class="visual-tab-content">
+                <h1>TM</h1>
+            </div>
+            <div id="spider-plot" class="visual-tab-content">
+                <h1>SPi pLOT</h1>
+            </div>
+            <div id="sunburst" class="visual-tab-content">
+                <h1>SB</h1>
+            </div>
+            <div id="html-report" class="visual-tab-content">
+                <h1>HR</h1>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
