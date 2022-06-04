@@ -1,36 +1,27 @@
 body {
     background-color: black;
-    margin: 20px;
+    margin: 2vh 2vw;
+    font-size: 2vh;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
 }
 
 #root {
+    font-size: 2vh;
     position: fixed;
     background-color: white;
-    width: 1880px;
-    height: 900px;
+    width: 96vw;
+    height: 96vh;
 }
 
+/* Styling the header and its contents */
 header {
-    height: 150px;
-    padding-left: 20px;
-}
 
-main {
-    height: 725px;
-    margin: 0 15px;
-    background-color: red;
-    overflow-y: scroll;
-}
-
-h1 {
-    font-size: 50px;
-}
-
-#commit {
-    color: grey;
-    margin-left: 50px;
-    font-size: 30px;
+    width: 94vw;
+    height: 18vh;
+    padding-left: 2vw;
+    border-bottom: 1px solid black;
 }
 
 .title {
@@ -38,33 +29,92 @@ h1 {
     align-items: baseline;
 }
 
-::-webkit-scrollbar {
-    width: 10px;
+#commit {
+    color: grey;
+    margin-left: 2vw;
+    width: 50vw;
+    height: 5vh;
+    font-size: 2vh;
 }
 
-::-webkit-scrollbar-thumb {
-    background: rgb(189, 189, 125);
-    border-radius: 5px;
+/* Visualization Tabs Styling */
+.visual-tab-bar {
+
+    width: 92vw;
+    height: 5vh;
+}
+
+.visual-tab-bar>button {
+    margin: 0.5vh;
 }
 
 .visual-tab-content {
-    display: none;
-    margin: 20px;
+    margin: 0 2vw;
+}
+
+.visual-tabs {
+    height: 4vh;
+    width: 10vw;
+    font-size: 1vw;
 }
 
 .visual-tabs:hover {
     cursor: pointer;
 }
 
-.report-contents{
-    margin: 20px;
-    display: none;
-}
-
 .active {
     background-color: yellow;
 }
 
-pre{
-    background-color: blue;
+/* Styling the main content which will contain visuals and reports */
+main {
+    background-color: pink;
+    font-size: 2vh;
+    margin: 2vh 2vw;
+    height: 74vh;
+    width: 92vw;
+    overflow-x: scroll;
+}
+
+/* Mouse Scrollbar modifications */
+::-webkit-scrollbar {
+    width: 0.5vw;
+    height: 0.5vh;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(189, 189, 125);
+    border-radius: 5%;
+}
+
+/* Applying media queires to make it visually appealing across different devices */
+@media only screen and (max-width: 575px) {
+    header {
+        height: 20vh;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    header {
+        height: 19vh;
+        font-size: 1vh;
+    }
+
+    .visual-tabs {
+        height: 4vh;
+        width: 10vw;
+    }
+}
+
+@media only screen and (max-width: 345px) {
+    header {
+        height: 13vh;
+        font-size: 1vh;
+    }
+
+    .visual-tabs {
+        height: 2vh;
+        width: 9vw;
+        font-size: 0.5vh;
+        overflow: hidden;
+    }
 }
