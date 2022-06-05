@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performatic Visuals G4</title>
     <link href="style.css" rel="stylesheet">
-    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -30,7 +29,8 @@
         </header>
         <main class="tab-content">
             <div id="performance-report" class="visual-tab-content">
-                <embed src="Table.html" height="2500" width="1000">
+
+                <div id="html-table"></div>
             </div>
             <div id="flamegraph" class="visual-tab-content">
                 <h1>FG</h1>
@@ -53,4 +53,7 @@
         </main>
     </div>
 </body>
+<script src="./script.js"></script>
+<script src="Scripts/csv_to_table.js" type="module"></script>
+
 </html>

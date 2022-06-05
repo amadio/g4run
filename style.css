@@ -76,11 +76,30 @@ main {
     overflow-x: scroll;
 }
 
+/* HTML Table generated from the CSV File using d3 */
+#html-table {
+    margin: 2vh 2vw;
+}
+
+table {
+    display: table;
+}
+
+th {
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+    padding: 1vh 1vw;
+}
+
 /* Mouse Scrollbar modifications */
 ::-webkit-scrollbar {
     width: 0.5vw;
     height: 0.5vh;
 }
+
 ::-webkit-scrollbar-thumb {
     background: rgb(189, 189, 125);
     border-radius: 5%;
