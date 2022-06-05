@@ -20,7 +20,7 @@ const tabulate = (data, columns) => {
         .text(d => d.value);
 }
 
-d3.csv("./../demo.csv").then(data => {
+d3.csv("demo.csv").then(data => {
     console.log(data)
     const columns = ['cycles', 'instr', 'IPC', 'IPB', 'B_Miss', 'Symbol'];
     tabulate(data, columns)
