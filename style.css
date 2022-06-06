@@ -17,7 +17,6 @@ body {
 
 /* Styling the header and its contents */
 header {
-
     width: 94vw;
     height: 18vh;
     padding-left: 2vw;
@@ -53,8 +52,7 @@ header {
 }
 
 .visual-tabs {
-    height: 4vh;
-    width: 10vw;
+    padding: 1vh 1vw;
     font-size: 1vw;
 }
 
@@ -74,6 +72,20 @@ main {
     height: 74vh;
     width: 92vw;
     overflow-x: scroll;
+}
+
+/* Downloading the CSV file on button click */
+#csv-download {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 1vh 1vw;
+    border-radius: 10%;
+    font-size: 1vw;
+}
+
+#csv-download:hover {
+    background-color: rgb(196, 169, 169);
 }
 
 /* HTML Table generated from the CSV File using d3 */
@@ -112,28 +124,9 @@ td {
     }
 }
 
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 445px) {
     header {
         height: 19vh;
-        font-size: 1vh;
-    }
-
-    .visual-tabs {
-        height: 4vh;
-        width: 10vw;
-    }
-}
-
-@media only screen and (max-width: 345px) {
-    header {
-        height: 13vh;
-        font-size: 1vh;
-    }
-
-    .visual-tabs {
-        height: 2vh;
-        width: 9vw;
-        font-size: 0.5vh;
-        overflow: hidden;
+        font-size: 1.5vh;
     }
 }
