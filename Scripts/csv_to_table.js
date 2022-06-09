@@ -1,7 +1,13 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
+const name_fields = columns => {
+    for (let i = 0; i < columns.length - 1; i++) {
+        d3.select("select").append("option").text(columns[i])
+    }
+}
+
 const tabulate = (data, columns) => {
-    const table = d3.select("#html-table").append("table");
+    const table = d3.select("#html-table").append("table").attr("id", "report-table");
     const thead = table.append("thead")
     const tbody = table.append("tbody");
     thead.append("tr").selectAll("th").data(columns).enter().append("th").text(d => d);
@@ -10,9 +16,10 @@ const tabulate = (data, columns) => {
     const cells = rows.selectAll('td')
         .data(row => (
             columns.map(column =>
-            ({
-                column: column, value: row[column]
-            })
+            (
+                {
+                    column: column, value: row[column]
+                })
             )
         ))
         .enter()
@@ -21,7 +28,8 @@ const tabulate = (data, columns) => {
 }
 
 d3.csv("demo.csv").then(data => {
-    console.log(data)
+    //------>Make this column dynamic and update the same in script.js<-----
     const columns = ['cycles', 'instr', 'IPC', 'IPB', 'B_Miss', 'Symbol'];
-    tabulate(data, columns)
+    tabulate(data, columns);
+    name_fields(columns);
 });

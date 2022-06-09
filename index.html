@@ -18,7 +18,7 @@
             </div>
             <div class="visual-tab-bar">
                 <button class="visual-tabs" onclick="openTab( this,'performance-report')"
-                    id="defaultOpenTab">Report</button>
+                    id="default-tab">Report</button>
                 <button class="visual-tabs" onclick="openTab(this,'flamegraph')">Flamegraph</button>
                 <button class="visual-tabs" onclick="openTab(this,'scatter-plot')">Scatter Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'treemaps')">TreeMaps</button>
@@ -30,6 +30,9 @@
         <main class="tab-content">
             <div id="performance-report" class="visual-tab-content">
                 <button type="submit" onclick="window.open('demo.csv')" id="csv-download">CSV</button>
+                <input type="number" id="l_threshold" onkeyup="update()" placeholder="Enter lower number">
+                <input type="number" id="h_threshold" onkeyup="update()" placeholder="Enter higher number">
+                <select id="column_fields"></select>
                 <div id="html-table"></div>
             </div>
             <div id="flamegraph" class="visual-tab-content">
