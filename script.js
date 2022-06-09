@@ -28,8 +28,8 @@ const update = (e) => {
     let h_input, l_input, h_filter, l_filter, table, tr, td, txtValue, numValue, selectedIndex;
     h_input = document.getElementById("h_threshold");
     l_input = document.getElementById("l_threshold");
-    h_filter = h_input.value;
-    l_filter = l_input.value;
+    h_filter = parseFloat(h_input.value);
+    l_filter = parseFloat(l_input.value);
     table = document.getElementById("report-table");
     tr = table.getElementsByTagName("tr");
 
