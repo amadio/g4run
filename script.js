@@ -46,7 +46,7 @@ const update = () => {
                 break;
             };
         }
-        
+
         // Filtering the Table based on Theshold Values provided
         let count = tr.length;
         for (let i = 0; i < tr.length; i++) {
@@ -62,7 +62,10 @@ const update = () => {
         }
         // If no entry matches the filters
         if (count - 1 == 0) {
-            document.getElementById("html-table").innerText = "No Fields Exist in this range."
+            document.getElementById("html-table").innerText = "No Fields Exist in this range.";
+            setTimeout(() => {
+                location.reload();
+            },2000)
         }
     }
 }
