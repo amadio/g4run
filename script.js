@@ -22,9 +22,13 @@ const getSelectedField = () => {
     return selectField;
 }
 
-// Colouring the table rows within thresholds and rendering the changes 
-const update = (e) => {
+// Reset button hidden initially
+const reset_btn = document.getElementById("reset-filter");
+reset_btn.style.display = "none";
 
+// Filtering the table columns based on threshold on clicking Apply button
+const update = () => {
+    reset_btn.style.display = "";
     let h_input, l_input, h_filter, l_filter, table, tr, td, txtValue, numValue, selectedIndex;
     h_input = document.getElementById("h_threshold");
     l_input = document.getElementById("l_threshold");
@@ -33,41 +37,46 @@ const update = (e) => {
     table = document.getElementById("report-table");
     tr = table.getElementsByTagName("tr");
 
-    // Only trigger when clicked Enter
-    if (event.keyCode === 13) {
-        if (h_filter || l_filter) {
+    if (h_filter && l_filter) {
 
-            // Getting Index of selected dropdown
-            for (let j = 0; j < columns.length; j++) {
-                if (tr[0].getElementsByTagName("th")[j].innerText == getSelectedField()) {
-                    selectedIndex = j;
-                    break;
-                };
-            }
-
-            for (let i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[selectedIndex];
-                if (td) {
-                    txtValue = td.innerText;
-                    numValue = parseFloat(txtValue);
-                    if (numValue >= l_filter && numValue <= h_filter) {
-                        tr[i].style.backgroundColor = "red";
-                    }
+        // Getting Index of selected dropdown
+        for (let j = 0; j < columns.length; j++) {
+            if (tr[0].getElementsByTagName("th")[j].innerText == getSelectedField()) {
+                selectedIndex = j;
+                break;
+            };
+        }
+        
+        // Filtering the Table based on Theshold Values provided
+        let count = tr.length;
+        for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[selectedIndex];
+            if (td) {
+                txtValue = td.innerText;
+                numValue = parseFloat(txtValue);
+                if (numValue <= l_filter || numValue >= h_filter) {
+                    tr[i].style.display = "none";
+                    count--;
                 }
             }
-
-        } else {
-            //Clear the marked fields to avoid overlapping
-            for (let i = 0; i < tr.length; i++) {
-                tr[i].style.backgroundColor = "";
-            }
-
         }
-    } else {
-        //Clear the marked fields to avoid overlapping
-        for (let i = 0; i < tr.length; i++) {
-            tr[i].style.backgroundColor = "";
+        // If no entry matches the filters
+        if (count - 1 == 0) {
+            document.getElementById("html-table").innerText = "No Fields Exist in this range."
         }
-
     }
+}
+
+// Reset the table back to its initiall state
+const reset = () => {
+    const table = document.getElementById("report-table");
+    const tr = table.getElementsByTagName("tr");
+    const h_input = document.getElementById("h_threshold");
+    const l_input = document.getElementById("l_threshold");
+    for (let i = 0; i < tr.length; i++) {
+        tr[i].style.display = "";
+    }
+    reset_btn.style.display = "none";
+    h_input.value = "";
+    l_input.value = "";
 }

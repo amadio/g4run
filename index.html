@@ -17,6 +17,7 @@
                 <p id="commit">Comparing commit {before} with commit {after}</p>
             </div>
             <div class="visual-tab-bar">
+                <!-- Tabs for Data Visuals and Reports -->
                 <button class="visual-tabs" onclick="openTab( this,'performance-report')"
                     id="default-tab">Report</button>
                 <button class="visual-tabs" onclick="openTab(this,'flamegraph')">Flamegraph</button>
@@ -29,14 +30,23 @@
         </header>
         <main class="tab-content">
             <div id="performance-report" class="visual-tab-content">
-                <button type="submit" onclick="window.open('demo.csv')" id="csv-download">CSV</button>
-                <input type="number" id="l_threshold" onkeyup="update()" placeholder="Enter lower number">
-                <input type="number" id="h_threshold" onkeyup="update()" placeholder="Enter higher number">
-                <select id="column_fields"></select>
+                <!-- Button to download CSV file -->
+                <div>
+                    <button type="submit" onclick="window.open('demo.csv')" id="csv-download">CSV</button>
+                </div>
+                <!--  Implement value based filtering for the table -->
+                <div id="threshold_div">
+                    <input type="number" id="l_threshold" placeholder="Lower Threshold">
+                    <input type="number" id="h_threshold" placeholder="Higher Threshold">
+                    <select id="column_fields"></select>
+                    <button onclick="update()" id="apply-btn">Apply</button>
+                    <button onclick="reset()" id="reset-filter">Reset</button>
+                </div>
                 <div id="html-table"></div>
             </div>
             <div id="flamegraph" class="visual-tab-content">
-                <h1>FG</h1>
+                <!-- Load an external Flamegraph SVG -->
+                <object type="image/svg+xml" data="pythia.svg"></object>
             </div>
             <div id="scatter-plot" class="visual-tab-content">
                 <h1>SP</h1>

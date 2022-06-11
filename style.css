@@ -15,12 +15,19 @@ body {
     height: 96vh;
 }
 
+/* Remove unwanted borders   */
+button,
+input,
+select {
+    border: none;
+}
+
 /* Styling the header and its contents */
 header {
     width: 94vw;
     height: 18vh;
     padding-left: 2vw;
-    border-bottom: 1px solid black;
+    border-bottom: 0.1vh solid black;
 }
 
 .title {
@@ -58,6 +65,7 @@ header {
 
 .visual-tabs:hover {
     cursor: pointer;
+    background-color: azure;
 }
 
 .active {
@@ -106,6 +114,26 @@ td {
     padding: 1vh 1vw;
 }
 
+/* Style the Threshold related elements */
+#h_threshold,
+#l_threshold {
+    width: auto;
+    height: 2vh;
+    font-size: 1.5vh;
+}
+
+#column_fields,
+#apply-btn,
+#reset-filter {
+    width: auto;
+    height: 2vh;
+    font-size: 1.5vh;
+}
+
+#threshold_div {
+    margin: 1vh 1vw;
+}
+
 /* Mouse Scrollbar modifications */
 ::-webkit-scrollbar {
     width: 0.5vw;
@@ -117,10 +145,23 @@ td {
     border-radius: 5%;
 }
 
+/* Embed FlameGraph SVG */
+object {
+    margin: 2vh 0;
+    margin-right: 2vw;
+    height: 96vh;
+}
+
 /* Applying media queires to make it visually appealing across different devices */
 @media only screen and (max-width: 575px) {
     header {
         height: 20vh;
+    }
+
+    #h_threshold,
+    #l_threshold {
+        width: auto;
+        font-size: 0.8vh;
     }
 }
 
@@ -128,5 +169,10 @@ td {
     header {
         height: 19vh;
         font-size: 1.5vh;
+    }
+
+    #h_threshold,
+    #l_threshold {
+        font-size: 0.8vh;
     }
 }
