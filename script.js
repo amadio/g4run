@@ -13,9 +13,6 @@ const openTab = (elem, tabName) => {
 }
 document.getElementById("default-tab").click();
 
-//--------------->Make the Columns Array dynamic in both d3 logic and normal js logic<------------
-const columns = ['cycles', 'instr', 'IPC', 'IPB', 'B_Miss', 'Symbol'];
-
 // Get value of the selected column field from the dropdown
 const getSelectedField = () => {
     const selectField = document.getElementById("column_fields").value;
@@ -40,7 +37,7 @@ const update = () => {
     if (h_filter && l_filter) {
 
         // Getting Index of selected dropdown
-        for (let j = 0; j < columns.length; j++) {
+        for (let j = 0; j < tr[0].getElementsByTagName("th").length; j++) {
             if (tr[0].getElementsByTagName("th")[j].innerText == getSelectedField()) {
                 selectedIndex = j;
                 break;
@@ -65,7 +62,7 @@ const update = () => {
             document.getElementById("html-table").innerText = "No Fields Exist in this range.";
             setTimeout(() => {
                 location.reload();
-            },2000)
+            }, 2000)
         }
     }
 }

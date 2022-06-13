@@ -19,7 +19,7 @@ body {
 button,
 input,
 select {
-    border: none;
+    border: 0.1vh solid black;
 }
 
 /* Styling the header and its contents */
@@ -74,7 +74,6 @@ header {
 
 /* Styling the main content which will contain visuals and reports */
 main {
-    background-color: pink;
     font-size: 2vh;
     margin: 2vh 2vw;
     height: 74vh;

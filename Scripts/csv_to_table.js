@@ -1,21 +1,29 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
-const name_fields = columns => {
-    for (let i = 0; i < columns.length - 1; i++) {
-        d3.select("select").append("option").text(columns[i])
+// Selection Fields
+const name_fields = table_columns => {
+    for (let i = 0; i < table_columns.length - 1; i++) {
+        d3.select("select").append("option").text(table_columns[i]);
     }
 }
 
-const tabulate = (data, columns) => {
+
+const tabulate = (data, table_columns) => {
     const table = d3.select("#html-table").append("table").attr("id", "report-table");
     const thead = table.append("thead")
     const tbody = table.append("tbody");
-    thead.append("tr").selectAll("th").data(columns).enter().append("th").text(d => d);
+    thead.append("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
+    let i = 0;
+    let colour_row = "white";
+    const rows = tbody.selectAll("tr").data(data).enter().append("tr").style("background-color", d => {
+        return d3.scaleLinear()
+            .domain([0.25, 0.75, 2])
+            .range(["blue", "white", "red"])(parseFloat(d.B_Miss));
+    });
 
-    const rows = tbody.selectAll("tr").data(data).enter().append("tr");
     const cells = rows.selectAll('td')
         .data(row => (
-            columns.map(column =>
+            table_columns.map(column =>
             (
                 {
                     column: column, value: row[column]
@@ -28,8 +36,7 @@ const tabulate = (data, columns) => {
 }
 
 d3.csv("demo.csv").then(data => {
-    //------>Make this column dynamic and update the same in script.js<-----
-    const columns = ['cycles', 'instr', 'IPC', 'IPB', 'B_Miss', 'Symbol'];
-    tabulate(data, columns);
-    name_fields(columns);
+    const table_columns = data.columns;
+    tabulate(data, table_columns);
+    name_fields(table_columns);
 });
