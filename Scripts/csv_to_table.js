@@ -13,8 +13,7 @@ const tabulate = (data, table_columns) => {
     const thead = table.append("thead")
     const tbody = table.append("tbody");
     thead.append("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
-    let i = 0;
-    let colour_row = "white";
+
     const rows = tbody.selectAll("tr").data(data).enter().append("tr").style("background-color", d => {
         return d3.scaleLinear()
             .domain([0.25, 0.75, 2])
