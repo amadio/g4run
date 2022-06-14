@@ -14,11 +14,7 @@ const tabulate = (data, table_columns) => {
     const tbody = table.append("tbody");
     thead.append("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
 
-    const rows = tbody.selectAll("tr").data(data).enter().append("tr").style("background-color", d => {
-        return d3.scaleLinear()
-            .domain([0.25, 0.75, 2])
-            .range(["blue", "white", "red"])(parseFloat(d.B_Miss));
-    });
+    const rows = tbody.selectAll("tr").data(data).enter().append("tr");
 
     const cells = rows.selectAll('td')
         .data(row => (
@@ -31,7 +27,18 @@ const tabulate = (data, table_columns) => {
         ))
         .enter()
         .append('td')
-        .text(d => d.value);
+        .text(d => d.value).style("background-color", d=> {
+            if(d.column == "cycles")
+                return d3.scaleLinear().domain([0.3,3]).range(["#5225f5","#f52540"])(parseFloat(d.value));
+            if(d.column == "instr")
+                return d3.scaleLinear().domain([0.3,3]).range(["#5225f5","#f52540"])(parseFloat(d.value));
+            if(d.column == "IPC")
+                return d3.scaleLinear().domain([1,2.5]).range(["#5225f5","#f52540"])(parseFloat(d.value));
+            if(d.column == "IPB")
+                return d3.scaleLinear().domain([5.5,8.5]).range(["#5225f5","#f52540"])(parseFloat(d.value));
+            if(d.column == "B_Miss")
+                return d3.scaleLinear().domain([0,2]).range(["#5225f5","#f52540"])(parseFloat(d.value));
+        });
 }
 
 d3.csv("demo.csv").then(data => {
