@@ -27,17 +27,21 @@ const tabulate = (data, table_columns) => {
         ))
         .enter()
         .append('td')
-        .text(d => d.value).style("background-color", d=> {
-            if(d.column == "cycles")
-                return d3.scaleLinear().domain([0.3,3]).range(["#5225f5","#f52540"])(parseFloat(d.value));
-            if(d.column == "instr")
-                return d3.scaleLinear().domain([0.3,3]).range(["#5225f5","#f52540"])(parseFloat(d.value));
-            if(d.column == "IPC")
-                return d3.scaleLinear().domain([1,2.5]).range(["#5225f5","#f52540"])(parseFloat(d.value));
-            if(d.column == "IPB")
-                return d3.scaleLinear().domain([5.5,8.5]).range(["#5225f5","#f52540"])(parseFloat(d.value));
-            if(d.column == "B_Miss")
-                return d3.scaleLinear().domain([0,2]).range(["#5225f5","#f52540"])(parseFloat(d.value));
+        .text(d => d.value).style("background-color", d => {
+            if (d.column == "cycles")
+                return d3.scaleLinear().domain([0.3, 3]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+            if (d.column == "instr")
+                return d3.scaleLinear().domain([0.3, 3]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+            if (d.column == "IPC")
+                return d3.scaleLinear().domain([1, 2.5]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+            if (d.column == "IPB")
+                return d3.scaleLinear().domain([5.5, 8.5]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+            if (d.column == "B_Miss")
+                return d3.scaleLinear().domain([0, 2]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+        }).style("color", d => {
+            if (d.column == "Symbol")
+                return "black";
+            return "white";
         });
 }
 
