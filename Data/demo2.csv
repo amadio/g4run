@@ -1,0 +1,5 @@
+cycles,instr,IPC,IPB,B_Miss,Symbol
+  2.849, 2.837, 1.519, 6.818, 0.932%,"G4CrossSectionDataStore::GetCrossSection"
+  2.481, 1.973, 1.213, 7.147, 0.411%,"G4NeutronCaptureXS::IsoCrossSection"
+  2.390, 2.529, 1.615, 6.163, 1.184%,"__ieee754_atan2_fma"
+  2.242, 2.147, 1.460, 8.817, 0.612%,"CMSMagneticField::GetFieldValue"  
