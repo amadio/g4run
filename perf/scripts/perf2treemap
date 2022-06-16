@@ -3,8 +3,7 @@
 INPUT=${1:-perf.data}
 OUTPUT=${2:-${INPUT%.*}.csv}
 
-perf report -i ${INPUT} --header --percent-limit 0 -g none -F period,comm,dso,symbol |
-awk >${OUTPUT} '
+perf report -i ${INPUT} --header --percent-limit 0 -g none -F period,comm,dso,symbol | awk >${OUTPUT} '
 BEGIN {
 	nevents = 1
 }
