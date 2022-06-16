@@ -49,7 +49,7 @@ if [[ $(du -sm ${WORKSPACE}/install | cut -f1) -gt 50000 ]]; then
 	find ${WORKSPACE}/install -maxdepth 1 -not -mtime -7 -exec rm -rf {} \;
 fi
 
-for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
+for VERSION in ${GIT_COMMIT} ${GIT_PREVIOUS_COMMIT}; do
 	SHA=$(git -C ${REPOSITORY} rev-parse --short $VERSION)
 
 	SOURCE_DIR=${WORKSPACE}/src/geant4-${SHA}
@@ -97,9 +97,14 @@ for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
 		cmake -S ${SOURCE_DIR} -B ${BINARY_DIR} "${BUILD_OPTIONS[@]}"
 		cmake --build ${BINARY_DIR} --parallel $(($(nproc) - 2)) --target install
 	fi
+done
+
+for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
+	SHA=$(git -C ${REPOSITORY} rev-parse --short $VERSION)
 
 	SOURCE_DIR=${WORKSPACE}
 	BINARY_DIR=${WORKSPACE}/build/g4run
+	INSTALL_DIR=${WORKSPACE}/install/geant4-${SHA}
 
 	BUILD_OPTIONS=(
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
