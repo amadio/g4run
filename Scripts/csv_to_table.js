@@ -2,10 +2,13 @@ import * as d3 from "https://cdn.skypack.dev/d3@7";
 
 let csv_report = "demo.csv";
 
+// Store all the report files in this array
+const all_reports = ["demo.csv","demo2.csv"];
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
-    d3.select("#report-selection").append("option").text("demo.csv");
-    d3.select("#report-selection").append("option").text("demo2.csv");
+    all_reports.forEach(file => {
+        d3.select("#report-selection").append("option").text(file);
+    })
 }
 
 // Selection Fields for metrics
@@ -56,18 +59,21 @@ const tabulate = (data, table_columns) => {
 // Load the CSV data into HTML using d3
 const load_CSV = myVar => {
 d3.csv(`Data/${myVar}`).then(data => {
-    console.log(myVar);
     const table_columns = data.columns;
     tabulate(data, table_columns);
     name_fields(table_columns);
 });
 };
 
+// Download the CSV file on clicking the Button
+document.getElementById("csv-download").addEventListener("click", () => {
+    window.open(`Data/${csv_report}`);
+})
+
 // Update the page on selecting the other Data File (CSV) for generating reports
 document.getElementById("report-selection").addEventListener("change",(e) => {
     csv_report = e.target.value;
     document.getElementById("html-table").innerHTML = "";
-    console.log(csv_report);
     load_CSV(csv_report);
 })
 
