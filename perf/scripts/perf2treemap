@@ -1,0 +1,55 @@
+#!/bin/sh
+
+INPUT=${1:-perf.data}
+OUTPUT=${2:-${INPUT%.*}.csv}
+
+perf report -i ${INPUT} --header --percent-limit 0 -g none -F period,comm,dso,symbol |
+awk >${OUTPUT} '
+BEGIN {
+	nevents = 1
+}
+
+/name = / {
+	sub(",", "", $0);
+	evname[nevents] = gensub("[^a-zA-Z0-9]", "_", "g", $6);
+	ev[$6] = nevents++;
+}
+
+/Total / {
+	printf("id");
+	for(i in evname)
+		printf(",%s", evname[i]); printf("\n");
+}
+
+/\[\.\]/ {
+	comm = $nevents
+	dso = gensub("\\..*", "", "g", $(nevents + 1))
+	symbol = gensub(".*\\[\\.\\] " , "", "g")
+	# symbol = gensub("::", ";", "g", symbol)
+	for (i in evname) data[comm][dso][symbol][i] = $i
+}
+
+END {
+	printf("\"all\"")
+	for (i in evname) printf(",");
+	printf("\n");
+
+	for (comm in data) {
+		printf("\"all;%s\"", comm);
+		for (i in evname) printf(",");
+		printf("\n");
+
+		for (dso in data[comm]) {
+			printf("\"all;%s;%s\"", comm, dso);
+			for (i in evname) printf(",");
+			printf("\n");
+
+			for (symbol in data[comm][dso]) {
+				printf("\"all;%s;%s;%s\"", comm, dso, symbol);
+				for (i in evname) printf(",%s", data[comm][dso][symbol][i]);
+				printf("\n");
+			}
+		}
+	}
+}
+'
