@@ -89,8 +89,10 @@ for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
 		-DGEANT4_USE_SYSTEM_ZLIB=ON
 	)
 
-	cmake -S ${SOURCE_DIR} -B ${BINARY_DIR} "${BUILD_OPTIONS[@]}"
-	cmake --build ${BINARY_DIR} --parallel $(($(nproc) - 2)) --target install
+	if [ ! -d ${INSTALL_DIR} ]; then
+		cmake -S ${SOURCE_DIR} -B ${BINARY_DIR} "${BUILD_OPTIONS[@]}"
+		cmake --build ${BINARY_DIR} --parallel $(($(nproc) - 2)) --target install
+	fi
 
 	SOURCE_DIR=${WORKSPACE}
 	BINARY_DIR=${WORKSPACE}/build/g4run
