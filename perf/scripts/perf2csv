@@ -1,0 +1,33 @@
+#!/bin/sh
+
+INPUT=${1:-perf.data}
+OUTPUT=${2:-${INPUT%.*}.csv}
+
+perf report -i ${INPUT} --header --percent-limit 0 -g none -F period,comm,dso,symbol
+| awk >${OUTPUT} '
+BEGIN {
+	nevents = 1
+}
+
+/name = / {
+	sub(",", "", $0);
+	evname[nevents] = gensub("[^a-zA-Z0-9]", "_", "g", $6);
+	ev[$6] = nevents++;
+}
+
+/Total / {
+	printf("comm,dso,symbol");
+	for(i in evname)
+		printf(",%s", evname[i]); printf("\n");
+}
+
+/\[\.\]/ {
+	comm = $nevents
+	dso = $(nevents + 1)
+	symbol = gensub(".*\\[\\.\\] " , "", "g")
+	printf("\"%s\",\"%s\",\"%s\"", comm, dso, symbol);
+	for(i in evname)
+		printf(",%s", $i);
+	printf("\n");
+}
+'
