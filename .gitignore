@@ -1,0 +1,5 @@
+build/
+ccache/
+git/
+install/
+src/
