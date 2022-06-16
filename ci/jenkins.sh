@@ -9,6 +9,10 @@ set -ex
 : ${CCACHE_BASEDIR:=${WORKSPACE}/build}
 : ${CCACHE_HASHDIR:=false}
 
+[[ -d ${CCACHE_DIR} ]] || mkdir -p ${CCACHE_DIR}
+
+export CCACHE_DIR CCACHE_BASEDIR CCACHE_HASHDIR
+
 : ${CC:=cc} ${CXX:=c++} ${CXXSTD:=17}
 : ${CXXFLAGS:=-O2 -DNDEBUG -march=native -fno-omit-frame-pointer -g -pipe}
 
