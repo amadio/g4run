@@ -7,7 +7,7 @@ set -ex
 
 : ${CCACHE_DIR:=${WORKSPACE}/ccache}
 : ${CCACHE_BASEDIR:=${WORKSPACE}/build}
-: ${CCACHE_HASHDIR:=false}
+: ${CCACHE_NOHASHDIR:=true}
 
 [[ -d ${CCACHE_DIR} ]] || mkdir -p ${CCACHE_DIR}
 
