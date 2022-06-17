@@ -13,7 +13,7 @@ set -ex
 
 export CCACHE_DIR CCACHE_BASEDIR CCACHE_HASHDIR
 
-: ${CC:=cc} ${CXX:=c++} ${CXXSTD:=17}
+: ${CC:=/usr/bin/cc} ${CXX:=/usr/bin/c++} ${CXXSTD:=17}
 : ${CXXFLAGS:=-O2 -DNDEBUG -march=native -fno-omit-frame-pointer -g -pipe}
 
 if [[ ! -d ${REPOSITORY} ]]; then
