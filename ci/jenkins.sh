@@ -129,7 +129,7 @@ done
 
 for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
 	SHA=$(git -C ${REPOSITORY} rev-parse --short $VERSION)
-	SOURCE_DIR=${WORKSPACE}/geant4-${SHA}
+	SOURCE_DIR=${WORKSPACE}/src/geant4-${SHA}
 	git -C ${REPOSITORY} worktree remove ${SOURCE_DIR}
 done
 
