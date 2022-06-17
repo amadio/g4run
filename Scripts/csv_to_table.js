@@ -1,9 +1,9 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
-let csv_report = "demo.csv";
+let csv_report = "pythia.csv";
 
 // Store all the report files in this array
-const all_reports = ["demo.csv", "pythia-cache.csv"];
+const all_reports = ["pythia.csv", "pythia-cache.csv", "pythia-cpu.csv", "demo.csv"];
 
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
@@ -76,7 +76,7 @@ const tabulate = (data, table_columns, numeric_columns) => {
         .append('td')
         .text(d => d.value).style("background-color", d => {
             if (d.column == "cycles")
-                return d3.scaleLinear().domain([0.3, 3]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+                return d3.scaleLinear().domain([0, 58228367992]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
             if (d.column == "instr")
                 return d3.scaleLinear().domain([0.3, 3]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
             if (d.column == "IPC")
@@ -93,6 +93,10 @@ const tabulate = (data, table_columns, numeric_columns) => {
                 return d3.scaleLinear().domain([0, 108521744895]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
             if (d.column == "instructions")
                 return d3.scaleLinear().domain([0, 141732036696]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+            if (d.column == "branches")
+                return d3.scaleLinear().domain([0, 9102860794]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+            if (d.column == "branch_misses")
+                return d3.scaleLinear().domain([0, 169788813]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
         }).style("color", d => {
             if (numeric_columns.includes(d.column) || d.column == "B_Miss")
                 return "white";
