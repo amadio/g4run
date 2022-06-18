@@ -14,9 +14,9 @@ body {
 }
 
 #root {
+    min-height: 90vh;
     background-color: white;
     width: 100%;
-    height: 95vh;
     display: flex;
     flex-direction: column;
 }
@@ -74,7 +74,6 @@ header {
 main {
     display: flex;
     width: 100%;
-    height: 100vh;
 }
 
 /* HTML Table generated from the CSV File using d3 */
