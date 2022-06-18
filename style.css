@@ -1,71 +1,69 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: black;
-    margin: 2vh 2vw;
-    font-size: 2vh;
+    padding: 20px;
+    justify-content: center;
+    width: 100%;
     height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    bottom: 20px;
 }
 
 #root {
-    font-size: 2vh;
-    position: fixed;
     background-color: white;
-    width: 96vw;
-    height: 96vh;
-}
-
-/* Remove unwanted borders   */
-button,
-input,
-select {
-    border: 0.1vh solid black;
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Styling the header and its contents */
 header {
-    width: 94vw;
-    height: 18vh;
-    padding-left: 2vw;
-    border-bottom: 0.1vh solid black;
+    width: 100%;
 }
 
 .title {
+    padding: 10px;
     display: flex;
     align-items: baseline;
+    justify-content: start;
 }
 
 #commit {
     color: grey;
-    margin-left: 2vw;
-    width: 50vw;
-    height: 5vh;
-    font-size: 2vh;
+    padding: 10px;
 }
 
 /* Visualization Tabs Styling */
 .visual-tab-bar {
-
-    width: 92vw;
-    height: 5vh;
-}
-
-.visual-tab-bar>button {
-    margin: 0.5vh;
-}
-
-.visual-tab-content {
-    margin: 0 2vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 10px;
 }
 
 .visual-tabs {
-    padding: 1vh 1vw;
-    font-size: 1vw;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    margin: 2px;
 }
 
+.visual-tab-content {
+    margin: 10px;
+    padding: 5px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+
 .visual-tabs:hover {
+    background-color: yellow;
     cursor: pointer;
-    background-color: azure;
 }
 
 .active {
@@ -74,104 +72,85 @@ header {
 
 /* Styling the main content which will contain visuals and reports */
 main {
-    font-size: 2vh;
-    margin: 2vh 2vw;
-    height: 74vh;
-    width: 92vw;
-    overflow-x: scroll;
-}
-
-/* Downloading the CSV file on button click */
-#csv-download {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 1vh 1vw;
-    border-radius: 10%;
-    font-size: 1vw;
-}
-
-#csv-download:hover {
-    background-color: rgb(196, 169, 169);
+    display: flex;
+    width: 100%;
+    height: 100vh;
 }
 
 /* HTML Table generated from the CSV File using d3 */
-#html-table {
-    margin: 2vh 2vw;
-}
-
-table {
-    display: table;
-}
-
+td,
 th {
-    border: 1px solid black;
-}
-
-td {
-    border: 1px solid black;
-    padding: 1vh 1vw;
-}
-
-/* Style the Threshold related elements */
-#h_threshold,
-#l_threshold {
-    width: auto;
-    height: 2vh;
-    font-size: 1.5vh;
-}
-
-#column_fields,
-#apply-btn,
-#reset-filter {
-    width: auto;
-    height: 2vh;
-    font-size: 1.5vh;
-}
-
-#threshold_div {
-    margin: 1vh 1vw;
+    border: 0.5px solid black;
+    padding: 0 10px;
+    height: 30px;
 }
 
 /* Mouse Scrollbar modifications */
 ::-webkit-scrollbar {
-    width: 0.5vw;
-    height: 0.5vh;
+    width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(189, 189, 125);
-    border-radius: 5%;
+    background: lightgreen;
 }
 
 /* Embed FlameGraph SVG */
+#flamegraph {
+    display: flex;
+    justify-content: center;
+}
+
 object {
-    margin: 2vh 0;
-    margin-right: 2vw;
-    height: 96vh;
+    width: 100%;
 }
 
-/* Applying media queires to make it visually appealing across different devices */
-@media only screen and (max-width: 575px) {
-    header {
-        height: 20vh;
-    }
-
-    #h_threshold,
-    #l_threshold {
-        width: auto;
-        font-size: 0.8vh;
-    }
+/* Components of Performance report */
+#performance-report {
+    display: flex;
+    flex-direction: column;
 }
 
-@media only screen and (max-width: 445px) {
-    header {
-        height: 19vh;
-        font-size: 1.5vh;
-    }
+#top-container-report {
+    display: flex;
+    justify-content: start;
+    padding: 10px;
+}
 
-    #h_threshold,
-    #l_threshold {
-        font-size: 0.8vh;
-    }
+#top-container-report>button {
+    margin: 0 10px;
+    padding: 5px;
+    color: black;
+}
+
+#top-container-report>button:hover {
+    cursor: pointer;
+}
+
+#threshold_div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: start;
+}
+
+#threshold_div>button {
+    padding: 5px;
+}
+
+#threshold_div>input {
+    padding: 5px;
+}
+
+.threshold_elem {
+    margin: 5px;
+}
+
+#html-table {
+    display: flex;
+    justify-content: start;
+    height: 68vh;
+    overflow: scroll;
+    background-color: aliceblue;
 }

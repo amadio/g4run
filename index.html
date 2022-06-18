@@ -21,32 +21,33 @@
                 <button class="visual-tabs" onclick="openTab( this,'performance-report')"
                     id="default-tab">Report</button>
                 <button class="visual-tabs" onclick="openTab(this,'flamegraph')">Flamegraph</button>
-                <button class="visual-tabs" onclick="openTab(this,'scatter-plot')">Scatter Plot</button>
+                <button class="visual-tabs" onclick="openTab(this,'scatter-plot')">Scatter-Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'treemaps')">TreeMaps</button>
-                <button class="visual-tabs" onclick="openTab(this,'spider-plot')">Spider Plot</button>
+                <button class="visual-tabs" onclick="openTab(this,'spider-plot')">Spider-Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
-                <button class="visual-tabs" onclick="openTab(this,'html-report')">Someotherchart</button>
+
             </div>
         </header>
+
         <main class="tab-content">
             <div id="performance-report" class="visual-tab-content">
-                <!-- Button to download CSV file -->
-                <div>
+                <!--Button to download CSV file -->
+                <div id="top-container-report">
                     <select id="report-selection" onclick=""></select>
-                    <button type="submit" id="csv-download">CSV</button>
+                    <button type="submit" id="csv-download">Download CSV</button>
                 </div>
-                <!--  Implement value based filtering for the table -->
+                <!-- Implement value based filtering for the table-->
                 <div id="threshold_div">
-                    <input type="number" id="l_threshold" placeholder="Lower Threshold">
-                    <input type="number" id="h_threshold" placeholder="Higher Threshold">
-                    <select id="column_fields"></select>
-                    <button id="apply-btn">Apply</button>
-                    <button id="reset-filter">Reset</button>
+                    <input class="threshold_elem" type="number" id="l_threshold" placeholder="Lower Threshold">
+                    <input class="threshold_elem" type="number" id="h_threshold" placeholder="Higher Threshold">
+                    <select class="threshold_elem" id="column_fields"></select>
+                    <button class="threshold_elem" id="apply-btn">Apply</button>
+                    <button class="threshold_elem" id="reset-filter">Reset</button>
                 </div>
                 <div id="html-table"></div>
             </div>
             <div id="flamegraph" class="visual-tab-content">
-                <!-- Load an external Flamegraph SVG -->
+                <!--Load an external Flamegraph SVG-->
                 <object type="image/svg+xml" data="pythia.svg"></object>
             </div>
             <div id="scatter-plot" class="visual-tab-content">
