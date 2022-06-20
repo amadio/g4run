@@ -15,18 +15,19 @@ BEGIN {
 }
 
 /Total / {
-	printf("comm,dso,symbol");
 	for(i in evname)
-		printf(",%s", evname[i]); printf("\n");
+		printf("%s,", evname[i]);
+	printf("comm,dso,symbol");
+	printf("\n");
 }
 
 /\[\.\]/ {
 	comm = $nevents
 	dso = $(nevents + 1)
 	symbol = gensub(".*\\[\\.\\] " , "", "g")
-	printf("\"%s\",\"%s\",\"%s\"", comm, dso, symbol);
 	for(i in evname)
-		printf(",%s", $i);
+		printf("%s,", $i);
+	printf("\"%s\",\"%s\",\"%s\"", comm, dso, symbol);
 	printf("\n");
 }
 '
