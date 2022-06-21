@@ -1,9 +1,9 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
-let csv_report = "pythia.csv";
+let csv_report = "pythia-cpu.csv";
 
 // Store all the report files in this array
-const all_reports = ["pythia.csv", "pythia-cache.csv", "pythia-cpu.csv", "demo.csv"];
+const all_reports = ["pythia-cpu.csv", "pythia.csv", "pythia-cache.csv"];
 
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
@@ -18,6 +18,7 @@ const name_fields = numeric_columns => {
     for (let i = 0; i < numeric_columns.length; i++) {
         d3.selectAll("#column_fields").append("option").text(numeric_columns[i]).attr("class", "csv-columns");
     }
+
     // Removing Duplicate Entries in Dropdown
     document.querySelectorAll(".csv-columns").forEach((option) => {
         if (options.includes(option.value)) {
@@ -36,6 +37,13 @@ const tabulate = (data, table_columns, numeric_columns) => {
     thead.append("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
     const selectField = document.getElementById("column_fields").value;
 
+    // Total Array for storing object which will help in converting raw data into % percent values
+    const total_array = [];
+    for (let i = 0; i < numeric_columns.length; i++) {
+        let sum = d3.sum(data, d => d[numeric_columns[i]])
+        total_array.push({ column: numeric_columns[i], total_sum: sum })
+    }
+
     // Threshold Logics
     let h_input, l_input, h_filter, l_filter;
     h_input = document.getElementById("h_threshold");
@@ -46,8 +54,10 @@ const tabulate = (data, table_columns, numeric_columns) => {
     // Count to check if there are no available entries
     let count = 0;
     const rows = tbody.selectAll("tr").data(data.filter(d => {
+        const field_index = total_array.map(a => a.column).indexOf(selectField);
+        const compare_value = d[selectField] * 100 / total_array[field_index].total_sum;
         if (h_filter >= 0 && l_filter >= 0) {
-            if (d[selectField] >= l_filter && d[selectField] <= h_filter) {
+            if (compare_value >= l_filter && compare_value <= h_filter) {
                 count++;
                 return d;
             } else {
@@ -65,40 +75,25 @@ const tabulate = (data, table_columns, numeric_columns) => {
 
     const cells = rows.selectAll('td')
         .data(row => (
-            table_columns.map(column =>
-            (
-                {
-                    column: column, value: row[column]
-                })
+            table_columns.map(column => {
+                const index = total_array.map(a => a.column).indexOf(column);
+                if (index != -1) {
+                    return { column: column, value: Math.round((row[column] * 100 / total_array[index].total_sum) * 100) / 100 + "%" };
+                } else {
+                    return { column: column, value: row[column] };
+                }
+            }
             )
         ))
         .enter()
         .append('td')
         .text(d => d.value).style("background-color", d => {
-            if (d.column == "cycles")
-                return d3.scaleLinear().domain([0, 58228367992]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "instr")
-                return d3.scaleLinear().domain([0.3, 3]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "IPC")
-                return d3.scaleLinear().domain([1, 2.5]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "IPB")
-                return d3.scaleLinear().domain([5.5, 8.5]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "B_Miss")
+
+            // Avoids Hexadecimal strings to get coloured and colour only numeric fields.  
+            if (!d.value.includes("0x"))
                 return d3.scaleLinear().domain([0, 2]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "L1_icache_load_misses")
-                return d3.scaleLinear().domain([0, 520438188]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "L1_dcache_load_misses")
-                return d3.scaleLinear().domain([0, 7676726522]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "L1_dcache_loads")
-                return d3.scaleLinear().domain([0, 108521744895]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "instructions")
-                return d3.scaleLinear().domain([0, 141732036696]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "branches")
-                return d3.scaleLinear().domain([0, 9102860794]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "branch_misses")
-                return d3.scaleLinear().domain([0, 169788813]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
         }).style("color", d => {
-            if (numeric_columns.includes(d.column) || d.column == "B_Miss")
+            if (numeric_columns.includes(d.column))
                 return "white";
         });
 }
@@ -108,6 +103,7 @@ const load_CSV = myVar => {
     d3.csv(`Data/${myVar}`).then(data => {
         const table_columns = data.columns;
         let numeric_columns = [];
+
         table_columns.forEach(cols => {
             if (isNaN(data[0][cols]) == false) {
                 numeric_columns.push(cols)
