@@ -154,3 +154,28 @@ object {
     overflow: scroll;
     background-color: aliceblue;
 }
+
+/* TreeMaps nodes , labels and value */
+#treemaps {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.node {
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+}
+
+.node-label {
+    color: black;
+    padding: 4px;
+    line-height: 1em;
+    white-space: pre;
+}
+
+.node-value {
+    font-size: 12px;
+    margin-top: 1px;
+}

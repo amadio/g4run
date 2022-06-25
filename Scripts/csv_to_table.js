@@ -85,6 +85,8 @@ const tabulate = (data, table_columns, numeric_columns) => {
         .text(d => d.value).style("background-color", d => {
             if (d.column == "IPB")
                 return d3.scaleLinear().domain([5, 9]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
+            if (d.column == "L1_dcache")
+                return d3.scaleLinear().domain([5, 12]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
             if (d.column != "symbol")
                 return d3.scaleLinear().domain([0, 2]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
         }).style("color", d => {
@@ -94,8 +96,8 @@ const tabulate = (data, table_columns, numeric_columns) => {
 }
 
 // Load the CSV data into HTML using d3
-const load_CSV = myVar => {
-    d3.csv(`Data/${myVar}`).then(data => {
+const load_CSV = file => {
+    d3.csv(`Data/Table_Reports/${file}`).then(data => {
         let table_columns = data.columns;
         let numeric_columns = [];
 
@@ -126,6 +128,18 @@ const load_CSV = myVar => {
             table_columns.splice(table_columns.indexOf("instructions") + 1, 0, "CPI", "IPC", "IPB");
             numeric_columns.splice(numeric_columns.indexOf("instructions") + 1, 0, "CPI", "IPC", "IPB");
 
+        } else if (numeric_columns.includes("instructions")) {
+            let instructions_sum = d3.sum(data, d => d.instructions);
+
+            data.filter(d => {
+                d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
+            })
+        } else if (numeric_columns.includes("cycles")) {
+            let instructions_sum = d3.sum(data, d => d.cycles);
+
+            data.filter(d => {
+                d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
+            })
         }
 
         if (numeric_columns.includes("branches") && numeric_columns.includes("branch_misses")) {
@@ -135,14 +149,26 @@ const load_CSV = myVar => {
                 delete d.branches;
                 delete d.branch_misses;
             });
-
-            numeric_columns = [...numeric_columns, "Branch_Miss"];
-            table_columns.splice(table_columns.indexOf("comm"), 0, "Branch_Miss");
+            numeric_columns.splice(numeric_columns.indexOf("IPB" + 1), 0, "Branch_Miss");
             numeric_columns = numeric_columns.filter(d => d !== "branch_misses" && d !== "branches");
+            table_columns.splice(table_columns.indexOf("comm"), 0, "Branch_Miss");
             table_columns = table_columns.filter(d => d !== "branch_misses" && d !== "branches");
 
         }
 
+        if (numeric_columns.includes("L1_dcache_loads") && numeric_columns.includes("L1_dcache_load_misses")) {
+
+            data.filter(d => {
+                d.L1_dcache = Math.round((d.L1_dcache_load_misses * 100 / d.L1_dcache_loads) * 100) / 100;
+                // delete d.L1_dcache_load_misses;
+                // delete d.L1_dcache_loads;
+            });
+
+            table_columns.splice(table_columns.indexOf("instructions") + 1, 0, "L1_dcache");
+            table_columns = table_columns.filter(d => d !== "L1_dcache_loads" && d !== "L1_dcache_load_misses");
+            numeric_columns.splice(numeric_columns.indexOf("instructions") + 1, 0, "L1_dcache");
+            numeric_columns = numeric_columns.filter(d => d !== "L1_dcache_loads" && d !== "L1_dcache_load_misses");
+        }
         name_fields(numeric_columns);
         tabulate(data, table_columns, numeric_columns);
     });
@@ -150,7 +176,7 @@ const load_CSV = myVar => {
 
 // Download the CSV file on clicking the Button
 document.getElementById("csv-download").addEventListener("click", () => {
-    window.open(`Data/${csv_report}`);
+    window.open(`Data/Table_Reports/${csv_report}`);
 })
 
 // Update the page on selecting the other Data File (CSV) for generating reports

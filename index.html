@@ -18,11 +18,10 @@
             </div>
             <div class="visual-tab-bar">
                 <!-- Tabs for Data Visuals and Reports -->
-                <button class="visual-tabs" onclick="openTab( this,'performance-report')"
-                    id="default-tab">Report</button>
+                <button class="visual-tabs" onclick="openTab( this,'performance-report')">Report</button>
                 <button class="visual-tabs" onclick="openTab(this,'flamegraph')">Flamegraph</button>
                 <button class="visual-tabs" onclick="openTab(this,'scatter-plot')">Scatter-Plot</button>
-                <button class="visual-tabs" onclick="openTab(this,'treemaps')">TreeMaps</button>
+                <button class="visual-tabs" onclick="openTab(this,'treemaps-tab')" id="default-tab">TreeMaps</button>
                 <button class="visual-tabs" onclick="openTab(this,'spider-plot')">Spider-Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
 
@@ -50,11 +49,12 @@
                 <!--Load an external Flamegraph SVG-->
                 <object type="image/svg+xml" data="pythia.svg"></object>
             </div>
+            <div id="treemaps-tab" class="visual-tab-content">
+                <select id="treemap-selection"></select>
+                <div id="treemaps"></div>
+            </div>
             <div id="scatter-plot" class="visual-tab-content">
                 <h1>SP</h1>
-            </div>
-            <div id="treemaps" class="visual-tab-content">
-                <h1>TM</h1>
             </div>
             <div id="spider-plot" class="visual-tab-content">
                 <h1>SPi pLOT</h1>
@@ -62,13 +62,10 @@
             <div id="sunburst" class="visual-tab-content">
                 <h1>SB</h1>
             </div>
-            <div id="html-report" class="visual-tab-content">
-                <h1>HR</h1>
-            </div>
         </main>
     </div>
 </body>
 <script src="./script.js"></script>
 <script src="./Scripts/csv_to_table.js" type="module"></script>
-
+<script src="./Scripts/treemap.js" type="module"></script>
 </html>
