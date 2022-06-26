@@ -6,9 +6,11 @@ const openTab = (elem, tabName) => {
     }
     const tabContent = document.getElementsByClassName("visual-tab-content");
     for (let i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = "none";
+            tabContent[i].style.visibility = "hidden";
+            tabContent[i].style.position = "absolute";
     }
-    document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).style.position = "";
+    document.getElementById(tabName).style.visibility = "visible";
     elem.classList.add("active")
 }
 document.getElementById("default-tab").click();
