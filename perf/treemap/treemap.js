@@ -129,8 +129,8 @@ data =>
       .sort((a, b) => b.value - a.value)
   )
 )});
-  main.variable(observer("width")).define("width", function(){return( 1920) });
-  main.variable(observer("height")).define("height", function(){return( 1000)});
+  main.variable(observer("width")).define("width", function(){return( window.innerWidth) });
+  main.variable(observer("height")).define("height", function(){return( window.innerHeight)});
   main.variable(observer("format")).define("format", ["d3"], function(d3){return(
 d3.format(".2%")
 )});
