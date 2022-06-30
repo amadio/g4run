@@ -5,7 +5,7 @@ pipeline {
 
 	parameters {
 		string(name: 'GIT_PREVIOUS_COMMIT' ,
-			defaultValue: 'geant4-11-00',
+			defaultValue: 'geant4-11-00-patch-02',
 			description: 'Git commit, tag, or branch of the baseline'
 		)
 
