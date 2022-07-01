@@ -162,6 +162,16 @@ object {
     overflow: hidden;
 }
 
+#treemap-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#treemap-customization {
+    display: flex;
+    justify-content: end;
+}
+
 .node {
     box-sizing: border-box;
     position: absolute;

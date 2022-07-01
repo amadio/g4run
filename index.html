@@ -59,12 +59,21 @@
 
             <!-- TreeMaps Tab -->
             <div id="treemaps-tab" class="visual-tab-content">
-                <select id="treemap-selection"></select>
-                <label>area :</label>
-                <select id="treemap-area"></select>
-                <label>colour :</label>
-                <select id="treemap-color"></select>
+                <div id="treemap-header">
+                    <div id="treemap-type">
+                        <select id="treemap-selection"></select>
+                    </div>
+                    <div id="treemap-customization">
+                        <label>&nbsp;&nbsp;area :&nbsp;&nbsp;</label>
+                        <select id="treemap-area"></select>
+                        <label>&nbsp;&nbsp;colour :&nbsp;&nbsp;</label>
+                        <select id="treemap-color"></select>
+                        <label>&nbsp;&nbsp;metric tooltip :&nbsp;&nbsp;</label>
+                        <select id="treemap-tooltip"></select>
+                    </div>
+                </div>
                 <div id="treemaps"></div>
+
             </div>
             <div id="scatter-plot" class="visual-tab-content">
                 <h1>SP</h1>

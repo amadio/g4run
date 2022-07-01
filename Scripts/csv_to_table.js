@@ -3,7 +3,7 @@ import * as d3 from "https://cdn.skypack.dev/d3@7";
 let csv_report = "pythia-cpu.csv";
 
 // Store all the report files in this array
-const all_reports = ["pythia-cpu.csv", "pythia-cache.csv"];
+const all_reports = ["pythia-cpu.csv", "pythia-cache.csv", "pythia-cpu-diff.csv"];
 
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
@@ -83,15 +83,16 @@ const tabulate = (data, table_columns, numeric_columns) => {
         .enter()
         .append('td')
         .text(d => d.value).style("background-color", d => {
+            if (d.column == "CPI")
+                return d3.scaleLinear().domain([0.25, 1, 2]).range(["green", "white", "red"])(parseFloat(d.value));
+            if (d.column == "cycles" || d.column == "instructions")
+                return d3.scaleLinear().domain([0.1, 1.5, 2.5]).range(["green", "white", "red"])(parseFloat(d.value));
+            if (d.column == "IPC")
+                return d3.scaleLinear().domain([1, 1.75, 2.5]).range(["green", "white", "red"])(parseFloat(d.value));
             if (d.column == "IPB")
-                return d3.scaleLinear().domain([5, 9]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column == "L1_dcache")
-                return d3.scaleLinear().domain([5, 12]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-            if (d.column != "symbol")
-                return d3.scaleLinear().domain([0, 2]).range(["#5225f5", "#f52540"])(parseFloat(d.value));
-        }).style("color", d => {
-            if (numeric_columns.includes(d.column))
-                return "white";
+                return d3.scaleLinear().domain([5, 7, 8.5]).range(["green", "white", "red"])(parseFloat(d.value));
+            if (d.column == "Branch_Miss")
+                return d3.scaleLinear().domain([0, 2, 4]).range(["green", "white", "red"])(parseFloat(d.value));
         });
 }
 
