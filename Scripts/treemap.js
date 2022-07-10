@@ -1,8 +1,20 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
 // TreeMap Data Selectors
-let csv_report = "pythia-cpu.csv";
-const all_reports = ["pythia-cpu.csv", "pythia-cache.csv"];
+let csv_report = "branches";
+// Store all the report files in this array
+const all_reports =
+    [
+        'branches', 'cpu-kernel-stacks',
+        'cpu-kernel', 'cpu-stacks',
+        'divisions', 'faults',
+        'l2', 'ibs-fetch',
+        'ibs-op', 'ic',
+        'load-store', 'perf',
+        'pythia-cache',
+        'pythia-cpu', 'tlb',
+        'uops-2', 'uops'
+    ];
 
 // Dropdown for TreeMap Selection
 const treemap_selection = () => {
@@ -16,26 +28,14 @@ let color_metric;
 let tooltip_metric;
 // Dropdown for TreeMap Area
 const selection_fields = numeric_columns => {
-    if (area_metric == undefined) {
-        area_metric = numeric_columns[0];
-    }
-    if (color_metric == undefined) {
-        color_metric = numeric_columns[numeric_columns.length - 1];
-    }
-    if (tooltip_metric == undefined) {
-        tooltip_metric = numeric_columns[numeric_columns.length - 1];
-    }
     const a_options = [];
     const c_options = [];
     const t_options = [];
-    if (numeric_columns.includes("cycles") && numeric_columns.includes("instructions")) {
-        d3.selectAll("#treemap-color").append("option").text("CPI").attr("class", "color-field");
-        d3.selectAll("#treemap-tooltip").append("option").text("CPI").attr("class", "tooltip-field");
-    }
-    if (numeric_columns.includes("L1_dcache_loads") && numeric_columns.includes("L1_dcache_load_misses")) {
-        d3.selectAll("#treemap-color").append("option").text("Miss_Rate").attr("class", "color-field");
-        d3.selectAll("#treemap-tooltip").append("option").text("Miss_Rate").attr("class", "tooltip-field");
-    }
+
+    d3.selectAll("#treemap-color").append("option").text(color_metric).attr("class", "color-field");
+    d3.selectAll("#treemap-tooltip").append("option").text(tooltip_metric).attr("class", "tooltip-field");
+
+
     for (let i = 0; i < numeric_columns.length; i++) {
         d3.selectAll("#treemap-area").append("option").text(numeric_columns[i]).attr("class", "area-field");
         d3.selectAll("#treemap-color").append("option").text(numeric_columns[i]).attr("class", "color-field");
@@ -44,7 +44,7 @@ const selection_fields = numeric_columns => {
 
     // Removing Duplicate Entries in Dropdown
     document.querySelectorAll(".area-field").forEach((option) => {
-        if (a_options.includes(option.value)) {
+        if (a_options.includes(option.value) || a_options.includes()) {
             option.remove();
         } else {
             a_options.push(option.value);
@@ -96,19 +96,17 @@ const render = data => {
         .style("width", d => d.x1 - d.x0 + "px")
         .style("height", d => d.y1 - d.y0 + "px")
         .style("background", d => {
-            if (data.columns.includes("cycles") && data.columns.includes("instructions")) {
-                if (color_metric == "CPI")
-                    return d3.scaleLinear().domain([0.25, 1, 2]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-                if (color_metric == "cycles" || color_metric == "instructions")
-                    return d3.scaleLinear().domain([0.1, 1.5, 2.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-                if (color_metric == "IPB")
-                    return d3.scaleLinear().domain([5, 7, 8.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-                if (color_metric == "IPC")
-                    return d3.scaleLinear().domain([1, 1.75, 2.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-            }
-            if (data.columns.includes("L1_dcache_loads") && data.columns.includes("L1_dcache_load_misses")) {
-                return d3.scaleLinear().domain([0, 10, 20]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-            }
+
+            if (color_metric == "CPI")
+                return d3.scaleLinear().domain([0.25, 1, 2]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
+            if (color_metric == "cycles" || color_metric == "instructions")
+                return d3.scaleLinear().domain([0.1, 1.5, 2.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
+            if (color_metric == "IPB")
+                return d3.scaleLinear().domain([5, 7, 8.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
+            if (color_metric == "IPC")
+                return d3.scaleLinear().domain([1, 1.75, 2.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
+
+            return d3.scaleLinear().domain([0, 5, 10]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
         })
         .append("div")
         .attr("class", "node-label")
@@ -124,24 +122,8 @@ const render = data => {
 }
 
 const load_CSV = file => {
-    d3.csv(`Data/Treemaps/${file}`).then(data => {
+    d3.csv(`Data/Treemaps/${file}.csv`).then(data => {
         let numeric_columns = [];
-        let cycles_sum = d3.sum(data, d => d.cycles);
-        let instructions_sum = d3.sum(data, d => d.instructions);
-        data.filter(d => {
-            if (d.hasOwnProperty("cycles") && d.hasOwnProperty("instructions")) {
-
-                d.IPC = Math.round(d.instructions / d.cycles * 1000) / 1000;
-                d.IPB = Math.round(d.instructions / d.branches * 1000) / 1000;
-                d.CPI = Math.round(d.cycles / d.instructions * 1000) / 1000;
-                d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
-                d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
-            }
-            if (d.hasOwnProperty("L1_dcache_loads") && d.hasOwnProperty("L1_dcache_load_misses")) {
-                d.Miss_Rate = +d.L1_dcache_load_misses * 100 / d.L1_dcache_loads;
-                d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
-            }
-        })
 
         const all_columns = Object.getOwnPropertyNames(data[0]);
         all_columns.forEach(cols => {
@@ -149,6 +131,63 @@ const load_CSV = file => {
                 numeric_columns.push(cols)
             }
         });
+
+        if (numeric_columns.includes("cycles") && numeric_columns.includes("instructions")) {
+            let cycles_sum = d3.sum(data, d => d.cycles);
+            let instructions_sum = d3.sum(data, d => d.instructions);
+
+            data.filter(d => {
+                d.CPI = Math.round(d.cycles / d.instructions * 1000) / 1000;
+                d.IPC = Math.round(d.instructions / d.cycles * 1000) / 1000;
+                d.IPB = Math.round(d.instructions / d.branches * 1000) / 1000;
+                d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
+                d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
+            });
+
+            let derived_metrics = [];
+            if (numeric_columns.includes("branches")) {
+                derived_metrics = ["CPI", "IPC", "IPB"];
+            } else {
+                derived_metrics = ["CPI", "IPC"];
+            }
+
+            if (color_metric == undefined || tooltip_metric == undefined || area_metric == undefined) {
+                color_metric = "CPI";
+                tooltip_metric = "CPI";
+                area_metric = "cycles";
+            }
+
+            all_columns.splice(all_columns.indexOf("instructions") + 1, 0, ...derived_metrics);
+            numeric_columns.splice(numeric_columns.indexOf("instructions") + 1, 0, ...derived_metrics);
+        } else if (numeric_columns.includes("instructions")) {
+            let instructions_sum = d3.sum(data, d => d.instructions);
+
+            data.filter(d => {
+                d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
+            })
+            if (color_metric == undefined || tooltip_metric == undefined || area_metric == undefined) {
+                color_metric = "instructions";
+                tooltip_metric = "instructions";
+                area_metric = "instructions";
+            }
+        } else if (numeric_columns.includes("cycles")) {
+            let cycles_sum = d3.sum(data, d => d.cycles);
+
+            data.filter(d => {
+                d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
+            })
+        } else if (numeric_columns.includes("cycles_ukP")) {
+            let cycles_sum = d3.sum(data, d => d.cycles_ukP);
+
+            data.filter(d => {
+                d.cycles_ukP = Math.round((d.cycles_ukP * 100 / cycles_sum) * 100) / 100;
+            })
+        }
+        if (color_metric == undefined || tooltip_metric == undefined || area_metric == undefined) {
+            color_metric = numeric_columns[0];
+            tooltip_metric = numeric_columns[0];
+            area_metric = numeric_columns[0];
+        }
         selection_fields(numeric_columns)
         render(data);
     })

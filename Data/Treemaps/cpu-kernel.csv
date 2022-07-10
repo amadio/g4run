@@ -1,0 +1,1916 @@
+id,cycles_ukP
+"all",
+"all;g4run",
+"all;g4run;libG4persistency",
+"all;g4run;libG4persistency;std::vector<double, std::allocator<double> >::_M_realloc_insert<double>",698531
+"all;g4run;libc",
+"all;g4run;libc;__strcmp_avx2",627750083
+"all;g4run;libc;malloc_consolidate",1397031
+"all;g4run;libc;__memset_avx2_unaligned_erms",1396854
+"all;g4run;libc;_int_malloc",52364558
+"all;g4run;libc;getenv",153614887
+"all;g4run;libc;malloc",157842213
+"all;g4run;libc;__memmove_avx_unaligned",169812540
+"all;g4run;libc;__GI___pthread_mutex_unlock_usercnt",2094343
+"all;g4run;libc;__strlen_avx2",25836713
+"all;g4run;libc;pthread_mutex_lock@@GLIBC_2.2.5",4190272
+"all;g4run;libc;@plt",4888097
+"all;g4run;libc;__memcmp_avx2_movbe",22339827
+"all;g4run;libc;__GI___printf_fp_l",698570
+"all;g4run;libc;__strncmp_avx2",84493722
+"all;g4run;libc;__memmove_avx_unaligned_erms",96360820
+"all;g4run;libc;pthread_mutex_unlock@@GLIBC_2.2.5",1396861
+"all;g4run;libc;__memset_avx2_unaligned",61446277
+"all;g4run;libc;_int_free",81003605
+"all;g4run;libc;cfree@GLIBC_2.2.5",92864578
+"all;g4run;libG4tracking",
+"all;g4run;libG4tracking;0x000000000002f1de",14662107
+"all;g4run;libG4tracking;0x000000000002f7f7",7681962
+"all;g4run;libG4tracking;G4AdjointCrossSurfChecker::GoingInOrOutOfaVolumeByExtSurface",17459423
+"all;g4run;libG4tracking;G4SteppingManager::InvokeAtRestDoItProcs",929417951
+"all;g4run;libG4tracking;G4UserLimits::SetUserMinEkine",10470271
+"all;g4run;libG4tracking;0x000000000002f82a",14665431
+"all;g4run;libG4tracking;G4Step::InitializeStep",314932524
+"all;g4run;libG4tracking;G4UserLimits::SetUserMaxTime",698354
+"all;g4run;libG4tracking;G4ProcessManager::EndTracking@plt",1396960
+"all;g4run;libG4tracking;G4SteppingManager::SetInitialStep@plt",2095157
+"all;g4run;libG4tracking;0x000000000002f82d",25840951
+"all;g4run;libG4tracking;0x000000000002f9ae",8380430
+"all;g4run;libG4tracking;G4SteppingManager::Stepping",2058163779
+"all;g4run;libG4tracking;0x000000000002f9ca",698375
+"all;g4run;libG4tracking;G4SteppingManager::SetInitialStep",4057535939
+"all;g4run;libG4tracking;0x000000000002fff6",1396955
+"all;g4run;libG4tracking;G4Allocator<G4TouchableHistory>::~G4Allocator",112423404
+"all;g4run;libG4tracking;G4UserLimits::GetUserMinEkine",4188440
+"all;g4run;libG4tracking;0x000000000002f7bd",4887044
+"all;g4run;libG4tracking;G4SteppingVerbose::~G4SteppingVerbose",1396742
+"all;g4run;libG4tracking;G4SteppingManager::InvokePostStepDoItProcs",5792119657
+"all;g4run;libG4tracking;G4UserLimits::SetMaxAllowedStep",169691767
+"all;g4run;libG4tracking;0x000000000002f7de",2094531
+"all;g4run;libG4tracking;0x000000000002f837",11172517
+"all;g4run;libG4tracking;G4SteppingManager::ProcessSecondariesFromParticleChange",536851158
+"all;g4run;libG4tracking;0x000000000002f7a4",1394523
+"all;g4run;libG4tracking;0x000000000002f7fb",210880875
+"all;g4run;libG4tracking;G4UserLimits::SetUserMinRange",9073440
+"all;g4run;libG4tracking;0x000000000002f7a6",4888423
+"all;g4run;libG4tracking;0x000000000002f7a8",9078735
+"all;g4run;libG4tracking;G4SteppingVerbose::VerboseParticleChange",2095124
+"all;g4run;libG4tracking;G4VVisManager::GetConcreteInstance@plt",34215808
+"all;g4run;libG4tracking;std::_Rb_tree<G4String, std::pair<G4String const, G4AttDef>, std::_Select1st<std::pair<G4String const, G4AttDef> >, std::less<G4String>, std::allocator<std::pair<G4String const, G4AttDef> > >::find@plt",2093363
+"all;g4run;libG4tracking;G4UserLimits::GetUserMinRange",8379705
+"all;g4run;libG4tracking;G4SteppingManager::GetProcessNumber",70523135
+"all;g4run;libG4tracking;G4UserLimits::SetUserMaxTrackLength",8378676
+"all;g4run;libG4tracking;G4NoProcess::~G4NoProcess",55166868
+"all;g4run;libG4tracking;G4Step::UpdateTrack",37706570
+"all;g4run;libG4tracking;G4SteppingManager::InvokeAlongStepDoItProcs",4189359
+"all;g4run;libG4tracking;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>",16758856
+"all;g4run;libG4tracking;G4SteppingManager::InvokePSDIP",328202459
+"all;g4run;libG4tracking;0x000000000002f81c",384738054
+"all;g4run;libG4tracking;0x000000000002f1d6",16758881
+"all;g4run;libG4tracking;G4UserLimits::GetUserMaxTime",29330020
+"all;g4run;libG4tracking;G4AdjointCrossSurfChecker::CrossingOneOfTheRegisteredSurface@plt",2094291
+"all;g4run;libG4tracking;0x0000000000043e4b",2793749
+"all;g4run;libG4tracking;0x000000000002f83b",14657393
+"all;g4run;libG4tracking;0x0000000000043e4f",3490932
+"all;g4run;libG4tracking;G4UserLimits::GetUserMaxTrackLength",9776892
+"all;g4run;libG4tracking;0x000000000002f83f",30024888
+"all;g4run;libG4tracking;std::vector<G4String, std::allocator<G4String> >::_M_realloc_insert<char const*&>",182610211
+"all;g4run;libG4tracking;0x000000000002f7aa",698317
+"all;g4run;libG4tracking;G4StepPoint::operator=@plt",2793508
+"all;g4run;libG4tracking;0x000000000002f7ac",697823
+"all;g4run;libG4tracking;G4SteppingVerbose::AlongStepDoItOneByOne",3616224728
+"all;g4run;libG4tracking;0x000000000002f7ad",22346265
+"all;g4run;libG4tracking;G4TrajectoryPoint::G4TrajectoryPoint@plt",19552434
+"all;g4run;libG4tracking;0x000000000002ef97",3491788
+"all;g4run;libG4tracking;G4SteppingVerbose::PostStepDoItOneByOne",3449658547
+"all;g4run;libG4tracking;G4Region::GetRegionalSteppingAction@plt",2793954
+"all;g4run;libG4tracking;G4SteppingManager::GetProcessNumber@plt",8379773
+"all;g4run;libG4tracking;0x000000000002f809",524413351
+"all;g4run;libG4tracking;0x000000000002f7cd",1396038
+"all;g4run;libG4tracking;0x000000000002f826",6982124
+"all;g4run;libG4tracking;std::_Rb_tree<G4String, std::pair<G4String const, G4AttDef>, std::_Select1st<std::pair<G4String const, G4AttDef> >, std::less<G4String>, std::allocator<std::pair<G4String const, G4AttDef> > >::_M_get_insert_unique_pos@plt",2094922
+"all;g4run;libG4tracking;0x000000000002f9a9",4886495
+"all;g4run;libG4tracking;G4CountedObject<G4VTouchable>::Release@plt",3491487
+"all;g4run;libG4tracking;G4UserSteppingAction::UserSteppingAction",195525132
+"all;g4run;libG4tracking;G4PropagatorInField::SetTrajectoryFilter@plt",4190772
+"all;g4run;libG4tracking;G4AttValue::G4AttValue@plt",9076828
+"all;g4run;libG4tracking;std::vector<G4Track*, std::allocator<G4Track*> >::_M_realloc_insert<G4Track* const&>",9776897
+"all;g4run;libG4tracking;G4Track::~G4Track@plt",3489582
+"all;g4run;libG4physicslists",
+"all;g4run;libG4physicslists;G4ProtonBuilder::G4ProtonBuilder",697598
+"all;g4run;libG4physicslists;G4PrecoProtonBuilder::G4PrecoProtonBuilder",698388
+"all;g4run;libG4global",
+"all;g4run;libG4global;G4PhysicsVector::Store@plt",1396101
+"all;g4run;libG4global;0x0000000000054995",2793737
+"all;g4run;libG4global;G4ProfilerConfig<4ul>::GetPersistent<1>@plt",18156338
+"all;g4run;libG4global;G4PhysicsVector::Retrieve",199111641
+"all;g4run;libG4global;0x00000000000564c8",3491127
+"all;g4run;libG4global;0x0000000000054997",5586385
+"all;g4run;libG4global;G4Physics2DVector::Retrieve",32818456
+"all;g4run;libG4global;strlen@plt",1396364
+"all;g4run;libG4global;G4Physics2DVector::CopyData",103347038
+"all;g4run;libG4global;G4PhysicsLogVector::G4PhysicsLogVector",16758128
+"all;g4run;libG4global;G4JTPolynomialSolver::QuadraticPolynomialIteration",2793328
+"all;g4run;libG4global;G4Pow::G4Pow",136851761
+"all;g4run;libG4global;0x00000000000564ce",4887920
+"all;g4run;libG4global;G4Physics2DVector::PutVectors",86585329
+"all;g4run;libG4global;0x000000000005499e",9077120
+"all;g4run;libG4global;G4PhysicsModelCatalog::Initialize",41891712
+"all;g4run;libG4global;G4JTPolynomialSolver::FindRoots",4887733
+"all;g4run;libG4global;G4ThreadLocalSingleton<G4GeometryTolerance>::G4ThreadLocalSingleton",13267015
+"all;g4run;libG4global;G4ProfilerConfig<1ul>::GetPersistent<1>",56562424
+"all;g4run;libG4global;G4Physics2DVector::BicubicInterpolation",273725607
+"all;g4run;g4run",
+"all;g4run;g4run;CMSMagneticField::GetFieldValue",6488049944
+"all;g4run;g4run;CLHEP::MixMaxRng::iterate@plt",698393
+"all;g4run;g4run;ffunkti",143136698
+"all;g4run;g4run;CLHEP::MixMaxRng::flat",698350
+"all;g4run;g4run;_init",697695
+"all;g4run;libG4event",
+"all;g4run;libG4event;0x0000000000068db1",698304
+"all;g4run;libG4event;0x0000000000068e48",2094401
+"all;g4run;libG4event;0x0000000000069d4d",1396876
+"all;g4run;libG4event;0x0000000000068db6",7682114
+"all;g4run;libG4event;0x0000000000068db8",12570553
+"all;g4run;libG4event;0x0000000000069d6b",1396902
+"all;g4run;libG4event;0x0000000000068eab",4887429
+"all;g4run;libG4event;0x0000000000068d2f",2095596
+"all;g4run;libG4event;0x0000000000069d6f",5585892
+"all;g4run;libG4event;0x0000000000069d8a",698203
+"all;g4run;libG4event;0x0000000000069d53",2093984
+"all;g4run;libG4event;0x000000000006a4b0",56560268
+"all;g4run;libG4event;0x0000000000069d73",53770407
+"all;g4run;libG4event;std::vector<G4SingleParticleSource::part_prop_t*, std::allocator<G4SingleParticleSource::part_prop_t*> >::_M_fill_insert",96356264
+"all;g4run;libG4event;0x0000000000069d75",1396940
+"all;g4run;libG4event;0x0000000000068e2c",136861328
+"all;g4run;libG4event;0x0000000000068d70",53062707
+"all;g4run;libG4event;0x0000000000068d71",11170042
+"all;g4run;libG4event;0x0000000000068d78",6984241
+"all;g4run;libG4event;0x0000000000068e30",698463
+"all;g4run;libG4event;G4GeneralParticleSource::ListSource",424874170
+"all;g4run;libG4event;G4GeneralParticleSourceMessenger::GetInstance",2095312
+"all;g4run;libG4event;0x0000000000069d5a",6285265
+"all;g4run;libG4event;G4GeneralParticleSourceData::~G4GeneralParticleSourceData",226236649
+"all;g4run;libG4event;0x000000000006a495",3491519
+"all;g4run;libG4event;0x0000000000069d7e",4888493
+"all;g4run;libG4event;0x0000000000069d40",14663356
+"all;g4run;libG4event;0x0000000000069d41",2094380
+"all;g4run;libG4event;0x000000000006a499",41206382
+"all;g4run;libG4event;0x0000000000069d44",4887396
+"all;g4run;libG4event;0x0000000000069d46",698440
+"all;g4run;libG4event;0x0000000000068d20",119413235
+"all;g4run;libG4event;0x0000000000069d48",698423
+"all;g4run;libG4event;0x0000000000068d24",46089408
+"all;g4run;libG4event;0x0000000000068ea2",7681924
+"all;g4run;libG4event;0x0000000000068d7d",5587204
+"all;g4run;libG4event;0x0000000000068ea6",1396961
+"all;g4run;libG4event;0x0000000000068d28",104742596
+"all;g4run;libG4event;0x000000000006a4a7",203197716
+"all;g4run;libG4event;0x0000000000069d83",1396463
+"all;g4run;libG4event;0x0000000000069dac",4887686
+"all;g4run;libG4event;0x000000000006a41d",7680701
+"all;g4run;libG4event;G4GeneralParticleSourceMessenger::SetNewValue",2793547
+"all;g4run;libG4event;0x0000000000069d87",16758447
+"all;g4run;libG4event;0x0000000000068e3c",4189424
+"all;g4run;libG4event;0x000000000006a400",698325
+"all;g4run;libG4event;0x0000000000068d83",5585168
+"all;g4run;libG4event;G4IonTable::GetIon@plt",9775990
+"all;g4run;libG4event;0x0000000000069db3",1396549
+"all;g4run;libG4event;0x0000000000068e24",13964201
+"all;g4run;libG4event;std::unique_lock<std::mutex>::unlock",209474305
+"all;g4run;libG4event;0x0000000000069db6",4889141
+"all;g4run;libG4event;0x0000000000068e28",6983608
+"all;g4run;libG4event;0x0000000000068e43",2793263
+"all;g4run;libG4event;0x0000000000068e44",11872244
+"all;g4run;libG4event;0x000000000006a49d",2095158
+"all;g4run;libstdc++",
+"all;g4run;libstdc++;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign",698416
+"all;g4run;libstdc++;free@plt",1396895
+"all;g4run;libstdc++;operator delete@plt",4189765
+"all;g4run;libstdc++;__cxxabiv1::__si_class_type_info::__do_dyncast",724236681
+"all;g4run;libstdc++;std::_Rb_tree_decrement",698370
+"all;g4run;libstdc++;malloc@plt",2793757
+"all;g4run;libstdc++;strcmp@plt",1396584
+"all;g4run;libstdc++;memcpy@plt",698366
+"all;g4run;libstdc++;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_create",7681622
+"all;g4run;libstdc++;operator new",49577830
+"all;g4run;libstdc++;__dynamic_cast",1192675962
+"all;g4run;libstdc++;std::_Rb_tree_increment",49581811
+"all;g4run;libstdc++;std::_Rb_tree_insert_and_rebalance",698380
+"all;g4run;libstdc++;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve",6985289
+"all;g4run;libstdc++;__cxxabiv1::__class_type_info::__do_dyncast",93564894
+"all;g4run;libstdc++;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append",2793048
+"all;g4run;libstdc++;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare",698411
+"all;g4run;libstdc++;operator delete",14663333
+"all;g4run;libG4vis_management",
+"all;g4run;libG4vis_management;G4VisCommandViewerList::SetNewValue",698410
+"all;g4run;libG4track",
+"all;g4run;libG4track;G4Track::G4Track",540008328
+"all;g4run;libG4track;G4ParticleChangeForLoss::G4ParticleChangeForLoss",4889101
+"all;g4run;libG4track;G4Track::SetAuxiliaryTrackInformation",110321601
+"all;g4run;libG4track;G4ParticleChange::CheckIt",11173090
+"all;g4run;libG4track;G4VParticleChange::DumpInfo",232806175
+"all;g4run;libG4track;G4Step::GetDeltaEnergy",415466090
+"all;g4run;libG4track;_GLOBAL__sub_I_G4ParticleChangeForGamma.cc",698320
+"all;g4run;libG4track;0x00000000000116cf",6283113
+"all;g4run;libG4track;G4ParticleChangeForLoss::operator=",131273795
+"all;g4run;libG4track;0x000000000001155f",16059879
+"all;g4run;libG4track;0x00000000000137d6",23042211
+"all;g4run;libG4track;G4VParticleChange::~G4VParticleChange",81884770
+"all;g4run;libG4track;std::vector<double, std::allocator<double> >::_M_realloc_insert<double const&>",194143447
+"all;g4run;libG4track;_GLOBAL__sub_I_G4StepPoint.cc",13966366
+"all;g4run;libG4track;G4VelocityTable::GetVelocityTable",25137590
+"all;g4run;libG4track;G4VParticleChange::CheckIt",420305665
+"all;g4run;libG4track;std::vector<G4Track const*, std::allocator<G4Track const*> >::_M_realloc_insert<G4Track const* const&>",1289762028
+"all;g4run;libG4track;0x00000000000137d8",3491394
+"all;g4run;libG4track;0x00000000000101f8",2793579
+"all;g4run;libG4track;G4StepPoint::operator=",41202146
+"all;g4run;libG4track;G4ParticleChangeForMSC::CheckIt",166198511
+"all;g4run;libG4track;G4Step::GetSecondaryInCurrentStep",208791327
+"all;g4run;libG4track;0x000000000000f3b4",7680603
+"all;g4run;libG4track;0x00000000000116c7",37707418
+"all;g4run;libG4track;G4ParticleChange::AddSecondary",53768412
+"all;g4run;libG4track;G4ParticleChangeForMSC::DumpInfo",305845112
+"all;g4run;libG4track;0x000000000000f483",698266
+"all;g4run;libG4track;G4ParticleChangeForGamma::DumpInfo",2094580
+"all;g4run;libG4track;0x00000000000101fa",9078982
+"all;g4run;libG4track;0x00000000000137dc",2095183
+"all;g4run;libG4track;G4ParticleChangeForMSC::Initialize",141742808
+"all;g4run;libG4track;G4StepPoint::G4StepPoint",16061575
+"all;g4run;libG4track;0x000000000000c62c",2095153
+"all;g4run;libG4track;0x00000000000116cb",4189353
+"all;g4run;libG4track;G4Step::G4Step",136162264
+"all;g4run;libG4track;G4ParticleChange::DumpInfo",649398881
+"all;g4run;libG4digits_hits",
+"all;g4run;libG4digits_hits;G4VSensitiveDetector::Clone",2095076
+"all;g4run;libG4digits_hits;G4VSensitiveDetector::~G4VSensitiveDetector",5065705911
+"all;g4run;libG4geometry",
+"all;g4run;libG4geometry;G4BooleanSolid::GetConstituentSolid",16759004
+"all;g4run;libG4geometry;G4RKIntegrationDriver<G4DormandPrince745>::GetDerivatives@plt",64240729
+"all;g4run;libG4geometry;G4TwistedTubs::BoundingLimits",2766197054
+"all;g4run;libG4geometry;0x00000000001cc616",698169
+"all;g4run;libG4geometry;0x00000000001fe2cd",698419
+"all;g4run;libG4geometry;0x00000000001925fa",698474
+"all;g4run;libG4geometry;0x00000000001946a1",698562
+"all;g4run;libG4geometry;G4MagInt_Driver::AccurateAdvance",1395971
+"all;g4run;libG4geometry;0x00000000001f8505",2094930
+"all;g4run;libG4geometry;G4Tet::Initialize@plt",165494535
+"all;g4run;libG4geometry;G4RKIntegrationDriver<G4DormandPrince745>::ComputeNewStepSize",283510488
+"all;g4run;libG4geometry;G4Navigator::ComputeStep",6700283003
+"all;g4run;libG4geometry;G4LogicalSkinSurface::DumpInfo",2361583122
+"all;g4run;libG4geometry;0x0000000000187094",4187671
+"all;g4run;libG4geometry;G4CutTubs::SurfaceNormal",5585782
+"all;g4run;libG4geometry;G4FieldTrack::G4FieldTrack",698094
+"all;g4run;libG4geometry;G4VoxelNavigation::LevelLocate",384817352
+"all;g4run;libG4geometry;G4VoxelSafety::SafetyForVoxelHeader",1487356760
+"all;g4run;libG4geometry;G4ChordFinderDelegate<G4IntegrationDriver<G4MagIntegratorStepper> >::FindNextChord",139654855
+"all;g4run;libG4geometry;0x000000000016159b",4889069
+"all;g4run;libG4geometry;0x00000000001925fe",2793495
+"all;g4run;libG4geometry;0x00000000001fe9bf",4887364
+"all;g4run;libG4geometry;_G4cerr_p@plt",18154592
+"all;g4run;libG4geometry;G4LogicalBorderSurface::DumpInfo",306524380
+"all;g4run;libG4geometry;G4Box::CalculateExtent",3489740
+"all;g4run;libG4geometry;G4SubtractionSolid::DistanceToIn",4481590783
+"all;g4run;libG4geometry;0x00000000001946a7",698380
+"all;g4run;libG4geometry;0x0000000000161e6e",11870313
+"all;g4run;libG4geometry;G4NormalNavigation::LevelLocate",212283703
+"all;g4run;libG4geometry;G4IntegrationDriver<G4TDormandPrince45<G4Mag_UsualEqRhs, 6u> >::AdvanceChordLimited",387550999
+"all;g4run;libG4geometry;G4BrentLocator::EstimateIntersectionPoint",33518543
+"all;g4run;libG4geometry;G4Tubs::ApproxSurfaceNormal",182244440
+"all;g4run;libG4geometry;G4PolyhedraSide::GetPointOnFace",9311242123
+"all;g4run;libG4geometry;G4NormalNavigation::~G4NormalNavigation",13266794
+"all;g4run;libG4geometry;G4PolyconeSide::DistanceAway@plt",2095337
+"all;g4run;libG4geometry;atan2@plt",34217192
+"all;g4run;libG4geometry;std::vector<G4FieldManager*, std::allocator<G4FieldManager*> >::_M_realloc_insert<G4FieldManager* const&>",523280249
+"all;g4run;libG4geometry;G4Box::CreatePolyhedron",698319
+"all;g4run;libG4geometry;G4PolyhedronEllipsoid::G4PolyhedronEllipsoid@plt",2095091
+"all;g4run;libG4geometry;0x00000000001a315d",697626
+"all;g4run;libG4geometry;G4GeomTestVolume::TestRecursiveOverlap@plt",1394473
+"all;g4run;libG4geometry;G4ParameterisedNavigation::LevelLocate",806691631
+"all;g4run;libG4geometry;G4ParameterisationTrdY::G4ParameterisationTrdY@plt",6982305
+"all;g4run;libG4geometry;G4Navigator::ComputeStepLog",20249505
+"all;g4run;libG4geometry;__cxa_atexit@plt",238815991
+"all;g4run;libG4geometry;G4PVParameterised::CheckOverlaps",392705149
+"all;g4run;libG4geometry;G4DisplacedSolid::CreatePolyhedron",3153904607
+"all;g4run;libG4geometry;0x00000000000eac5d",7681917
+"all;g4run;libG4geometry;0x0000000000270bad",46088281
+"all;g4run;libG4geometry;G4Navigator::GetGlobalExitNormal",64239029
+"all;g4run;libG4geometry;G4LogicalSkinSurface::CleanSurfaceTable",68428989
+"all;g4run;libG4geometry;0x00000000001fea09",95668843
+"all;g4run;libG4geometry;G4PolyhedraSide::SurfaceTriangle",305157130
+"all;g4run;libG4geometry;0x0000000000255317",2094670
+"all;g4run;libG4geometry;0x00000000000e516c",14665214
+"all;g4run;libG4geometry;G4MagneticField::operator=",97763196
+"all;g4run;libG4geometry;G4PolyhedraSide::G4PolyhedraSide",80312463135
+"all;g4run;libG4geometry;G4ReflectedSolid::~G4ReflectedSolid",2793383
+"all;g4run;libG4geometry;G4Box::SetZHalfLength",5586756
+"all;g4run;libG4geometry;G4MagErrorStepper::Stepper",796056311
+"all;g4run;libG4geometry;0x00000000001c9d86",2095360
+"all;g4run;libG4geometry;G4BooleanSolid::GetCubicVolume",4189912
+"all;g4run;libG4geometry;G4CutTubs::GetCutZ",697291
+"all;g4run;libG4geometry;G4Tubs::operator=",6284119
+"all;g4run;libG4geometry;G4PolyhedraSide::DistanceToOneSide",76811767
+"all;g4run;libG4geometry;0x000000000021242e",698300
+"all;g4run;libG4geometry;0x00000000001f840f",16759938
+"all;g4run;libG4geometry;G4PolyPhiFace::Intersect",518825754
+"all;g4run;libG4geometry;G4ChordFinderDelegate<G4IntegrationDriver<G4TDormandPrince45<G4Mag_UsualEqRhs, 6u> > >::FindNextChord",937476613
+"all;g4run;libG4geometry;G4PolyconeSide::CalculateExtent",4731746930
+"all;g4run;libG4geometry;0x00000000001818b9",698401
+"all;g4run;libG4geometry;0x00000000001c22d7",1396480
+"all;g4run;libG4geometry;G4CutTubs::DistanceToOut",3490884
+"all;g4run;libG4geometry;G4PropagatorInField::ComputeStep",2530008694
+"all;g4run;libG4geometry;0x00000000001870c8",2793756
+"all;g4run;libG4geometry;G4TessellatedSolid::~G4TessellatedSolid@plt",15361612
+"all;g4run;libG4geometry;std::vector<G4LogicalSkinSurface*, std::allocator<G4LogicalSkinSurface*> >::_M_realloc_insert<G4LogicalSkinSurface*>",280695650
+"all;g4run;libG4geometry;G4Paraboloid::SurfaceNormal",437810030
+"all;g4run;libG4geometry;G4LogicalSkinSurface::GetSurfaceTable",697969
+"all;g4run;libG4geometry;0x000000000016167d",6284200
+"all;g4run;libG4geometry;G4DisplacedSolid::GetObjectTranslation",30723876
+"all;g4run;libG4geometry;G4Box::SetXHalfLength",3884849111
+"all;g4run;libG4geometry;G4Trap::CheckParameters",698381
+"all;g4run;libG4geometry;0x0000000000163039",4887801
+"all;g4run;libG4geometry;0x00000000000f728d",2793415
+"all;g4run;libG4geometry;G4BooleanSolid::GetListOfPrimitives",18153222
+"all;g4run;libG4geometry;G4LogicalSkinSurface::~G4LogicalSkinSurface",222767021
+"all;g4run;libG4geometry;0x0000000000193f0e",698388
+"all;g4run;libG4geometry;G4MultiLevelLocator::EstimateIntersectionPoint",340753732
+"all;g4run;libG4geometry;0x000000000018726e",9078834
+"all;g4run;libG4geometry;G4ExtrudedSolid::GetVertex",46785339
+"all;g4run;libG4geometry;G4Tubs::GetEntityType",697301
+"all;g4run;libG4geometry;G4FieldTrack::LoadFromArray",87983417
+"all;g4run;libG4geometry;G4TDormandPrince45<G4Mag_UsualEqRhs, 6u>::Stepper",316333575
+"all;g4run;libG4geometry;0x0000000000103d07",698385
+"all;g4run;libG4geometry;G4Tubs::G4Tubs",14665841
+"all;g4run;libG4geometry;G4PolyPhiFace::EarInit",427355600
+"all;g4run;libG4geometry;aNavigHistoryAllocator",361010263
+"all;g4run;libG4geometry;G4ReflectedSolid::CreatePolyhedron",1732332220
+"all;g4run;libG4geometry;0x0000000000162689",4189312
+"all;g4run;libG4geometry;std::_Rb_tree_decrement@plt",13267384
+"all;g4run;libG4geometry;std::_Rb_tree<G4String, std::pair<G4String const, std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> > >, std::_Select1st<std::pair<G4String const, std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> > > >, std::less<G4String>, std::allocator<std::pair<G4String const, std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> > > > >::_M_emplace_unique<std::pair<G4String, std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> > > >",4188256
+"all;g4run;libG4geometry;0x0000000000160c48",9775317
+"all;g4run;libG4geometry;G4UniformElectricField::G4UniformElectricField@plt",10474589
+"all;g4run;libG4geometry;G4Trap::MakePlanes",1396860
+"all;g4run;libG4geometry;G4EllipticalTube::~G4EllipticalTube@plt",39100854
+"all;g4run;libG4geometry;G4InterpolationDriver<G4DormandPrince745>::~G4InterpolationDriver",48879662
+"all;g4run;libG4geometry;G4ReflectionFactory::ReflectPVReplica",162691424
+"all;g4run;libG4geometry;G4TDormandPrince45<G4Mag_UsualEqRhs, 6u>::DistChord",10469647
+"all;g4run;libG4geometry;G4PolyhedronPara::G4PolyhedronPara@plt",3491203
+"all;g4run;libG4geometry;G4VCSGfaceted::DistanceToIn@plt",31421438
+"all;g4run;libG4geometry;G4PolyPhiFace::Between",163397446
+"all;g4run;libG4geometry;0x00000000001f850a",120101835
+"all;g4run;libG4geometry;G4VIntersectionLocator::ReportReversedPoints",2094850
+"all;g4run;libG4geometry;G4NavigationHistory::NewLevel@plt",5586962
+"all;g4run;libG4geometry;G4PolyhedraSide::DistanceAway@plt",30717822
+"all;g4run;libG4geometry;G4ElectroMagneticField::operator=@plt",124293396
+"all;g4run;libG4geometry;0x000000000018709a",2094684
+"all;g4run;libG4geometry;0x00000000000e4a28",11173465
+"all;g4run;libG4geometry;0x00000000000f72ba",7682066
+"all;g4run;libG4geometry;G4VoxelSafety::G4VoxelSafety",16059770
+"all;g4run;libG4geometry;G4VPhysicalVolume::GetRotation@plt",9776775
+"all;g4run;libG4geometry;G4BooleanSolid::StackPolyhedron",160192629
+"all;g4run;libG4geometry;G4MultiUnion::StreamInfo",260107262
+"all;g4run;libG4geometry;G4PolyhedraSide::IntersectSidePlane",1686748075
+"all;g4run;libG4geometry;0x00000000001823df",2094894
+"all;g4run;libG4geometry;G4LogicalSkinSurface::G4LogicalSkinSurface",48869585
+"all;g4run;libG4geometry;0x0000000000103cef",87982542
+"all;g4run;libG4geometry;G4MultiUnion::DistanceToInCandidates",9777609
+"all;g4run;libG4geometry;0x000000000018709f",3491133
+"all;g4run;libG4geometry;G4VoxelSafety::SafetyForVoxelNode",513899778
+"all;g4run;libG4geometry;operator delete@plt",698436
+"all;g4run;libG4geometry;G4Paraboloid::G4Paraboloid",9077666
+"all;g4run;libG4geometry;0x00000000000f76c3",1396592
+"all;g4run;libG4geometry;G4PolyPhiFace::IntersectProp@plt",105441485
+"all;g4run;libG4geometry;0x0000000000125058",698489
+"all;g4run;libG4geometry;G4ExtrudedSolid::ComputeProjectionParameters@plt",1395309
+"all;g4run;libG4geometry;0x00000000001c9a68",2094454
+"all;g4run;libG4geometry;G4Mag_EqRhs::SetChargeMomentumMass@plt",11173003
+"all;g4run;libG4geometry;G4TDormandPrince45<G4Mag_UsualEqRhs, 6u>::StepWithError",1939620106
+"all;g4run;libG4geometry;memset@plt",697886
+"all;g4run;libG4geometry;G4Tubs::GetPointOnSurface",5586263
+"all;g4run;libG4geometry;G4ImplicitEuler::G4ImplicitEuler@plt",18154494
+"all;g4run;libG4geometry;G4PolyPhiFace::Diagonalie",1198241464
+"all;g4run;libG4geometry;G4MagInt_Driver::QuickAdvance",698369
+"all;g4run;libG4geometry;0x00000000001fea0d",11170832
+"all;g4run;libG4geometry;G4Paraboloid::StreamInfo",544165597
+"all;g4run;libG4geometry;G4Tubs::SurfaceNormal",799695240
+"all;g4run;libG4geometry;0x000000000025531b",2093462
+"all;g4run;libG4geometry;0x00000000001fea0e",13267362
+"all;g4run;libG4geometry;G4ModifiedMidpoint::DoStep",30725277
+"all;g4run;libG4geometry;G4Trd::ApproxSurfaceNormal",4188518
+"all;g4run;libG4geometry;G4ExtrudedSolid::StreamInfo",4222606794
+"all;g4run;libG4geometry;0x000000000025531d",697601
+"all;g4run;libG4geometry;0x00000000001c9d8a",698376
+"all;g4run;libG4geometry;field_utils::inverseCurvatureRadius",4888633
+"all;g4run;libG4geometry;G4HelixSimpleRunge::~G4HelixSimpleRunge@plt",9078795
+"all;g4run;libG4geometry;G4VoxelSafety::~G4VoxelSafety",53065322
+"all;g4run;libG4geometry;G4Paraboloid::Clone",159973373
+"all;g4run;libG4geometry;std::vector<Intersection, std::allocator<Intersection> >::_M_erase@plt",698311
+"all;g4run;libG4geometry;0x00000000002122aa",6285417
+"all;g4run;libG4geometry;std::_Rb_tree<G4String, std::pair<G4String const, std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> > >, std::_Select1st<std::pair<G4String const, std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> > > >, std::less<G4String>, std::allocator<std::pair<G4String const, std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> > > > >::find",11870072
+"all;g4run;libG4geometry;G4TouchableHistory::operator delete",85883927
+"all;g4run;libG4geometry;G4Trap::SurfaceNormal",417571913
+"all;g4run;libG4geometry;G4Voxelizer::BuildEmpty@plt",4887210
+"all;g4run;libG4geometry;G4PolyhedraSide::Inside",1523629525
+"all;g4run;libG4geometry;G4PolyPhiFace::Diagonal",792537653
+"all;g4run;libG4geometry;std::vector<G4LogicalVolume*, std::allocator<G4LogicalVolume*> >::_M_realloc_insert<G4LogicalVolume*>",3699517411
+"all;g4run;libG4geometry;G4CutTubs::DistanceToIn",2095309
+"all;g4run;libG4geometry;G4Box::DistanceToIn",2793235
+"all;g4run;libG4geometry;G4ReflectionFactory::Place",493679982
+"all;g4run;libG4geometry;0x0000000000181669",1396651
+"all;g4run;libG4geometry;0x00000000002122af",1396807
+"all;g4run;libG4geometry;G4MultiUnion::operator=",51676869
+"all;g4run;libG4geometry;G4Cons::DistanceToIn",150821874
+"all;g4run;libG4geometry;G4NormalNavigation::G4NormalNavigation",460161559
+"all;g4run;libG4geometry;G4PartialPhantomParameterisation::GetTranslation@plt",698088
+"all;g4run;libG4geometry;0x00000000001870cd",3491653
+"all;g4run;libG4geometry;0x0000000000182269",5585177
+"all;g4run;libG4geometry;sincos@plt",13966764
+"all;g4run;libG4geometry;G4PolyconeSide::G4PolyconeSide",170385170
+"all;g4run;libG4geometry;G4Tubs::StreamInfo",25834605
+"all;g4run;libG4geometry;G4DisplacedSolid::SetObjectRotation",84495413
+"all;g4run;libG4geometry;G4PropagatorInField::ClearPropagatorState",89383405
+"all;g4run;libG4geometry;field_utils::relativeError2",378483544
+"all;g4run;libG4geometry;G4Trd::SurfaceNormal",1396571
+"all;g4run;libG4geometry;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>",8377602
+"all;g4run;libG4geometry;G4Cons::GetPointOnSurface",698238
+"all;g4run;libG4geometry;0x00000000001c1d77",3490491
+"all;g4run;libG4geometry;G4PhysicalVolumeStore::DeRegister",16758866
+"all;g4run;libG4geometry;G4NormalNavigation::ComputeStep",564924474
+"all;g4run;libG4geometry;G4ModifiedMidpoint::G4ModifiedMidpoint",52548133
+"all;g4run;libG4geometry;field_utils::absoluteError",212291402
+"all;g4run;libG4geometry;std::_Rb_tree<G4String, std::pair<G4String const, std::vector<G4VSolid*, std::allocator<G4VSolid*> > >, std::_Select1st<std::pair<G4String const, std::vector<G4VSolid*, std::allocator<G4VSolid*> > > >, std::less<G4String>, std::allocator<std::pair<G4String const, std::vector<G4VSolid*, std::allocator<G4VSolid*> > > > >::_M_emplace_unique<std::pair<G4String, std::vector<G4VSolid*, std::allocator<G4VSolid*> > > >",2478880851
+"all;g4run;libG4geometry;G4VoxelSafety::ComputeSafety",76801133
+"all;g4run;libG4geometry;G4VIntersectionLocator::LocateGlobalPointWithinVolumeAndCheck",93604736
+"all;g4run;libG4geometry;G4Navigator::LocateGlobalPointAndSetup",500993037
+"all;g4run;libG4geometry;G4Trap::ApproxSurfaceNormal",17457353
+"all;g4run;libG4geometry;std::_Rb_tree<std::pair<G4VPhysicalVolume const*, G4VPhysicalVolume const*>, std::pair<std::pair<G4VPhysicalVolume const*, G4VPhysicalVolume const*> const, G4LogicalBorderSurface*>, std::_Select1st<std::pair<std::pair<G4VPhysicalVolume const*, G4VPhysicalVolume const*> const, G4LogicalBorderSurface*> >, std::less<std::pair<G4VPhysicalVolume const*, G4VPhysicalVolume const*> >, std::allocator<std::pair<std::pair<G4VPhysicalVolume const*, G4VPhysicalVolume const*> const, G4LogicalBorderSurface*> > >::_M_erase",233221727
+"all;g4run;libG4geometry;G4CutTubs::IsCrossingCutPlanes",1396947
+"all;g4run;libG4geometry;G4Torus::SurfaceNormal",2094101
+"all;g4run;libG4geometry;G4MultiUnion::DistanceToInNoVoxels",25136148
+"all;g4run;libG4geometry;G4Trap::operator=",75397918
+"all;g4run;libG4geometry;G4ParameterisedNavigation::LocateNextVoxel",564896292
+"all;g4run;libG4geometry;0x0000000000193fbd",698308
+"all;g4run;libG4geometry;field_utils::relativeError",10474266
+"all;g4run;libG4geometry;0x0000000000103d0b",37707599
+"all;g4run;libG4geometry;G4LogicalBorderSurface::~G4LogicalBorderSurface",58656144
+"all;g4run;libG4geometry;G4ParameterisedNavigation::ComputeStep",3606898407
+"all;g4run;libG4geometry;G4Tubs::CreatePolyhedron",698400
+"all;g4run;libG4geometry;G4Tubs::DistanceToOut",306746572
+"all;g4run;libG4geometry;0x00000000002704c3",1396497
+"all;g4run;libG4geometry;0x000000000026fb75",18154120
+"all;g4run;libG4geometry;G4ReflectedSolid::Inside",4188964
+"all;g4run;libG4geometry;G4Cons::DistanceToOut",41199070
+"all;g4run;libG4geometry;G4FieldManager::G4FieldManager",325395368
+"all;g4run;libG4geometry;0x00000000001c9e15",698394
+"all;g4run;libG4geometry;0x00000000002704c5",1396851
+"all;g4run;libG4geometry;G4MultiUnion::DistanceToIn",241615325
+"all;g4run;libG4geometry;G4UnionSolid::GetCubicVolume",10470980
+"all;g4run;libG4geometry;G4FieldTrack::SetChargeAndMoments",75413176
+"all;g4run;libG4geometry;0x00000000001c23ba",698262
+"all;g4run;libG4geometry;G4Trap::G4Trap",78904586
+"all;g4run;libG4geometry;field_utils::relativeError@plt",289088709
+"all;g4run;libG4geometry;G4DisplacedSolid::BoundingLimits",422467881
+"all;g4run;libG4geometry;G4Box::SetYHalfLength",509853433
+"all;g4run;libG4geometry;0x0000000000212366",25138146
+"all;g4run;libG4geometry;0x000000000011f5e9",18854098
+"all;g4run;libG4geometry;G4NormalNavigation::ComputeSafety",109624709
+"all;g4run;libG4geometry;G4FSALBogackiShampine45::G4FSALBogackiShampine45@plt",12570413
+"all;g4run;libG4geometry;G4IntegrationDriver<G4MagIntegratorStepper>::OneGoodStep",254877410
+"all;g4run;libG4geometry;0x000000000015995e",698256
+"all;g4run;libG4geometry;0x00000000000e4a2e",13965062
+"all;g4run;libG4geometry;G4Navigator::PrintState",2234632251
+"all;g4run;libG4geometry;0x00000000001fe69d",73321812
+"all;g4run;libG4geometry;G4LogicalSurface::~G4LogicalSurface",124995238
+"all;g4run;libG4geometry;0x00000000000f76ab",10475336
+"all;g4run;libG4geometry;G4NormalNavigation::ComputeStep@plt",27232360
+"all;g4run;libG4geometry;G4RKIntegrationDriver<G4MagIntegratorStepper>::ComputeNewStepSize",34216973
+"all;g4run;libG4geometry;G4Navigator::ComputeSafety",1059282687
+"all;g4run;libG4geometry;G4DisplacedSolid::G4DisplacedSolid",41197485
+"all;g4run;libG4geometry;0x000000000027089d",2095251
+"all;g4run;libG4geometry;G4IntersectingCone::LineHitsCone1@plt",6982403
+"all;g4run;libG4geometry;G4RegularNavigation::ComputeStepSkippingEqualMaterials",1124942797
+"all;g4run;libG4geometry;G4TessellatedSolid::InsideVoxels@plt",2792568
+"all;g4run;libG4geometry;0x0000000000103d6a",3491747
+"all;g4run;libG4geometry;G4Trap::GetVertices",4189341
+"all;g4run;libG4geometry;0x0000000000270ba8",47483731
+"all;g4run;libG4geometry;G4SimpleLocator::EstimateIntersectionPoint",227644579
+"all;g4run;libG4geometry;G4Torus::DistanceToOut",698292
+"all;g4run;libG4geometry;0x00000000001498d8",698410
+"all;g4run;libG4geometry;0x00000000001c9a6c",26532332
+"all;g4run;libG4geometry;0x0000000000270ba9",40500785
+"all;g4run;libG4geometry;G4IntegrationDriver<G4TDormandPrince45<G4Mag_UsualEqRhs, 6u> >::AccurateAdvance",141055429
+"all;g4run;libG4geometry;G4MagneticField::~G4MagneticField",2793167
+"all;g4run;libG4geometry;G4PolyhedraSide::Distance",3556215431
+"all;g4run;libG4geometry;std::basic_iostream<char, std::char_traits<char> >::~basic_iostream@plt",698361
+"all;g4run;libG4geometry;G4Trd::CheckParameters",1396495
+"all;g4run;libG4geometry;CLHEP::Hep3Vector::operator*=@plt",2095085
+"all;g4run;libG4geometry;0x00000000001ca1ae",698183
+"all;g4run;libG4geometry;0x00000000000d8158",698332
+"all;g4run;libG4geometry;G4Paraboloid::operator=",7680927
+"all;g4run;libG4geometry;G4PolyhedraSide::GetPhi@plt",93573175
+"all;g4run;libG4geometry;G4PolyhedraSide::DistanceAway",2614842782
+"all;g4run;libG4geometry;G4LogicalBorderSurface::GetSurface",844433006
+"all;g4run;libG4geometry;0x000000000027093c",697741
+"all;g4run;libG4geometry;0x0000000000103d6e",32123801
+"all;g4run;libG4geometry;0x0000000000212428",6285181
+"all;g4run;libG4geometry;G4CSGSolid::StreamInfo",11869704
+"all;g4run;libG4geometry;G4FSALBogackiShampine45::Stepper",178799359
+"all;g4run;libG4geometry;G4BooleanSolid::GetPolyhedron",3491170
+"all;g4run;libG4geometry;G4VIntersectionLocator::GetSurfaceNormal@plt",122200298
+"all;g4run;libG4geometry;G4LogicalVolume::~G4LogicalVolume",259059195
+"all;g4run;libG4geometry;G4ClassicalRK4::DumbStepper",698376
+"all;g4run;libG4geometry;G4PolyconeSide::FindLineIntersect",6282835
+"all;g4run;libG4geometry;0x000000000021226e",41201675
+"all;g4run;libG4geometry;G4PolyPhiFace::Triangulate",2870732907
+"all;g4run;libG4geometry;G4ConstRK4::~G4ConstRK4@plt",33515041
+"all;g4run;libG4geometry;G4SubtractionSolid::GetCubicVolume",65640666
+"all;g4run;libG4geometry;std::vector<G4VPhysicalVolume*, std::allocator<G4VPhysicalVolume*> >::_M_erase",1396570
+"all;g4run;libG4geometry;_G4cout_p@plt",1396762
+"all;g4run;libG4geometry;G4SafetyHelper::InitialiseHelper@plt",698126
+"all;g4run;libG4geometry;G4CrystalUnitCell::GetBasis@plt",1396444
+"all;g4run;libG4geometry;G4RKIntegrationDriver<G4TDormandPrince45<G4Mag_UsualEqRhs, 6u> >::ComputeNewStepSize",548145185
+"all;g4run;libG4geometry;operator<<",247887799
+"all;g4run;libG4geometry;0x000000000018166d",4188699
+"all;g4run;libG4geometry;0x0000000000103d38",104042045
+"all;g4run;libG4geometry;G4Trap::MakePlane",131291849
+"all;g4run;libG4geometry;G4ElectroMagneticField::G4ElectroMagneticField@plt",698171
+"all;g4run;libG4geometry;G4PolyconeSide::DistanceAway",204539627
+"all;g4run;libG4geometry;G4GeometryMessenger::Init@plt",1396976
+"all;g4run;libG4geometry;G4ReflectionFactory::ReflectPVDivision",372874896
+"all;g4run;libG4geometry;G4Cons::G4Cons",3491863
+"all;g4run;libG4geometry;G4LogicalSurface::G4LogicalSurface",809291123
+"all;g4run;libG4geometry;G4Box::DistanceToOut",1396144
+"all;g4run;libG4geometry;G4DisplacedSolid::SetObjectTranslation",34911181
+"all;g4run;libG4geometry;G4PolyPhiFace::InCone",17474781386
+"all;g4run;libG4geometry;G4VPhysicalVolume::GetTranslation@plt",5586352
+"all;g4run;libG4geometry;G4ChordFinder::ApproxCurvePointS",90777048
+"all;g4run;libG4geometry;G4Navigator::CheckOverlapsIterative",192023976
+"all;g4run;libG4geometry;G4TwistedTubs::G4TwistedTubs",9616554241
+"all;g4run;libG4geometry;G4Trap::Clone",9076974
+"all;g4run;libG4geometry;G4VIntersectionLocator::ReportProgress",6284595
+"all;g4run;libG4geometry;G4ChordFinder::ApproxCurvePointV",25835323
+"all;g4run;libG4geometry;0x000000000015c75e",2095154
+"all;g4run;libG4geometry;G4UnionSolid::CalculateExtent",60058338
+"all;g4run;libG4geometry;G4UnionSolid::DistanceToOut",122898614
+"all;g4run;libG4geometry;G4FieldManagerStore::DeRegister",273725541
+"all;g4run;libG4geometry;G4IntegrationDriver<G4TDormandPrince45<G4Mag_UsualEqRhs, 6u> >::OneGoodStep",579613078
+"all;g4run;libG4geometry;G4PolyhedraSide::Normal",749435657
+"all;g4run;libG4geometry;G4MagneticField::G4MagneticField",192038348
+"all;g4run;libG4geometry;G4LogicalCrystalVolume::G4LogicalCrystalVolume",79604162
+"all;g4run;libG4geometry;G4Box::Inside",698459
+"all;g4run;libG4geometry;G4PolyhedraSide::CopyStuff@plt",2094207
+"all;g4run;libCLHEP-2",
+"all;g4run;libCLHEP-2;__tls_get_addr@plt",23042612
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzRotation::rotateZ",152907750
+"all;g4run;libCLHEP-2;CLHEP::RandGaussQ::transformQuick",713646065
+"all;g4run;libCLHEP-2;HepGeom::operator*",5587459
+"all;g4run;libCLHEP-2;CLHEP::Hep3Vector::rotateUz",875239197
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzVector::operator/=",697955
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzRotation::set",698344
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzVector::rapidity",698401
+"all;g4run;libCLHEP-2;CLHEP::RandGamma::genGamma@plt",1396855
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::MULWU",496900511
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzVector::findBoostToCM",698245
+"all;g4run;libCLHEP-2;CLHEP::operator/",61445105
+"all;g4run;libCLHEP-2;CLHEP::(anonymous namespace)::theDefaults",1598169220
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::iterate@plt",39103502
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::MULWU@plt",63531585
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::iterate",4282038557
+"all;g4run;libCLHEP-2;CLHEP::HepRandom::getTheEngine",861377339
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::generate",1565883645
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzVector::boost",2949919727
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::modadd@plt",42597379
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::modadd",462474549
+"all;g4run;libCLHEP-2;CLHEP::RandGamma::shoot",1395905
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::generate@plt",10473403
+"all;g4run;libCLHEP-2;CLHEP::Hep3Vector::operator*=",89375715
+"all;g4run;libCLHEP-2;CLHEP::Hep3Vector::setSpherical",106145498
+"all;g4run;libCLHEP-2;CLHEP::MixMaxRng::flatArray",384560379
+"all;g4run;libCLHEP-2;CLHEP::RandGamma::genGamma",3490795
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzRotation::rotateY",150828830
+"all;g4run;libCLHEP-2;CLHEP::HepLorentzVector::boostVector",1072000841
+"all;g4run;libpythia8",
+"all;g4run;libpythia8;std::vector<int, std::allocator<int> >::reserve",3491578
+"all;g4run;libm",
+"all;g4run;libm;with_errno",698244
+"all;g4run;libm;__fmod",698397
+"all;g4run;libm;hypot@@GLIBC_2.35",1396370
+"all;g4run;libm;__sin_fma",148035027
+"all;g4run;libm;__ieee754_acos_fma",473536015
+"all;g4run;libm;pow@@GLIBC_2.29",62153178
+"all;g4run;libm;__strtod_nan@plt",120799620
+"all;g4run;libm;__atan2",3795854252
+"all;g4run;libm;__acos",126385110
+"all;g4run;libm;__ieee754_exp_fma",217430358
+"all;g4run;libm;__ieee754_pow_fma",617299804
+"all;g4run;libm;__ieee754_log_fma",617971711
+"all;g4run;libm;__cos_fma",698015
+"all;g4run;libm;@plt",698328
+"all;g4run;libm;exp@@GLIBC_2.29",112671090
+"all;g4run;libm;__ieee754_atan2_fma",32208800256
+"all;g4run;libm;__math_check_uflow",697787
+"all;g4run;libm;xflow",1396435
+"all;g4run;libm;__math_uflow",2095167
+"all;g4run;libm;log@@GLIBC_2.29",41196940
+"all;g4run;libm;__atan_fma",1395326
+"all;g4run;libm;__sincos",6532988844
+"all;g4run;libQt5Qml",
+"all;g4run;libQt5Qml;std::vector<double, std::allocator<double> >::reserve",57257758
+"all;g4run;ld-linux-x86-64",
+"all;g4run;ld-linux-x86-64;__tls_get_addr",7269807692
+"all;g4run;libG4processes",
+"all;g4run;libG4processes;G4DiffuseElasticV2::~G4DiffuseElasticV2@plt",24438916
+"all;g4run;libG4processes;std::vector<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_realloc_insert<G4ThreadLocalSingleton<G4LossTableManager>::G4ThreadLocalSingleton()::{lambda()#1}>",13964226
+"all;g4run;libG4processes;G4ChipsKaonPlusElasticXS::GetTabValues",687100318
+"all;g4run;libG4processes;G4HadronicAbsorptionBertini::~G4HadronicAbsorptionBertini",698433
+"all;g4run;libG4processes;G4EmExtraParameters::ActivateSecondaryBiasing",39801316
+"all;g4run;libG4processes;0x0000000000b3f93e",4888346
+"all;g4run;libG4processes;G4ElNeutrinoNucleusTotXsc::GetIsoCrossSection",1396492
+"all;g4run;libG4processes;G4PairProductionRelModel::ComputeParametrizedXSectionPerAtom@plt",3491231
+"all;g4run;libG4processes;0x0000000000a1abde",698379
+"all;g4run;libG4processes;0x0000000000a45da4",698457
+"all;g4run;libG4processes;G4NuclNuclDiffuseElastic::AmplitudeSim",6285234
+"all;g4run;libG4processes;G4KineticTrack::Decay",697613
+"all;g4run;libG4processes;G4BetheBlochModel::CrossSectionPerVolume",698437
+"all;g4run;libG4processes;G4fissionEvent::G4fissionEvent",1396854
+"all;g4run;libG4processes;G4CascadeCheckBalance::ekinOkay",36311983
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeLambdaNChannelData, G4KaonHypSampler>::getOutgoingParticleTypes",698407
+"all;g4run;libG4processes;G4PairProductionRelModel::Initialise",108930708
+"all;g4run;libG4processes;G4CacheReference<G4MultiBodyMomentumDist*>::Destroy",538767702
+"all;g4run;libG4processes;G4ExcitationHandler::G4ExcitationHandler@plt",698494
+"all;g4run;libG4processes;0x000000000037d810",698454
+"all;g4run;libG4processes;G4PEEffectFluoModel::ComputeCrossSectionPerAtom",13966781
+"all;g4run;libG4processes;G4ChipsProtonElasticXS::GetTabValues",37705187
+"all;g4run;libG4processes;G4GammaTransition::SampleDirection",37714446
+"all;g4run;libG4processes;G4NumIntTwoBodyAngDst<11, 19>::GetCosTheta",34218941
+"all;g4run;libG4processes;0x0000000000a1ce57",2095247
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadePiMinusPChannelData, G4PionNucSampler>::getMultiplicity",18153723
+"all;g4run;libG4processes;G4MultiBodyMomentumDist::~G4MultiBodyMomentumDist",921733322
+"all;g4run;libG4processes;G4IntraNucleiCascader::particleCanInteract",697761
+"all;g4run;libG4processes;G4BinaryCascade::DebugFinalEpConservation",698515
+"all;g4run;libG4processes;G4ExcitationHandler::SetFermiModel@plt",2793812
+"all;g4run;libG4processes;G4HadPhaseSpaceKopylov::GenerateMultiBody",6285410
+"all;g4run;libG4processes;G4StatMFChannel::CreateFragment",23740934
+"all;g4run;libG4processes;0x00000000008363e3",16061464
+"all;g4run;libG4processes;G4Reggeons::GetProbabilities",2792982
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeNPChannelData, G4PionNucSampler>::printTable",65640650
+"all;g4run;libG4processes;G4NuclNuclDiffuseElastic::TestAngleTable",697807
+"all;g4run;libG4processes;G4eIonisationParameters::~G4eIonisationParameters@plt",9077600
+"all;g4run;libG4processes;0x00000000008363e9",14666249
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadePPChannelData, G4PionNucSampler>::getOutgoingParticleTypes",206288394
+"all;g4run;libG4processes;G4ResonanceNames::~G4ResonanceNames",698468
+"all;g4run;libG4processes;G4VXTRenergyLoss::AngleSpectralXTRdEdx",2094579
+"all;g4run;libG4processes;G4TransitionRadiation::EnergyIntegralDistribution",3489142
+"all;g4run;libG4processes;G4CascadParticle::propagateAlongThePath",3490789
+"all;g4run;libG4processes;G4eBremsstrahlungRelModel::ComputeLPMGsPhis",8380113
+"all;g4run;libG4processes;G4PenelopeOscillator::G4PenelopeOscillator@plt",698314
+"all;g4run;libG4processes;G4InuclCollider::collide",3030425900
+"all;g4run;libG4processes;G4EvaporationInuclCollider::deExcite",2791638
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadePiPlusPChannelData, G4PionNucSampler>::getMultiplicity",3490983
+"all;g4run;libG4processes;G4GamP2NPipAngDst::~G4GamP2NPipAngDst",4888015
+"all;g4run;libG4processes;G4GoudsmitSaundersonTable::ComputeScatteringPowerCorrection",45388938
+"all;g4run;libG4processes;G4StatMFMacroMultiplicity::CalcMeanA",698379
+"all;g4run;libG4processes;G4LivermoreBremsstrahlungModel::SampleSecondaries",97139211
+"all;g4run;libG4processes;G4CascadeData<30, 2, 7, 15, 24, 33, 41, 47, 55>::print",30023292
+"all;g4run;libG4processes;G4ComponentSAIDTotalXS::GetChargeExchangeCrossSection",324688472
+"all;g4run;libG4processes;G4RKFieldIntegrator::GetProtonPotential",698515
+"all;g4run;libG4processes;G4PenelopeRayleighModelMI::ReadDataFile",232824668
+"all;g4run;libG4processes;G4VTransitionRadiation::Clear",2095109
+"all;g4run;libG4processes;0x00000000009319da",8377929
+"all;g4run;libG4processes;0x00000000009319dc",1396817
+"all;g4run;libG4processes;G4LossTableBuilder::GetBaseMaterialFlag",109847528
+"all;g4run;libG4processes;G4PhotoElectricEffect::InitialiseProcess",159941379
+"all;g4run;libG4processes;G4NuclNuclDiffuseElastic::Initialise",107542743
+"all;g4run;libG4processes;G4CascadeDeexciteBase::validateOutput",13965015
+"all;g4run;libG4processes;G4VEmModel::GetCurrentIsotope@plt",5587534
+"all;g4run;libG4processes;G4NucleiModel::generateNucleonMomentum",16061221
+"all;g4run;libG4processes;G4Fancy3DNucleus::GetNuclearRadius",698476
+"all;g4run;libG4processes;G4RKFieldIntegrator::GetAntiprotonPotential",697931
+"all;g4run;libG4processes;G4Reggeons::ncPomerons",4189514
+"all;g4run;libG4processes;G4LossTableManager::BuildTables",1085874519
+"all;g4run;libG4processes;0x00000000008b09fc",11173430
+"all;g4run;libG4processes;G4LossTableBuilder::BuildRangeTable",13965465
+"all;g4run;libG4processes;G4LightTargetCollider::AbsorptionOnDeuteron",1178098402
+"all;g4run;libG4processes;G4NeutronElasticXS::Initialise",140367261
+"all;g4run;libG4processes;std::vector<float, std::allocator<float> >::_M_realloc_insert<float const&>@plt",4887335
+"all;g4run;libG4processes;G4PairProductionRelModel::GetLPMFunctions",42596470
+"all;g4run;libG4processes;G4DiffuseElasticV2::SampleTableThetaCMS",1396765
+"all;g4run;libG4processes;G4NucleiModel::generateQuasiDeuteron",30727934
+"all;g4run;libG4processes;G4CollisionOutput::removeOutgoingParticle@plt",1396839
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaMinusNChannelData, G4KaonHypSampler>::~G4CascadeFunctions",698385
+"all;g4run;libG4processes;0x0000000000838c1b",4188672
+"all;g4run;libG4processes;G4CrossSectionDataStore::DumpPhysicsTable",4291453223
+"all;g4run;libG4processes;G4ASTARStopping::FindData",4886727
+"all;g4run;libG4processes;G4OpticalParameters::~G4OpticalParameters",11172586
+"all;g4run;libG4processes;G4DiffractiveExcitation::ExciteParticipants",1396817
+"all;g4run;libG4processes;G4ComponentSAIDTotalXS::GetInelasticIsotopeCrossSection",279787354
+"all;g4run;libG4processes;G4DiffractiveSplitableHadron::GetNextAntiParton",1396496
+"all;g4run;libG4processes;0x000000000037b500",698411
+"all;g4run;libG4processes;MCGIDI_sampling_pdfsOfXGivenW_initialize@plt",2094171
+"all;g4run;libG4processes;G4Ne20GEMProbability::~G4Ne20GEMProbability@plt",698337
+"all;g4run;libG4processes;G4StatMFMacroChemicalPotential::CalcChemicalPotentialNu",28629381
+"all;g4run;libG4processes;std::vector<unsigned long, std::allocator<unsigned long> >::_M_fill_insert",58653074
+"all;g4run;libG4processes;0x00000000008363ee",2095182
+"all;g4run;libG4processes;0x0000000000aa349c",1396650
+"all;g4run;libG4processes;G4NeutronCaptureXS::GetIsoCrossSection",27929121
+"all;g4run;libG4processes;0x000000000037d9c0",698299
+"all;g4run;libG4processes;0x000000000083e8d3",1396828
+"all;g4run;libG4processes;G4EmParameters::SetLPM@plt",3491871
+"all;g4run;libG4processes;G4ParallelWorldScoringProcess::G4ParallelWorldScoringProcess",421761415
+"all;g4run;libG4processes;G4Clebsch::Wigner6J",99154902
+"all;g4run;libG4processes;0x0000000000e96c7b",698451
+"all;g4run;libG4processes;G4StatMFMicroPartition::CoulombFreeEnergy",37709540
+"all;g4run;libG4processes;G4HadronicException::G4HadronicException",697707
+"all;g4run;libG4processes;0x000000000083608c",2094869
+"all;g4run;libG4processes;G4MultiBodyMomentumDist::ChooseDist",51674756
+"all;g4run;libG4processes;0x0000000000a2a7f5",697959
+"all;g4run;libG4processes;G4IntraNucleiCascader::finalize",440608682
+"all;g4run;libG4processes;0x000000000037d970",698438
+"all;g4run;libG4processes;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::find_first_of@plt",698430
+"all;g4run;libG4processes;0x00000000008e2ff6",3490923
+"all;g4run;libG4processes;G4CollisionOutput::setRemainingExitationEnergy",8379076
+"all;g4run;libG4processes;G4Fancy3DNucleus::ChoosePositions",95663426
+"all;g4run;libG4processes;G4FTFParameters::InitForInteraction",2793708
+"all;g4run;libG4processes;0x00000000008b6d26",1396837
+"all;g4run;libG4processes;0x00000000008b6d67",6284812
+"all;g4run;libG4processes;0x0000000000f69b64",13966739
+"all;g4run;libG4processes;0x0000000000e969e8",698305
+"all;g4run;libG4processes;G4RToEConvForElectron::G4RToEConvForElectron@plt",1397002
+"all;g4run;libG4processes;G4ITStepProcessor::SetTrack@plt",20250667
+"all;g4run;libG4processes;G4EvaporationDefaultGEMFactory::GetChannel",698091
+"all;g4run;libG4processes;0x0000000000f69b69",13268366
+"all;g4run;libG4processes;0x0000000000f087a4",1396746
+"all;g4run;libG4processes;G4NuclNuclDiffuseElastic::AmplitudeNear",16059020
+"all;g4run;libG4processes;0x0000000000b3629a",3492103
+"all;g4run;libG4processes;G4TwoBodyAngularDist::GetInstance@plt",4189915
+"all;g4run;libG4processes;G4DNAMillerGreenExcitationModel::S_2p@plt",698081
+"all;g4run;libG4processes;G4NeutronKiller::SetKinEnergyLimit@plt",1396793
+"all;g4run;libG4processes;0x00000000008b0734",29329970
+"all;g4run;libG4processes;G4EMDissociationCrossSection::GetElementCrossSection",12568788
+"all;g4run;libG4processes;G4INCL::CoulombNonRelativistic::getCoulombRadius@plt",1396396
+"all;g4run;libG4processes;G4ProcessTableMessenger::~G4ProcessTableMessenger@plt",1396907
+"all;g4run;libG4processes;0x000000000083d84a",3492018
+"all;g4run;libG4processes;G4ChipsProtonInelasticXS::CalculateCrossSection",15013288656
+"all;g4run;libG4processes;G4FTFParamCollPionProj::G4FTFParamCollPionProj",2095337
+"all;g4run;libG4processes;G4HadronicParameters::SetXSFactorNucleonInelastic",4190413
+"all;g4run;libG4processes;G4SBBremTable::SampleEnergyTransfer",322602326
+"all;g4run;libG4processes;G4RKPropagation::G4RKPropagation",10475281
+"all;g4run;libG4processes;0x00000000008b0739",178762164
+"all;g4run;libG4processes;G4ElementaryParticleCollider::generateSCMfinalState",3491483
+"all;g4run;libG4processes;0x000000000083d84f",6983122
+"all;g4run;libG4processes;G4GoudsmitSaundersonTable::LoadMSCData",1365512112
+"all;g4run;libG4processes;G4MuonicAtomDecay::DecayIt",22345560
+"all;g4run;libG4processes;G4VEmProcess::BuildLambdaTable",27230191
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::ChooseGenerators",39798676
+"all;g4run;libG4processes;std::__introsort_loop<__gnu_cxx::__normal_iterator<G4InuclElementaryParticle*, std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<G4ParticleLargerBeta> >",67734928
+"all;g4run;libG4processes;std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, int>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, int> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, int> > >::_M_erase",4189581
+"all;g4run;libG4processes;0x000000000037e660",2793559
+"all;g4run;libG4processes;G4HadronicParameters::SetMinEnergyTransitionQGS_FTF",21646152
+"all;g4run;libG4processes;0x00000000008c2946",698417
+"all;g4run;libG4processes;G4FTFAnnihilation::Create2QuarkAntiQuarkStrings",2095364
+"all;g4run;libG4processes;non-virtual thunk to G4CascadeFunctions<G4CascadePiMinusPChannelData, G4PionNucSampler>::~G4CascadeFunctions()",697954
+"all;g4run;libG4processes;0x000000000083e8db",5586471
+"all;g4run;libG4processes;G4VCrossSectionDataSet::ComputeCrossSection",2094717
+"all;g4run;libG4processes;0x000000000082eb14",698411
+"all;g4run;libG4processes;G4PairProductionRelModel::ComputeLPMGsPhis",232643275
+"all;g4run;libG4processes;G4GeneralPhaseSpaceDecay::G4GeneralPhaseSpaceDecay",21648760
+"all;g4run;libG4processes;G4StatMFMacroBiNucleon::CalcMeanMultiplicity",1396180
+"all;g4run;libG4processes;G4SeltzerBergerModel::ComputeDXSectionPerAtom",29460455
+"all;g4run;libG4processes;0x0000000000a18645",2094754
+"all;g4run;libG4processes;G4UrbanMscModel::SampleCosineTheta",2792910
+"all;g4run;libG4processes;nfu_free@plt",698384
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::G4CascadeFinalStateAlgorithm",62150403
+"all;g4run;libG4processes;0x0000000000a2a7fc",698453
+"all;g4run;libG4processes;G4NucleiModel::zoneIntegralWoodsSaxon",198311479
+"all;g4run;libG4processes;0x0000000000873765",698376
+"all;g4run;libG4processes;0x00000000008b6d6c",4888656
+"all;g4run;libG4processes;G4NucleiModel::G4NucleiModel",697500
+"all;g4run;libG4processes;G4FTFModel::ModelDescription",698298
+"all;g4run;libG4processes;G4NuclearFermiDensity::G4NuclearFermiDensity",3491264
+"all;g4run;libG4processes;std::_Rb_tree<int, std::pair<int const, G4FastList<G4Track>*>, std::_Select1st<std::pair<int const, G4FastList<G4Track>*> >, std::less<int>, std::allocator<std::pair<int const, G4FastList<G4Track>*> > >::_M_erase",507333427
+"all;g4run;libG4processes;std::_Rb_tree<G4LogicalVolume*, std::pair<G4LogicalVolume* const, CLHEP::Hep3Vector>, std::_Select1st<std::pair<G4LogicalVolume* const, CLHEP::Hep3Vector> >, std::less<G4LogicalVolume*>, std::allocator<std::pair<G4LogicalVolume* const, CLHEP::Hep3Vector> > >::_M_get_insert_hint_unique_pos@plt",1396846
+"all;g4run;libG4processes;G4LundStringFragmentation::Splitup",698356
+"all;g4run;libG4processes;G4EvaporationInuclCollider::~G4EvaporationInuclCollider",2094599
+"all;g4run;libG4processes;G4PAIySection::DifPAIySection",458341387
+"all;g4run;libG4processes;G4FTFParamCollBaryonProj::G4FTFParamCollBaryonProj",4189683
+"all;g4run;libG4processes;G4GoudsmitSaundersonMscModel::GetTransportMeanFreePath",12570472
+"all;g4run;libG4processes;G4ChipsKaonMinusElasticXS::GetSlope",82395054
+"all;g4run;libG4processes;G4CascadeData<31, 4, 18, 55, 76, 20, 34, 0, 0>::printXsec",697599
+"all;g4run;libG4processes;0x00000000008e2f6d",698466
+"all;g4run;libG4processes;0x00000000009f87fd",1396958
+"all;g4run;libG4processes;0x0000000000f087af",4888438
+"all;g4run;libG4processes;G4DNAEventSet::CreateEvent@plt",2095075
+"all;g4run;libG4processes;G4ComponentSAIDTotalXS::GetElasticIsotopeCrossSection",25138667
+"all;g4run;libG4processes;G4HadronicDeveloperParameters::DeveloperGet",1396713
+"all;g4run;libG4processes;G4RKPropagation::FreeTransport",20950944
+"all;g4run;libG4processes;G4LossTableManager::ResetParameters",199008582
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::SaveKinematics",698455
+"all;g4run;libG4processes;G4CollisionOutput::removeRecoilFragment",6284564
+"all;g4run;libG4processes;G4CascadeNNChannel::findCrossSection",34909533
+"all;g4run;libG4processes;G4ChipsPionPlusInelasticXS::CrossSectionFormula",2793346
+"all;g4run;libG4processes;G4CRCoalescence::G4CRCoalescence@plt",3490692
+"all;g4run;libG4processes;G4InuclNuclei::makeNuclearFragment",175272868
+"all;g4run;libG4processes;G4PAIModelData::SampleAlongStepTransfer@plt",698367
+"all;g4run;libG4processes;G4HadronicException::what",5586346
+"all;g4run;libG4processes;G4CascadeColliderBase::~G4CascadeColliderBase",10473617
+"all;g4run;libG4processes;0x00000000008c294d",1396810
+"all;g4run;libG4processes;G4EmCalculator::GetKinEnergy",23044204
+"all;g4run;libG4processes;G4NIELCalculator::RecoilEnergy",3489949
+"all;g4run;libG4processes;G4PairProductionRelModel::InitialiseElementData",385456245
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeLambdaNChannelData, G4KaonHypSampler>::getMultiplicity",57259206
+"all;g4run;libG4processes;std::__adjust_heap<__gnu_cxx::__normal_iterator<G4InuclElementaryParticle*, std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> > >, long, G4InuclElementaryParticle, __gnu_cxx::__ops::_Iter_comp_iter<G4ParticleLargerEkin> >",29328915
+"all;g4run;libG4processes;G4SynchrotronRadiation::SetAngularGenerator@plt",698255
+"all;g4run;libG4processes;G4BinaryLightIonReaction::G4BinaryLightIonReaction",698538
+"all;g4run;libG4processes;G4LossTableManager::GetEnergyLossProcess",267469976
+"all;g4run;libG4processes;std::vector<std::vector<unsigned long, std::allocator<unsigned long> >, std::allocator<std::vector<unsigned long, std::allocator<unsigned long> > > >::_M_realloc_insert<std::vector<unsigned long, std::allocator<unsigned long> > const&>",214363666
+"all;g4run;libG4processes;G4NucleiModel::forceFirst",2094708
+"all;g4run;libG4processes;G4ProcessManager::RemoveProcess",441416277
+"all;g4run;libG4processes;G4PAIySection::RePartDielectricConst",97533131
+"all;g4run;libG4processes;G4ProcessAttribute::G4ProcessAttribute@plt",6982057
+"all;g4run;libG4processes;std::vector<G4InuclNuclei, std::allocator<G4InuclNuclei> >::_M_realloc_insert<G4InuclNuclei const&>",298426616
+"all;g4run;libG4processes;0x000000000095fa59",1396509
+"all;g4run;libG4processes;G4NonEquilibriumEvaporator::deExcite",257659810
+"all;g4run;libG4processes;G4ParallelWorldScoringProcess::SetParallelWorld",47486621
+"all;g4run;libG4processes;0x000000000037d120",698476
+"all;g4run;libG4processes;G4ElNeutrinoNucleusTotXsc::GetANuElTotCsXsc",2095042
+"all;g4run;libG4processes;G4ElasticHadrNucleusHE::GetLightFq2",268088137
+"all;g4run;libG4processes;G4IntraNucleiCascader::copySecondaries",594412733
+"all;g4run;libG4processes;G4WilsonAblationModel::G4WilsonAblationModel",698458
+"all;g4run;libG4processes;G4CascadeParameters::Initialize",2791218
+"all;g4run;libG4processes;0x00000000008c4d86",2110492
+"all;g4run;libG4processes;G4AntiXibMinus::Definition@plt",698538
+"all;g4run;libG4processes;G4VEmProcess::GetCrossSection",2793163
+"all;g4run;libG4processes;G4NuclNuclDiffuseElastic::GetErfComp",13966080
+"all;g4run;libG4processes;G4VEmProcess::ProcessDescription",30028144
+"all;g4run;libG4processes;std::vector<G4Fragment*, std::allocator<G4Fragment*> >::_M_realloc_insert<G4Fragment* const&>",1396839
+"all;g4run;libG4processes;G4OpticalParameters::GetWLSTimeProfile",68436626
+"all;g4run;libG4processes;G4VXTRenergyLoss::GetGasZmuProduct",2793083
+"all;g4run;libG4processes;G4SeltzerBergerModel::Initialise",7680268
+"all;g4run;libG4processes;G4ElementaryParticleCollider::pionNucleonAbsorption",2094642
+"all;g4run;libG4processes;std::_Deque_base<G4INCL::NpiToSK2piChannel*, std::allocator<G4INCL::NpiToSK2piChannel*> >::_M_initialize_map@plt",6981381
+"all;g4run;libG4processes;G4PEEffectFluoModel::~G4PEEffectFluoModel",13965929
+"all;g4run;libG4processes;G4ITStepProcessor::GetAtRestIL@plt",12568793
+"all;g4run;libG4processes;0x0000000000a5962d",19552173
+"all;g4run;libG4processes;G4LundStringFragmentation::Quark_AntiQuark_lastSplitting",698431
+"all;g4run;libG4processes;G4MuMinusCapturePrecompound::ApplyYourself",12567842
+"all;g4run;libG4processes;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>",4884395
+"all;g4run;libG4processes;0x0000000000b3f906",698026
+"all;g4run;libG4processes;__1DSortOut::Sort@plt",4189764
+"all;g4run;libG4processes;G4HadronicParameters::G4HadronicParameters",698336
+"all;g4run;libG4processes;G4CollisionOutput::addOutgoingNuclei",11865218
+"all;g4run;libG4processes;G4INCL::CrossSectionsMultiPions::NNThreePi@plt",43992983
+"all;g4run;libG4processes;G4DiffractiveSplitableHadron::SetSecondParton",698231
+"all;g4run;libG4processes;0x000000000037ebd0",698460
+"all;g4run;libG4processes;std::vector<G4RadioactiveDecayRatesToDaughter, std::allocator<G4RadioactiveDecayRatesToDaughter> >::_M_realloc_insert<G4RadioactiveDecayRatesToDaughter const&>",20252717
+"all;g4run;libG4processes;G4UPiNuclearCrossSection::BuildPhysicsTable",30725666
+"all;g4run;libG4processes;G4OpticalParameters::GetScintTrackSecondariesFirst",698529
+"all;g4run;libG4processes;G4CollisionOutput::boostToLabFrame",698543
+"all;g4run;libG4processes;G4ComponentAntiNuclNuclearXS::CrossSectionDescription",343547004
+"all;g4run;libG4processes;G4CascadeInterface::Propagate",630531072
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeNNChannelData, G4PionNucSampler>::getOutgoingParticleTypes",215078217
+"all;g4run;libG4processes;G4HadronicParameters::SetEnableBCParticles",5586037
+"all;g4run;libG4processes;G4eBremParametrizedModel::SampleSecondaries",129182523
+"all;g4run;libG4processes;xDataTOM_XYs_getDataFromXDataInfo@plt",697981
+"all;g4run;libG4processes;0x0000000000841d9f",698457
+"all;g4run;libG4processes;G4CrossSectionFactoryRegistry::GetFactory",42593186
+"all;g4run;libG4processes;0x0000000000e9941f",1396638
+"all;g4run;libG4processes;G4BGGPionElasticXS::BuildPhysicsTable@plt",2095277
+"all;g4run;libG4processes;G4InuclParticleNames::nameShort",5586398
+"all;g4run;libG4processes;std::map<G4String, bool, std::less<G4String>, std::allocator<std::pair<G4String const, bool> > >::operator[]",1777933546
+"all;g4run;libG4processes;G4LivermoreBremsstrahlungModel::G4LivermoreBremsstrahlungModel",62143076
+"all;g4run;libG4processes;0x0000000000b3818c",697801
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::DifferentialXSection",8379333
+"all;g4run;libG4processes;G4LegendrePolynomial::EvalAssocLegendrePoly",2094818
+"all;g4run;libG4processes;0x0000000000945a5a",698472
+"all;g4run;libG4processes;G4TransparentRegXTRadiator::DumpInfo",23040024
+"all;g4run;libG4processes;G4OpticalParametersMessenger::~G4OpticalParametersMessenger",80995931
+"all;g4run;libG4processes;0x000000000037bee0",8380837
+"all;g4run;libG4processes;0x00000000009d3585",14664330
+"all;g4run;libG4processes;G4ElectroNuclearCrossSection::G4ElectroNuclearCrossSection",697822
+"all;g4run;libG4processes;0x00000000008aed83",2793678
+"all;g4run;libG4processes;G4VXTRenergyLoss::BuildEnergyTable",12567738
+"all;g4run;libG4processes;G4NeutronElasticXS::G4NeutronElasticXS",215769303
+"all;g4run;libG4processes;0x00000000009d3589",698440
+"all;g4run;libG4processes;G4BinaryCascade::DebugEpConservation",1396008
+"all;g4run;libG4processes;std::vector<G4VStatMFMacroCluster*, std::allocator<G4VStatMFMacroCluster*> >::_M_realloc_insert<G4VStatMFMacroCluster*>",698465
+"all;g4run;libG4processes;0x00000000008aed87",41201019
+"all;g4run;libG4processes;G4EquilibriumEvaporator::deExcite",446912173
+"all;g4run;libG4processes;G4LorentzConvertor::reflectionNeeded",180856372
+"all;g4run;libG4processes;0x00000000009f2071",698375
+"all;g4run;libG4processes;0x00000000008c4d8f",1396592
+"all;g4run;libG4processes;G4GamP2NPipAngDst::G4GamP2NPipAngDst",4190376
+"all;g4run;libG4processes;G4HadronicParameters::SetXSFactorPionInelastic",6981321
+"all;g4run;libG4processes;G4VTransitionRadiation::PostStepDoIt",111033646
+"all;g4run;libG4processes;std::vector<G4PairProductionRelModel::ElementData*, std::allocator<G4PairProductionRelModel::ElementData*> >::~vector",16755480
+"all;g4run;libG4processes;0x0000000000b3f94a",2094410
+"all;g4run;libG4processes;G4ChipsPionPlusInelasticXS::GetChipsCrossSection",137556373
+"all;g4run;libG4processes;0x0000000000b3f90a",7683241
+"all;g4run;libG4processes;G4Integrator<G4InitXscPAI, double (G4InitXscPAI::*)(double)>::Legendre10",50972114
+"all;g4run;libG4processes;std::vector<bool, std::allocator<bool> >::_M_insert_aux",1385849998
+"all;g4run;libG4processes;G4CollisionOutput::reset",698375
+"all;g4run;libG4processes;0x0000000000b3f94f",4189848
+"all;g4run;libG4processes;0x0000000000f18f23",11871623
+"all;g4run;libG4processes;G4NumIntTwoBodyAngDst<15, 19>::GetCosTheta",27927506
+"all;g4run;libG4processes;G4NucleiModel::passFermi",67028856
+"all;g4run;libG4processes;std::__adjust_heap<__gnu_cxx::__normal_iterator<G4InteractionContent**, std::vector<G4InteractionContent*, std::allocator<G4InteractionContent*> > >, long, G4InteractionContent*, __gnu_cxx::__ops::_Iter_comp_iter<bool (*)(G4InteractionContent const*, G4InteractionContent const*)> >",695134
+"all;g4run;libG4processes;G4StatMFParameters::GetKappaCoulomb",698438
+"all;g4run;libG4processes;0x00000000008b6ce8",2095272
+"all;g4run;libG4processes;G4NucleiModel::passTrailing",8378977
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaPlusNChannelData, G4KaonHypSampler>::getMultiplicity",34217775
+"all;g4run;libG4processes;G4CascadeData<31, 6, 24, 4, 4, 4, 4, 0, 0>::print",23040329
+"all;g4run;libG4processes;G4CascadeParameters::DumpConfig",837234363
+"all;g4run;libG4processes;G4ComponentAntiNuclNuclearXS::GetInelasticElementCrossSection",397310971
+"all;g4run;libG4processes;G4AtimaEnergyLossModel::sezi_dedx_e",3492088
+"all;g4run;libG4processes;G4BaryonWidth::MassDependentWidth",698350
+"all;g4run;libG4processes;G4ChipsPionPlusElasticXS::CalculateCrossSection",1396877
+"all;g4run;libG4processes;0x0000000000a49309",2793566
+"all;g4run;libG4processes;G4Channeling::GetEF@plt",3492315
+"all;g4run;libG4processes;G4HadronicParameters::SetXSFactorPionElastic",8380455
+"all;g4run;libG4processes;G4LightTargetCollider::SingleNucleonScattering",185043984
+"all;g4run;libG4processes;G4IonDEDXHandler::GetUpperEnergyEdge@plt",13269098
+"all;g4run;libG4processes;G4DNAMolecularReactionData::ComputeEffectiveRadius@plt",20251850
+"all;g4run;libG4processes;0x000000000037df70",2093346
+"all;g4run;libG4processes;G4HadronicAbsorptionBertini::ProcessDescription",17456395
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::Configure",6982696
+"all;g4run;libG4processes;G4PhotoNuclearCrossSection::GetIsoCrossSection",23740729
+"all;g4run;libG4processes;0x0000000000b3645e",3491023
+"all;g4run;libG4processes;G4SBBremTable::BuildSamplingTables",287687585
+"all;g4run;libG4processes;0x0000000000833cbc",10472792
+"all;g4run;libG4processes;std::vector<G4SBBremTable::STable*, std::allocator<G4SBBremTable::STable*> >::_M_fill_insert@plt",71124538
+"all;g4run;libG4processes;0x00000000009d358e",16759832
+"all;g4run;libG4processes;0x000000000085527f",3491679
+"all;g4run;libG4processes;G4InitXscPAI::IntegralPAIdEdx",43294481
+"all;g4run;libG4processes;G4ThreadLocalSingleton<G4CascadeParameters>::G4ThreadLocalSingleton",115217198
+"all;g4run;libG4processes;G4HadronicParameters::SetXSFactorNucleonElastic",1396402
+"all;g4run;libG4processes;G4VCrossSectionRatio::G4VCrossSectionRatio",9078524
+"all;g4run;libG4processes;0x00000000008388fb",10475898
+"all;g4run;libG4processes;0x0000000000a516c6",698088
+"all;g4run;libG4processes;G4LivermoreBremsstrahlungModel::ComputeDXSectionPerAtom",988743918
+"all;g4run;libG4processes;G4InitXscPAI::KillCloseIntervals",38407109
+"all;g4run;libG4processes;0x0000000000839246",1396876
+"all;g4run;libG4processes;G4HadronNucleonXsc::HadronNucleonXscPDG",1268752816
+"all;g4run;libG4processes;G4ParallelWorldScoringProcess::Verbose",2596431265
+"all;g4run;libG4processes;xDataTOME_getInterpolation@plt",698319
+"all;g4run;libG4processes;0x00000000008b6fbc",1396841
+"all;g4run;libG4processes;G4PhotoElectricEffect::G4PhotoElectricEffect",67035720
+"all;g4run;libG4processes;G4VEmAdjointModel::ComputeAdjointCrossSectionVectorPerAtomForSecond",1215676094
+"all;g4run;libG4processes;0x00000000008af63b",2094827
+"all;g4run;libG4processes;G4NuclNucl3BodyMomDst::~G4NuclNucl3BodyMomDst",698549
+"all;g4run;libG4processes;G4RKPropagation::delete_EquationsAndMap",201973543
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeNPChannelData, G4PionNucSampler>::getOutgoingParticleTypes",208789685
+"all;g4run;libG4processes;G4hRDEnergyLoss::~G4hRDEnergyLoss@plt",698468
+"all;g4run;libG4processes;0x0000000000f18f2b",11870523
+"all;g4run;libG4processes;G4DNAELSEPAElasticModel::LinLinInterpolate@plt",1396315
+"all;g4run;libG4processes;0x0000000000f18f2d",4887348
+"all;g4run;libG4processes;0x0000000000a59b4d",4888476
+"all;g4run;libG4processes;0x000000000037f8b0",4886985
+"all;g4run;libG4processes;std::vector<G4Material const*, std::allocator<G4Material const*> >::_M_realloc_insert<G4Material const*>",321905634
+"all;g4run;libG4processes;G4WatcherGun::setWatchers",72618979
+"all;g4run;libG4processes;0x000000000037c9d0",57255985
+"all;g4run;libG4processes;G4AntiProton::AntiProtonDefinition@plt",4189765
+"all;g4run;libG4processes;0x00000000009d33e3",4888287
+"all;g4run;libG4processes;CLHEP::HepStat::inverseErf@plt",26532535
+"all;g4run;libG4processes;G4LundStringFragmentation::SplitEandP",698494
+"all;g4run;libG4processes;0x00000000009edb09",5586346
+"all;g4run;libG4processes;G4ExcitationHandler::SetParameters",70536647
+"all;g4run;libG4processes;G4CascadeCheckBalance::momentumOkay",123593223
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::RatioMottRutherford",698296
+"all;g4run;libG4processes;G4fissionEvent::G4SmpWatt",4889087
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeNNChannelData, G4PionNucSampler>::getMultiplicity",498137091
+"all;g4run;libG4processes;G4EmParametersMessenger::SetNewValue",111076417
+"all;g4run;libG4processes;std::_Rb_tree<int, std::pair<int const, G4ParticleDefinition*>, std::_Select1st<std::pair<int const, G4ParticleDefinition*> >, std::less<int>, std::allocator<std::pair<int const, G4ParticleDefinition*> > >::_M_get_insert_unique_pos",698481
+"all;g4run;libG4processes;0x0000000000f69a1d",2793402
+"all;g4run;libG4processes;G4LorentzConvertor::rotate",985994381
+"all;g4run;libG4processes;G4Fissioner::~G4Fissioner",2095263
+"all;g4run;libG4processes;G4Fancy3DNucleus::ReduceSum",224836363
+"all;g4run;libG4processes;G4Clebsch::ClebschGordanCoeff",4190219
+"all;g4run;libG4processes;0x000000000037f590",4189094
+"all;g4run;libG4processes;G4PhotoElectricEffect::IsApplicable",32120233
+"all;g4run;libG4processes;G4INCL::ProjectileRemnant::computeExcitationEnergy@plt",2094809
+"all;g4run;libG4processes;G4PAIySection::SumOverInterCerenkov",2793610
+"all;g4run;libG4processes;G4HadronicException::Report",50271490
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::ComputeAngle",3491795
+"all;g4run;libG4processes;MCGIDI_POP_release@plt",698352
+"all;g4run;libG4processes;std::_Vector_base<unsigned long, std::allocator<unsigned long> >::~_Vector_base",5585579
+"all;g4run;libG4processes;std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> >::_M_realloc_insert<G4InuclElementaryParticle>",972511407
+"all;g4run;libG4processes;G4PAIySection::NormShift",6283858
+"all;g4run;libG4processes;G4AutoDelete::Register<G4InuclElementaryParticle>",698130
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKplusPChannelData, G4KaonSampler>::~G4CascadeFunctions",698478
+"all;g4run;libG4processes;0x0000000000a516cb",3491148
+"all;g4run;libG4processes;std::_Rb_tree<G4String, std::pair<G4String const, bool>, std::_Select1st<std::pair<G4String const, bool> >, std::less<G4String>, std::allocator<std::pair<G4String const, bool> > >::_M_erase",106140792
+"all;g4run;libG4processes;0x000000000083924b",698482
+"all;g4run;libG4processes;0x00000000005f4426",698409
+"all;g4run;libG4processes;G4Bessel::K0",698397
+"all;g4run;libG4processes;std::_Rb_tree<G4Material const*, std::pair<G4Material const* const, G4PhysicsFreeVector*>, std::_Select1st<std::pair<G4Material const* const, G4PhysicsFreeVector*> >, std::less<G4Material const*>, std::allocator<std::pair<G4Material const* const, G4PhysicsFreeVector*> > >::_M_erase",8379160
+"all;g4run;libG4processes;G4OpticalParameters::GetProcessActivation",42379552
+"all;g4run;libG4processes;G4InuclElementaryParticle::makeDefinition",333769456
+"all;g4run;libG4processes;G4Bessel::K1",7680860
+"all;g4run;libG4processes;0x00000000005f4429",19552137
+"all;g4run;libG4processes;G4CollisionOutput::getTotalStrangeness",1396044
+"all;g4run;libG4processes;G4Analyser::printResults",1396958
+"all;g4run;libG4processes;0x00000000008b6af6",47482681
+"all;g4run;libG4processes;G4PAIySection::SumOverBordPlasmon",123010093
+"all;g4run;libG4processes;G4StatMFMacroMultiNucleon::CalcEntropy",34916126
+"all;g4run;libG4processes;G4FTFAnnihilation::Annihilate",697855
+"all;g4run;libG4processes;G4IntraNucleiCascader::createTarget",319743811
+"all;g4run;libG4processes;0x00000000009fe29e",698362
+"all;g4run;libG4processes;0x00000000009edb0d",698511
+"all;g4run;libG4processes;0x00000000008b6d39",698406
+"all;g4run;libG4processes;0x00000000009edb0f",698420
+"all;g4run;libG4processes;G4DNAGenericIonsManager::G4DNAGenericIonsManager@plt",2095484
+"all;g4run;libG4processes;G4Abla::initEvapora",698358
+"all;g4run;libG4processes;0x000000000096dba7",2095134
+"all;g4run;libG4processes;G4VEmProcess::PostStepDoIt",263250568
+"all;g4run;libG4processes;G4EquilibriumEvaporator::setVerboseLevel",698460
+"all;g4run;libG4processes;G4CascadeData<30, 5, 13, 22, 31, 39, 46, 51, 58>::~G4CascadeData",2094650
+"all;g4run;libG4processes;G4VUserTrackInformation::G4VUserTrackInformation@plt",1396070
+"all;g4run;libG4processes;G4FTFParticipants::GetList",698466
+"all;g4run;libG4processes;G4EmElementSelector::SelectRandomAtom",142443260
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::NuclearCrossSection",41891960
+"all;g4run;libG4processes;G4ChipsPionPlusElasticXS::GetTabValues",2095403
+"all;g4run;libG4processes;G4MolecularConfiguration::GetFakeParticleID@plt",1396861
+"all;g4run;libG4processes;G4ITSafetyHelper::InitialiseHelper@plt",6284343
+"all;g4run;libG4processes;0x0000000000a1a6d9",2793186
+"all;g4run;libG4processes;0x000000000037e3b0",1396299
+"all;g4run;libG4processes;G4EMDissociationSpectrum::GetClosestApproach",1396881
+"all;g4run;libG4processes;G4ParticleHPFissionBaseFS::SetNeutronRP@plt",2792107
+"all;g4run;libG4processes;G4CascadeInterface::copyOutputToHadronicResult",98465262
+"all;g4run;libG4processes;G4NuclearFermiDensity::GetDeriv",113122786
+"all;g4run;libG4processes;G4ElasticHadrNucleusHE::HadronNucleusQ2_2",76107065
+"all;g4run;libG4processes;G4QGSParticipants::GenerateDeltaIsobar@plt",1396745
+"all;g4run;libG4processes;G4OpticalParameters::GetWLS2TimeProfile",698483
+"all;g4run;libG4processes;G4ParticleHPT2AInelasticFS::G4ParticleHPT2AInelasticFS@plt",4190406
+"all;g4run;libG4processes;G4C16GEMProbability::~G4C16GEMProbability@plt",697014
+"all;g4run;libG4processes;0x0000000000e4d0bb",1396847
+"all;g4run;libG4processes;G4FTFParameters::GetProcProb@plt",41197612
+"all;g4run;libG4processes;0x00000000005f442d",4190582
+"all;g4run;libG4processes;G4ChipsPionPlusInelasticXS::ThresholdMomentum",698365
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKzeroBarPChannelData, G4KaonSampler>::getOutgoingParticleTypes",698425
+"all;g4run;libG4processes;G4RKPropagation::Init",1560663913
+"all;g4run;libG4processes;G4ElasticHNScattering::GaussianPt",698443
+"all;g4run;libG4processes;0x00000000009d2e16",3492167
+"all;g4run;libG4processes;0x000000000037b9d0",9776413
+"all;g4run;libG4processes;G4PAIySection::GetStepEnergyLoss",52364062
+"all;g4run;libG4processes;G4ProductionCutsTable::StoreCutsInfo",695481643
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeXiZeroNChannelData, G4KaonHypSampler>::getMultiplicity",2792873
+"all;g4run;libG4processes;G4ElementaryParticleCollider::generateSCMpionAbsorption",2094967
+"all;g4run;libG4processes;G4NucleiModel::generateModel",698473
+"all;g4run;libG4processes;G4IntraNucleiCascader::G4IntraNucleiCascader",95665198
+"all;g4run;libG4processes;G4ElectroNuclearCrossSection::GetElementCrossSection",108228028
+"all;g4run;libG4processes;G4SPBaryon::G4SPBaryon",697645
+"all;g4run;libG4processes;0x0000000000f69b3a",698466
+"all;g4run;libG4processes;G4ThreadLocalSingleton<G4InuclElementaryParticle>::G4ThreadLocalSingleton",20947831
+"all;g4run;libG4processes;G4NuclearPolarization::operator==",229551179
+"all;g4run;libG4processes;G4PAIySection::InitPAI",131740902
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeXiMinusPChannelData, G4KaonHypSampler>::getCrossSection",15361172
+"all;g4run;libG4processes;G4Fancy3DNucleus::DoLorentzContraction",698401
+"all;g4run;libG4processes;std::__lower_bound<__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double, __gnu_cxx::__ops::_Iter_less_val>",4189324
+"all;g4run;libG4processes;0x000000000083efbf",698415
+"all;g4run;libG4processes;0x0000000000f69b7f",21644536
+"all;g4run;libG4processes;0x00000000008e1944",2793928
+"all;g4run;libG4processes;std::_Rb_tree<int, std::pair<int const, double>, std::_Select1st<std::pair<int const, double> >, std::less<int>, std::allocator<std::pair<int const, double> > >::_M_get_insert_hint_unique_pos",20949709
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaMinusNChannelData, G4KaonHypSampler>::getCrossSectionSum",1396080
+"all;g4run;libG4processes;0x00000000003804c0",1396794
+"all;g4run;libG4processes;G4CascadeRecoilMaker::~G4CascadeRecoilMaker",4190149
+"all;g4run;libG4processes;0x00000000008e2f7e",1396991
+"all;g4run;libG4processes;G4CascadeCoalescence::reportArgs",9776937
+"all;g4run;libG4processes;0x0000000000770c89",698473
+"all;g4run;libG4processes;G4ElectroNuclearCrossSection::GetVirtualFactor",4187364
+"all;g4run;libG4processes;std::vector<G4CascadParticle, std::allocator<G4CascadParticle> >::_M_default_append@plt",7681405
+"all;g4run;libG4processes;G4NIELCalculator::AddEmModel",53759802
+"all;g4run;libG4processes;G4ProcessManager::AddProcess",1627033495
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKzeroPChannelData, G4KaonSampler>::getMultiplicity",62843442
+"all;g4run;libG4processes;G4CascadeSampler<30, 8>::findMultiplicity",4887163
+"all;g4run;libG4processes;0x0000000000a0f31c",7681939
+"all;g4run;libG4processes;G4PenelopeOscillatorManager::Clear@plt",698373
+"all;g4run;libG4processes;G4ProductionCutsTable::UpdateCoupleTable",698400
+"all;g4run;libG4processes;__cxa_rethrow@plt",15361835
+"all;g4run;libG4processes;0x00000000008c4c3f",698084
+"all;g4run;libG4processes;GIDI_settings_flux::operator[]@plt",5586614
+"all;g4run;libG4processes;G4ChipsProtonElasticXS::GetPTables",142442464
+"all;g4run;libG4processes;G4LossTableManager::PreparePhysicsTable",2793655
+"all;g4run;libG4processes;G4CollisionNNToNDeltastar::~G4CollisionNNToNDeltastar@plt",698353
+"all;g4run;libG4processes;0x000000000037bd00",1396496
+"all;g4run;libG4processes;G4VRangeToEnergyConverter::ConvertForElectron@plt",8379420
+"all;g4run;libG4processes;0x0000000000380120",2094482
+"all;g4run;libG4processes;G4LinLogInterpolation::Calculate",1396136
+"all;g4run;libG4processes;G4IntraNucleiCascader::collide",711345589
+"all;g4run;libG4processes;G4StatMFParameters::GetMaxAverageMultiplicity",6982778
+"all;g4run;libG4processes;G4OpticalParameters::GetScintByParticleType",25838986
+"all;g4run;libG4processes;G4PEEffectFluoModel::G4PEEffectFluoModel",222048034
+"all;g4run;libG4processes;0x00000000009d2e1b",2793423
+"all;g4run;libG4processes;0x00000000008c521d",5586332
+"all;g4run;libG4processes;0x00000000008b6e57",4190296
+"all;g4run;libG4processes;G4PairProductionRelModel::SampleSecondaries",1324934942
+"all;g4run;libG4processes;G4FTFAnnihilation::Create3QuarkAntiQuarkStrings",3492252
+"all;g4run;libG4processes;std::vector<G4InuclElementaryParticle*, std::allocator<G4InuclElementaryParticle*> >::_M_fill_insert",47474141
+"all;g4run;libG4processes;G4HadronicParameters::SetEnableHyperNuclei",697388
+"all;g4run;libG4processes;G4NeutronElasticXS::BuildPhysicsTable",82396171
+"all;g4run;libG4processes;G4ThreadLocalSingleton<void>::GetCallbacks@plt",1396808
+"all;g4run;libG4processes;G4CascadParticle::print",2094791
+"all;g4run;libG4processes;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>",698437
+"all;g4run;libG4processes;G4LinLogLogInterpolation::Calculate",104331353
+"all;g4run;libG4processes;G4IntraNucleiCascader::rescatter",789060547
+"all;g4run;libG4processes;G4CollisionOutput::selectPairToTune",13265685
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::FillUsingKopylov",82390508
+"all;g4run;libG4processes;G4ElectroNuclearCrossSection::ThresholdEnergy",2792421
+"all;g4run;libG4processes;MCGIDI_reaction_parseFromTOM@plt",11171025
+"all;g4run;libG4processes;G4NeutronCaptureXS::SelectIsotope",20251188
+"all;g4run;libG4processes;G4EmCalculator::PrintDEDXTable",48875545
+"all;g4run;libG4processes;0x00000000006c9043",10473260
+"all;g4run;libG4processes;G4O19GEMProbability::G4O19GEMProbability",11872571
+"all;g4run;libG4processes;0x000000000096dc38",1396275
+"all;g4run;libG4processes;G4ElNeutrinoNucleusTotXsc::G4ElNeutrinoNucleusTotXsc",698422
+"all;g4run;libG4processes;G4CascadeRecoilMaker::fillRecoil",12568084
+"all;g4run;libG4processes;G4ChipsKaonMinusElasticXS::GetPTables",260517509
+"all;g4run;libG4processes;G4PhysicsTableHelper::RetrievePhysicsTable",52415877
+"all;g4run;libG4processes;G4ParallelWorldScoringProcess::~G4ParallelWorldScoringProcess",19553993
+"all;g4run;libG4processes;0x00000000006c9047",13967087
+"all;g4run;libG4processes;G4CascadeSampler<31, 6>::findMultiplicity",698385
+"all;g4run;libG4processes;G4StatMFMacroNucleon::~G4StatMFMacroNucleon",698493
+"all;g4run;libG4processes;std::_Function_handler<void (), G4ThreadLocalSingleton<G4CascadeParameters>::G4ThreadLocalSingleton()::{lambda()#1}>::_M_manager",2095173
+"all;g4run;libG4processes;G4CollisionOutput::printCollisionOutput",6285200
+"all;g4run;libG4processes;G4RToEConvForGamma::ComputeValue",75408057
+"all;g4run;libG4processes;G4VXTRenergyLoss::AngleXTRdEdx",39104648
+"all;g4run;libG4processes;0x0000000000a0cc66",698285
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::FillDirThreeBody",6285273
+"all;g4run;libG4processes;G4NuElNucleusNcModel::~G4NuElNucleusNcModel@plt",2094765
+"all;g4run;libG4processes;G4LorentzConvertor::fillKinematics",62843375
+"all;g4run;libG4processes;G4PairProductionRelModel::LPMFuncs::~LPMFuncs",43293230
+"all;g4run;libG4processes;0x0000000000a0cc68",8379000
+"all;g4run;libG4processes;G4MuonMinusAtomicCapture::~G4MuonMinusAtomicCapture",1396912
+"all;g4run;libG4processes;std::_Rb_tree<G4MoleculeDefinition const*, std::pair<G4MoleculeDefinition const* const, double>, std::_Select1st<std::pair<G4MoleculeDefinition const* const, double> >, std::less<G4MoleculeDefinition const*>, std::allocator<std::pair<G4MoleculeDefinition const* const, double> > >::_M_erase",259757350
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeLambdaPChannelData, G4KaonHypSampler>::getMultiplicity",8378676
+"all;g4run;libG4processes;G4MuonMinusCapture::G4MuonMinusCapture",27930202
+"all;g4run;libG4processes;G4NeutronElectronElXsc::IsElementApplicable",13268429
+"all;g4run;libG4processes;G4IntraNucleiCascader::initialize",392419578
+"all;g4run;libG4processes;G4ParticleInelasticXS::Initialise",81700361
+"all;g4run;libG4processes;G4LossTableBuilder::InitialiseBaseMaterials",1396856
+"all;g4run;libG4processes;G4CascadeCoalescence::selectCandidates",32122006
+"all;g4run;libG4processes;G4CollisionOutput::getTotalBaryonNumber",98457580
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKminusPChannelData, G4KaonSampler>::getMultiplicity",725895017
+"all;g4run;libG4processes;G4VEmProcess::StreamInfo",1573651023
+"all;g4run;libG4processes;G4DiffractiveExcitation::ExciteParticipants_doChargeExchange",9776551
+"all;g4run;libG4processes;G4NucleiModel::printModel",443421817
+"all;g4run;libG4processes;0x0000000000937b2f",6284868
+"all;g4run;libG4processes;0x0000000000e4d10b",697366
+"all;g4run;libG4processes;std::vector<G4VFastSimulationModel*, std::allocator<G4VFastSimulationModel*> >::_M_realloc_insert<G4VFastSimulationModel*>@plt",698452
+"all;g4run;libG4processes;G4GoudsmitSaundersonMscModel::SampleMSC",1396913
+"all;g4run;libG4processes;0x0000000000a4923d",698308
+"all;g4run;libG4processes;0x00000000008b6e5e",3491998
+"all;g4run;libG4processes;G4Fissioner::deExcite",47483142
+"all;g4run;libG4processes;G4CrossSectionDataStore::GetCrossSection",8378185
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::FormFactor2Gauss",80995208
+"all;g4run;libG4processes;G4CascadeData<30, 1, 9, 22, 38, 53, 69, 78, 86>::print",92171678
+"all;g4run;libG4processes;G4AutoDelete::Register<G4CascadeParameters>",61447853
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKminusNChannelData, G4KaonSampler>::getMultiplicity",2793816
+"all;g4run;libG4processes;std::vector<int, std::allocator<int> >::_M_range_insert<int const*>",13268661
+"all;g4run;libG4processes;G4EquilibriumEvaporator::goodRemnant",50975859
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::GenerateCosTheta",469932625
+"all;g4run;libG4processes;std::vector<unsigned long, std::allocator<unsigned long> >::operator=",226244773
+"all;g4run;libG4processes;G4eBremsstrahlungRelModel::ComputeDXSectionPerAtom",15362694
+"all;g4run;libG4processes;G4PEEffectFluoModel::CrossSectionPerVolume",56562640
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::FormFactor2ExpHof",698365
+"all;g4run;libG4processes;0x0000000000a63153",1396013
+"all;g4run;libG4processes;G4EMDissociationCrossSection::GetCrossSectionForProjectile",7680325
+"all;g4run;libG4processes;G4LundStringFragmentation::FragmentString",698468
+"all;g4run;libG4processes;G4OpticalParameters::StreamInfo",284191842
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeNPChannelData, G4PionNucSampler>::getMultiplicity",34911786
+"all;g4run;libG4processes;0x0000000000f182d7",698326
+"all;g4run;libG4processes;0x0000000000b3f9af",2793778
+"all;g4run;libG4processes;G4GoudsmitSaundersonTable::~G4GoudsmitSaundersonTable@plt",8379688
+"all;g4run;libG4processes;G4WeightCutOffConfigurator::~G4WeightCutOffConfigurator@plt",9077734
+"all;g4run;libG4processes;G4CacheReference<CLHEP::Hep3Vector*>::Destroy",2793761
+"all;g4run;libG4processes;0x00000000008b8fcf",698133
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeNPChannelData, G4PionNucSampler>::getCrossSectionSum",98715234
+"all;g4run;libG4processes;G4HadPhaseSpaceGenbod::FillEnergySteps",1395826
+"all;g4run;libG4processes;G4FissionProductYieldDist::FindParticleInterpolation@plt",698093
+"all;g4run;libG4processes;G4VCrossSectionDataSet::G4VCrossSectionDataSet",5586922
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeXiMinusNChannelData, G4KaonHypSampler>::getMultiplicity",6982832
+"all;g4run;libG4processes;G4CollisionOutput::G4CollisionOutput",12569522
+"all;g4run;libG4processes;G4CascadeDeexciteBase::getTargetData",119408013
+"all;g4run;libG4processes;0x0000000000a0cc6a",698467
+"all;g4run;libG4processes;G4CrossSectionDataSetRegistry::G4CrossSectionDataSetRegistry",13264921
+"all;g4run;libG4processes;G4StatMFParameters::Getr0",698386
+"all;g4run;libG4processes;std::vector<cacheEl_t*, std::allocator<cacheEl_t*> >::_M_realloc_insert<cacheEl_t*>",698371
+"all;g4run;libG4processes;G4ChipsPionMinusInelasticXS::G4ChipsPionMinusInelasticXS@plt",698395
+"all;g4run;libG4processes;0x0000000000a16ca5",2791691
+"all;g4run;libG4processes;0x0000000000a0cc6d",6983598
+"all;g4run;libG4processes;G4BinaryCascade::ApplyYourself",698243
+"all;g4run;libG4processes;0x00000000008b6cf6",697777
+"all;g4run;libG4processes;std::vector<G4RadioactivityTable*, std::allocator<G4RadioactivityTable*> >::_M_realloc_insert<G4RadioactivityTable* const&>",10473534
+"all;g4run;libG4processes;G4CascadeData<31, 1, 6, 20, 42, 25, 17, 0, 0>::print",9077765
+"all;g4run;libG4processes;G4InuclParticle::print",698424
+"all;g4run;libG4processes;G4CollisionOutput::getRecoilFragment",697352
+"all;g4run;libG4processes;G4PEEffectFluoModel::SampleSecondaries",1277878705
+"all;g4run;libG4processes;G4XAqmElastic::CrossSection@plt",4189677
+"all;g4run;libG4processes;G4StatMFParameters::Beta",18158558
+"all;g4run;libG4processes;G4CascadeData<31, 3, 18, 53, 2, 2, 2, 0, 0>::print",4887302
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaMinusPChannelData, G4KaonHypSampler>::getMultiplicity",28633759
+"all;g4run;libG4processes;G4ParallelWorldProcess::~G4ParallelWorldProcess",921244525
+"all;g4run;libG4processes;0x0000000000b3646a",2793178
+"all;g4run;libG4processes;G4MultiBodyMomentumDist::GetInstance",25133412
+"all;g4run;libG4processes;G4NeutronCaptureXS::GetElementCrossSection",10472652
+"all;g4run;libG4processes;G4eBremsstrahlungRelModel::ComputeScreeningFunctions@plt",698452
+"all;g4run;libG4processes;G4GammaNuclAngDst::G4GammaNuclAngDst",2094126
+"all;g4run;libG4processes;0x00000000008395b4",2793404
+"all;g4run;libG4processes;G4ITMultiNavigator::GetGlobalExitNormal",748627711
+"all;g4run;libG4processes;non-virtual thunk to G4CascadeFunctions<G4CascadePiZeroNChannelData, G4PionNucSampler>::~G4CascadeFunctions()",698164
+"all;g4run;libG4processes;G4InuclNuclei::makeDefinition",698414
+"all;g4run;libG4processes;0x00000000009d26c4",2094227
+"all;g4run;libG4processes;0x00000000008395b8",2793806
+"all;g4run;libG4processes;0x00000000009d26c8",2095122
+"all;g4run;libG4processes;G4PenelopeRayleighModelMI::InitializeSamplingAlgorithm",580442827
+"all;g4run;libG4processes;G4VCrossSectionDataSet::GetIsoCrossSection",92167442
+"all;g4run;libG4processes;0x000000000037e2e0",2792970
+"all;g4run;libG4processes;G4CascadeData<30, 5, 13, 22, 31, 39, 46, 51, 58>::initialize",23742443
+"all;g4run;libG4processes;0x00000000008e42e4",2095222
+"all;g4run;libG4processes;G4UrbanMscModel::ComputeGeomPathLength",698474
+"all;g4run;libG4processes;std::_Rb_tree<int, std::pair<int const, G4ParticleDefinition*>, std::_Select1st<std::pair<int const, G4ParticleDefinition*> >, std::less<int>, std::allocator<std::pair<int const, G4ParticleDefinition*> > >::_M_get_insert_hint_unique_pos",9775122
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaPlusPChannelData, G4KaonHypSampler>::getMultiplicity",1396850
+"all;g4run;libG4processes;G4GoudsmitSaundersonMscModel::G4GoudsmitSaundersonMscModel",4887182
+"all;g4run;libG4processes;G4INCL::NNToNLK2piChannel::operator delete@plt",698519
+"all;g4run;libG4processes;G4OpticalParameters::GetMieVerboseLevel",2793632
+"all;g4run;libG4processes;G4CrossSectionDataStore::GetIsoCrossSection",77505782
+"all;g4run;libG4processes;0x0000000000a16cac",1396916
+"all;g4run;libG4processes;G4ForwardXrayTR::EnergyInterval@plt",10472737
+"all;g4run;libG4processes;0x000000000037e250",4190130
+"all;g4run;libG4processes;0x00000000008b6cfe",698699
+"all;g4run;libG4processes;0x000000000083887d",2793722
+"all;g4run;libG4processes;G4HadronicParameters::SetVerboseLevel",9077301
+"all;g4run;libG4processes;G4ExcitationHandler::BreakItUp",37013871
+"all;g4run;libG4processes;G4KineticTrackVector::Boost",697610
+"all;g4run;libG4processes;G4CacheReference<G4NuclearPolarizationStore*>::Destroy",1368748247
+"all;g4run;libG4processes;std::vector<G4LossTableManager*, std::allocator<G4LossTableManager*> >::_M_fill_insert",4640099408
+"all;g4run;libG4processes;std::vector<G4ExcitedString*, std::allocator<G4ExcitedString*> >::_M_realloc_insert<G4ExcitedString* const&>",698459
+"all;g4run;libG4processes;0x000000000037ec70",6285032
+"all;g4run;libG4processes;operator<<",698389
+"all;g4run;libG4processes;G4SingleDiffractiveExcitation::~G4SingleDiffractiveExcitation",698460
+"all;g4run;libG4processes;G4TypeMutex<G4Cache<CLHEP::HepLorentzVector*> >",698465
+"all;g4run;libG4processes;G4F19GEMProbability::G4F19GEMProbability",69135869
+"all;g4run;libG4processes;G4BinaryLightIonReaction::ApplyYourself",698506
+"all;g4run;libG4processes;std::_Rb_tree<int, std::pair<int const, std::map<double, G4ParticleHPVector*, std::less<double>, std::allocator<std::pair<double const, G4ParticleHPVector*> > >*>, std::_Select1st<std::pair<int const, std::map<double, G4ParticleHPVector*, std::less<double>, std::allocator<std::pair<double const, G4ParticleHPVector*> > >*> >, std::less<int>, std::allocator<std::pair<int const, std::map<double, G4ParticleHPVector*, std::less<double>, std::allocator<std::pair<double const, G4ParticleHPVector*> > >*> > >::_M_emplace_unique<std::pair<int, std::map<double, G4ParticleHPVector*, std::less<double>, std::allocator<std::pair<double const, G4ParticleHPVector*> > >*> >@plt",1396585
+"all;g4run;libG4processes;G4PAIxSection::GetStepEnergyLoss",8379931
+"all;g4run;libG4processes;0x000000000037f2a0",698288
+"all;g4run;libG4processes;G4VTransitionRadiation::GetMeanFreePath",1396592
+"all;g4run;libG4processes;G4SauterGavrilaAngularDistribution::G4SauterGavrilaAngularDistribution",19549404
+"all;g4run;libG4processes;0x0000000000838c3c",3492200
+"all;g4run;libG4processes;G4SBBremTable::LoadSamplingTables",150834822
+"all;g4run;libG4processes;epsilon@plt",1396722
+"all;g4run;libG4processes;G4FTFParticipants::SortInteractionsIncT",698473
+"all;g4run;libG4processes;G4UrbanMscModel::ComputeTheta0",3492264
+"all;g4run;libG4processes;0x00000000008395bd",1396803
+"all;g4run;libG4processes;0x0000000000f183b4",2793657
+"all;g4run;libG4processes;std::vector<G4String, std::allocator<G4String> >::emplace_back<char const*&>",698383
+"all;g4run;libG4processes;0x00000000009d26cd",3491673
+"all;g4run;libG4processes;G4EmBiasingManager::ApplyDirectionalSplitting@plt",8379336
+"all;g4run;libG4processes;0x0000000000f183b8",7682198
+"all;g4run;libG4processes;G4Pow::powA",4966103863
+"all;g4run;libG4processes;G4RKPropagation::GetSphereIntersectionTimes",178379086
+"all;g4run;libG4processes;0x0000000000806bad",698372
+"all;g4run;libG4processes;0x0000000000380630",1396725
+"all;g4run;libG4processes;G4FTFModel::Init",4887720
+"all;g4run;libG4processes;std::vector<G4PairProductionRelModel::ElementData*, std::allocator<G4PairProductionRelModel::ElementData*> >::_M_fill_insert",548851148
+"all;g4run;libG4processes;G4InuclParamMomDst::GetMomentum",697634
+"all;g4run;libG4processes;0x000000000083a0e8",11172872
+"all;g4run;libG4processes;G4CollisionOutput::setOnShell",12569230
+"all;g4run;libG4processes;G4VXTRenergyLoss::GetAngleXTR",9075624
+"all;g4run;libG4processes;G4INCL::NNToNLK2piChannel::~NNToNLK2piChannel@plt",39801988
+"all;g4run;libG4processes;0x00000000008af1d6",698309
+"all;g4run;libG4processes;0x00000000008b60a4",34913153
+"all;g4run;libG4processes;G4NIELCalculator::ComputeNIEL",19552611
+"all;g4run;libG4processes;G4RKPropagation::~G4RKPropagation",152227291
+"all;g4run;libG4processes;0x0000000000f67e5a",4189136
+"all;g4run;libG4processes;G4SeltzerBergerModel::G4SeltzerBergerModel",13267492
+"all;g4run;libG4processes;G4MultiBodyMomentumDist::G4MultiBodyMomentumDist",584451955
+"all;g4run;libG4processes;0x0000000000a19c51",4888479
+"all;g4run;libG4processes;G4ChipsKaonMinusElasticXS::GetQ2max",52367824
+"all;g4run;libG4processes;G4PAIxSection::Initialize",122902299
+"all;g4run;libG4processes;G4GIDI_target::getOthersFinalState@plt",2793561
+"all;g4run;libG4processes;G4eBremParametrizedModel::ComputeXSectionPerAtom",87982141
+"all;g4run;libG4processes;0x00000000008b6d45",6982015
+"all;g4run;libG4processes;G4HadronicParameters::SetXSFactorHadronElastic",6982976
+"all;g4run;libG4processes;0x00000000008b6d06",697483
+"all;g4run;libG4processes;G4NucleiModel::getFermiKinetic",10473036
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::G4ScreeningMottCrossSection",73327653
+"all;g4run;libG4processes;0x00000000008b6d49",4188723
+"all;g4run;libG4processes;G4CascadeParamMessenger::SetNewValue",151532375
+"all;g4run;libG4processes;G4AdjointCSManager::GetPostStepWeightCorrection@plt",698397
+"all;g4run;libG4processes;0x0000000000a2a783",1395988
+"all;g4run;libG4processes;G4VEmProcess::GetCurrentLambda",32816060
+"all;g4run;libG4processes;G4PEEffectFluoModel::Initialise",6982775
+"all;g4run;libG4processes;G4PairProductionRelModel::ComputeRelDXSectionPerAtom",1287933196
+"all;g4run;libG4processes;G4VRestContinuousProcess::~G4VRestContinuousProcess@plt",698446
+"all;g4run;libG4processes;G4INCL::AllocationPool<G4INCL::NNToMissingStrangenessChannel>::getObject@plt",12567747
+"all;g4run;libG4processes;G4O16GEMProbability::G4O16GEMProbability",35612082
+"all;g4run;libG4processes;0x0000000000ef7c9a",698192
+"all;g4run;libG4processes;G4CascadeData<30, 6, 6, 4, 5, 6, 7, 7, 7>::initialize",13269371
+"all;g4run;libG4processes;0x0000000000ef7c5a",1396485
+"all;g4run;libG4processes;G4CascadeData<30, 1, 6, 16, 29, 42, 54, 41, 47>::print",16759741
+"all;g4run;libG4processes;G4HadronXSDataTable::Initialise",142445819
+"all;g4run;libG4processes;G4BinaryCascade::G4BinaryCascade",698196
+"all;g4run;libG4processes;G4NucleiModel::generateNucleon",4190176
+"all;g4run;libG4processes;G4PairProductionRelModel::ComputeParametrizedXSectionPerAtom",215071187
+"all;g4run;libG4processes;G4NeutronInelasticXS::Initialise",597035125
+"all;g4run;libG4processes;G4ParallelWorldScoringProcess::AlongStepGetPhysicalInteractionLength",726916560
+"all;g4run;libG4processes;G4MuonicAtomDecay::FillResult",2789612
+"all;g4run;libG4processes;0x0000000000f183bc",698386
+"all;g4run;libG4processes;G4HadronicInteractionRegistry::Clean@plt",698374
+"all;g4run;libG4processes;G4BOptnCloning::~G4BOptnCloning@plt",12564959
+"all;g4run;libG4processes;std::istream::_M_extract<unsigned long>@plt",698437
+"all;g4run;libG4processes;G4FissionProductYieldDist::MakeIsotopeName",1396616
+"all;g4run;libG4processes;G4INCL::CascadeAction::beforeAvatarAction@plt",3492276
+"all;g4run;libG4processes;G4IntraNucleiCascader::decayTrappedParticle",223451513
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeLambdaPChannelData, G4KaonHypSampler>::getCrossSectionSum",38405278
+"all;g4run;libG4processes;G4RKPropagation::delete_FieldsAndMap",170022914
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadePPChannelData, G4PionNucSampler>::printTable",130578541
+"all;g4run;libG4processes;G4LegendrePolynomial::BuildUpToOrder",698409
+"all;g4run;libG4processes;G4LorentzConvertor::setTarget",2792888
+"all;g4run;libG4processes;G4CascadeDeexciteBase::~G4CascadeDeexciteBase",45385354
+"all;g4run;libG4processes;G4PreCompoundDeexcitation::deExcite",698370
+"all;g4run;libG4processes;xDataTOM_releaseElement@plt",1396805
+"all;g4run;libG4processes;G4NucleiModel::boundaryTransition",189927028
+"all;g4run;libG4processes;G4WilsonAbrasionModel::ApplyYourself",698292
+"all;g4run;libG4processes;G4StatMFMacroMultiplicity::CalcChemicalPotentialMu",5584279
+"all;g4run;libG4processes;G4VBiasingOperator::ReportOperationApplied@plt",3491537
+"all;g4run;libG4processes;G4SBBremTable::InitSamplingTables",3492106
+"all;g4run;libG4processes;0x000000000083e5ec",2790774
+"all;g4run;libG4processes;0x000000000037b9a0",9077579
+"all;g4run;libG4processes;G4SeltzerBergerModel::ReadData",180151221
+"all;g4run;libG4processes;G4ElectronIonPair::SampleIonsAlongStep",698376
+"all;g4run;libG4processes;G4CascadeParamMessenger::G4CascadeParamMessenger",124287476
+"all;g4run;libG4processes;std::vector<G4CascadParticle, std::allocator<G4CascadParticle> >::_M_realloc_insert<G4CascadParticle const&>@plt",698221
+"all;g4run;libG4processes;0x00000000008b6d4b",1396671
+"all;g4run;libG4processes;0x00000000008b6d0a",2094713
+"all;g4run;libG4processes;G4PhotoElectricEffect::ProcessDescription",3490714
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaPlusPChannelData, G4KaonHypSampler>::printTable",4887521
+"all;g4run;libG4processes;G4EmBiasingManager::ApplySecondaryBiasing@plt",1396402
+"all;g4run;libG4processes;0x000000000037ea40",4190205
+"all;g4run;libG4processes;G4SeltzerBergerModel::~G4SeltzerBergerModel",1396794
+"all;g4run;libG4processes;G4LivermoreBremsstrahlungModel::ReadData",471347961
+"all;g4run;libG4processes;G4ParticleHPNHe3InelasticFS::G4ParticleHPNHe3InelasticFS@plt",132671022
+"all;g4run;libG4processes;G4StatMFMacroMultiNucleon::CalcMeanMultiplicity",1396782
+"all;g4run;libG4processes;0x000000000083e82c",2094708
+"all;g4run;libG4processes;0x00000000008b6d4e",6285254
+"all;g4run;libG4processes;G4CollisionOutput::rotateEvent",10476362
+"all;g4run;libG4processes;0x000000000096dbfc",698356
+"all;g4run;libG4processes;0x00000000008b6d0e",11173155
+"all;g4run;libG4processes;G4CascadeRecoilMaker::collide",13965802
+"all;g4run;libG4processes;G4VEmProcess::PostStepGetPhysicalInteractionLength",766304564
+"all;g4run;libG4processes;0x0000000000a2a78a",697184
+"all;g4run;libG4processes;G4StatMFParameters::GetEpsilon0",1396851
+"all;g4run;libG4processes;G4IonsShenCrossSection::calCeValue@plt",4888789
+"all;g4run;libG4processes;0x0000000000f69b8f",6981219
+"all;g4run;libG4processes;G4MuNeutrinoNucleusTotXsc::GetEnergyIndex@plt",698461
+"all;g4run;libG4processes;std::_Rb_tree<G4ParallelWorldProcess*, std::pair<G4ParallelWorldProcess* const, G4String>, std::_Select1st<std::pair<G4ParallelWorldProcess* const, G4String> >, std::less<G4ParallelWorldProcess*>, std::allocator<std::pair<G4ParallelWorldProcess* const, G4String> > >::_M_get_insert_unique_pos",840542650
+"all;g4run;libG4processes;G4Na24GEMChannel::~G4Na24GEMChannel",697514
+"all;g4run;libG4processes;std::_Rb_tree<double, std::pair<double const, std::map<double, G4LEPTSDistribution*, std::less<double>, std::allocator<std::pair<double const, G4LEPTSDistribution*> > > >, std::_Select1st<std::pair<double const, std::map<double, G4LEPTSDistribution*, std::less<double>, std::allocator<std::pair<double const, G4LEPTSDistribution*> > > > >, std::less<double>, std::allocator<std::pair<double const, std::map<double, G4LEPTSDistribution*, std::less<double>, std::allocator<std::pair<double const, G4LEPTSDistribution*> > > > > >::_M_get_insert_hint_unique_pos@plt",4189853
+"all;g4run;libG4processes;0x000000000093aa4c",9775894
+"all;g4run;libG4processes;G4INCL::Nucleus::emitInsidePions@plt",1396456
+"all;g4run;libG4processes;std::vector<G4SBBremTable::SamplingTablePerZ*, std::allocator<G4SBBremTable::SamplingTablePerZ*> >::_M_fill_insert",22346018
+"all;g4run;libG4processes;G4OpticalParametersMessenger::SetNewValue",2226799994
+"all;g4run;libG4processes;G4ITMultiNavigator::GetLocalExitNormal",5924533377
+"all;g4run;libG4processes;std::_Rb_tree<int, std::pair<int const, G4CascadeChannel*>, std::_Select1st<std::pair<int const, G4CascadeChannel*> >, std::less<int>, std::allocator<std::pair<int const, G4CascadeChannel*> > >::_M_erase",7682184
+"all;g4run;libG4processes;G4MultiBodyMomentumDist::passVerbose",86584965
+"all;g4run;libG4processes;0x000000000037b330",20250593
+"all;g4run;libG4processes;G4RToEConvForPositron::ComputeValue",39104170
+"all;g4run;libG4processes;G4Na22GEMChannel::~G4Na22GEMChannel",698517
+"all;g4run;libG4processes;G4IntraNucleiCascader::finishCascade",4894816571
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeGamNChannelData, G4PionNucSampler>::getMultiplicity",3491734
+"all;g4run;libG4processes;G4INCL::Random::shoot@plt",8379120
+"all;g4run;libG4processes;G4StatMFMicroPartition::ChooseZ",25839036
+"all;g4run;libG4processes;G4BinaryCascade::GetSpherePoint",698489
+"all;g4run;libG4processes;0x0000000000f2e132",1396882
+"all;g4run;libG4processes;G4NonEquilibriumEvaporator::G4NonEquilibriumEvaporator",698457
+"all;g4run;libG4processes;G4CrossSectionDataStore::DumpHtml@plt",1396796
+"all;g4run;libG4processes;G4LorentzConvertor::toTheCenterOfMass",709426044
+"all;g4run;libG4processes;0x00000000009d2eba",4190669
+"all;g4run;libG4processes;G4Molecule::G4Molecule@plt",697807
+"all;g4run;libG4processes;G4ProductionCutsTable::CheckMaterialCutsCoupleInfo",172478057
+"all;g4run;libG4processes;0x00000000008b6797",2093947
+"all;g4run;libG4processes;0x0000000000f2e138",15361014
+"all;g4run;libG4processes;0x000000000037ba40",42595475
+"all;g4run;libG4processes;G4EmCorrections::MottCorrection@plt",9078553
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeXiZeroPChannelData, G4KaonHypSampler>::getMultiplicity",30026552
+"all;g4run;libG4processes;G4StatMFFragment::GetEnergy",2793221
+"all;g4run;libG4processes;G4IntraNucleiCascader::generateCascade",14662577
+"all;g4run;libG4processes;G4ElementaryParticleCollider::~G4ElementaryParticleCollider",15361996
+"all;g4run;libG4processes;G4ElementaryParticleCollider::generateMultiplicity",698454
+"all;g4run;libG4processes;std::vector<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_realloc_insert<G4ThreadLocalSingleton<G4NuclearPolarizationStore>::G4ThreadLocalSingleton()::{lambda()#1}>",1310722609
+"all;g4run;libG4processes;G4CrossSectionBuffer::CrossSection@plt",698400
+"all;g4run;libG4processes;G4ScoreSplittingProcess::PostStepGetPhysicalInteractionLength",6285266
+"all;g4run;libG4processes;std::_Rb_tree<int, std::pair<int const, G4Mag_EqRhs*>, std::_Select1st<std::pair<int const, G4Mag_EqRhs*> >, std::less<int>, std::allocator<std::pair<int const, G4Mag_EqRhs*> > >::_M_erase",13964982
+"all;g4run;libG4processes;G4InitXscPAI::~G4InitXscPAI",271628513
+"all;g4run;libG4processes;G4NuclearPolarizationStore::Register",1396611
+"all;g4run;libG4processes;G4NuclNucl3BodyAngDst::G4NuclNucl3BodyAngDst",154326081
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKplusPChannelData, G4KaonSampler>::printTable",4888231
+"all;g4run;libG4processes;G4SauterGavrilaAngularDistribution::PrintGeneratorInformation",116611772
+"all;g4run;libG4processes;G4BetaPlusDecay::G4BetaPlusDecay@plt",1396768
+"all;g4run;libG4processes;G4VEmProcess::G4VEmProcess",17456683
+"all;g4run;libG4processes;0x0000000000a48fca",34399123
+"all;g4run;libG4processes;G4UrbanMscModel::SimpleScattering@plt",698428
+"all;g4run;libG4processes;0x000000000092d202",698428
+"all;g4run;libG4processes;G4DNACPA100IonisationModel::RandomizeEjectedElectronEnergyFromCumulatedDcs@plt",698430
+"all;g4run;libG4processes;G4EmParameters::SetUseICRU90Data@plt",2793243
+"all;g4run;libG4processes;0x0000000000a48fcd",2093885
+"all;g4run;libG4processes;std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<G4InuclElementaryParticle*, std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> > >, __gnu_cxx::__ops::_Val_comp_iter<G4ParticleLargerEkin> >",2792615
+"all;g4run;libG4processes;0x0000000000a18d7b",4190344
+"all;g4run;libG4processes;G4NumIntTwoBodyAngDst<15, 19>::~G4NumIntTwoBodyAngDst",698429
+"all;g4run;libG4processes;G4AdjointGamma::AdjointGamma@plt",23742995
+"all;g4run;libG4processes;G4PAIxSection::GetStepCerenkovLoss",698435
+"all;g4run;libG4processes;G4HadPhaseSpaceGenbod::GenerateMomenta",1396783
+"all;g4run;libG4processes;0x00000000008394e6",4189162
+"all;g4run;libG4processes;G4ThreadLocalSingleton<void>::Insert<G4ThreadLocalSingleton<G4CascadeParameters>::Insert()::{lambda()#1}>",698257
+"all;g4run;libG4processes;non-virtual thunk to G4CascadeNPChannel::~G4CascadeNPChannel()",25834989
+"all;g4run;libG4processes;0x000000000093f725",168285935
+"all;g4run;libG4processes;G4Absorber::FindAbsorbers",698490
+"all;g4run;libG4processes;G4HadronicException::~G4HadronicException",27926968
+"all;g4run;libG4processes;G4CascadeData<31, 3, 12, 33, 59, 30, 20, 0, 0>::print",32118737
+"all;g4run;libG4processes;G4PAIySection::G4PAIySection",208791704
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::RatioMottRutherfordCosT",2095430
+"all;g4run;libG4processes;G4SauterGavrilaAngularDistribution::SampleDirection",6983383
+"all;g4run;libG4processes;G4INCL::AllocationPool<G4INCL::NNToNNKKbChannel>::getObject@plt",698389
+"all;g4run;libG4processes;G4InuclNuclei::makeG4Fragment",99852667
+"all;g4run;libG4processes;0x0000000000a4b27c",698370
+"all;g4run;libG4processes;0x0000000000f2e13e",4888611
+"all;g4run;libG4processes;G4InuclParamAngDst::GetCosTheta",8379385
+"all;g4run;libG4processes;G4CascadeData<30, 8, 20, 42, 68, 78, 96, 40, 42>::print",11870958
+"all;g4run;libG4processes;G4C15GEMChannel::~G4C15GEMChannel",25137914
+"all;g4run;libG4processes;G4StatMFMacroCanonical::ChooseA",7677969
+"all;g4run;libG4processes;G4ChipsKaonPlusElasticXS::GetExchangeT",693943170
+"all;g4run;libG4processes;non-virtual thunk to G4CascadeFunctions<G4CascadeOmegaMinusPChannelData, G4KaonHypSampler>::~G4CascadeFunctions()",698523
+"all;g4run;libG4processes;G4OpticalParametersMessenger::G4OpticalParametersMessenger",442010378
+"all;g4run;libG4processes;G4InuclNuclei::operator G4Fragment",6284184
+"all;g4run;libG4processes;G4StatMFParameters::GetCoulomb",698314
+"all;g4run;libG4processes;std::_Rb_tree<G4String, std::pair<G4String const, G4DNACrossSectionDataSet*>, std::_Select1st<std::pair<G4String const, G4DNACrossSectionDataSet*> >, std::less<G4String>, std::allocator<std::pair<G4String const, G4DNACrossSectionDataSet*> > >::find@plt",698128
+"all;g4run;libG4processes;G4ScoreSplittingProcess::Verbose",438509487
+"all;g4run;libG4processes;G4eBremsstrahlungRelModel::ComputeLPMfunctions",42595014
+"all;g4run;libG4processes;G4LossTableManager::DeRegister",1396805
+"all;g4run;libG4processes;memset@plt",2095042
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKzeroBarNChannelData, G4KaonSampler>::printTable",166187725
+"all;g4run;libG4processes;__tcf_0",15361661
+"all;g4run;libG4processes;G4EmBiasingManager::G4EmBiasingManager",698402
+"all;g4run;libG4processes;G4PAIxSection::GetMMEnergyTransfer",1396045
+"all;g4run;libG4processes;__tcf_1",83789623
+"all;g4run;libG4processes;G4VEmProcess::~G4VEmProcess",698431
+"all;g4run;libG4processes;G4CrossSectionFactoryRegistry::Register",56562916
+"all;g4run;libG4processes;G4LorentzConvertor::toTheTargetRestFrame",71222129
+"all;g4run;libG4processes;G4StatMFParameters::DBetaDT",43293858
+"all;g4run;libG4processes;G4VCrossSectionRatio::~G4VCrossSectionRatio",3491150
+"all;g4run;libG4processes;G4GammaNuclearXS::IsoCrossSection",3492122
+"all;g4run;libG4processes;G4StatMFMacroMultiNucleon::CalcEnergy",2095110
+"all;g4run;libG4processes;0x000000000037f1d0",8379910
+"all;g4run;libG4processes;__cxa_begin_catch@plt",4187972
+"all;g4run;libG4processes;G4ScoreSplittingProcess::AlongStepDoIt",1037888885
+"all;g4run;libG4processes;0x000000000083fefe",1396694
+"all;g4run;libG4processes;std::map<G4String, bool, std::less<G4String>, std::allocator<std::pair<G4String const, bool> > >::operator[]@plt",6284471
+"all;g4run;libG4processes;0x00000000008394eb",5586801
+"all;g4run;libG4processes;G4ElasticHNScattering::GaussianPt@plt",1396919
+"all;g4run;libG4processes;G4NuclearFermiDensity::~G4NuclearFermiDensity",5586691
+"all;g4run;libG4processes;G4CrossSectionFactory<G4ChipsPionPlusElasticXS, 0>::Instantiate",698215
+"all;g4run;libG4processes;G4ChipsProtonElasticXS::GetExchangeT",11869446
+"all;g4run;libG4processes;G4TransparentRegXTRadiator::GetStackFactor",22346048
+"all;g4run;libG4processes;G4StatMFMacroCanonical::ChooseZ",9775483
+"all;g4run;libG4processes;G4CascadeColliderBase::inelasticInteractionPossible",62845968
+"all;g4run;libG4processes;G4InitXscPAI::IntegralPAIxSection",13267580
+"all;g4run;libG4processes;G4SBBremTable::BuildSamplingTables@plt",1396714
+"all;g4run;libG4processes;G4eBremsstrahlungRelModel::ComputeRelDXSectionPerAtom",13267098
+"all;g4run;libG4processes;G4CascadeDeexciteBase::G4CascadeDeexciteBase",414163893
+"all;g4run;libG4processes;0x000000000037cf50",12576478
+"all;g4run;libG4processes;G4ThreadLocalSingleton<G4LossTableManager>::G4ThreadLocalSingleton",1906376772
+"all;g4run;libG4processes;G4TransitionRadiation::AngleIntegralDistribution",22345343
+"all;g4run;libG4processes;0x0000000000380f80",6285388
+"all;g4run;libG4processes;G4EquilibriumEvaporator::G4EquilibriumEvaporator",6983466
+"all;g4run;libG4processes;G4DiffractiveSplitableHadron::G4DiffractiveSplitableHadron",698431
+"all;g4run;libG4processes;G4GoudsmitSaundersonMscModel::GetTransportMeanFreePathOnly",11173209
+"all;g4run;libG4processes;G4RKPropagation::Transport",1396753
+"all;g4run;libG4processes;std::vector<G4Fragment, std::allocator<G4Fragment> >::_M_realloc_insert<G4Fragment const&>",22345160
+"all;g4run;libG4processes;G4SBBremTable::LinSearch",128967195
+"all;g4run;libG4processes;G4LossTableManager::Register",74016995
+"all;g4run;libG4processes;0x00000000008b6cc6",1396771
+"all;g4run;libG4processes;G4MuNeutrinoNucleusProcess::PostStepDoIt",1396673
+"all;g4run;libG4processes;G4Reggeons::Chi_reggeon",3491448
+"all;g4run;libG4processes;G4ChipsPionPlusInelasticXS::CalculateCrossSection",697965
+"all;g4run;libG4processes;G4SPBaryon::G4SPBaryon@plt",1396763
+"all;g4run;libG4processes;G4Cache<CLHEP::HepLorentzVector*>::~G4Cache",1396434
+"all;g4run;libG4processes;std::deque<G4StatMFFragment*, std::allocator<G4StatMFFragment*> >::_M_reallocate_map",4189294
+"all;g4run;libG4processes;G4CascadeData<30, 1, 9, 22, 38, 53, 69, 78, 86>::printXsec",370784183
+"all;g4run;libG4processes;G4DiffuseElasticV2::CalculateNuclearRad",1396042
+"all;g4run;libG4processes;G4ComponentBarNucleonNucleusXsc::GetElasticIsotopeCrossSection",6283111
+"all;g4run;libG4processes;G4INCL::CrossSections::NDeltaToNLK@plt",698461
+"all;g4run;libG4processes;0x0000000000a05db6",1396562
+"all;g4run;libG4processes;G4NuclNuclDiffuseElastic::AmplitudeGla",4887673
+"all;g4run;libG4processes;G4FTFModel::StoreInvolvedNucleon",698237
+"all;g4run;libG4processes;std::_Rb_tree<G4String, std::pair<G4String const, std::vector<double, std::allocator<double> >*>, std::_Select1st<std::pair<G4String const, std::vector<double, std::allocator<double> >*> >, std::less<G4String>, std::allocator<std::pair<G4String const, std::vector<double, std::allocator<double> >*> > >::_M_get_insert_hint_unique_pos@plt",1396819
+"all;g4run;libG4processes;G4StatMFChannel::FragmentsMomenta",23739322
+"all;g4run;libG4processes;G4LossTableBuilder::GetFlag",37705261
+"all;g4run;libG4processes;G4CollisionOutput::getTotalCharge",30016141
+"all;g4run;libG4processes;0x000000000095fb17",698472
+"all;g4run;libG4processes;G4CascadeCheckBalance::collide",136222929
+"all;g4run;libG4processes;G4Abla::DeexcitationAblaxx",1396793
+"all;g4run;libG4processes;G4CascadeInterface::makeDynamicParticle",66337627
+"all;g4run;libG4processes;G4Absorber::FindProducts",698347
+"all;g4run;libG4processes;std::__insertion_sort<__gnu_cxx::__normal_iterator<G4InuclElementaryParticle*, std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> > >, __gnu_cxx::__ops::_Iter_comp_iter<G4ParticleLargerEkin> >",698433
+"all;g4run;libG4processes;0x0000000000a31fb6",3492012
+"all;g4run;libG4processes;0x0000000000936c1a",6981834
+"all;g4run;libG4processes;G4CascadeRecoilMaker::G4CascadeRecoilMaker",428044192
+"all;g4run;libG4processes;G4NuclNucl4BodyMomDst::~G4NuclNucl4BodyMomDst",698274
+"all;g4run;libG4processes;G4VXTRenergyLoss::GetAngleVector",9075574
+"all;g4run;libG4processes;0x0000000000a31fb9",698129
+"all;g4run;libG4processes;0x00000000008b925a",4189983
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::GenerateTwoBody",18156751
+"all;g4run;libG4processes;G4SBBremTable::LoadSTGrid",413390632
+"all;g4run;libG4processes;G4DiffractiveSplitableHadron::~G4DiffractiveSplitableHadron",2793181
+"all;g4run;libG4processes;G4NeutronElectronElXsc::~G4NeutronElectronElXsc",11173971
+"all;g4run;libG4processes;0x000000000037dc80",698335
+"all;g4run;libG4processes;G4QuarkExchange::ExciteParticipants",698405
+"all;g4run;libG4processes;G4DNAMesh::GetBoundingBox@plt",1396659
+"all;g4run;libG4processes;G4CrossSectionDataStore::BuildPhysicsTable",7681692
+"all;g4run;libG4processes;0x00000000008b925f",1396902
+"all;g4run;libG4processes;G4PAIxSection::GetCerenkovEnergyTransfer",698474
+"all;g4run;libG4processes;0x0000000000f67ef6",1396883
+"all;g4run;libG4processes;G4NucleiModel::initializeCascad",3491228
+"all;g4run;libG4processes;G4CascadeCheckBalance::strangeOkay",7682339
+"all;g4run;libG4processes;G4CrossSectionDataSetRegistry::Clean",855388201
+"all;g4run;libG4processes;std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, double>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, double> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, double> > >::_M_erase",698453
+"all;g4run;libG4processes;G4VXTRenergyLoss::GetGasLinearPhotoAbs",2095175
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeXiMinusPChannelData, G4KaonHypSampler>::getMultiplicity",4888466
+"all;g4run;libG4processes;G4PairProductionRelModel::G4PairProductionRelModel",231140661
+"all;g4run;libG4processes;G4NucleiModel::reset",73315762
+"all;g4run;libG4processes;G4ChipsPionPlusElasticXS::GetChipsCrossSection",6285784
+"all;g4run;libG4processes;G4ScoreSplittingProcess::AlongStepGetPhysicalInteractionLength",81693355
+"all;g4run;libG4processes;G4CascadeCoalescence::FindClusters",152916892
+"all;g4run;libG4processes;G4INCL::NKbElasticChannel::~NKbElasticChannel@plt",698004
+"all;g4run;libG4processes;0x0000000000f08353",8380059
+"all;g4run;libG4processes;0x000000000037e880",698445
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeOmegaMinusNChannelData, G4KaonHypSampler>::getMultiplicity",1396871
+"all;g4run;libG4processes;G4CollisionOutput::getTotalOutputMomentum",36303709
+"all;g4run;libG4processes;G4IntraNucleiCascader::preloadCascade",207394363
+"all;g4run;libG4processes;G4RKPropagation::FieldTransport",906676907
+"all;g4run;libG4processes;G4ComponentBarNucleonNucleusXsc::GetInelasticIsotopeCrossSection",157806573
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaZeroPChannelData, G4KaonHypSampler>::getMultiplicity",48181523
+"all;g4run;libG4processes;G4LivermorePhotoElectricModel::ReadData",47481912
+"all;g4run;libG4processes;G4CascadeData<31, 3, 12, 33, 59, 30, 20, 0, 0>::printXsec",697655
+"all;g4run;libG4processes;G4VXTRenergyLoss::GetComptonPerAtom",5586153
+"all;g4run;libG4processes;G4ChipsAntiBaryonElasticXS::G4ChipsAntiBaryonElasticXS@plt",698418
+"all;g4run;libG4processes;0x00000000008b6ccc",1396865
+"all;g4run;libG4processes;G4PolarizedIonisationModel::SampleSecondaries",24441399
+"all;g4run;libG4processes;free@plt",2095271
+"all;g4run;libG4processes;G4VXTRenergyLoss::IsApplicable",10472316
+"all;g4run;libG4processes;G4HadronicParameters::SetEnergyThresholdForHeavyHadrons",1396717
+"all;g4run;libG4processes;0x000000000083484d",2095170
+"all;g4run;libG4processes;0x0000000000a51697",2095295
+"all;g4run;libG4processes;G4ChipsKaonMinusElasticXS::CalculateCrossSection",23044896
+"all;g4run;libG4processes;G4SeltzerBergerModel::SetupForMaterial",5586183
+"all;g4run;libG4processes;G4ComponentAntiNuclNuclearXS::GetTotalElementCrossSection",91465175
+"all;g4run;libG4processes;0x00000000006ce62f",46595008
+"all;g4run;libG4processes;G4ProtonField::G4ProtonField",53164291
+"all;g4run;libG4processes;G4VPhysicalVolume::GetTranslation@plt",1396848
+"all;g4run;libG4processes;G4CrossSectionFactoryRegistry::G4CrossSectionFactoryRegistry",4888533
+"all;g4run;libG4processes;G4GoudsmitSaundersonMscModel::ComputeGeomPathLength",698291
+"all;g4run;libG4processes;G4DNAMolecularReactionData::G4DNAMolecularReactionData@plt",1396676
+"all;g4run;libG4processes;G4ComponentBarNucleonNucleusXsc::GetElasticElementCrossSection",12568950
+"all;g4run;libG4processes;G4ParallelWorldProcessStore::SetParallelWorld",1202429741
+"all;g4run;libG4processes;G4StatMFFragment::GetInvLevelDensity",3490707
+"all;g4run;libG4processes;G4CrossSectionDataStore::G4CrossSectionDataStore",900082327
+"all;g4run;libG4processes;ptwX_setData@plt",697419
+"all;g4run;libG4processes;G4He3GEMProbability::~G4He3GEMProbability@plt",4888900
+"all;g4run;libG4processes;G4ChipsProtonElasticXS::G4ChipsProtonElasticXS",7678563
+"all;g4run;libG4processes;G4RKFieldIntegrator::~G4RKFieldIntegrator",2793324
+"all;g4run;libG4processes;G4CollisionOutput::tuneSelectedPair",8380102
+"all;g4run;libG4processes;G4PionMinusField::~G4PionMinusField@plt",106141029
+"all;g4run;libG4processes;G4eBremsstrahlungRelModel::GetLPMFunctions",16759268
+"all;g4run;libG4processes;G4VEmProcess::ComputeIntegralLambda",388846068
+"all;g4run;libG4processes;G4ChipsKaonPlusElasticXS::~G4ChipsKaonPlusElasticXS",188524245
+"all;g4run;libG4processes;G4Region::SetFastSimulationManager@plt",15363437
+"all;g4run;libG4processes;G4ElementaryParticleCollider::generateSCMpionNAbsorption",3492066
+"all;g4run;libG4processes;G4MuonicAtomDecay::DumpState",2792952
+"all;g4run;libG4processes;G4OpticalParameters::Instance@plt",1393221
+"all;g4run;libG4processes;0x0000000000f67efd",11171635
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::SetupKinematic",64238965
+"all;g4run;libG4processes;0x000000000083ee2f",698441
+"all;g4run;libG4processes;0x000000000083d212",1396502
+"all;g4run;libG4processes;0x000000000083d213",698470
+"all;g4run;libG4processes;std::vector<GIDI_settings_flux_order, std::allocator<GIDI_settings_flux_order> >::_M_realloc_insert<GIDI_settings_flux_order const&>@plt",2793748
+"all;g4run;libG4processes;G4ScoreSplittingProcess::AtRestDoIt",745819367
+"all;g4run;libG4processes;G4LightTargetCollider::collide",1963025631
+"all;g4run;libG4processes;0x000000000037bc80",698298
+"all;g4run;libG4processes;G4CollisionOutput::addOutgoingParticles",29327075
+"all;g4run;libG4processes;G4CascadeParameters::G4CascadeParameters",3490787
+"all;g4run;libG4processes;G4SBBremTable::~G4SBBremTable",30022177
+"all;g4run;libG4processes;G4CascadeNPChannel::~G4CascadeNPChannel",39800878
+"all;g4run;libG4processes;G4N12GEMChannel::~G4N12GEMChannel",698307
+"all;g4run;libG4processes;G4Clebsch::Wigner9J",698499
+"all;g4run;libG4processes;G4StatMFMacroNucleon::CalcEnergy",2792737
+"all;g4run;libG4processes;G4IntraNucleiCascader::copyWoundedNucleus",781764474
+"all;g4run;libG4processes;G4MuonMinusBoundDecay::ApplyYourself",4190224
+"all;g4run;libG4processes;G4ChipsPionMinusInelasticXS::CalculateCrossSection",698228
+"all;g4run;libG4processes;G4AblaDataFile::readData",698356
+"all;g4run;libG4processes;G4LossTableBuilder::BuildDEDXTable",185033954
+"all;g4run;libG4processes;G4HadronicAbsorptionBertini::G4HadronicAbsorptionBertini",1396346
+"all;g4run;libG4processes;G4CrossSectionDataStore::SampleZandA",8378872
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeGamPChannelData, G4PionNucSampler>::getMultiplicity",332489378
+"all;g4run;libG4processes;G4ComponentBarNucleonNucleusXsc::GetInelasticElementCrossSection",50276729
+"all;g4run;libG4processes;0x0000000000380a40",2095161
+"all;g4run;libG4processes;G4Clebsch::WignerLittleD",3491301
+"all;g4run;libG4processes;G4InuclNuclei::clear",28624529
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadePiMinusNChannelData, G4PionNucSampler>::getMultiplicity",72619047
+"all;g4run;libG4processes;G4FTFModel::AdjustNucleonsAlgorithm_beforeSampling",3492025
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::GetTransitionRandom",13267608
+"all;g4run;libG4processes;G4IonsShenCrossSection::calEcmValue",42595838
+"all;g4run;libG4processes;non-virtual thunk to G4CascadeFunctions<G4CascadePiZeroPChannelData, G4PionNucSampler>::~G4CascadeFunctions()",698473
+"all;g4run;libG4processes;0x00000000008b6d55",2094409
+"all;g4run;libG4processes;0x0000000000a5169e",6982668
+"all;g4run;libG4processes;G4TransparentRegXTRadiator::~G4TransparentRegXTRadiator",4190542
+"all;g4run;libG4processes;G4CrossSectionSourcePtr::operator()@plt",42595152
+"all;g4run;libG4processes;std::__pop_heap<__gnu_cxx::__normal_iterator<G4InuclElementaryParticle*, std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> > >, __gnu_cxx::__ops::_Iter_comp_iter<G4ParticleLargerEkin> >@plt",698443
+"all;g4run;libG4processes;0x0000000000a1190f",3491478
+"all;g4run;libG4processes;0x00000000008b6d17",6983218
+"all;g4run;libG4processes;G4CascadeInterpolator<30>::printBins@plt",11871435
+"all;g4run;libG4processes;std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> >::~vector",287685559
+"all;g4run;libG4processes;G4Cache<G4LossTableManager*>::~G4Cache@plt",1396226
+"all;g4run;libG4processes;G4SingleDiffractiveExcitation::ExciteParticipants",1396946
+"all;g4run;libG4processes;G4Cache<G4LossTableManager*>::~G4Cache",11172480
+"all;g4run;libG4processes;G4SeltzerBergerModel::FindDirectoryPath",31422066
+"all;g4run;libG4processes;G4MuonMinusAtomicCapture::PreparePhysicsTable",697735
+"all;g4run;libG4processes;G4ScoreSplittingProcess::StartTracking",92176855
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::GetScatteringAngle",43990949
+"all;g4run;libG4processes;G4BinaryCascade::UpdateTracksAndCollisions",2095166
+"all;g4run;libG4processes;0x000000000037e9b0",698468
+"all;g4run;libG4processes;G4EMDissociationCrossSection::GetWilsonProbabilityForProtonDissociation",697548
+"all;g4run;libG4processes;non-virtual thunk to G4CascadeFunctions<G4CascadeKzeroPChannelData, G4KaonSampler>::~G4CascadeFunctions()",697873
+"all;g4run;libG4processes;G4Radioactivation::CalculateChainsFromParent",2094640
+"all;g4run;libG4processes;G4PairProductionRelModel::ComputeLPMfunctions",1036639443
+"all;g4run;libG4processes;G4CascadeData<30, 5, 15, 34, 58, 70, 89, 39, 42>::~G4CascadeData",698381
+"all;g4run;libG4processes;0x000000000083fd17",698445
+"all;g4run;libG4processes;std::vector<G4SBBremTable::STPoint, std::allocator<G4SBBremTable::STPoint> >::_M_default_append",10474516
+"all;g4run;libG4processes;G4PhysicsTableHelper::PreparePhysicsTable@plt",74017372
+"all;g4run;libG4processes;std::vector<G4Fragment, std::allocator<G4Fragment> >::operator=",28628962
+"all;g4run;libG4processes;G4PairProductionRelModel::ComputeCrossSectionPerAtom",56557993
+"all;g4run;libG4processes;std::_Rb_tree<G4Track*, std::pair<G4Track* const, bool>, std::_Select1st<std::pair<G4Track* const, bool> >, std::less<G4Track*>, std::allocator<std::pair<G4Track* const, bool> > >::_M_get_insert_unique_pos@plt",4189810
+"all;g4run;libG4processes;G4ScreeningMottCrossSection::FormFactor2UniformHelm",54473574
+"all;g4run;libG4processes;G4HadPhaseSpaceGenbod::Initialize",28629716
+"all;g4run;libG4processes;G4SeltzerBergerModel::SampleEnergyTransfer",7679205
+"all;g4run;libG4processes;0x0000000000a494dc",1396451
+"all;g4run;libG4processes;G4LundStringFragmentation::Loop_toFragmentString",4189303
+"all;g4run;libG4processes;G4LivermoreBremsstrahlungModel::InitialiseForElement",26536959
+"all;g4run;libG4processes;G4ENDFTapeRead::G4GetNumberOfEnergyGroups@plt",1396649
+"all;g4run;libG4processes;G4ElectroNuclearCrossSection::GetEquivalentPhotonEnergy",4886499
+"all;g4run;libG4processes;0x000000000083492a",11870166
+"all;g4run;libG4processes;G4LossTableManager::BuildPhysicsTable",2095237
+"all;g4run;libG4processes;0x0000000000a028af",2792574
+"all;g4run;libG4processes;G4eBremParametrizedModel::ComputeDXSectionPerAtom@plt",19549098
+"all;g4run;libG4processes;0x000000000037e030",4888262
+"all;g4run;libG4processes;G4InuclNuclei::setExitationEnergy",476906881
+"all;g4run;libG4processes;G4LorentzConvertor::backToTheLab",2792602
+"all;g4run;libG4processes;G4NucleiModel::zoneIntegralGaussian",70525654
+"all;g4run;libG4processes;G4ASTARStopping::Initialise",697143
+"all;g4run;libG4processes;G4VAtomDeexcitation::InitialiseAtomicDeexcitation@plt",698434
+"all;g4run;libG4processes;0x000000000037f6a0",13966772
+"all;g4run;libG4processes;0x00000000008b6d5c",698445
+"all;g4run;libG4processes;0x00000000008b6d1b",2093787
+"all;g4run;libG4processes;G4OpticalParameters::GetScintTrackInfo",3492064
+"all;g4run;libG4processes;std::_Rb_tree<G4Material const*, std::pair<G4Material const* const, G4PenelopeSamplingData*>, std::_Select1st<std::pair<G4Material const* const, G4PenelopeSamplingData*> >, std::less<G4Material const*>, std::allocator<std::pair<G4Material const* const, G4PenelopeSamplingData*> > >::_M_erase",5587162
+"all;g4run;libG4processes;G4CascadeData<30, 2, 8, 20, 34, 48, 62, 45, 50>::printXsec",698406
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKzeroNChannelData, G4KaonSampler>::~G4CascadeFunctions",1396801
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKminusPChannelData, G4KaonSampler>::printTable",262556112
+"all;g4run;libG4processes;0x00000000008aece6",2793743
+"all;g4run;libG4processes;G4PolarizedAnnihilationXS::DiceEpsilon@plt",8379168
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadePiZeroPChannelData, G4PionNucSampler>::printTable",11173995
+"all;g4run;libG4processes;G4ElementaryParticleCollider::collide",310087046
+"all;g4run;libG4processes;G4InuclCollider::~G4InuclCollider",90774291
+"all;g4run;libG4processes;0x000000000083bdeb",2094404
+"all;g4run;libG4processes;G4StatMFMacroCanonical::ChooseAandZ",9078101
+"all;g4run;libG4processes;G4NIELCalculator::G4NIELCalculator",94409973
+"all;g4run;libG4processes;G4IonParametrisedLossModel::BuildRangeVector@plt",697868
+"all;g4run;libG4processes;G4FTFParameters::Reset@plt",698318
+"all;g4run;libG4processes;G4B10GEMProbability::G4B10GEMProbability@plt",697510
+"all;g4run;libG4processes;G4SBBremTable::ClearSamplingTables",180849803
+"all;g4run;libG4processes;G4VTransitionRadiation::DumpInfo",18155281
+"all;g4run;libG4processes;G4Radioactivation::DecayIt",952544427
+"all;g4run;libG4processes;G4PAIxSection::GetEnergyTransfer",21648498
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeKzeroNChannelData, G4KaonSampler>::printTable",106140134
+"all;g4run;libG4processes;G4VDNAModel::~G4VDNAModel@plt",4886225
+"all;g4run;libG4processes;G4EmCalculator::FindEnergyLossProcess",112416787
+"all;g4run;libG4processes;G4F18GEMProbability::G4F18GEMProbability",2201926768
+"all;g4run;libG4processes;G4DNAGillespieDirectMethod::SetTimeStep@plt",698440
+"all;g4run;libG4processes;0x000000000083fd1b",1395346
+"all;g4run;libG4processes;0x0000000000380410",697908
+"all;g4run;libG4processes;G4fissionEvent::G4SmpNuDistDataU235",1396738
+"all;g4run;libG4processes;G4PAIySection::CallError",50275426
+"all;g4run;libG4processes;G4HadronicParameters::SetXSFactorHadronInelastic",86582924
+"all;g4run;libG4processes;G4PolarizedIonisationBhabhaXS::Initialize",10474890
+"all;g4run;libG4processes;G4PairProductionRelModel::ComputeDXSectionPerAtom",111026739
+"all;g4run;libG4processes;G4INCL::ParticleList::rotateMomentum@plt",8380426
+"all;g4run;libG4processes;0x00000000008b6bb5",698490
+"all;g4run;libG4processes;G4PhysicsVector::Value",698415
+"all;g4run;libG4processes;G4CascadeInterface::ApplyYourself",391858927
+"all;g4run;libG4processes;CLHEP::HepLorentzVector::boost@plt",698493
+"all;g4run;libG4processes;0x000000000037d4f0",1396835
+"all;g4run;libG4processes;G4BinaryCascade::Capture",3491530
+"all;g4run;libG4processes;MCGIDI_POPs_initial@plt",698351
+"all;g4run;libG4processes;G4LorentzConvertor::G4LorentzConvertor",25136492
+"all;g4run;libG4processes;0x0000000000ef790b",697993
+"all;g4run;libG4processes;G4Cache<CLHEP::HepLorentzVector*>::~G4Cache@plt",698278
+"all;g4run;libG4processes;G4NucleiModel::worthToPropagate",698540
+"all;g4run;libG4processes;G4VXTRenergyLoss::GetGasComplexFZ",3491803
+"all;g4run;libG4processes;G4ComponentBarNucleonNucleusXsc::LoadData",751334797
+"all;g4run;libG4processes;G4MolecularConfiguration::PrintState@plt",5584908
+"all;g4run;libG4processes;G4ChipsPionMinusInelasticXS::G4ChipsPionMinusInelasticXS",698415
+"all;g4run;libG4processes;G4HadElementSelector::G4HadElementSelector",8870994520
+"all;g4run;libG4processes;0x00000000008ad1af",6285161
+"all;g4run;libG4processes;G4ElasticHadrNucleusHE::GetQ2_2",972147468
+"all;g4run;libG4processes;0x00000000009f25ba",2791971
+"all;g4run;libG4processes;0x0000000000a1b3ee",2094897
+"all;g4run;libG4processes;G4ChipsProtonInelasticXS::G4ChipsProtonInelasticXS",4627676672
+"all;g4run;libG4processes;G4BetheBlochModel::G4BetheBlochModel",698035
+"all;g4run;libG4processes;G4PAIySection::SumOverIntervaldEdx",1396235
+"all;g4run;libG4processes;G4NeutronElectronElModel::~G4NeutronElectronElModel@plt",9078540
+"all;g4run;libG4processes;G4EquilibriumEvaporator::~G4EquilibriumEvaporator",23739564
+"all;g4run;libG4processes;0x00000000008e196b",698312
+"all;g4run;libG4processes;G4HadronicParameters::SetMinEnergyTransitionFTF_Cascade",698448
+"all;g4run;libG4processes;G4ElectroNuclearCrossSection::GetFunctions",4889049
+"all;g4run;libG4processes;G4NeutrinoElectronProcess::PostStepDoIt",2793770
+"all;g4run;libG4processes;G4StatMFChannel::GetFragments",6981962
+"all;g4run;libG4processes;G4IntraNucleiCascader::newCascade",209490807
+"all;g4run;libG4processes;0x000000000037e7c0",18854628
+"all;g4run;libG4processes;G4ParamExpTwoBodyAngDst<10>::GetCosTheta",698247
+"all;g4run;libG4processes;0x00000000008019bd",6981832
+"all;g4run;libG4processes;G4SBBremTable::ReadCompressedFile",97902626
+"all;g4run;libG4processes;0x00000000008aec9a",698414
+"all;g4run;libG4processes;G4CollisionNNToNNstar::G4CollisionNNToNNstar",1396814
+"all;g4run;libG4processes;std::_Rb_tree<G4ParallelWorldProcess*, std::pair<G4ParallelWorldProcess* const, G4String>, std::_Select1st<std::pair<G4ParallelWorldProcess* const, G4String> >, std::less<G4ParallelWorldProcess*>, std::allocator<std::pair<G4ParallelWorldProcess* const, G4String> > >::_M_get_insert_hint_unique_pos",150861504
+"all;g4run;libG4processes;G4StatMFMicroPartition::CalcPartitionProbability",4189654
+"all;g4run;libG4processes;G4VStateDependent::G4VStateDependent@plt",3491048
+"all;g4run;libG4processes;G4NeutronCaptureXS::Initialise",5587747
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeSigmaMinusNChannelData, G4KaonHypSampler>::getCrossSection",13960645
+"all;g4run;libG4processes;G4LEPTSVibExcitationModel::G4LEPTSVibExcitationModel@plt",6284958
+"all;g4run;libG4processes;G4NucleiModel::~G4NucleiModel",17456910
+"all;g4run;libG4processes;G4CascadeData<31, 4, 18, 55, 76, 20, 34, 0, 0>::print@plt",698248
+"all;g4run;libG4processes;G4O15GEMProbability::G4O15GEMProbability",6284817
+"all;g4run;libG4processes;G4HadronNucleonXsc::HadronNucleonXscVU",654973783
+"all;g4run;libG4processes;G4HadronNucleonXsc::HadronNucleonXscNS",20707426745
+"all;g4run;libG4processes;G4NeutronCaptureXS::RetrieveVector",58653075
+"all;g4run;libG4processes;std::vector<bool, std::allocator<bool> >::_M_fill_insert",661347813
+"all;g4run;libG4processes;G4MoleculeTable::PrepareMolecularConfiguration@plt",33518330
+"all;g4run;libG4processes;G4eBremParametrizedModel::ComputeCrossSectionPerAtom",60053646
+"all;g4run;libG4processes;G4ElementaryParticleCollider::fillOutgoingMasses",4190797
+"all;g4run;libG4processes;G4CascadeCoalescence::tryClusters",25836453
+"all;g4run;libG4processes;0x00000000009ed5c4",698444
+"all;g4run;libG4processes;0x000000000096ef25",2793354
+"all;g4run;libG4processes;G4CascadeFunctions<G4CascadeOmegaMinusPChannelData, G4KaonHypSampler>::getMultiplicity",4885768
+"all;g4run;libG4processes;G4CascadParticle::getPathToTheNextZone",29327192
+"all;g4run;libG4processes;G4WilsonAblationModel::SelectSecondariesByEvaporation",698544
+"all;g4run;libG4processes;G4FissionProductYieldDist::G4GetFission",2094854
+"all;g4run;libG4processes;G4BinaryCascade::CheckChargeAndBaryonNumber",5586892
+"all;g4run;libG4processes;G4FTFSettingDefaultHDP::G4FTFSettingDefaultHDP",1396392
+"all;g4run;libG4processes;G4UrbanMscModel::InitialiseModelCache",3491762
+"all;g4run;libG4processes;G4MuonMinusCapture::ProcessDescription",6981965
+"all;g4run;libG4processes;G4CascadeCheckBalance::baryonOkay",27234863
+"all;g4run;libG4processes;G4NucleiModel::choosePointAlongTraj",33520183
+"all;g4run;libG4processes;G4ScoreSplittingProcess::AtRestGetPhysicalInteractionLength",11869997
+"all;g4run;libG4processes;G4RToEConvForGamma::G4RToEConvForGamma",7681025
+"all;g4run;libG4processes;G4ParallelWorldScoringProcess::IsAtRestRequired",274475235
+"all;g4run;libG4processes;G4OpticalParameters::GetScintVerboseLevel",50978790
+"all;g4run;libG4processes;G4HadPhaseSpaceNBodyAsai::GenerateMultiBody",698440
+"all;g4run;libG4processes;G4N14GEMChannel::~G4N14GEMChannel",1396388
+"all;g4run;libG4processes;G4InuclNuclei::G4InuclNuclei",2094794
+"all;g4run;libG4processes;G4TransparentRegXTRadiator::ProcessDescription",2793169
+"all;g4run;libG4processes;0x0000000000838e4b",6285221
+"all;g4run;libG4processes;G4Solver<G4StatMFMacroChemicalPotential>::Brent",6284285
+"all;g4run;libG4processes;G4LivermoreComptonModel::SampleSecondaries",69826515
+"all;g4run;libG4processes;std::__final_insertion_sort<__gnu_cxx::__normal_iterator<G4InuclElementaryParticle*, std::vector<G4InuclElementaryParticle, std::allocator<G4InuclElementaryParticle> > >, __gnu_cxx::__ops::_Iter_comp_iter<G4ParticleLargerEkin> >",2095239
+"all;g4run;libG4processes;G4VEnergyLossProcess::RetrievePhysicsTable",6982623
+"all;g4run;libG4processes;G4ParallelWorldScoringProcess::CopyStep",469934568
+"all;g4run;libG4processes;G4CascadeData<30, 5, 13, 22, 31, 39, 46, 51, 58>::print",44687730
+"all;g4run;libG4processes;G4ElementaryParticleCollider::generateOutgoingPartTypes",2095313
+"all;g4run;libG4processes;0x0000000000838e4f",11871901
+"all;g4run;libG4processes;G4CascadeFinalStateAlgorithm::FillDirManyBody",13966493
+"all;g4run;libG4processes;G4CascadeDeexciteBase::makeFragment",340055680
+"all;g4run;libG4processes;std::_Rb_tree<double, std::pair<double const, G4DNAMolecularReactionData const*>, std::_Select1st<std::pair<double const, G4DNAMolecularReactionData const*> >, std::less<double>, std::allocator<std::pair<double const, G4DNAMolecularReactionData const*> > >::_M_get_insert_unique_pos@plt",50275599
+"all;g4run;libG4processes;G4NeutronElectronElXsc::GetElementCrossSection",15362181
+"all;g4run;libG4processes;G4PAIySection::IntegralPlasmon",127796727
+"all;g4run;libG4processes;G4HadronicParameters::SetMaxEnergyTransitionQGS_FTF",28631322
+"all;g4run;libG4processes;0x0000000000a3f6af",1396857
+"all;g4run;libG4processes;G4GammaNuclearXS::FindDirectoryPath",2793679
+"all;g4run;libG4processes;G4HETCFragment::G4HETCFragment@plt",148735892
+"all;g4run;libG4processes;G4CollisionOutput::operator=",303045491
+"all;g4run;libG4processes;G4ScoreSplittingProcess::CopyStepStart",6284906
+"all;g4run;libG4processes;G4EMDissociationSpectrum::GetGeneralE2Spectrum",39797544
+"all;g4run;libG4processes;0x0000000000833f67",697722
+"all;g4run;libG4processes;G4SBBremTable::G4SBBremTable",15363526
+"all;g4run;libvtkFiltersFlowPaths-9",
+"all;g4run;libvtkFiltersFlowPaths-9;std::vector<double, std::allocator<double> >::_M_fill_insert",698479
+"all;g4run;libG4particles",
+"all;g4run;libG4particles;G4Upsilon::Definition",698366
+"all;g4run;libG4particles;strlen@plt",6983494
+"all;g4run;libG4particles;0x000000000006f81f",4887775
+"all;g4run;libG4particles;G4Alpha::Definition@plt",25137415
+"all;g4run;libG4particles;G4ExcitedDeltaConstructor::AddNGammaMode",2093889
+"all;g4run;libG4particles;0x0000000000081551",698430
+"all;g4run;libG4particles;0x000000000006c63d",12568979
+"all;g4run;libG4particles;G4KaonPlus::Definition",100563517
+"all;g4run;libG4particles;G4NucleiPropertiesTheoreticalTable::GetAtomicMass",35609961
+"all;g4run;libG4particles;CLHEP::MixMaxRng::iterate@plt",6284943
+"all;g4run;libG4particles;0x0000000000081554",697982
+"all;g4run;libG4particles;G4DecayTable::~G4DecayTable",698415
+"all;g4run;libG4particles;G4PionPlus::Definition",90085466
+"all;g4run;libG4particles;G4DecayProducts::~G4DecayProducts",698248
+"all;g4run;libG4particles;G4ExcitedMesonConstructor::AddKStar2PiMode@plt",25837660
+"all;g4run;libG4particles;G4DynamicParticle::Set4Momentum",1360815520
+"all;g4run;libG4particles;G4XibZero::Definition",2793853
+"all;g4run;libG4particles;0x000000000006f806",6983235
+"all;g4run;libG4particles;G4MesonConstructor::~G4MesonConstructor",11870268
+"all;g4run;libG4particles;G4VIsotopeTable::G4VIsotopeTable",698419
+"all;g4run;libG4particles;0x000000000006f808",4887394
+"all;g4run;libG4particles;G4PhaseSpaceDecayChannel::TwoBodyDecayIt",698371
+"all;g4run;libG4particles;G4AntiHyperTriton::Definition",1396926
+"all;g4run;libG4particles;G4IonTable::GetIonName",698271
+"all;g4run;libG4particles;0x000000000006cd3a",22345944
+"all;g4run;libG4particles;G4Gamma::GammaDefinition@plt",25836068
+"all;g4run;libG4particles;G4AntiLambdacPlus::Definition",4888188
+"all;g4run;libG4particles;G4IonTable::FindIonInMaster",11173484
+"all;g4run;libG4particles;G4DynamicParticle::G4DynamicParticle",1396745
+"all;g4run;libG4particles;G4NucleiPropertiesTheoreticalTable::ElectronicBindingEnergy",92171574
+"all;g4run;libG4particles;G4KaonMinus::Definition",63553060
+"all;g4run;libG4particles;0x00000000000631aa",2793020
+"all;g4run;libG4particles;0x00000000000631ad",3492207
+"all;g4run;libG4particles;G4DynamicParticle::operator=",76099456
+"all;g4run;libG4particles;G4NucleiProperties::GetNuclearMass",699681827
+"all;g4run;libG4particles;G4IonTable::FindIon",55165751
+"all;g4run;libG4particles;std::_Rb_tree_decrement@plt",9776342
+"all;g4run;libG4particles;G4PionMinus::Definition",117317793
+"all;g4run;libG4particles;G4PhaseSpaceDecayChannel::ManyBodyDecayIt",302512453
+"all;g4run;libG4particles;G4DecayProducts::operator=",698453
+"all;g4run;libG4particles;G4IonTable::GetIon",21644485
+"all;g4run;libG4particles;G4MesonConstructor::ConstructLightMesons",78912781
+"all;g4run;libG4particles;0x00000000000737e7",698492
+"all;g4run;libG4particles;G4PhaseSpaceDecayChannel::ThreeBodyDecayIt",2792630
+"all;g4run;libG4particles;G4MuonDecayChannel::DecayIt",698406
+"all;g4run;libG4particles;G4NucleiPropertiesTheoreticalTable::IsInTable",194122343
+"all;g4run;libG4particles;0x00000000000737e9",696930
+"all;g4run;libG4particles;G4LambdacPlus::Definition",1696837471
+"all;g4run;libG4particles;G4AntiAlpha::Definition",698456
+"all;g4run;libG4particles;G4Electron::Definition",71921749
+"all;g4run;libG4particles;std::_Rb_tree<G4String, std::pair<G4String const, G4ParticleDefinition*>, std::_Select1st<std::pair<G4String const, G4ParticleDefinition*> >, std::less<G4String>, std::allocator<std::pair<G4String const, G4ParticleDefinition*> > >::_M_get_insert_unique_pos",87281548
+"all;g4run;libG4particles;G4MesonConstructor::ConstructCharmMesons",698464
+"all;g4run;libG4particles;std::_Rb_tree<int, std::pair<int const, G4ParticleDefinition*>, std::_Select1st<std::pair<int const, G4ParticleDefinition*> >, std::less<int>, std::allocator<std::pair<int const, G4ParticleDefinition*> > >::_M_get_insert_unique_pos@plt",698372
+"all;g4run;libG4particles;G4PhaseSpaceDecayChannel::IsOKWithParentMass",698404
+"all;g4run;libG4particles;0x000000000006f80c",1927281475
+"all;g4run;libG4particles;G4NucleiPropertiesTheoreticalTable::GetIndex",1537600137
+"all;g4run;libG4particles;G4Electron::Definition@plt",21646887
+"all;g4run;libG4particles;G4NuclideTable::GetIsotope",419663882
+"all;g4run;libG4particles;G4BaryonConstructor::ConstructStrangeBaryons",2095329
+"all;g4run;libG4particles;G4ExcitedSigmaConstructor::AddLambdaStarPiMode@plt",57261067
+"all;g4run;libG4particles;G4JPsi::Definition",63551748
+"all;g4run;libG4particles;std::vector<std::function<void ()>, std::allocator<std::function<void ()> > >::_M_realloc_insert<G4ThreadLocalSingleton<G4String>::G4ThreadLocalSingleton()::{lambda()#1}>@plt",8380549
+"all;g4run;libG4particles;G4ParticleDefinition::DumpTable",863893163
+"all;g4run;libG4particles;G4AntiTriton::Definition",4189317
+"all;g4run;libG4particles;G4Gamma::Definition",17457411
+"all;g4run;libG4particles;0x000000000006bd68",42050405
+"all;g4run;libG4particles;0x0000000000081316",205291476
+"all;g4run;libG4particles;G4AntiOmegacZero::Definition",698450
+"all;g4run;libG4particles;G4DynamicParticle::SetMomentum",167585449
+"all;g4run;libG4particles;G4AntiNeutrinoTau::Definition",356810100
+"all;g4run;libG4particles;std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>",698467
+"all;g4run;libG4particles;G4TauMinus::Definition",698504
+"all;g4run;libG4particles;G4DynamicParticle::SetDefinition",177359945
+"all;g4run;libG4particles;G4ParticlesWorkspace::InitialiseWorkspace",13266580
+"all;g4run;libG4particles;G4AntiDMesonZero::Definition",45539292
+"all;g4run;libG4particles;G4HyperTriton::HyperTritonDefinition",2095113
+"all;g4run;libG4particles;G4PionRadiativeDecayChannel::DecayIt",3491676
+"all;g4run;libG4particles;0x000000000006c848",42592656
+"all;g4run;libG4particles;G4SigmaMinus::Definition",4190476
+"all;g4run;libG4particles;G4NucleiPropertiesTheoreticalTable::GetNuclearMass",249525909
+"all;g4run;libG4particles;G4AntiDoubleHyperH4::Definition",2095280
+"all;g4run;libG4particles;0x00000000000737eb",2095148
+"all;g4run;libG4particles;G4DecayTable::G4DecayTable",1396800
+"all;g4run;libG4particles;G4ParticleDefinition::operator!=",83793051
+"all;g4run;libG4particles;G4NucleiPropertiesTableAME12::GetAtomicMass",698401
+"all;g4run;libG4particles;0x00000000000737ef",4190270
+"all;g4run;libG4particles;G4ExcitedMesonConstructor::GetQuarkContents@plt",698377
+"all;g4run;libG4particles;G4SigmaPlus::Definition",3490915
+"all;g4run;libG4particles;G4ChargedGeantino::Definition",163403417
+"all;g4run;libG4particles;G4Proton::Definition",698475
+"all;g4run;libG4particles;G4OmegacZero::Definition",1909415168
+"all;g4run;libG4particles;G4IonTable::GetNucleusByEncoding",102197844
+"all;g4run;libG4particles;G4XiMinus::Definition",1396869
+"all;g4run;libG4particles;G4AntiProton::AntiProtonDefinition@plt",4888450
+"all;g4run;libG4particles;G4IonTable::AddProcessManager",698509
+"all;g4run;libG4particles;0x000000000008127d",3492061
+"all;g4run;libG4particles;G4DynamicParticle::AllocateElectronOccupancy",202498088
+"all;g4run;libG4particles;0x00000000000631a1",9775463
+"all;g4run;libG4particles;G4DecayTableMessenger::~G4DecayTableMessenger@plt",16758023
+"all;g4run;libG4particles;0x000000000006bd6f",1395793
+"all;g4run;libG4particles;0x00000000000631a6",698294
+"all;g4run;libG4particles;G4Alpha::Definition",2793306
+"all;g4run;libG4particles;0x00000000000631a8",6284078
+"all;g4run;libG4particles;0x000000000008131f",100553379
+"all;g4run;libG4particles;G4ParticleDefinition::GetSubInstanceManager",5587502
+"all;g4run;libG4particles;0x000000000006c82a",2793184
+"all;g4run;libG4particles;G4ParticleDefinition::G4ParticleDefinition",697578
+"all;g4run;libG4particles;G4PhaseSpaceDecayChannel::DecayIt",1396818
+"all;g4run;libG4particles;G4BaryonConstructor::ConstructCharmBaryons",4190983
+"all;g4run;libG4particles;G4GenericIon::Definition",1396717
+"all;g4run;libG4particles;G4ExcitedBaryonConstructor::ConstructAntiParticle",1396916
+"all;g4run;libG4particles;G4SigmabZero::Definition",1396587

@@ -32,20 +32,46 @@
         <main class="tab-content">
             <!-- Performance Reports in HTML Tables -->
             <div id="performance-report" class="visual-tab-content">
-                <!--Button to download CSV file -->
-                <div id="top-container-report">
-                    <select id="report-selection"></select>
-                    <button type="submit" id="csv-download">Download CSV</button>
+
+                <div class="report-diff-or-raw">
+                    <button class="report-type" onclick="loadReport(this,'diff-reports')"
+                        id="default-report-type">Difference-Reports</button>
+                    <button class="report-type" onclick="loadReport(this,'raw-reports')">Raw-Reports</button>
                 </div>
-                <!-- Implement value based filtering for the table-->
-                <div id="threshold_div">
-                    <input class="threshold_elem" type="number" id="l_threshold" placeholder="Lower Threshold">
-                    <input class="threshold_elem" type="number" id="h_threshold" placeholder="Higher Threshold">
-                    <select class="threshold_elem" id="column_fields"></select>
-                    <button class="threshold_elem" id="apply-btn">Apply</button>
-                    <button class="threshold_elem" id="reset-filter">Reset</button>
+
+                <div class="report-type-content" id="raw-reports">
+                    <!--Button to download CSV file -->
+                    <div id="top-container-report">
+                        <select id="report-selection"></select>
+                        <button type="submit" id="csv-download">Download CSV</button>
+                    </div>
+                    <!-- Implement value based filtering for the table-->
+                    <div id="threshold_div">
+                        <input class="threshold_elem" type="number" id="l_threshold" placeholder="Lower Threshold">
+                        <input class="threshold_elem" type="number" id="h_threshold" placeholder="Higher Threshold">
+                        <select class="threshold_elem" id="column_fields"></select>
+                        <button class="threshold_elem" id="apply-btn">Apply</button>
+                        <button class="threshold_elem" id="reset-filter">Reset</button>
+                    </div>
+                    <div id="html-table"></div>
                 </div>
-                <div id="html-table"></div>
+
+                <div class="report-type-content" id="diff-reports">
+                    <!--Button to download CSV file -->
+                    <div id="diff-top-container-report">
+                        <select id="diff-report-selection"></select>
+                        <button type="submit" id="diff-csv-download">Download CSV</button>
+                    </div>
+                    <!-- Implement value based filtering for the table-->
+                    <div id="diff-threshold_div">
+                        <input class="diff-threshold_elem" type="number" id="diff-l_threshold" placeholder="Lower Threshold">
+                        <input class="diff-threshold_elem" type="number" id="diff-h_threshold" placeholder="Higher Threshold">
+                        <select class="diff-threshold_elem" id="diff-column_fields"></select>
+                        <button class="diff-threshold_elem" id="diff-apply-btn">Apply</button>
+                        <button class="diff-threshold_elem" id="diff-reset-filter">Reset</button>
+                    </div>
+                    <div id="diff-html-table"></div>
+                </div>
             </div>
 
             <!-- Flamegraphs Tab -->
@@ -88,8 +114,10 @@
     </div>
 </body>
 <script src="./script.js"></script>
-<script src="./Scripts/treemap.js" type="module"></script>
+<script src="./Scripts/diff-report.js" type="module"></script>
+<script src="./Scripts/raw-report.js" type="module"></script>
 <script src="./Scripts/flamegraph.js" type="module"></script>
-<script src="./Scripts/csv_to_table.js" type="module"></script>
+<script src="./Scripts/treemap.js" type="module"></script>
+
 
 </html>

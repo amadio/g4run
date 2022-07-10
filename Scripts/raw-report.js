@@ -1,9 +1,18 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
-
-let csv_report = "pythia-cpu.csv";
-
+let csv_report = "branches";
 // Store all the report files in this array
-const all_reports = ["pythia-cpu.csv", "pythia-cache.csv", "pythia-cpu-diff.csv"];
+const all_reports =
+    [
+        'branches', 'cpu-kernel-stacks',
+        'cpu-kernel', 'cpu-stacks',
+        'divisions', 'faults',
+        'l2', 'ibs-fetch',
+        'ibs-op', 'ic',
+        'load-store', 'perf',
+        'pythia-cache',
+        'pythia-cpu', 'tlb',
+        'uops-2', 'uops'
+    ];
 
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
@@ -31,7 +40,7 @@ const name_fields = numeric_columns => {
 }
 
 // Convert the CSV into Tables
-const tabulate = (data, table_columns, numeric_columns) => {
+const tabulate = (data, table_columns,numeric_columns,max_array) => {
     const table = d3.select("#html-table").append("table").attr("id", "report-table");
     const thead = table.append("thead")
     const tbody = table.append("tbody");
@@ -73,7 +82,7 @@ const tabulate = (data, table_columns, numeric_columns) => {
     const cells = rows.selectAll('td')
         .data(row => (
             table_columns.map(column => {
-                if (numeric_columns.includes(column) && column != "CPI" && column != "IPC" && column != "IPB") {
+                if (column == "cycles" || column == "instructions" || column == "Branch_Miss" || column == "cycles_ukP" || column == "L1_dcache" || column == "L1_icache_load_misses") {
                     return { column: column, value: row[column] + "%" }
                 }
                 return { column: column, value: row[column] };
@@ -83,22 +92,14 @@ const tabulate = (data, table_columns, numeric_columns) => {
         .enter()
         .append('td')
         .text(d => d.value).style("background-color", d => {
-            if (d.column == "CPI")
-                return d3.scaleLinear().domain([0.25, 1, 2]).range(["green", "white", "red"])(parseFloat(d.value));
-            if (d.column == "cycles" || d.column == "instructions")
-                return d3.scaleLinear().domain([0.1, 1.5, 2.5]).range(["green", "white", "red"])(parseFloat(d.value));
-            if (d.column == "IPC")
-                return d3.scaleLinear().domain([1, 1.75, 2.5]).range(["green", "white", "red"])(parseFloat(d.value));
-            if (d.column == "IPB")
-                return d3.scaleLinear().domain([5, 7, 8.5]).range(["green", "white", "red"])(parseFloat(d.value));
-            if (d.column == "Branch_Miss")
-                return d3.scaleLinear().domain([0, 2, 4]).range(["green", "white", "red"])(parseFloat(d.value));
-        });
+            if(numeric_columns.indexOf(d.column)!=-1){
+                return d3.scaleLinear().domain([max_array[numeric_columns.indexOf(d.column)][0]/100,75*max_array[numeric_columns.indexOf(d.column)][1]/100,95*max_array[numeric_columns.indexOf(d.column)][1]/100]).range(["green","white","red"])(parseFloat(d.value));
+        }});
 }
 
 // Load the CSV data into HTML using d3
 const load_CSV = file => {
-    d3.csv(`Data/Table_Reports/${file}`).then(data => {
+    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`).then(data => {
         let table_columns = data.columns;
         let numeric_columns = [];
 
@@ -117,17 +118,23 @@ const load_CSV = file => {
         if (numeric_columns.includes("cycles") && numeric_columns.includes("instructions")) {
             let cycles_sum = d3.sum(data, d => d.cycles);
             let instructions_sum = d3.sum(data, d => d.instructions);
-
-            data.filter(d => {
+            data.filter(d => 
+                {
                 d.CPI = Math.round(d.cycles / d.instructions * 1000) / 1000;
                 d.IPC = Math.round(d.instructions / d.cycles * 1000) / 1000;
                 d.IPB = Math.round(d.instructions / d.branches * 1000) / 1000;
                 d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
                 d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
             });
-
-            table_columns.splice(table_columns.indexOf("instructions") + 1, 0, "CPI", "IPC", "IPB");
-            numeric_columns.splice(numeric_columns.indexOf("instructions") + 1, 0, "CPI", "IPC", "IPB");
+            
+            let derived_metrics = [];
+            if (numeric_columns.includes("branches")) {
+                derived_metrics = ["CPI", "IPC", "IPB"];
+            } else {
+                derived_metrics = ["CPI", "IPC"];
+            }
+            table_columns.splice(table_columns.indexOf("instructions") + 1, 0, ...derived_metrics);
+            numeric_columns.splice(numeric_columns.indexOf("instructions") + 1, 0, ...derived_metrics);
 
         } else if (numeric_columns.includes("instructions")) {
             let instructions_sum = d3.sum(data, d => d.instructions);
@@ -136,10 +143,16 @@ const load_CSV = file => {
                 d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
             })
         } else if (numeric_columns.includes("cycles")) {
-            let instructions_sum = d3.sum(data, d => d.cycles);
+            let cycles_sum = d3.sum(data, d => d.cycles);
 
             data.filter(d => {
                 d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
+            })
+        } else if (numeric_columns.includes("cycles_ukP")) {
+            let cycles_sum = d3.sum(data, d => d.cycles_ukP);
+
+            data.filter(d => {
+                d.cycles_ukP = Math.round((d.cycles_ukP * 100 / cycles_sum) * 100) / 100;
             })
         }
 
@@ -158,11 +171,10 @@ const load_CSV = file => {
         }
 
         if (numeric_columns.includes("L1_dcache_loads") && numeric_columns.includes("L1_dcache_load_misses")) {
-
+            let L1_icache_load_misses_sum = d3.sum(data, d => d.L1_icache_load_misses);
             data.filter(d => {
                 d.L1_dcache = Math.round((d.L1_dcache_load_misses * 100 / d.L1_dcache_loads) * 100) / 100;
-                // delete d.L1_dcache_load_misses;
-                // delete d.L1_dcache_loads;
+                d.L1_icache_load_misses = Math.round((d.L1_icache_load_misses * 100 / L1_icache_load_misses_sum) * 100) / 100;
             });
 
             table_columns.splice(table_columns.indexOf("instructions") + 1, 0, "L1_dcache");
@@ -171,13 +183,27 @@ const load_CSV = file => {
             numeric_columns = numeric_columns.filter(d => d !== "L1_dcache_loads" && d !== "L1_dcache_load_misses");
         }
         name_fields(numeric_columns);
-        tabulate(data, table_columns, numeric_columns);
+        const max_array = [];
+        numeric_columns.forEach((i) => {
+            const value_array= [];
+            data.filter(d => {
+                if(d['cycles']==0 || d['instructions']==0){
+                    return false;
+                }
+                if(!isNaN(d[i]) && isFinite(d[i])){
+                    value_array.push(d[i]);
+                }
+            })
+            
+            max_array.push(d3.extent(value_array));
+        });
+        tabulate(data, table_columns, numeric_columns,max_array);
     });
 };
 
 // Download the CSV file on clicking the Button
 document.getElementById("csv-download").addEventListener("click", () => {
-    window.open(`Data/Table_Reports/${csv_report}`);
+    window.open(`Data/Table_Reports/raw-reports/${csv_report}.csv`);
 })
 
 // Update the page on selecting the other Data File (CSV) for generating reports
@@ -194,7 +220,7 @@ report_selection();
 
 // Apply Button for Thresholds
 document.getElementById("apply-btn").addEventListener("click", () => {
-    d3.select("table").remove();
+    d3.select("#report-table").remove();
     load_CSV(csv_report);
 })
 
@@ -208,3 +234,4 @@ document.getElementById("reset-filter").addEventListener("click", () => {
     d3.select("#html-table").text("");
     load_CSV(csv_report);
 })
+
