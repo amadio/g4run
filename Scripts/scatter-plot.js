@@ -101,13 +101,13 @@ const render = (data, extent_array, numeric_columns) => {
     // Remove the extra copy created while turning the brush off. 
     d3.select(d3.selectAll('.chartArea')._groups[0][1]).remove();
     //For X-Axis
-    const x = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(x_Axis)]).range([0, width]);
+    const x = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(x_Axis)]).range([0, width-100]);
 
     const xAxis = plot_area.append("g").attr('transform', `translate(0,${height})`).call(d3.axisBottom(x));
 
-    const y = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(y_Axis)]).range([height, 0]);
+    const y = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(y_Axis)]).range([height, -5]);
 
-    const yAxis = plot_area.append("g")
+    const yAxis = plot_area.append("g").attr('transform', `translate(1,0)`)
         .call(d3.axisLeft(y));
 
     const tooltip = d3.select("#scatter-plot")
