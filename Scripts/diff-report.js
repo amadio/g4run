@@ -45,7 +45,7 @@ const tabulate = (data, table_columns) => {
     l_input = document.getElementById("diff-l_threshold");
     h_filter = parseFloat(h_input.value);
     l_filter = parseFloat(l_input.value);
-  
+
     // Count to check if there are no available entries
     let count = 0;
     const rows = tbody.selectAll("tr").data(data.filter(d => {
@@ -54,7 +54,7 @@ const tabulate = (data, table_columns) => {
         }
 
         let compare_value = d[selectField];
-       
+
         if (h_filter >= 0 && l_filter >= 0) {
             if (compare_value >= l_filter && compare_value <= h_filter) {
                 count++;
@@ -87,9 +87,9 @@ const tabulate = (data, table_columns) => {
             if (d.column.includes("Diff"))
                 return d3.scaleLinear().domain([-0.5, 0, 0.5]).range(["green", "white", "red"])(parseFloat(d.value));
             if (d.column.includes("Ratio"))
-                return d3.scaleLinear().domain([0,1,2]).range(["green", "white", "red"])(parseFloat(d.value));
+                return d3.scaleLinear().domain([0, 1, 2]).range(["green", "white", "red"])(parseFloat(d.value));
             if (d.column.includes("Instructions"))
-                return d3.scaleLinear().domain([0,1,2]).range(["green", "white", "red"])(parseFloat(d.value));
+                return d3.scaleLinear().domain([0, 1, 2]).range(["green", "white", "red"])(parseFloat(d.value));
         });
 }
 

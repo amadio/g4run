@@ -242,23 +242,26 @@ object {
     position: absolute;
 }
 
-.scatter-plot-customization{
+.scatter-plot-customization {
     display: flex;
 }
-#scatter-plot-type{
+
+#scatter-plot-type {
     display: flex;
     justify-content: space-between;
 }
-#scatter-plot-type>select{
+
+#scatter-plot-type>select {
     height: 20px;
 }
 
-#toggle-container{
+#toggle-container {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
+
 .toggle {
     appearance: none;
     width: 50px;
@@ -272,9 +275,9 @@ object {
     cursor: pointer;
     background-color: #707070;
     transition: background-color ease 0.3s;
-  }
-  
-  .toggle:before {
+}
+
+.toggle:before {
     text-align: center;
     content: "on off";
     display: block;
@@ -293,16 +296,16 @@ object {
     text-indent: -20px;
     word-spacing: 25px;
     color: #fff;
-    text-shadow: -1px -1px rgba(0,0,0,0.15);
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
-  }
-  
-  .toggle:checked {
+}
+
+.toggle:checked {
     background-color: #4c5cd9;
-  }
-  
-  .toggle:checked:before {
+}
+
+.toggle:checked:before {
     left: 30px;
-  }
+}

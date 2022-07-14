@@ -18,11 +18,11 @@
             </div>
             <div class="visual-tab-bar">
                 <!-- Tabs for Data Visuals and Reports -->
-                <button class="visual-tabs" onclick="openTab( this,'performance-report')">Report</button>
+                <button class="visual-tabs" onclick="openTab( this,'performance-report')"
+                    id="default-tab">Report</button>
                 <button class="visual-tabs" onclick="openTab(this,'flamegraph-tab')">Flamegraph</button>
                 <button class="visual-tabs" onclick="openTab(this,'treemaps-tab')">TreeMaps</button>
-                <button class="visual-tabs" onclick="openTab(this,'scatter-plot-tab')"
-                    id="default-tab">Scatter-Plot</button>
+                <button class="visual-tabs" onclick="openTab(this,'scatter-plot-tab')">Scatter-Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'spider-plot')">Spider-Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
 
@@ -108,9 +108,9 @@
                     <div id="scatter-plot-type">
                         <select id="scatter-plot-selection"></select>
                         <div id="toggle-container">
-                        <p><b>Selection Mode</b></p>
-                        <input class="toggle" type="checkbox" id="selection-mode-toggle"/>
-                    </div>
+                            <p><b>Selection Mode</b></p>
+                            <input class="toggle" type="checkbox" id="selection-mode-toggle" />
+                        </div>
                     </div>
                     <div id="scatter-plot-customization">
                         <label>&nbsp;&nbsp;X-Axis :&nbsp;&nbsp;</label>
@@ -123,13 +123,13 @@
                         <select id="scatter-plot-color" class="scatter-selection-fields"></select>
                     </div>
                 </div>
-                    <div id="scatter-plot"></div>
-                </div>
-                <div id="spider-plot" class="visual-tab-content">
-                </div>
-                <div id="sunburst" class="visual-tab-content">
-                    <h1>SB</h1>
-                </div>
+                <div id="scatter-plot"></div>
+            </div>
+            <div id="spider-plot" class="visual-tab-content">
+            </div>
+            <div id="sunburst" class="visual-tab-content">
+                <h1>SB</h1>
+            </div>
         </main>
     </div>
 </body>

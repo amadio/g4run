@@ -40,8 +40,8 @@ const name_fields = numeric_columns => {
 }
 
 // Convert the CSV into Tables
-const tabulate = (data, table_columns,numeric_columns,extent_array) => {
-    
+const tabulate = (data, table_columns, numeric_columns, extent_array) => {
+
     const table = d3.select("#html-table").append("table").attr("id", "report-table");
     const thead = table.append("thead")
     const tbody = table.append("tbody");
@@ -93,10 +93,11 @@ const tabulate = (data, table_columns,numeric_columns,extent_array) => {
         .enter()
         .append('td')
         .text(d => d.value).style("background-color", d => {
-            if(numeric_columns.indexOf(d.column)!=-1){
+            if (numeric_columns.indexOf(d.column) != -1) {
                 const max_col = extent_array[numeric_columns.indexOf(d.column)]
-                return d3.scaleLinear().domain([max_col[0]/100,75*max_col[1]/100,95*max_col[1]/100]).range(["green","white","red"])(parseFloat(d.value));
-        }});
+                return d3.scaleLinear().domain([max_col[0] / 100, 75 * max_col[1] / 100, 95 * max_col[1] / 100]).range(["green", "white", "red"])(parseFloat(d.value));
+            }
+        });
 }
 
 // Load the CSV data into HTML using d3
@@ -120,15 +121,14 @@ const load_CSV = file => {
         if (numeric_columns.includes("cycles") && numeric_columns.includes("instructions")) {
             let cycles_sum = d3.sum(data, d => d.cycles);
             let instructions_sum = d3.sum(data, d => d.instructions);
-            data.filter(d => 
-                {
+            data.filter(d => {
                 d.CPI = Math.round(d.cycles / d.instructions * 1000) / 1000;
                 d.IPC = Math.round(d.instructions / d.cycles * 1000) / 1000;
                 d.IPB = Math.round(d.instructions / d.branches * 1000) / 1000;
                 d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
                 d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
             });
-            
+
             let derived_metrics = [];
             if (numeric_columns.includes("branches")) {
                 derived_metrics = ["CPI", "IPC", "IPB"];
@@ -187,19 +187,19 @@ const load_CSV = file => {
         name_fields(numeric_columns);
         const extent_array = [];
         numeric_columns.forEach((i) => {
-            const value_array= [];
+            const value_array = [];
             data.filter(d => {
-                if(d['cycles']==0 || d['instructions']==0){
+                if (d['cycles'] == 0 || d['instructions'] == 0) {
                     return false;
                 }
-                if(!isNaN(d[i]) || isFinite(d[i])){
+                if (!isNaN(d[i]) || isFinite(d[i])) {
                     value_array.push(d[i]);
                 }
             })
-            
+
             extent_array.push(d3.extent(value_array));
         });
-        tabulate(data, table_columns, numeric_columns,extent_array);
+        tabulate(data, table_columns, numeric_columns, extent_array);
     });
 };
 

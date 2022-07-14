@@ -124,7 +124,7 @@ const render = (data, extent_array, numeric_columns) => {
             .style("opacity", 1)
     }
 
-    const mousemove =  (event, d) => {
+    const mousemove = (event, d) => {
         tooltip
             .html(d[x_Axis] + " Spider-Man Coming Soon !")
             .style("left", (event.x) + 20 + "px")
