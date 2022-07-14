@@ -230,3 +230,79 @@ object {
     font-size: 12px;
     margin-top: 1px;
 }
+
+#scatter-plot {
+    margin: 10px;
+    display: block;
+    height: 70vh;
+    background-color: antiquewhite;
+}
+
+.tooltip {
+    position: absolute;
+}
+
+.scatter-plot-customization{
+    display: flex;
+}
+#scatter-plot-type{
+    display: flex;
+    justify-content: space-between;
+}
+#scatter-plot-type>select{
+    height: 20px;
+}
+
+#toggle-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.toggle {
+    appearance: none;
+    width: 50px;
+    height: 25px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #707070;
+    transition: background-color ease 0.3s;
+  }
+  
+  .toggle:before {
+    text-align: center;
+    content: "on off";
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    left: 2px;
+    top: 2px;
+    right: 2px;
+    border-radius: 50%;
+    font: 10px/25px Helvetica;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: -20px;
+    word-spacing: 25px;
+    color: #fff;
+    text-shadow: -1px -1px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+  }
+  
+  .toggle:checked {
+    background-color: #4c5cd9;
+  }
+  
+  .toggle:checked:before {
+    left: 30px;
+  }

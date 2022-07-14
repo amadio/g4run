@@ -40,7 +40,8 @@ const name_fields = numeric_columns => {
 }
 
 // Convert the CSV into Tables
-const tabulate = (data, table_columns,numeric_columns,max_array) => {
+const tabulate = (data, table_columns,numeric_columns,extent_array) => {
+    
     const table = d3.select("#html-table").append("table").attr("id", "report-table");
     const thead = table.append("thead")
     const tbody = table.append("tbody");
@@ -93,7 +94,8 @@ const tabulate = (data, table_columns,numeric_columns,max_array) => {
         .append('td')
         .text(d => d.value).style("background-color", d => {
             if(numeric_columns.indexOf(d.column)!=-1){
-                return d3.scaleLinear().domain([max_array[numeric_columns.indexOf(d.column)][0]/100,75*max_array[numeric_columns.indexOf(d.column)][1]/100,95*max_array[numeric_columns.indexOf(d.column)][1]/100]).range(["green","white","red"])(parseFloat(d.value));
+                const max_col = extent_array[numeric_columns.indexOf(d.column)]
+                return d3.scaleLinear().domain([max_col[0]/100,75*max_col[1]/100,95*max_col[1]/100]).range(["green","white","red"])(parseFloat(d.value));
         }});
 }
 
@@ -183,21 +185,21 @@ const load_CSV = file => {
             numeric_columns = numeric_columns.filter(d => d !== "L1_dcache_loads" && d !== "L1_dcache_load_misses");
         }
         name_fields(numeric_columns);
-        const max_array = [];
+        const extent_array = [];
         numeric_columns.forEach((i) => {
             const value_array= [];
             data.filter(d => {
                 if(d['cycles']==0 || d['instructions']==0){
                     return false;
                 }
-                if(!isNaN(d[i]) && isFinite(d[i])){
+                if(!isNaN(d[i]) || isFinite(d[i])){
                     value_array.push(d[i]);
                 }
             })
             
-            max_array.push(d3.extent(value_array));
+            extent_array.push(d3.extent(value_array));
         });
-        tabulate(data, table_columns, numeric_columns,max_array);
+        tabulate(data, table_columns, numeric_columns,extent_array);
     });
 };
 
