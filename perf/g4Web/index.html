@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performatic Visuals G4</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <div class="title">
+                <h1>g4 Performance</h1>
+                <p id="commit">Comparing commit {before} with commit {after}</p>
+            </div>
+            <div class="visual-tab-bar">
+                <!-- Tabs for Data Visuals and Reports -->
+                <button class="visual-tabs" onclick="openTab( this,'performance-report')" id="default-tab">Report</button>
+                <button class="visual-tabs" onclick="openTab(this,'flamegraph-tab')">Flamegraph</button>
+                <button class="visual-tabs" onclick="openTab(this,'treemaps-tab')">TreeMaps</button>
+                <button class="visual-tabs" onclick="openTab(this,'scatter-plot-tab')">Scatter-Plot</button>
+                <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
+
+            </div>
+        </header>
+
+        <main class="tab-content">
+            <!-- Performance Reports in HTML Tables -->
+            <div id="performance-report" class="visual-tab-content">
+
+                <div class="report-diff-or-raw">
+                    <button class="report-type" onclick="loadReport(this,'diff-reports')"
+                        id="default-report-type">Difference-Reports</button>
+                    <button class="report-type" onclick="loadReport(this,'raw-reports')">Raw-Reports</button>
+                </div>
+
+                <div class="report-type-content" id="raw-reports">
+                    <!--Button to download CSV file -->
+                    <div id="top-container-report">
+                        <select id="report-selection"></select>
+                        <button type="submit" id="csv-download">Download CSV</button>
+                    </div>
+                    <!-- Implement value based filtering for the table-->
+                    <div id="threshold_div">
+                        <input class="threshold_elem" type="number" id="l_threshold" placeholder="Lower Threshold">
+                        <input class="threshold_elem" type="number" id="h_threshold" placeholder="Higher Threshold">
+                        <select class="threshold_elem" id="column_fields"></select>
+                        <button class="threshold_elem" id="apply-btn">Apply</button>
+                        <button class="threshold_elem" id="reset-filter">Reset</button>
+                    </div>
+                    <div id="html-table"></div>
+                </div>
+
+                <div class="report-type-content" id="diff-reports">
+                    <!--Button to download CSV file -->
+                    <div id="diff-top-container-report">
+                        <select id="diff-report-selection"></select>
+                        <button type="submit" id="diff-csv-download">Download CSV</button>
+                    </div>
+                    <!-- Implement value based filtering for the table-->
+                    <div id="diff-threshold_div">
+                        <input class="diff-threshold_elem" type="number" id="diff-l_threshold"
+                            placeholder="Lower Threshold">
+                        <input class="diff-threshold_elem" type="number" id="diff-h_threshold"
+                            placeholder="Higher Threshold">
+                        <select class="diff-threshold_elem" id="diff-column_fields"></select>
+                        <button class="diff-threshold_elem" id="diff-apply-btn">Apply</button>
+                        <button class="diff-threshold_elem" id="diff-reset-filter">Reset</button>
+                    </div>
+                    <div id="diff-html-table"></div>
+                </div>
+            </div>
+
+            <!-- Flamegraphs Tab -->
+            <div id="flamegraph-tab" class="visual-tab-content">
+                <select id="flame-selection"></select>
+                <!--Load an external Flamegraph SVG-->
+                <div id="flamegraph">
+                    <object type="image/svg+xml" id="flame-object"></object>
+                </div>
+            </div>
+
+            <!-- TreeMaps Tab -->
+            <div id="treemaps-tab" class="visual-tab-content">
+                <div id="treemap-header">
+                    <div id="treemap-type">
+                        <select id="treemap-selection"></select>
+                    </div>
+                    <div id="treemap-customization">
+                        <label>&nbsp;&nbsp;area :&nbsp;&nbsp;</label>
+                        <select id="treemap-area"></select>
+                        <label>&nbsp;&nbsp;colour :&nbsp;&nbsp;</label>
+                        <select id="treemap-color"></select>
+                        <label>&nbsp;&nbsp;metric tooltip :&nbsp;&nbsp;</label>
+                        <select id="treemap-tooltip"></select>
+                    </div>
+                </div>
+                <div id="treemaps"></div>
+
+            </div>
+            <div id="scatter-plot-tab" class="visual-tab-content">
+                <div id="scatter-plot-header">
+                    <div id="scatter-plot-type">
+                        <select id="scatter-plot-selection"></select>
+                        <div id="toggle-container">
+                            <p><b>Selection Mode</b></p>
+                            <input class="toggle" type="checkbox" id="selection-mode-toggle" />
+                        </div>
+                    </div>
+                    <div id="scatter-plot-customization">
+                        <label>&nbsp;&nbsp;X-Axis :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-x-axis" class="scatter-selection-fields"></select>
+                        <label>&nbsp;&nbsp;Y-Axis :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-y-axis" class="scatter-selection-fields"></select>
+                        <label>&nbsp;&nbsp;Radius :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-circle-radius" class="scatter-selection-fields"></select>
+                        <label>&nbsp;&nbsp;Colour :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-color" class="scatter-selection-fields"></select>
+                    </div>
+                </div>
+                <div id="scatter-plot"></div>
+                <div id="spider-tooltip"></div>
+            </div>
+            <div id="sunburst" class="visual-tab-content">
+                <h1>SB</h1>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="./script.js"></script>
+<script src="./Scripts/diff-report.js" type="module"></script>
+<script src="./Scripts/raw-report.js" type="module"></script>
+<script src="./Scripts/flamegraph.js" type="module"></script>
+<script src="./Scripts/treemap.js" type="module"></script>
+<script src="./Scripts/scatter-plot.js" type="module"></script>
+
+</html>

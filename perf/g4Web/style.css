@@ -1,0 +1,321 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    padding: 20px;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    bottom: 20px;
+}
+
+#root {
+    min-height: 90vh;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling the header and its contents */
+header {
+    width: 100%;
+}
+
+.title {
+    padding: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: start;
+}
+
+#commit {
+    color: grey;
+    padding: 10px;
+}
+
+/* Visualization Tabs Styling */
+.visual-tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 10px;
+}
+
+.visual-tabs {
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    margin: 2px;
+}
+
+.visual-tab-content {
+    margin: 10px;
+    padding: 5px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+
+.visual-tabs:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.active {
+    background-color: yellow;
+}
+
+/* Styling the main content which will contain visuals and reports */
+main {
+    display: flex;
+    width: 100%;
+}
+
+/* HTML Table generated from the CSV File using d3 */
+table {
+    display: block;
+}
+
+td,
+th {
+
+    border: 0.5px solid black;
+    padding: 0 10px;
+    height: 25px;
+}
+
+/* Mouse Scrollbar modifications */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgreen;
+}
+
+/* Embed FlameGraph SVG */
+#flamegraph {
+    display: flex;
+    justify-content: center;
+}
+
+object {
+    width: 100%;
+    height: 80vh;
+}
+
+/* Components of Performance report */
+#performance-report {
+    display: flex;
+    flex-direction: column;
+}
+
+#top-container-report,
+#diff-top-container-report {
+    display: flex;
+    justify-content: start;
+    padding: 10px;
+}
+
+#top-container-report>button,
+#diff-top-container-report>button {
+    margin: 0 10px;
+    padding: 5px;
+    color: black;
+}
+
+#top-container-report>button:hover,
+#diff-top-container-report>button:hover {
+    cursor: pointer;
+}
+
+#threshold_div,
+#diff-threshold_div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: start;
+}
+
+#threshold_div>button,
+#diff-threshold_div>button {
+    padding: 5px;
+}
+
+#threshold_div>input,
+#diff-threshold_div>input {
+    padding: 5px;
+}
+
+.threshold_elem,
+.diff-threshold_elem {
+    margin: 5px;
+}
+
+#html-table,
+#diff-html-table {
+    display: flex;
+    justify-content: start;
+    height: 68vh;
+    overflow: scroll;
+    background-color: aliceblue;
+}
+
+/* Difference Report Styling */
+.report-diff-or-raw {
+    margin-left: 10px;
+
+}
+
+.report-diff-or-raw>button {
+    height: 30px;
+    padding: 5px;
+    border: 0.1;
+    cursor: pointer;
+}
+
+.report-diff-or-raw>button:hover {
+    border-width: 1px;
+}
+
+.report-active {
+    background-color: springgreen;
+    border-width: 2px;
+}
+
+.report-type-content {
+    margin: 10px;
+}
+
+/* TreeMaps nodes , labels and value */
+#treemaps {
+    margin: 5px;
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+}
+
+#treemap-header {
+    margin: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#treemap-customization {
+    display: flex;
+    justify-content: end;
+}
+
+.node {
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+}
+
+.node-label {
+    color: black;
+    padding: 4px;
+    line-height: 1em;
+    white-space: pre;
+}
+
+.node-value {
+    font-size: 12px;
+    margin-top: 1px;
+}
+
+#scatter-plot {
+    margin: 10px;
+    display: block;
+    height: 70vh;
+    background-color: antiquewhite;
+}
+
+.tooltip {
+    position: absolute;
+}
+
+.scatter-plot-customization {
+    display: flex;
+}
+
+#scatter-plot-type {
+    display: flex;
+    justify-content: space-between;
+}
+
+#scatter-plot-type>select {
+    height: 20px;
+}
+
+#toggle-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.toggle {
+    appearance: none;
+    width: 50px;
+    height: 25px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #707070;
+    transition: background-color ease 0.3s;
+}
+
+.toggle:before {
+    text-align: center;
+    content: "on off";
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    left: 2px;
+    top: 2px;
+    right: 2px;
+    border-radius: 50%;
+    font: 10px/25px Helvetica;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-indent: -20px;
+    word-spacing: 25px;
+    color: #fff;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+}
+
+.toggle:checked {
+    background-color: #4c5cd9;
+}
+
+.toggle:checked:before {
+    left: 30px;
+}
+
+.tooltip{
+    white-space: pre-wrap;  
+}
+
+#spider-tooltip{
+    height: 250px;
+    width: 300px;
+}
+
