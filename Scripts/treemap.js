@@ -122,7 +122,7 @@ const render = data => {
 }
 
 const load_CSV = file => {
-    d3.csv(`Data/Treemaps/${file}.csv`).then(data => {
+    d3.csv(`Data/Treemaps/${file}.csv`,d3.autoType).then(data => {
         let numeric_columns = [];
 
         const all_columns = Object.getOwnPropertyNames(data[0]);

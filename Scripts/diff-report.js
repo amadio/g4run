@@ -95,7 +95,7 @@ const tabulate = (data, table_columns) => {
 
 // Load the CSV data into HTML using d3
 const load_CSV = file => {
-    d3.csv(`Data/Table_Reports/diff-reports/${file}.csv`).then(data => {
+    d3.csv(`Data/Table_Reports/diff-reports/${file}.csv`,d3.autoType).then(data => {
 
         let table_columns = data.columns;
         let numeric_columns = [];

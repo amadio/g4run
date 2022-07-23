@@ -81,8 +81,59 @@ const height = d3.select("#scatter-plot").node().getBoundingClientRect().height 
 
 let selection_mode = document.getElementById('selection-mode-toggle').checked;
 
-const render = (data, extent_array, numeric_columns) => {
+const spiderPlot = (numeric_columns,d) => {
+    const spider_margin = {
+        top : 10,
+        right : 10,
+        bottom : 10,
+        left : 10
+    }
+    
+    const spider_width = d3.select("#spider-tooltip").node().getBoundingClientRect().width - spider_margin.left - spider_margin.right;
+    const spider_height = d3.select("#spider-tooltip").node().getBoundingClientRect().height - spider_margin.top - spider_margin.bottom;
+    
+    const spider_svg = d3.select("#spider-tooltip").append("svg").attr("class","spider-plot-svg")
+                         .attr('width', spider_width)
+                         .attr('height', spider_height);
+     spider_svg.append("text").attr('x',10)
+     .attr('y',15).text(`${x_Axis} : ${d[x_Axis]}`)
+     spider_svg.append("text").attr('x',spider_width/2)
+     .attr('y',spider_height).text(`${y_Axis} : ${d[y_Axis]}`)
+    const radialScale = d3.scaleLinear().domain([0,10]).range([0,100]);
+    const ticks = [2,4,6,8,10];
+    ticks.forEach(t => 
+        spider_svg.append('circle')
+           .attr('cx',spider_width/2)
+           .attr('cy',spider_height/2)
+           .attr('fill','none')
+           .attr('stroke','gray')
+           .attr('r',radialScale(t))
+           .attr('class','section-circle')
+    );
+    ticks.forEach(t => 
+        spider_svg.append("text")
+        .attr('x',spider_width/2)
+        .attr('y',spider_height/2-radialScale(t))
+        .text(t.toString())    
+    );
+    let line = d3.line();
+    let points = [[spider_width/2,spider_height/2-50],[spider_width/2+0.134*250,spider_height/2],[spider_width/2-0.245*250,spider_height/2],[spider_width/2,spider_height/2+250*0.214]];
+    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2).attr('cy',spider_height/2-50);
+    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2+0.134*250).attr('cy',spider_height/2);
+    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2-0.245*250).attr('cy',spider_height/2);
+    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2).attr('cy',spider_height/2+250*0.214);
+    spider_svg.append("path")
+    .attr("d",line(points))
+    .attr("stroke-width", 3)
+    .attr("stroke", "orange")
+    .attr("fill", "darkorange")
+    .attr("stroke-opacity", 1)
+    .attr("opacity", 0.5);
 
+}
+
+const render = (data, extent_array, numeric_columns) => {
+    document.getElementById("spider-tooltip").innerHTML = "";
     if (x_Axis == undefined || y_Axis == undefined || radius_value == undefined || color_value == undefined) {
         x_Axis = numeric_columns[0];
         if (numeric_columns[1] == undefined)
@@ -101,32 +152,33 @@ const render = (data, extent_array, numeric_columns) => {
     // Remove the extra copy created while turning the brush off. 
     d3.select(d3.selectAll('.chartArea')._groups[0][1]).remove();
     //For X-Axis
-    const x = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(x_Axis)]).range([0, width-100]);
+    
+    const x = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(x_Axis)]).range([0, width]);
 
     const xAxis = plot_area.append("g").attr('transform', `translate(0,${height})`).call(d3.axisBottom(x));
 
-    const y = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(y_Axis)]).range([height, -5]);
+    const y = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(y_Axis)]).range([height, 0]);
 
-    const yAxis = plot_area.append("g").attr('transform', `translate(1,0)`)
+    const yAxis = plot_area.append("g").attr('transform', `translate(0,0)`)
         .call(d3.axisLeft(y));
 
-    const tooltip = d3.select("#scatter-plot")
-        .append("div")
-        .style("opacity", 0)
-        .attr("class", "tooltip")
+
+    const tooltip = d3.select("#spider-tooltip")
+        .style("position", "absolute")
+        .style("visibility", "hidden")
         .style("background-color", "white")
         .style("border", "solid")
         .style("border-width", "1px")
         .style("border-radius", "5px")
-        .style("padding", "10px")
-    const mouseover = () => {
-        tooltip
-            .style("opacity", 1)
+        .style("padding", "10px");
+    const mouseover = (event,d) => {
+        d3.selectAll(".spider-plot-svg").remove();
+        spiderPlot(numeric_columns,d);
+        tooltip.style("visibility", "visible")
     }
 
     const mousemove = (event, d) => {
         tooltip
-            .html(d[x_Axis] + " Spider-Man Coming Soon !")
             .style("left", (event.x) + 20 + "px")
             .style("top", (event.y) + 20 + "px")
     }
@@ -136,7 +188,7 @@ const render = (data, extent_array, numeric_columns) => {
         tooltip
             .transition()
             .duration(200)
-            .style("opacity", 0)
+            .style("visibility", "hidden")
     }
 
     const clip = plot_area.append("defs").append("svg:clipPath")
@@ -205,7 +257,8 @@ const render = (data, extent_array, numeric_columns) => {
 
 const load_CSV = file => {
 
-    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`).then(data => {
+    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`,d3.autoType).then(data => {
+        
         let table_columns = data.columns;
         let numeric_columns = [];
 
@@ -214,16 +267,14 @@ const load_CSV = file => {
                 numeric_columns.push(cols)
             }
         });
-        const extent_array = [];
+        let extent_array = [];
         numeric_columns.forEach((i) => {
-            const value_array = [];
-            data.filter(d => {
-                if (!isNaN(d[i]) && isFinite(d[i])) {
+            let value_array = [];
+            data.forEach(d => {
                     value_array.push(d[i]);
-                }
             })
             extent_array.push(d3.extent(value_array));
-
+            
         });
         render(data, extent_array, numeric_columns);
         selection_fields(numeric_columns);
@@ -280,4 +331,5 @@ document.getElementById("scatter-plot-color").addEventListener("change", e => {
     document.getElementById("scatter-plot").innerHTML = "";
     load_CSV(csv_report);
 })
+
 

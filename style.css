@@ -309,3 +309,13 @@ object {
 .toggle:checked:before {
     left: 30px;
 }
+
+.tooltip{
+    white-space: pre-wrap;  
+}
+
+#spider-tooltip{
+    height: 250px;
+    width: 300px;
+}
+

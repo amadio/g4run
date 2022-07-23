@@ -18,12 +18,10 @@
             </div>
             <div class="visual-tab-bar">
                 <!-- Tabs for Data Visuals and Reports -->
-                <button class="visual-tabs" onclick="openTab( this,'performance-report')"
-                    id="default-tab">Report</button>
+                <button class="visual-tabs" onclick="openTab( this,'performance-report')">Report</button>
                 <button class="visual-tabs" onclick="openTab(this,'flamegraph-tab')">Flamegraph</button>
                 <button class="visual-tabs" onclick="openTab(this,'treemaps-tab')">TreeMaps</button>
-                <button class="visual-tabs" onclick="openTab(this,'scatter-plot-tab')">Scatter-Plot</button>
-                <button class="visual-tabs" onclick="openTab(this,'spider-plot')">Spider-Plot</button>
+                <button class="visual-tabs" onclick="openTab(this,'scatter-plot-tab')" id="default-tab">Scatter-Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
 
             </div>
@@ -124,8 +122,7 @@
                     </div>
                 </div>
                 <div id="scatter-plot"></div>
-            </div>
-            <div id="spider-plot" class="visual-tab-content">
+                <div id="spider-tooltip"></div>
             </div>
             <div id="sunburst" class="visual-tab-content">
                 <h1>SB</h1>
