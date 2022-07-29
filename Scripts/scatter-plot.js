@@ -81,54 +81,104 @@ const height = d3.select("#scatter-plot").node().getBoundingClientRect().height 
 
 let selection_mode = document.getElementById('selection-mode-toggle').checked;
 
-const spiderPlot = (numeric_columns,d) => {
+const spiderPlot = (numeric_columns, d, extent_array) => {
+    const percent_array_points = [];
+    numeric_columns.forEach(i => {
+        percent_array_points.push((d[i] / extent_array[numeric_columns.indexOf(i)][1]) * 100)
+    })
+
     const spider_margin = {
-        top : 10,
-        right : 10,
-        bottom : 10,
-        left : 10
+        top: 10,
+        right: 10,
+        bottom: 10,
+        left: 10
     }
-    
-    const spider_width = d3.select("#spider-tooltip").node().getBoundingClientRect().width - spider_margin.left - spider_margin.right;
-    const spider_height = d3.select("#spider-tooltip").node().getBoundingClientRect().height - spider_margin.top - spider_margin.bottom;
-    
-    const spider_svg = d3.select("#spider-tooltip").append("svg").attr("class","spider-plot-svg")
-                         .attr('width', spider_width)
-                         .attr('height', spider_height);
-     spider_svg.append("text").attr('x',10)
-     .attr('y',15).text(`${x_Axis} : ${d[x_Axis]}`)
-     spider_svg.append("text").attr('x',spider_width/2)
-     .attr('y',spider_height).text(`${y_Axis} : ${d[y_Axis]}`)
-    const radialScale = d3.scaleLinear().domain([0,10]).range([0,100]);
-    const ticks = [2,4,6,8,10];
-    ticks.forEach(t => 
+
+    const spider_width = 600 - spider_margin.left - spider_margin.right;
+    const spider_height = 300 - spider_margin.top - spider_margin.bottom;
+
+    const spider_svg = d3.select("#spider-tooltip").append("svg").attr("class", "spider-plot-svg")
+        .attr('width', spider_width)
+        .attr('height', spider_height);
+
+    const radialScale = d3.scaleLinear().domain([0, 100]).range([0, 100]);
+    const ticks = [25, 50, 75, 100];
+    ticks.forEach(t =>
         spider_svg.append('circle')
-           .attr('cx',spider_width/2)
-           .attr('cy',spider_height/2)
-           .attr('fill','none')
-           .attr('stroke','gray')
-           .attr('r',radialScale(t))
-           .attr('class','section-circle')
+            .attr('cx', spider_width / 2)
+            .attr('cy', spider_height / 2)
+            .attr('fill', 'none')
+            .attr('stroke', 'gray')
+            .attr('r', radialScale(t))
+            .attr('class', 'section-circle')
     );
-    ticks.forEach(t => 
+    
+    ticks.forEach(t => {
+        spider_svg.append('line')
+            .attr('x1', spider_width / 2)
+            .attr('y1', spider_height / 2 - radialScale(t))
+            .attr('x2', spider_width / 2 - 150)
+            .attr('y2', spider_height / 2 - radialScale(t))
+            .style("stroke", "grey")
+            .style("stroke-width", 1)
+            .style('opacity',0.75)
         spider_svg.append("text")
-        .attr('x',spider_width/2)
-        .attr('y',spider_height/2-radialScale(t))
-        .text(t.toString())    
-    );
-    let line = d3.line();
-    let points = [[spider_width/2,spider_height/2-50],[spider_width/2+0.134*250,spider_height/2],[spider_width/2-0.245*250,spider_height/2],[spider_width/2,spider_height/2+250*0.214]];
-    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2).attr('cy',spider_height/2-50);
-    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2+0.134*250).attr('cy',spider_height/2);
-    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2-0.245*250).attr('cy',spider_height/2);
-    spider_svg.append("circle").attr('r',5).attr('cx',spider_width/2).attr('cy',spider_height/2+250*0.214);
+            .attr('x', spider_width / 2 -160)
+            .attr('y', spider_height / 2 - radialScale(t))
+            .text(t + "%");
+    }
+    )
+    
+    let line = d3.line().x(d => d.x).y(d => d.y);
+    const angleToCoordinate = (angle, value) => {
+        let x = Math.cos(angle) * radialScale(value);
+        let y = Math.sin(angle) * radialScale(value);
+        return { "x": spider_width / 2 + x, "y": spider_height / 2 - y };
+    }
+
+    numeric_columns.forEach((i, idx) => {
+        let angle = (Math.PI / 2) + (2 * Math.PI * idx / numeric_columns.length);
+        let line_coordinate = angleToCoordinate(angle, 100);
+        let label_coordinate = angleToCoordinate(angle, 105);
+        spider_svg.append("line")
+            .attr("x1", spider_width / 2)
+            .attr("y1", spider_height / 2)
+            .attr("x2", line_coordinate.x)
+            .attr("y2", line_coordinate.y)
+            .attr("stroke", "black");
+
+        // console.log(label_x);
+        spider_svg.append('text')
+            .attr("x", label_coordinate.x)
+            .attr("y", label_coordinate.y)
+            .attr("dx", "-1.35em")
+            .text(`${i} : ${percent_array_points[idx].toFixed(2)}%`).style("fill","green");
+    })
+
+    const getPathCoordinates = (data_point) => {
+        let coordinates = [];
+        numeric_columns.forEach((i, idx) => {
+            let ft_name = i;
+            let angle = (Math.PI / 2) + (2 * Math.PI * idx / numeric_columns.length);
+
+            coordinates.push(angleToCoordinate(angle, data_point[idx]));
+        })
+        return coordinates;
+    }
+
+    let dot_coordinates = getPathCoordinates(percent_array_points);
     spider_svg.append("path")
-    .attr("d",line(points))
-    .attr("stroke-width", 3)
-    .attr("stroke", "orange")
-    .attr("fill", "darkorange")
-    .attr("stroke-opacity", 1)
-    .attr("opacity", 0.5);
+        .datum(dot_coordinates)
+        .attr("d", line)
+        .attr("stroke-width", 1)
+        .attr("stroke", 'green')
+        .attr("fill", 'red')
+        .attr("stroke-opacity", 1)
+        .attr("opacity", 0.5);
+
+    dot_coordinates.forEach(d => {
+        spider_svg.append('circle').attr('cx', d['x']).attr('cy', d['y']).attr('r', 2);
+    });
 
 }
 
@@ -152,7 +202,7 @@ const render = (data, extent_array, numeric_columns) => {
     // Remove the extra copy created while turning the brush off. 
     d3.select(d3.selectAll('.chartArea')._groups[0][1]).remove();
     //For X-Axis
-    
+
     const x = d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(x_Axis)]).range([0, width]);
 
     const xAxis = plot_area.append("g").attr('transform', `translate(0,${height})`).call(d3.axisBottom(x));
@@ -166,15 +216,16 @@ const render = (data, extent_array, numeric_columns) => {
     const tooltip = d3.select("#spider-tooltip")
         .style("position", "absolute")
         .style("visibility", "hidden")
+        .style('display', 'none')
         .style("background-color", "white")
         .style("border", "solid")
         .style("border-width", "1px")
         .style("border-radius", "5px")
         .style("padding", "10px");
-    const mouseover = (event,d) => {
+    const mouseover = (event, d) => {
         d3.selectAll(".spider-plot-svg").remove();
-        spiderPlot(numeric_columns,d);
-        tooltip.style("visibility", "visible")
+        spiderPlot(numeric_columns, d, extent_array);
+        tooltip.style("visibility", "visible").style('display', 'block')
     }
 
     const mousemove = (event, d) => {
@@ -205,17 +256,21 @@ const render = (data, extent_array, numeric_columns) => {
     // A function that update the chart for given boundaries
     const updateChart = (event) => {
         const extent = event.selection;
+        
         // If no selection, back to initial coordinate. Otherwise, update X axis domain
         if (!extent) {
             if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
             x.domain([extent_array[0]])
+            y.domain([extent_array[0]])
         } else {
-            x.domain([x.invert(extent[0]), x.invert(extent[1])])
+            x.domain([extent[0][0],extent[1][0]].map(x.invert,x));
+            y.domain([extent[1][1],extent[0][1]].map(y.invert,y));
             scatter.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
         }
 
         // Update axis and circle position
         xAxis.transition().duration(1000).call(d3.axisBottom(x))
+        yAxis.transition().duration(1000).call(d3.axisLeft(y))
         scatter
             .selectAll("circle")
             .transition().duration(1000)
@@ -223,7 +278,7 @@ const render = (data, extent_array, numeric_columns) => {
             .attr("cy", d => y(d[y_Axis]))
 
     }
-    const brush = d3.brushX()                 // Add the brush feature using the d3.brush function
+    const brush = d3.brush()                 // Add the brush feature using the d3.brush function
         .extent([[0, 0], [width, height]]) // initialise the brush area: start at 0,0 and finishes at width,height
         .on("end", updateChart) // Each time the brush selection changes, trigger the 'updateChart' function
 
@@ -254,11 +309,11 @@ const render = (data, extent_array, numeric_columns) => {
     }
 
 }
-
+document.getElementById("spider-tooltip").style.display = 'none';
 const load_CSV = file => {
 
-    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`,d3.autoType).then(data => {
-        
+    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`, d3.autoType).then(data => {
+
         let table_columns = data.columns;
         let numeric_columns = [];
 
@@ -271,10 +326,10 @@ const load_CSV = file => {
         numeric_columns.forEach((i) => {
             let value_array = [];
             data.forEach(d => {
-                    value_array.push(d[i]);
+                value_array.push(d[i]);
             })
             extent_array.push(d3.extent(value_array));
-            
+
         });
         render(data, extent_array, numeric_columns);
         selection_fields(numeric_columns);
@@ -331,5 +386,3 @@ document.getElementById("scatter-plot-color").addEventListener("change", e => {
     document.getElementById("scatter-plot").innerHTML = "";
     load_CSV(csv_report);
 })
-
-

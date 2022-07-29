@@ -311,11 +311,7 @@ object {
 }
 
 .tooltip{
-    white-space: pre-wrap;  
+    display: none;
 }
 
-#spider-tooltip{
-    height: 250px;
-    width: 300px;
-}
 
