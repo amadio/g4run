@@ -66,13 +66,13 @@ const selection_fields = numeric_columns => {
     })
 }
 
-const width = d3.select("#treemaps").node().getBoundingClientRect().width;
-const height = d3.select("#treemaps").node().getBoundingClientRect().height;
-
+const width = window.innerWidth-100;
+const height = window.innerHeight-100;
+console.log(width,height)
 // Creating the child parent realtions from the data available
 const stratify = d3.stratify().parentId(d => d.id.substring(0, d.id.lastIndexOf(";")));
 
-const treemap = d3.treemap().size([width, height]).padding(0.5);
+const treemap = d3.treemap().size([width, height]).padding(1).round(true);
 const format = d3.format(".3");
 
 

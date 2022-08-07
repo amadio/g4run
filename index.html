@@ -86,20 +86,36 @@
 
             <!-- TreeMaps Tab -->
             <div id="treemaps-tab" class="visual-tab-content">
-                <div id="treemap-header">
-                    <div id="treemap-type">
-                        <select id="treemap-selection"></select>
-                    </div>
-                    <div id="treemap-customization">
-                        <label>&nbsp;&nbsp;area :&nbsp;&nbsp;</label>
-                        <select id="treemap-area"></select>
-                        <label>&nbsp;&nbsp;colour :&nbsp;&nbsp;</label>
-                        <select id="treemap-color"></select>
-                        <label>&nbsp;&nbsp;metric tooltip :&nbsp;&nbsp;</label>
-                        <select id="treemap-tooltip"></select>
-                    </div>
+                <div class="treemap-diff-or-raw">
+                    <button class="treemap-type" onclick="loadTreeMap(this,'diff-treemap-container')"
+                        id="default-treemap-type">Difference-TreeMaps</button>
+                    <button class="treemap-type" onclick="loadTreeMap(this,'raw-treemap-container')">Raw-TreeMaps</button>
                 </div>
-                <div id="treemaps"></div>
+                <div class="treemap-type-content" id="raw-treemap-container">
+                    <div id="treemap-header">
+                        <div id="treemap-type">
+                            <select id="treemap-selection"></select>
+                        </div>
+                        <div id="treemap-customization">
+                            <label>&nbsp;&nbsp;area :&nbsp;&nbsp;</label>
+                            <select id="treemap-area"></select>
+                            <label>&nbsp;&nbsp;colour :&nbsp;&nbsp;</label>
+                            <select id="treemap-color"></select>
+                            <label>&nbsp;&nbsp;metric tooltip :&nbsp;&nbsp;</label>
+                            <select id="treemap-tooltip"></select>
+                        </div>
+                    </div>
+                    <div id="treemaps"></div>
+                </div>
+
+                <div class="treemap-type-content" id="diff-treemap-container">
+                    <div id="diff-treemap-header">
+                        <div id="diff-treemap-type">
+                            <select id="diff-treemap-selection"></select>
+                        </div>
+                    </div>
+                    <div id="diff-treemaps"></div>
+                </div>
 
             </div>
             <div id="scatter-plot-tab" class="visual-tab-content">
@@ -135,6 +151,7 @@
 <script src="./Scripts/diff-report.js" type="module"></script>
 <script src="./Scripts/raw-report.js" type="module"></script>
 <script src="./Scripts/flamegraph.js" type="module"></script>
+<script src="./Scripts/diff-treemap.js" type="module"></script>
 <script src="./Scripts/treemap.js" type="module"></script>
 <script src="./Scripts/scatter-plot.js" type="module"></script>
 

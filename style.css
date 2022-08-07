@@ -195,38 +195,43 @@ object {
 }
 
 /* TreeMaps nodes , labels and value */
-#treemaps {
+#treemaps,
+#diff-treemaps {
     margin: 5px;
     position: relative;
-    height: 80vh;
-    overflow: hidden;
+    min-height: 80vh;
 }
 
-#treemap-header {
+#treemap-header,
+#diff-treemap-header {
     margin: 8px;
     display: flex;
     justify-content: space-between;
 }
 
-#treemap-customization {
+#treemap-customization,
+#diff-treemap-customization {
     display: flex;
     justify-content: end;
 }
 
-.node {
+.node,
+.diff-node {
     box-sizing: border-box;
     position: absolute;
     overflow: hidden;
 }
 
-.node-label {
+.node-label,
+.diff-label {
     color: black;
     padding: 4px;
     line-height: 1em;
     white-space: pre;
 }
 
-.node-value {
+.node-value,
+.diff-node-value {
     font-size: 12px;
     margin-top: 1px;
 }
@@ -310,8 +315,16 @@ object {
     left: 30px;
 }
 
-.tooltip{
+.tooltip {
     display: none;
 }
 
+.treemap-type{
+   padding: 5px;
+   margin: 5px;
+}
 
+#diff-treemap-selection{
+    padding: 5px;
+    font-size: 80%;
+}

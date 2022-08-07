@@ -20,11 +20,23 @@ const loadReport = (elem,reportType) => {
     for (let i=0; i< tabs.length; i++){
         tabs[i].classList.remove("report-active");
     }
-    const tabConent = document.getElementsByClassName("report-type-content");
-    for(let i=0; i<tabConent.length; i++){
-        tabConent[i].style.display = "none";
+    const tabContent = document.getElementsByClassName("report-type-content");
+    for(let i=0; i<tabContent.length; i++){
+        tabContent[i].style.display = "none";
     }
     document.getElementById(reportType).style.display = "block";
     elem.classList.add("report-active")
 }
 document.getElementById("default-report-type").click();
+
+const loadTreeMap = (elem,treeMapType) => {
+    const tabs = document.getElementsByClassName('treemap-type');
+    const tabContent = document.getElementsByClassName("treemap-type-content");
+    for(let i=0; i<tabContent.length; i++){
+        tabContent[i].style.display = "none";
+        tabs[i].classList.remove("report-active");
+    }
+    document.getElementById(treeMapType).style.display = "block";
+    elem.classList.add("report-active")
+}
+document.getElementById("default-treemap-type").click();
