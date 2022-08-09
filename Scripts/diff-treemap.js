@@ -74,11 +74,5 @@ treemap_selection();
 document.getElementById("diff-treemap-selection").addEventListener("change", (e) => {
     csv_report = e.target.value;
     document.getElementById("diff-treemaps").innerHTML = "";
-    document.getElementById("diff-treemap-area").options.length = 0;
-    document.getElementById("diff-treemap-color").options.length = 0;
-    document.getElementById("diff-treemap-tooltip").options.length = 0;
-    area_metric = document.getElementById("diff-treemap-area").options[0];
-    color_metric = document.getElementById("diff-treemap-color").options[0];
-    tooltip_metric = document.getElementById("diff-treemap-tooltip").options[0];
     load_CSV(csv_report);
 })

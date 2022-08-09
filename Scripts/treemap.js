@@ -68,7 +68,6 @@ const selection_fields = numeric_columns => {
 
 const width = window.innerWidth-100;
 const height = window.innerHeight-100;
-console.log(width,height)
 // Creating the child parent realtions from the data available
 const stratify = d3.stratify().parentId(d => d.id.substring(0, d.id.lastIndexOf(";")));
 
@@ -77,7 +76,7 @@ const format = d3.format(".3");
 
 
 
-const render = data => {
+const render = (data,extent_array,numeric_columns) => {
 
     const root = stratify(data)
         .sum(d => {
@@ -96,18 +95,10 @@ const render = data => {
         .style("width", d => d.x1 - d.x0 + "px")
         .style("height", d => d.y1 - d.y0 + "px")
         .style("background", d => {
-
-            if (color_metric == "CPI")
-                return d3.scaleLinear().domain([0.25, 1, 2]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-            if (color_metric == "cycles" || color_metric == "instructions")
-                return d3.scaleLinear().domain([0.1, 1.5, 2.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-            if (color_metric == "IPB")
-                return d3.scaleLinear().domain([5, 7, 8.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-            if (color_metric == "IPC")
-                return d3.scaleLinear().domain([1, 1.75, 2.5]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-
-            return d3.scaleLinear().domain([0, 5, 10]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
-        })
+                const lim_col = extent_array[numeric_columns.indexOf(color_metric)]
+                return d3.scaleLinear().domain([0, 50 * lim_col[1] / 100, 80 *lim_col[1] / 100]).range(["green", "white", "red"])(parseFloat(d.data[color_metric]));
+            }
+        )
         .append("div")
         .attr("class", "node-label")
         .text(d => d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n"))
@@ -188,8 +179,22 @@ const load_CSV = file => {
             tooltip_metric = numeric_columns[0];
             area_metric = numeric_columns[0];
         }
+        const extent_array = [];
+        numeric_columns.forEach((i) => {
+            const value_array = [];
+            data.filter(d => {
+                if (d['cycles'] == 0 || d['instructions'] == 0) {
+                    return false;
+                }
+                if (!isNaN(d[i]) || isFinite(d[i])) {
+                    value_array.push(d[i]);
+                }
+            })
+
+            extent_array.push(d3.extent(value_array));
+        });
         selection_fields(numeric_columns)
-        render(data);
+        render(data,extent_array,numeric_columns);
     })
 }
 

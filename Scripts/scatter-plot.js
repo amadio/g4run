@@ -291,7 +291,7 @@ const render = (data, extent_array, numeric_columns) => {
         .append("circle")
         .attr("cx", d => x(d[x_Axis]))
         .attr("cy", d => y(d[y_Axis]))
-        .attr("r", d => d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(radius_value)]).range([3, 10])(d[radius_value]))
+        .attr("r", d => d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(radius_value)]).range([5, 10])(d[radius_value]))
         .style("fill", d => {
             return d3.scaleLinear().domain(extent_array[numeric_columns.indexOf(color_value)]).range(["green", "red"])(parseFloat(d[color_value]));
         })
