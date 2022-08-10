@@ -203,7 +203,7 @@ object {
 }
 
 #treemap-header,
-#diff-treemap-header {
+#diff-treemap-header, #sunburst-header {
     margin: 8px;
     display: flex;
     justify-content: space-between;
@@ -327,4 +327,12 @@ object {
 #diff-treemap-selection{
     padding: 5px;
     font-size: 80%;
+}
+
+#sunburst-header{
+    padding: 10px;
+}
+#sunburst-chart{
+    padding: 10px;
+    height : 80vh;
 }

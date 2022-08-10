@@ -89,7 +89,8 @@
                 <div class="treemap-diff-or-raw">
                     <button class="treemap-type" onclick="loadTreeMap(this,'diff-treemap-container')"
                         id="default-treemap-type">Difference-TreeMaps</button>
-                    <button class="treemap-type" onclick="loadTreeMap(this,'raw-treemap-container')">Raw-TreeMaps</button>
+                    <button class="treemap-type"
+                        onclick="loadTreeMap(this,'raw-treemap-container')">Raw-TreeMaps</button>
                 </div>
                 <div class="treemap-type-content" id="raw-treemap-container">
                     <div id="treemap-header">
@@ -142,7 +143,14 @@
                 <div id="spider-tooltip"></div>
             </div>
             <div id="sunburst" class="visual-tab-content">
-                <h1>SB</h1>
+                <div id="sunburst-header">
+                    <select id="sunburst-selection"></select>
+                    <div>
+                    <label>Metric : </label>
+                    <select id="metric-selection"></select>
+                </div>
+                </div>
+                <div id="sunburst-chart"></div>
             </div>
         </main>
     </div>
@@ -154,5 +162,6 @@
 <script src="./Scripts/diff-treemap.js" type="module"></script>
 <script src="./Scripts/treemap.js" type="module"></script>
 <script src="./Scripts/scatter-plot.js" type="module"></script>
+<script src="./Scripts/sunburst.js" type="module"></script>
 
 </html>
