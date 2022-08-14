@@ -112,7 +112,7 @@ const spiderPlot = (numeric_columns, d, extent_array) => {
             .attr('r', radialScale(t))
             .attr('class', 'section-circle')
     );
-    
+
     ticks.forEach(t => {
         spider_svg.append('line')
             .attr('x1', spider_width / 2)
@@ -121,14 +121,14 @@ const spiderPlot = (numeric_columns, d, extent_array) => {
             .attr('y2', spider_height / 2 - radialScale(t))
             .style("stroke", "grey")
             .style("stroke-width", 1)
-            .style('opacity',0.75)
+            .style('opacity', 0.75)
         spider_svg.append("text")
-            .attr('x', spider_width / 2 -160)
+            .attr('x', spider_width / 2 - 160)
             .attr('y', spider_height / 2 - radialScale(t))
             .text(t + "%");
     }
     )
-    
+
     let line = d3.line().x(d => d.x).y(d => d.y);
     const angleToCoordinate = (angle, value) => {
         let x = Math.cos(angle) * radialScale(value);
@@ -152,7 +152,12 @@ const spiderPlot = (numeric_columns, d, extent_array) => {
             .attr("x", label_coordinate.x)
             .attr("y", label_coordinate.y)
             .attr("dx", "-1.35em")
-            .text(`${i} : ${percent_array_points[idx].toFixed(2)}%`).style("fill","green");
+            .text(`${i} : ${percent_array_points[idx].toFixed(2)}%`).style("fill", "green");
+
+        spider_svg.append("text")
+            .attr("x", 20)
+            .attr("y", 20)
+            .text(d.symbol);
     })
 
     const getPathCoordinates = (data_point) => {
@@ -256,15 +261,15 @@ const render = (data, extent_array, numeric_columns) => {
     // A function that update the chart for given boundaries
     const updateChart = (event) => {
         const extent = event.selection;
-        
+
         // If no selection, back to initial coordinate. Otherwise, update X axis domain
         if (!extent) {
             if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
             x.domain([extent_array[0]])
             y.domain([extent_array[0]])
         } else {
-            x.domain([extent[0][0],extent[1][0]].map(x.invert,x));
-            y.domain([extent[1][1],extent[0][1]].map(y.invert,y));
+            x.domain([extent[0][0], extent[1][0]].map(x.invert, x));
+            y.domain([extent[1][1], extent[0][1]].map(y.invert, y));
             scatter.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
         }
 

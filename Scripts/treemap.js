@@ -66,8 +66,8 @@ const selection_fields = numeric_columns => {
     })
 }
 
-const width = window.innerWidth-100;
-const height = window.innerHeight-100;
+const width = d3.select("#treemaps").node().getBoundingClientRect().width-10;
+const height = d3.select("#treemaps").node().getBoundingClientRect().height-10;
 // Creating the child parent realtions from the data available
 const stratify = d3.stratify().parentId(d => d.id.substring(0, d.id.lastIndexOf(";")));
 

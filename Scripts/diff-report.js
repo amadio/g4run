@@ -3,7 +3,8 @@ let csv_report = "pythia-cpu-diff";
 // Store all the report files in this array
 const all_reports =
     [
-        'pythia-cpu-diff'
+        'pythia-cpu-diff',
+        'pythia-cache-diff'
     ];
 
 // Getting the Options for selecting the report i.e. CSV File
@@ -90,12 +91,13 @@ const tabulate = (data, table_columns) => {
                 return d3.scaleLinear().domain([0, 1, 2]).range(["green", "white", "red"])(parseFloat(d.value));
             if (d.column.includes("Instructions"))
                 return d3.scaleLinear().domain([0, 1, 2]).range(["green", "white", "red"])(parseFloat(d.value));
+            return d3.scaleLinear().domain([0, 1, 2.5]).range(["green", "white", "red"])(parseFloat(d.value));
         });
 }
 
 // Load the CSV data into HTML using d3
 const load_CSV = file => {
-    d3.csv(`Data/Table_Reports/diff-reports/${file}.csv`,d3.autoType).then(data => {
+    d3.csv(`Data/Table_Reports/diff-reports/${file}.csv`, d3.autoType).then(data => {
 
         let table_columns = data.columns;
         let numeric_columns = [];

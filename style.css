@@ -5,6 +5,7 @@
 }
 
 body {
+    overflow-x: hidden;
     background-color: black;
     padding: 20px;
     justify-content: center;
@@ -14,7 +15,6 @@ body {
 }
 
 #root {
-    min-height: 90vh;
     background-color: white;
     width: 100%;
     display: flex;
@@ -38,6 +38,9 @@ header {
     padding: 10px;
 }
 
+.main-report-selector{
+    margin: 0 10px;
+}
 /* Visualization Tabs Styling */
 .visual-tab-bar {
     display: flex;
@@ -54,20 +57,20 @@ header {
 }
 
 .visual-tab-content {
-    margin: 10px;
-    padding: 5px;
+    height: 81vh;
     width: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 
 .visual-tabs:hover {
-    background-color: yellow;
+    background-color: lightgreen;
     cursor: pointer;
 }
 
 .active {
-    background-color: yellow;
+    background-color: rgb(3, 249, 3);
 }
 
 /* Styling the main content which will contain visuals and reports */
@@ -76,9 +79,14 @@ main {
     width: 100%;
 }
 
+
+#performance-difference{
+    margin: 5px 15px;
+}
 /* HTML Table generated from the CSV File using d3 */
 table {
     display: block;
+    width: 100%;
 }
 
 td,
@@ -105,9 +113,12 @@ th {
     justify-content: center;
 }
 
+#flame-selection{
+    margin: 0 10px;
+}
 object {
-    width: 100%;
     height: 80vh;
+    width: 120%;
 }
 
 /* Components of Performance report */
@@ -120,52 +131,34 @@ object {
 #diff-top-container-report {
     display: flex;
     justify-content: start;
-    padding: 10px;
 }
 
-#top-container-report>button,
-#diff-top-container-report>button {
-    margin: 0 10px;
+button {
+    margin: 2px;
     padding: 5px;
     color: black;
 }
 
-#top-container-report>button:hover,
-#diff-top-container-report>button:hover {
+button:hover {
     cursor: pointer;
 }
 
-#threshold_div,
-#diff-threshold_div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 5px;
-    justify-content: start;
-}
-
-#threshold_div>button,
-#diff-threshold_div>button {
+select{
+    margin: 2px;
     padding: 5px;
 }
 
-#threshold_div>input,
-#diff-threshold_div>input {
+input {
+    margin: 2px;
     padding: 5px;
-}
-
-.threshold_elem,
-.diff-threshold_elem {
-    margin: 5px;
 }
 
 #html-table,
 #diff-html-table {
     display: flex;
     justify-content: start;
-    height: 68vh;
+    height: 70vh;
     overflow: scroll;
-    background-color: aliceblue;
 }
 
 /* Difference Report Styling */
@@ -191,28 +184,31 @@ object {
 }
 
 .report-type-content {
-    margin: 10px;
+    margin: 0 10px;
 }
 
 /* TreeMaps nodes , labels and value */
 #treemaps,
 #diff-treemaps {
-    margin: 5px;
+    margin: 0 10px;
     position: relative;
-    min-height: 80vh;
+    height: 75vh;
 }
 
 #treemap-header,
 #diff-treemap-header, #sunburst-header {
-    margin: 8px;
+    margin: 0 10px;
     display: flex;
     justify-content: space-between;
 }
-
+label{
+    font-weight: bold;
+}
 #treemap-customization,
 #diff-treemap-customization {
     display: flex;
     justify-content: end;
+    align-items: baseline;
 }
 
 .node,
@@ -252,18 +248,14 @@ object {
 }
 
 #scatter-plot-type {
+    margin: 0 10px;
     display: flex;
     justify-content: space-between;
-}
-
-#scatter-plot-type>select {
-    height: 20px;
 }
 
 #toggle-container {
     display: flex;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
 }
 
@@ -325,14 +317,18 @@ object {
 }
 
 #diff-treemap-selection{
-    padding: 5px;
     font-size: 80%;
 }
 
 #sunburst-header{
-    padding: 10px;
+    margin: 0 10px;
 }
 #sunburst-chart{
-    padding: 10px;
-    height : 80vh;
+    height : 75vh;
+}
+
+/* Testing Some Sunburst Stylings */
+
+path,g,text{
+    text-overflow: ellipsis;
 }

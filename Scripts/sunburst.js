@@ -39,7 +39,7 @@ const height = d3.select("#sunburst-chart").node().getBoundingClientRect().heigh
 
 const stratify = d3.stratify().parentId(d => d.id.substring(0, d.id.lastIndexOf(";")));
 
-const render = (vdata, numeric_columns) => {
+const render = (vdata, numeric_columns, extent_array) => {
     const g = d3.select('#sunburst-chart').append("svg")
         .attr("width", width).attr("height", height)
         .append("g")
@@ -57,10 +57,22 @@ const render = (vdata, numeric_columns) => {
         .endAngle(d => d.x1)
         .innerRadius(d => d.y0)
         .outerRadius(d => d.y1);
-    g.selectAll('path').data(root.descendants()).enter().append('path')
+
+    const Node = g.selectAll('g').data(root.descendants()).enter().append('g');
+
+    Node.append("path")
         .attr("d", arc)
         .style('stroke', '#fff')
-        .style("fill", "blue");
+        .style("fill", d => {
+            const lim_col = extent_array[numeric_columns.indexOf(metric)]
+                return d3.scaleLinear().domain([0, 50 * lim_col[1] / 100, 80 *lim_col[1] / 100]).range(["green", "white", "red"])(parseFloat(d.value));
+        })
+
+    Node.append("title")
+        .text(d => {
+            const a = d.data.id.split(';')
+            return a[a.length - 1];
+        });
 }
 const load_CSV = (csv_report) => {
     d3.csv(`Data/Treemaps/${csv_report}.csv`, d3.autoType).then(data => {
@@ -74,12 +86,25 @@ const load_CSV = (csv_report) => {
                 numeric_columns.push(cols)
             }
         });
-        if(metric==undefined){
+        if (metric == undefined) {
             metric = numeric_columns[0];
         }
-        // console.log(numeric_columns);
+        const extent_array = [];
+        numeric_columns.forEach((i) => {
+            const value_array = [];
+            data.filter(d => {
+                if (d['cycles'] == 0 || d['instructions'] == 0) {
+                    return false;
+                }
+                if (!isNaN(d[i]) || isFinite(d[i])) {
+                    value_array.push(d[i]);
+                }
+            })
+
+            extent_array.push(d3.extent(value_array));
+        });
         selection_fields(numeric_columns);
-        render(vdata, numeric_columns);
+        render(vdata, numeric_columns, extent_array);
     })
 }
 
