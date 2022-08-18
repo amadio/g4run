@@ -96,7 +96,9 @@ th {
     padding: 0 10px;
     height: 25px;
 }
-
+th{
+    cursor: row-resize;
+}
 /* Mouse Scrollbar modifications */
 ::-webkit-scrollbar {
     width: 5px;

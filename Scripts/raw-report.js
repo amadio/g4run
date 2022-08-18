@@ -20,7 +20,7 @@ const report_selection = () => {
         d3.select("#report-selection").append("option").text(file);
     })
 }
-
+let toggle_sort = true;
 // Selection Fields for metrics
 const name_fields = numeric_columns => {
 
@@ -41,11 +41,11 @@ const name_fields = numeric_columns => {
 
 // Convert the CSV into Tables
 const tabulate = (data, table_columns, numeric_columns, extent_array) => {
-
+    2
     const table = d3.select("#html-table").append("table").attr("id", "report-table");
-    const thead = table.append("thead")
+    table.append("thead").append("tr");
+    const header = table.select("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
     const tbody = table.append("tbody");
-    thead.append("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
     const selectField = document.getElementById("column_fields").value;
 
     // Threshold Logics
@@ -98,11 +98,38 @@ const tabulate = (data, table_columns, numeric_columns, extent_array) => {
                 return d3.scaleLinear().domain([max_col[0] / 100, 75 * max_col[1] / 100, 95 * max_col[1] / 100]).range(["green", "white", "red"])(parseFloat(d.value));
             }
         });
+
+    header.on("click", (event, d) => {
+        if (toggle_sort) {
+            rows.sort(function (a, b) {
+                if (a[d] < b[d]) {
+                    return -1;
+                } else if (a[d] > b[d]) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            })
+            toggle_sort = false;
+        }else{
+            rows.sort(function (a, b) {
+                if (a[d] < b[d]) {
+                    return 1;
+                } else if (a[d] > b[d]) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            })
+            toggle_sort = true;
+        }
+    }
+    )
 }
 
 // Load the CSV data into HTML using d3
 const load_CSV = file => {
-    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`,d3.autoType).then(data => {
+    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`, d3.autoType).then(data => {
         let table_columns = data.columns;
         let numeric_columns = [];
 
@@ -236,4 +263,3 @@ document.getElementById("reset-filter").addEventListener("click", () => {
     d3.select("#html-table").text("");
     load_CSV(csv_report);
 })
-

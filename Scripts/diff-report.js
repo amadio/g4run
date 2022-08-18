@@ -13,7 +13,7 @@ const report_selection = () => {
         d3.select("#diff-report-selection").append("option").text(file);
     })
 }
-
+let toggle_sort = true;
 // Selection Fields for metrics
 const name_fields = numeric_columns => {
 
@@ -35,9 +35,9 @@ const name_fields = numeric_columns => {
 // Convert the CSV into Tables
 const tabulate = (data, table_columns) => {
     const table = d3.select("#diff-html-table").append("table").attr("id", "diff-report-table");
-    const thead = table.append("thead")
+    table.append("thead").append("tr");
+    const header = table.select("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
     const tbody = table.append("tbody");
-    thead.append("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
     const selectField = document.getElementById("diff-column_fields").value;
 
     // Threshold Logics
@@ -93,6 +93,32 @@ const tabulate = (data, table_columns) => {
                 return d3.scaleLinear().domain([0, 1, 2]).range(["green", "white", "red"])(parseFloat(d.value));
             return d3.scaleLinear().domain([0, 1, 2.5]).range(["green", "white", "red"])(parseFloat(d.value));
         });
+        header.on("click", (event, d) => {
+            if (toggle_sort) {
+                rows.sort(function (a, b) {
+                    if (a[d] < b[d]) {
+                        return -1;
+                    } else if (a[d] > b[d]) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                })
+                toggle_sort = false;
+            }else{
+                rows.sort(function (a, b) {
+                    if (a[d] < b[d]) {
+                        return 1;
+                    } else if (a[d] > b[d]) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                })
+                toggle_sort = true;
+            }
+        }
+        )
 }
 
 // Load the CSV data into HTML using d3
