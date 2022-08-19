@@ -29,7 +29,7 @@ case ${gitlabActionType} in
 
 	NOTE|MERGE)
 		GIT_COMMIT=${gitlabMergeRequestLastCommit}
-		GIT_PREVIOUS_COMMIT=$(git -C ${REPOSITORY} rev-parse ${gitlabTargetBranch})
+		GIT_PREVIOUS_COMMIT=$(git -C ${REPOSITORY} merge-base ${gitlabTargetBranch} ${GIT_COMMIT})
 	;;
 
 	*)
