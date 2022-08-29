@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geant4 Performance Report</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <div class="title">
+                <h1>g4 Performance</h1>
+                <p id="commit">Comparing commit {before} with commit {after}</p>
+            </div>
+            <div class="main-report-selector">
+                <a href="diff.html"><button>Difference-Reports</button></a>
+            </div>
+            <div class="visual-tab-bar">
+                <!-- Tabs for Data Visuals and Reports -->
+                <button class="visual-tabs" onclick="openTab( this,'performance-report')" id="default-tab">Report</button>
+                <button class="visual-tabs" onclick="openTab(this,'treemaps-tab')">TreeMaps</button>
+                <button class="visual-tabs" onclick="openTab(this,'scatter-plot-tab')">Scatter-Plot</button>
+                <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
+
+            </div>
+        </header>
+
+        <main class="tab-content">
+            <!-- Performance Reports in HTML Tables -->
+            <div id="performance-report" class="visual-tab-content">
+                <div class="report-type-content" id="raw-reports">
+                    <!--Button to download CSV file -->
+                    <div id="top-container-report">
+                        <select id="report-selection"></select>
+                        <button type="submit" id="csv-download">Download CSV</button>
+                    </div>
+                    <!-- Implement value based filtering for the table-->
+                    <div id="threshold_div">
+                        <input class="threshold_elem" type="number" id="l_threshold" placeholder="Lower Threshold">
+                        <input class="threshold_elem" type="number" id="h_threshold" placeholder="Higher Threshold">
+                        <select class="threshold_elem" id="column_fields"></select>
+                        <button class="threshold_elem" id="apply-btn">Apply</button>
+                        <button class="threshold_elem" id="reset-filter">Reset</button>
+                    </div>
+                    <div id="html-table"></div>
+                </div>
+            </div>
+
+            <!-- TreeMaps Tab -->
+            <div id="treemaps-tab" class="visual-tab-content">
+                <div class="treemap-type-content" id="raw-treemap-container">
+                    <div id="treemap-header">
+                        <div id="treemap-type">
+                            <select id="treemap-selection"></select>
+                        </div>
+                        <div id="treemap-customization">
+                            <label>&nbsp;&nbsp;area :&nbsp;&nbsp;</label>
+                            <select id="treemap-area"></select>
+                            <label>&nbsp;&nbsp;colour :&nbsp;&nbsp;</label>
+                            <select id="treemap-color"></select>
+                            <label>&nbsp;&nbsp;metric tooltip :&nbsp;&nbsp;</label>
+                            <select id="treemap-tooltip"></select>
+                        </div>
+                    </div>
+                    <div id="treemaps"></div>
+                </div>
+            </div>
+            <div id="scatter-plot-tab" class="visual-tab-content">
+                <div id="scatter-plot-header">
+                    <div id="scatter-plot-type">
+                        <select id="scatter-plot-selection"></select>
+                        <div id="toggle-container">
+                            <p><b>Selection Mode </b></p>
+                            <input class="toggle" type="checkbox" id="selection-mode-toggle" />
+                        </div>
+                    </div>
+                    <div id="scatter-plot-customization">
+                        <label>&nbsp;&nbsp;X-Axis :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-x-axis" class="scatter-selection-fields"></select>
+                        <label>&nbsp;&nbsp;Y-Axis :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-y-axis" class="scatter-selection-fields"></select>
+                        <label>&nbsp;&nbsp;Radius :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-circle-radius" class="scatter-selection-fields"></select>
+                        <label>&nbsp;&nbsp;Colour :&nbsp;&nbsp;</label>
+                        <select id="scatter-plot-color" class="scatter-selection-fields"></select>
+                    </div>
+                </div>
+                <div id="scatter-plot"></div>
+                <div id="spider-tooltip"></div>
+            </div>
+            <div id="sunburst" class="visual-tab-content">
+                <div id="sunburst-header">
+                    <select id="sunburst-selection"></select>
+                    <div>
+                        <label>Metric : </label>
+                        <select id="metric-selection"></select>
+                    </div>
+                </div>
+                <div id="sunburst-chart"></div>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="./script.js"></script>
+<script src="./Scripts/raw-report.js" type="module"></script>
+<script src="./Scripts/treemap.js" type="module"></script>
+<script src="./Scripts/scatter-plot.js" type="module"></script>
+<script src="./Scripts/sunburst.js" type="module"></script>
+
+</html>

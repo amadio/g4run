@@ -1,0 +1,13 @@
+Prev(L1 Data Cache Misses),Curr(L1 Data Cache Misses),Diff(L1 Data Cache Misses),Ratio(L1 Data Cache Misses),Prev(L1 Instruction Cache Misses),Curr(L1 Instruction Cache Misses),Diff(L1 Instruction Cache Misses),Ratio(L1 Instruction Cache Misses),Symbol
+0.858%,0.947%,0.089%,1.10,0.821%,0.837%,0.016%,1.02,G4SteppingManager::InvokeAlongStepDoItProcs
+0.629%,0.672%,0.043%,1.07,0.615%,0.571%,-0.044%,0.93,G4Transportation::AlongStepDoIt
+1.101%,1.158%,0.056%,1.05,1.430%,1.474%,0.044%,1.03,__sincos
+0.747%,0.785%,0.039%,1.05,0.412%,0.502%,0.090%,1.22,G4KleinNishinaCompton::SampleSecondaries
+1.092%,1.113%,0.021%,1.02,1.428%,1.239%,-0.189%,0.87,G4PropagatorInField::ComputeStep
+1.104%,1.111%,0.007%,1.01,1.142%,0.989%,-0.153%,0.87,G4UrbanMscModel::SampleCosineTheta
+1.658%,1.659%,0.000%,1.00,1.593%,1.373%,-0.220%,0.86,CMSMagneticField::GetFieldValue
+0.976%,0.981%,0.004%,1.00,1.126%,1.008%,-0.117%,0.90,G4TDormandPrince45<G4Mag_UsualEqRhs,6u>::StepWithError
+0.734%,0.736%,0.002%,1.00,0.868%,0.726%,-0.142%,0.84,G4ParticleChangeForTransport::UpdateStepForAlongStep
+0.653%,0.649%,-0.004%,0.99,0.202%,0.228%,0.026%,1.13,G4PolyhedraSide::Intersect
+0.740%,0.696%,-0.044%,0.94,0.469%,0.514%,0.046%,1.10,G4NavigationLevel::operator=
+0.685%,0.621%,-0.064%,0.91,0.550%,0.583%,0.033%,1.06,G4Navigator::LocateGlobalPointAndSetup

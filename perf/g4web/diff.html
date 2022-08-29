@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geant4 Peformance Report</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <div class="title">
+                <h1>g4 Performance</h1>
+                <p id="commit">Comparing commit {before} with commit {after}</p>
+            </div>
+            <div class="main-report-selector">
+                <a href="index.html"><button>Raw-Reports</button></a>
+            </div>
+            <div class="visual-tab-bar">
+                <!-- Tabs for Data Visuals and Reports -->
+                <button class="visual-tabs" onclick="openTab( this,'performance-report')"
+                    id="default-tab">Report</button>
+                <button class="visual-tabs" onclick="openTab(this,'flamegraph-tab')">Flamegraph</button>
+                <button class="visual-tabs" onclick="openTab(this,'treemaps-tab')">TreeMaps</button>
+            </div>
+        </header>
+
+        <main class="tab-content">
+            <!-- Performance Reports in HTML Tables -->
+            <div id="performance-report" class="visual-tab-content">
+                <p id="performance-difference">
+                    Before: 391.48s, 3.206e+13 cycles, 4.835e+13 instructions<br>
+                    After: 395.20s, 3.195e+13 cycles, 4.834e+13 instructions<br>
+                    Speedup: -0.95% (time), +0.32% (cycles), +0.01% (instructions)
+                </p>
+                <div class="report-type-content" id="diff-reports">
+                    <!--Button to download CSV file -->
+                    <div id="diff-top-container-report">
+                        <select id="diff-report-selection"></select>
+                        <button type="submit" id="diff-csv-download">Download CSV</button>
+                    </div>
+                    <!-- Implement value based filtering for the table-->
+                    <div id="diff-threshold_div">
+                        <input class="diff-threshold_elem" type="number" id="diff-l_threshold"
+                            placeholder="Lower Threshold">
+                        <input class="diff-threshold_elem" type="number" id="diff-h_threshold"
+                            placeholder="Higher Threshold">
+                        <select class="diff-threshold_elem" id="diff-column_fields"></select>
+                        <button class="diff-threshold_elem" id="diff-apply-btn">Apply</button>
+                        <button class="diff-threshold_elem" id="diff-reset-filter">Reset</button>
+                    </div>
+                    <div id="diff-html-table"></div>
+                </div>
+            </div>
+
+            <!-- Flamegraphs Tab -->
+            <div id="flamegraph-tab" class="visual-tab-content">
+                <select id="flame-selection"></select>
+                <!--Load an external Flamegraph SVG-->
+                <div id="flamegraph">
+                    <object type="image/svg+xml" id="flame-object"></object>
+                </div>
+            </div>
+
+            <!-- TreeMaps Tab -->
+            <div id="treemaps-tab" class="visual-tab-content">
+                <div class="treemap-type-content" id="diff-treemap-container">
+                    <div id="diff-treemap-header">
+                        <div id="diff-treemap-type">
+                            <select id="diff-treemap-selection"></select>
+                        </div>
+                    </div>
+                    <div id="diff-treemaps"></div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+</body>
+<script src="./script.js"></script>
+<script src="./diff-config.js"></script>
+<script src="./Scripts/diff-report.js" type="module"></script>
+<script src="./Scripts/flamegraph.js" type="module"></script>
+<script src="./Scripts/diff-treemap.js" type="module"></script>
+
+</html>
