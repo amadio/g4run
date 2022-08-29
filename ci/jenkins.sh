@@ -44,6 +44,7 @@ git -C ${REPOSITORY} fetch origin ${GIT_PREVIOUS_COMMIT}
 echo "Comparing ${GIT_PREVIOUS_COMMIT} (before) with ${GIT_COMMIT} (after)"
 
 rm -rf ${WORKSPACE}/build
+git -C ${REPOSITORY} worktree prune
 
 if [[ $(du -sm ${WORKSPACE}/install | cut -f1) -gt 50000 ]]; then
 	find ${WORKSPACE}/install -maxdepth 1 -not -mtime -7 -exec rm -rf {} \;
