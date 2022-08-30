@@ -22,5 +22,4 @@ for TEST in $@; do
 	done
 
 	[[ -f ${TEST}.perf ]] && flamegraph.sh ${TEST}.perf
-	[[ -d ${TEST}-treemap ]] && treemap.sh ${TEST}.perf ${TEST}-treemap/treemap.json
 done

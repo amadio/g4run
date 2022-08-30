@@ -75,8 +75,6 @@ foreach(PRIMARY ${PRIMARIES})
         ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE)
   endforeach()
 
-  file(COPY treemap/ DESTINATION ${TEST}-treemap)
-
   add_test(NAME ${TEST}-report COMMAND
     sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/report.sh ${TEST} | tee ${TEST}.txt")
 
