@@ -10,8 +10,11 @@ BEGIN {
 
 /name = / {
 	sub(",", "", $0);
-	evname[nevents] = gensub("[^a-zA-Z0-9]", "_", "g", $6);
-	ev[$6] = nevents++;
+	sub(":.*", "", $6);
+	if ($6 !~ "dummy") {
+		evname[nevents] = gensub("[^a-zA-Z0-9]", "_", "g", $6);
+		ev[$6] = nevents++;
+	}
 }
 
 /Total / {
