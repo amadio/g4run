@@ -57,7 +57,7 @@ execute_process(COMMAND sh -c "${GEANT4_CONFIG} --datasets | awk '{ printf \"%s=
 
 foreach(PRIMARY ${PRIMARIES})
   string(REGEX REPLACE ":" "-" TEST ${PRIMARY})
-  set(COMMAND $<TARGET_FILE:g4run> --cdash --stats -g ${GDML} -f ${FIELD} -E ${ENERGY} -p ${PRIMARY} -e ${NEVENTS} -j ${NCORES})
+  set(COMMAND $<TARGET_FILE:g4run> --stats -g ${GDML} -f ${FIELD} -E ${ENERGY} -p ${PRIMARY} -e ${NEVENTS} -j ${NCORES})
 
   add_test(NAME ${TEST}-record-cpu
     COMMAND ${PERF_EXECUTABLE} record -e ${METRICS_CPU} -o ${TEST}-cpu.perf ${COMMAND})
