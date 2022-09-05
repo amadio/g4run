@@ -10,8 +10,11 @@ BEGIN {
 
 /name = / {
 	sub(",", "", $0);
-	evname[nevents] = gensub("[^a-zA-Z0-9]", "_", "g", $6);
-	ev[$6] = nevents++;
+	sub(":.*", "", $6);
+	if ($6 != "dummy") {
+		evname[nevents] = gensub("[^a-zA-Z0-9]", "_", "g", $6);
+		ev[$6] = nevents++;
+	}
 }
 
 /Total / {
@@ -20,11 +23,10 @@ BEGIN {
 		printf(",%s", evname[i]); printf("\n");
 }
 
-/\[\.\]/ {
+/\[.\]/ {
 	comm = $nevents
-	dso = gensub("\\..*", "", "g", $(nevents + 1))
-	symbol = gensub(".*\\[\\.\\] " , "", "g")
-	# symbol = gensub("::", ";", "g", symbol)
+	dso = $(nevents + 1)
+	symbol = gensub(".*] " , "", "g")
 	for (i in evname) data[comm][dso][symbol][i] = $i
 }
 
