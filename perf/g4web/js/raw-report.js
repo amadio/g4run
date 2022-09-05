@@ -1,18 +1,9 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
-let csv_report = "branches";
+
+let csv_report = "pythia";
+
 // Store all the report files in this array
-const all_reports =
-    [
-        'branches', 'cpu-kernel-stacks',
-        'cpu-kernel', 'cpu-stacks',
-        'divisions', 'faults',
-        'l2', 'ibs-fetch',
-        'ibs-op', 'ic',
-        'load-store', 'perf',
-        'pythia-cache',
-        'pythia-cpu', 'tlb',
-        'uops-2', 'uops'
-    ];
+const all_reports = [ 'pythia', 'pythia-cpu', 'pythia-cache' ];
 
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
@@ -20,6 +11,7 @@ const report_selection = () => {
         d3.select("#report-selection").append("option").text(file);
     })
 }
+
 let toggle_sort = true;
 // Selection Fields for metrics
 const name_fields = numeric_columns => {
@@ -129,7 +121,7 @@ const tabulate = (data, table_columns, numeric_columns, extent_array) => {
 
 // Load the CSV data into HTML using d3
 const load_CSV = file => {
-    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`, d3.autoType).then(data => {
+    d3.csv(`data/${file}.csv`, d3.autoType).then(data => {
         let table_columns = data.columns;
         let numeric_columns = [];
 
@@ -232,7 +224,7 @@ const load_CSV = file => {
 
 // Download the CSV file on clicking the Button
 document.getElementById("csv-download").addEventListener("click", () => {
-    window.open(`Data/Table_Reports/raw-reports/${csv_report}.csv`);
+    window.open(`data/${csv_report}.csv`);
 })
 
 // Update the page on selecting the other Data File (CSV) for generating reports

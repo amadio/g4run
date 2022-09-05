@@ -1,20 +1,9 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
 // TreeMap Data Selectors
-let csv_report = "branches";
+let csv_report = "pythia";
 // Store all the report files in this array
-const all_reports =
-    [
-        'branches', 'cpu-kernel-stacks',
-        'cpu-kernel', 'cpu-stacks',
-        'divisions', 'faults',
-        'l2', 'ibs-fetch',
-        'ibs-op', 'ic',
-        'load-store', 'perf',
-        'pythia-cache',
-        'pythia-cpu', 'tlb',
-        'uops-2', 'uops'
-    ];
+const all_reports = [ 'pythia', 'pythia-cpu', 'pythia-cache' ];
 
 // Dropdown for TreeMap Selection
 const treemap_selection = () => {
@@ -113,7 +102,7 @@ const render = (data,extent_array,numeric_columns) => {
 }
 
 const load_CSV = file => {
-    d3.csv(`Data/Treemaps/${file}.csv`,d3.autoType).then(data => {
+    d3.csv(`data/treemap-${file}.csv`,d3.autoType).then(data => {
         let numeric_columns = [];
 
         const all_columns = Object.getOwnPropertyNames(data[0]);

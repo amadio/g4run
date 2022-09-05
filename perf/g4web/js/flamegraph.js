@@ -9,7 +9,7 @@ const flame_selection = () => {
     })
 }
 const load_flame = () => {
-    d3.select("#flame-object").attr("data", `Data/FlameGraphs/${flame_data}`);
+    d3.select("#flame-object").attr("data", `data/${flame_data}`);
 }
 document.getElementById("flame-selection").addEventListener("change", (e) => {
     flame_data = e.target.value;

@@ -113,14 +113,15 @@ th{
 #flamegraph {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
-#flame-selection{
+#flame-selection {
     margin: 0 10px;
 }
+
 object {
-    height: 80vh;
-    width: 120%;
+    width:100%;
 }
 
 /* Components of Performance report */

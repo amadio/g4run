@@ -1,15 +1,9 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
 // TreeMap Data Selectors
-let csv_report = "baseline-vs-run3opt";
+let csv_report = "pythia";
 // Store all the report files in this array
-const all_reports =
-    [
-        'baseline-vs-run3opt',
-        'baseline-vs-vecgeom',
-        'run3opt-vs-vecgeom',
-        'vecgeom-slices-vs-wheel'
-    ];
+const all_reports = [ 'pythia' ];
 
 // Dropdown for TreeMap Selection
 const treemap_selection = () => {
@@ -28,13 +22,16 @@ const treemap = d3.treemap().size([width, height]).padding(1).round(true);
 const format = d3.format("+.2%");
 const fmt = d3.format(",.3e");
 
+function change(d) {
+  var before = +d.data.cycles_old;
+  var after = +d.data.cycles_new;
+  return (after - before) / (after + before);
+}
 
 const render = data => {
 
     const root = stratify(data)
-        .sum(d => {
-            return d.value
-        })
+        .sum(d => { return d.cycles_old + d.cycles_new; })
         .sort((a, b) => b.height - a.height || b.value - a.value);
 
     treemap(root);
@@ -42,28 +39,45 @@ const render = data => {
     // Append the treemap to its respective div
     d3.select("#diff-treemaps").selectAll(".diff-node")
         .data(root.leaves())
-        .enter().append("div").attr("class", "diff-node").attr("title", d => d.id.split(/;/g).join("\n") + "\nCycles: slices: " + fmt(d.data.prev) + 
-        " wheel: " + fmt(d.data.curr) + "\nchange: " + format((d.data.curr - d.data.prev) / d.value))
+	.enter()
+	.append("div")
+	.attr("class", "diff-node")
+	.attr("title", function(d) {
+              return d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n")
+              + "\n" 
+	      + d3.format("+.2%")(d.data.overhead_new - d.data.overhead_old) + " " 
+	      + d3.format(".3")(d.data.cycles_new / d.data.cycles_old) + " (" 
+	      + d3.format(".2%")(+d.data.overhead_old) + " / "
+	      + d3.format(".2%")(+d.data.overhead_new) + ")";
+        })
         .style("left", d => d.x0 + "px")
         .style("top", d => d.y0 + "px")
         .style("width", d => d.x1 - d.x0 + "px")
         .style("height", d => d.y1 - d.y0 + "px")
-        .style("background", d => d3.interpolateRdBu(0.5 * (1.0 - ((d.data.curr - d.data.prev) / d.value))))
-        .style("color", d => d3.scaleLinear()
-                   .domain([-0.4001, -0.4, 0.4, 0.4001])
+        .style("background", d => 
+		d3.scaleLinear()
+                       .domain([-1.0, -0.75, -0.25, 0.0, 0.25, 0.75, 1.0])
+                       .range(["darkgreen", "green", "lightgreen", "whitesmoke", "orangered", "red", "darkred"])
+                       .interpolate(d3.interpolateRgb.gamma(2.2))(change(d))
+		)
+	.style("color", d => d3.scaleLinear()
+                   .domain([-0.5001, -0.5, 0.5, 0.5001])
                    .range(["white", "black", "black", "white"])
-                   .interpolate(d3.interpolateRgb.gamma(2.2))(((d.data.curr - d.data.prev) / d.value)))
+                   .interpolate(d3.interpolateRgb.gamma(2.2))(change(d)))
         .append("div")
         .attr("class", "diff-node-label")
         .text(d => d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n"))
         .append("div")
         .attr("class", "diff-node-value")
-        .text(d => format((d.data.curr - d.data.prev) / d.value))
-
+        .text(function(d) {
+		return d3.format("+.2%")(d.data.overhead_new - d.data.overhead_old) + " " 
+		     + d3.format(".3")(d.data.cycles_new / d.data.cycles_old) + " (" 
+		     + d3.format(".2%")(+d.data.overhead_old) + " / "
+		     + d3.format(".2%")(+d.data.overhead_new) + ")"; })
 }
 
 const load_CSV = file => {
-    d3.csv(`Data/Treemaps/Diff-TreeMaps/${file}.csv`,d3.autoType).then(data => {
+    d3.csv(`data/treemap-diff-${file}.csv`,d3.autoType).then(data => {
         render(data);
     })
 }

@@ -1,19 +1,8 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 // Scatter-Plot Data Selectors
-let csv_report = "branches";
+let csv_report = "pythia-cpu";
 // Store all the report files in this array
-const all_reports =
-    [
-        'branches', 'cpu-kernel-stacks',
-        'cpu-kernel', 'cpu-stacks',
-        'divisions', 'faults',
-        'l2', 'ibs-fetch',
-        'ibs-op', 'ic',
-        'load-store', 'perf',
-        'pythia-cache',
-        'pythia-cpu', 'tlb',
-        'uops-2', 'uops'
-    ];
+const all_reports = [ 'pythia', 'pythia-cpu', 'pythia-cache' ];
 
 // Dropdown for Scatter-Plot Selection
 const scatter_selection = () => {
@@ -317,7 +306,7 @@ const render = (data, extent_array, numeric_columns) => {
 document.getElementById("spider-tooltip").style.display = 'none';
 const load_CSV = file => {
 
-    d3.csv(`Data/Table_Reports/raw-reports/${file}.csv`, d3.autoType).then(data => {
+    d3.csv(`data/${file}.csv`, d3.autoType).then(data => {
 
         let table_columns = data.columns;
         let numeric_columns = [];

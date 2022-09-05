@@ -1,19 +1,10 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 
-let csv_report = "branches";
+let csv_report = "pythia";
 let metric;
-const all_reports =
-    [
-        'branches', 'cpu-kernel-stacks',
-        'cpu-kernel', 'cpu-stacks',
-        'divisions', 'faults',
-        'l2', 'ibs-fetch',
-        'ibs-op', 'ic',
-        'load-store', 'perf',
-        'pythia-cache',
-        'pythia-cpu', 'tlb',
-        'uops-2', 'uops'
-    ];
+
+const all_reports = [ 'pythia', 'pythia-cpu', 'pythia-cache' ];
+
 const sunburst_selection = () => {
     all_reports.forEach(file => {
         d3.select("#sunburst-selection").append("option").text(file);
@@ -75,7 +66,7 @@ const render = (vdata, numeric_columns, extent_array) => {
         });
 }
 const load_CSV = (csv_report) => {
-    d3.csv(`Data/Treemaps/${csv_report}.csv`, d3.autoType).then(data => {
+    d3.csv(`data/treemap-${csv_report}.csv`, d3.autoType).then(data => {
         const vdata = stratify(data);
 
         let numeric_columns = [];
