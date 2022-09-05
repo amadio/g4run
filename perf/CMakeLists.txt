@@ -44,44 +44,26 @@ if(NOT DEFINED PRIMARIES)
   endif()
 endif()
 
-if(NOT DEFINED METRICS_CPU)
-  set(METRICS_CPU {cycles,instructions,branches,branch-misses})
-endif()
-
-if(NOT DEFINED METRICS_CACHE)
-  set(METRICS_CACHE {instructions,L1-dcache-loads,L1-dcache-load-misses,L1-icache-load-misses})
-endif()
-
 execute_process(COMMAND sh -c "${GEANT4_CONFIG} --datasets | awk '{ printf \"%s=%s;\", \$2, \$3 }'"
   OUTPUT_VARIABLE GEANT4_DATASETS OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 foreach(PRIMARY ${PRIMARIES})
   string(REGEX REPLACE ":" "-" TEST ${PRIMARY})
-  set(COMMAND $<TARGET_FILE:g4run> --stats -g ${GDML} -f ${FIELD} -E ${ENERGY} -p ${PRIMARY} -e ${NEVENTS} -j ${NCORES})
+  set(COMMAND "$<TARGET_FILE:g4run> --stats -g ${GDML} -f ${FIELD} -E ${ENERGY} -p ${PRIMARY} -e ${NEVENTS} -j ${NCORES}")
 
-  add_test(NAME ${TEST}-record-cpu
-    COMMAND ${PERF_EXECUTABLE} record -e ${METRICS_CPU} -o ${TEST}-cpu.perf ${COMMAND})
+  add_test(NAME ${TEST}-record COMMAND
+    sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/record.sh ${TEST} ${COMMAND}")
 
-  add_test(NAME ${TEST}-record-cache
-    COMMAND ${PERF_EXECUTABLE} record -e ${METRICS_CACHE} -o ${TEST}-cache.perf ${COMMAND})
-
-  add_test(NAME ${TEST}-record-callgraph
-    COMMAND ${PERF_EXECUTABLE} record -e cycles -g -F100 -o ${TEST}.perf ${COMMAND})
-
-  foreach(METRIC callgraph cpu cache)
-    set_tests_properties(${TEST}-record-${METRIC}
-      PROPERTIES
-        LABELS "perf;record"
-        ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE)
-  endforeach()
+  set_tests_properties(${TEST}-record
+    PROPERTIES
+      LABELS "perf;record"
+      ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE DEPENDS g4run)
 
   add_test(NAME ${TEST}-report COMMAND
-    sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/report.sh ${TEST} | tee ${TEST}.txt")
+    sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/report.sh ${TEST}")
 
   set_tests_properties(${TEST}-report
     PROPERTIES
       LABELS "perf;report"
-      ATTACHED_FILES "${CMAKE_CURRENT_BINARY_DIR}/${TEST}.svg"
-      REQUIRED_FILES "${TEST}.perf;${TEST}-cpu.perf;${TEST}-cache.perf"
-      DEPENDS "${TEST}-record-callgraph;${TEST}-record-cpu;${TEST}-record-cache")
+      REQUIRED_FILES ${TEST}.perf DEPENDS ${TEST}-record)
 endforeach()
