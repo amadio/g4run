@@ -47,6 +47,9 @@ endif()
 execute_process(COMMAND sh -c "${GEANT4_CONFIG} --datasets | awk '{ printf \"%s=%s;\", \$2, \$3 }'"
   OUTPUT_VARIABLE GEANT4_DATASETS OUTPUT_STRIP_TRAILING_WHITESPACE)
 
+file(COPY g4web/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/html)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html/data)
+
 foreach(PRIMARY ${PRIMARIES})
   string(REGEX REPLACE ":" "-" TEST ${PRIMARY})
   set(COMMAND "$<TARGET_FILE:g4run> --stats -g ${GDML} -f ${FIELD} -E ${ENERGY} -p ${PRIMARY} -e ${NEVENTS} -j ${NCORES}")
