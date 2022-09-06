@@ -134,5 +134,5 @@ for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
 	git -C ${REPOSITORY} worktree remove ${SOURCE_DIR}
 done
 
-sed -i "1s@^@Comparing ${GIT_PREVIOUS_COMMIT} (before) with ${GIT_COMMIT} (after)\n\n@" \
-	${WORKSPACE}/build/g4run/perf/pythia.txt
+sed -i -e "s/#000/${GIT_PREVIOUS_COMMIT}/" -e "s/#111/${GIT_COMMIT}/" \
+	${WORKSPACE}/build/g4run/perf/html/script.js
