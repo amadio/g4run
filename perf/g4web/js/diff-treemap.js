@@ -28,6 +28,12 @@ function change(d) {
   return (after - before) / (after + before);
 }
 
+function bgcolor(x) {
+  return d3.scaleLinear()
+           .domain([-1.0, -0.999, -0.8, 0.0, +0.8, +0.999, +1.0])
+           .range(["lightgreen", "limegreen", "green", "whitesmoke", "red", "darkred", "pink"])(x);
+}
+
 const render = data => {
 
     const root = stratify(data)
@@ -54,12 +60,7 @@ const render = data => {
         .style("top", d => d.y0 + "px")
         .style("width", d => d.x1 - d.x0 + "px")
         .style("height", d => d.y1 - d.y0 + "px")
-        .style("background", d => 
-		d3.scaleLinear()
-                       .domain([-1.0, -0.75, -0.25, 0.0, 0.25, 0.75, 1.0])
-                       .range(["darkgreen", "green", "lightgreen", "whitesmoke", "orangered", "red", "darkred"])
-                       .interpolate(d3.interpolateRgb.gamma(2.2))(change(d))
-		)
+        .style("background", d => bgcolor(change(d)))
 	.style("color", d => d3.scaleLinear()
                    .domain([-0.5001, -0.5, 0.5, 0.5001])
                    .range(["white", "black", "black", "white"])
