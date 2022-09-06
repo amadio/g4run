@@ -18,7 +18,7 @@ for TEST in $@; do
 		perf2csv ${TEST}.perf.old ${TEST}.old.csv &
 		perf script report stackcollapse -i ${TEST}.perf.old >| ${TEST}.stacks.old &
 		treemap-diff.sh ${TEST}.perf{.old,} treemap-diff-${TEST}.csv &
-		summary.sh ${TEST}.perf{.old,} >| diff-config.js &
+		[[ -d html ]] && summary.sh ${TEST}.perf{.old,} >| html/diff-config.js &
 	fi
 
 	for M in cpu cache; do
@@ -42,7 +42,4 @@ for TEST in $@; do
 	fi
 done
 
-if [[ -d html/data ]]; then
-	cp *.js html
-	cp *.csv *.svg html/data
-fi
+[[ -d html ]] && cp *.csv *.svg html/data
