@@ -65,6 +65,7 @@ pipeline {
 	post {
 		failure {
 			updateGitlabCommitStatus name: 'build', state: 'failed'
+			addGitLabMRComment(comment: "The performance report for this merge request failed.")
 		}
 		success {
 			updateGitlabCommitStatus name: 'build', state: 'success'
@@ -75,10 +76,9 @@ pipeline {
 				keepAll: true,
 				allowMissing: false,
 				alwaysLinkToLastBuild: true,
-				includes: '**/*.svg,**/*.txt',
-				reportDir: 'build/g4run/perf',
-				reportFiles: 'pythia.txt,pythia.svg,pythia-inv.svg',
-				reportTitles: 'Performance Report,FlameGraph,Inverted FlameGraph',
+				reportDir: 'build/g4run/perf/html',
+				reportFiles: 'diff.html',
+				reportTitles: 'Performance Report',
 				reportName: 'Performance Report'
 			])
 		}
