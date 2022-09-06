@@ -1,7 +1,7 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 let csv_report = "pythia-cpu";
 // Store all the report files in this array
-const all_reports = [ 'pythia-cpu', 'pythia-cache' ];
+const all_reports = [ 'pythia', 'pythia-cpu', 'pythia-cache' ];
 
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
