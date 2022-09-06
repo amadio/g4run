@@ -11,7 +11,7 @@ if(NOT EXISTS ${GEANT4_CONFIG})
 endif()
 
 if(NOT DEFINED NCORES)
-  cmake_host_system_information(RESULT NCORES QUERY NUMBER_OF_PHYSICAL_CORES)
+  cmake_host_system_information(RESULT NCORES QUERY NUMBER_OF_LOGICAL_CORES)
 endif()
 
 if(NOT DEFINED GDML)
