@@ -104,6 +104,13 @@ const tabulate = (data, table_columns, numeric_columns) => {
         d3.select("#diff-html-table").text("No valid data available for given range")
     }
 
+    function bgcolor(x) {
+	    return d3.scaleLinear()
+	             .domain([-1.0, -0.999, -0.8, 0.0, +0.8, +0.999, +1.0])
+		     .range(["lightgreen", "limegreen", "green", "whitesmoke", "red", "darkred", "pink"])(x);
+    }
+
+
     const cells = rows
 	.each(function(d) {
 		for (let c in table_columns) {
@@ -121,12 +128,10 @@ const tabulate = (data, table_columns, numeric_columns) => {
 				//d3.scaleLinear().domain([0, 0.1]).range(["white", "red"])(d[name + "_new"]))
 
 				d3.select(this).append("td").text(d3.format("+.2%")(d[name + "_diff"]))
-				.style("background-color", 
-				d3.scaleLinear().domain([-1.0, 0.0, +1.0]).range(["green", "white", "red"])(val))
+				.style("background-color", bgcolor(val))
 
 				d3.select(this).append("td").text(d3.format(".3f")(d[name + "_ratio"]))
-				.style("background-color", 
-				d3.scaleLinear().domain([-1.0, 0.0, +1.0]).range(["green", "white", "red"])(val))
+				.style("background-color", bgcolor(val))
 
 			} else {
 				if (!column.match(".*_(old|diff|ratio)")) {
