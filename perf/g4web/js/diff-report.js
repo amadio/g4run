@@ -139,9 +139,9 @@ const tabulate = (data, table_columns, numeric_columns) => {
             if (toggle_sort) {
                 rows.sort(function (a, b) {
                     if (a[d] < b[d]) {
-                        return 1;
-                    } else if (a[d] > b[d]) {
                         return -1;
+                    } else if (a[d] > b[d]) {
+                        return 1;
                     } else {
                         return 0;
                     }
@@ -150,9 +150,9 @@ const tabulate = (data, table_columns, numeric_columns) => {
             }else{
                 rows.sort(function (a, b) {
                     if (a[d] < b[d]) {
-                        return -1;
-                    } else if (a[d] > b[d]) {
                         return 1;
+                    } else if (a[d] > b[d]) {
+                        return -1;
                     } else {
                         return 0;
                     }
