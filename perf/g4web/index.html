@@ -16,8 +16,9 @@
                 <h1>Geant4 Performance Report</h1>
                 <p id="commit">Comparing commit {before} with commit {after}</p>
             </div>
+	    <div style="display: flex; flex-direction: row;">
             <div class="main-report-selector">
-                <a href="diff.html"><button>Difference-Reports</button></a>
+		<button><a href="diff.html">Difference-Reports</a></button>
             </div>
             <div class="visual-tab-bar">
                 <!-- Tabs for Data Visuals and Reports -->
@@ -26,6 +27,7 @@
                 <button class="visual-tabs" onclick="openTab(this,'scatter-plot-tab')">Scatter-Plot</button>
                 <button class="visual-tabs" onclick="openTab(this,'sunburst')">Sunburst</button>
 
+            </div>
             </div>
         </header>
 

@@ -16,8 +16,9 @@
                 <h1>Geant4 Performance Report</h1>
                 <p id="commit">Comparing commit {before} with commit {after}</p>
             </div>
+	    <div style="display: flex; flex-direction: row;">
             <div class="main-report-selector">
-                <a href="index.html"><button>Raw-Reports</button></a>
+                <button><a href="index.html">Raw-Reports</a></button>
             </div>
             <div class="visual-tab-bar">
                 <!-- Tabs for Data Visuals and Reports -->
@@ -26,6 +27,7 @@
                 <button class="visual-tabs" onclick="openTab(this,'flamegraph-tab')">Flamegraph</button>
                 <button class="visual-tabs" onclick="openTab(this,'treemaps-tab')">TreeMaps</button>
             </div>
+	    </div>
         </header>
 
         <main class="tab-content">
