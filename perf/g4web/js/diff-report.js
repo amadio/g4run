@@ -1,5 +1,5 @@
 import * as d3 from "https://cdn.skypack.dev/d3@7";
-let csv_report = "pythia-cpu";
+let csv_report = "pythia";
 // Store all the report files in this array
 const all_reports = [ 'pythia', 'pythia-cpu', 'pythia-cache' ];
 
@@ -36,36 +36,33 @@ const name_fields = numeric_columns => {
 const tabulate = (data, table_columns, numeric_columns) => {
 
     const table = d3.select("#diff-html-table").append("table").attr("id", "diff-report-table");
+
     table.append("thead").append("tr");
-    const header = table.select("tr")
-                        .selectAll("th")
-			.data(data.columns.filter(d => d.match(".*_old"))).enter()
-			  .append("th").text(d => d.replace("_old", "").replace("_", " "))
-			  .attr("colspan", 4);
+    table.select("tr").selectAll("th")
+                      .data(data.columns.filter(d => d.match(".*_new"))).enter()
+                      .append("th").text(d => d.replace("_new", "").replace("_", " ")).attr("colspan", 4);
 
-    table.append("tr").selectAll("tr")
-	    .data(data.columns.filter(d => !d.match(".*_old")))
-	    .enter()
-	    .each(function(d, i) { 
-		    if (d.match(".*_new")) {
-		    d3.select(this).append("th").text("old")
-		    d3.select(this).append("th").text("new")
-		    d3.select(this).append("th").text("diff")
-		    d3.select(this).append("th").text("ratio")
-		    } else {
-			if (!d.match(".*_(diff|ratio)"))
-			d3.select(this).append("th").text(d)
-		    }
-	    })
+    table.append("tr").selectAll("th")
+         .data(data.columns.filter(d => !d.match(".*_old"))).enter()
+         .each(function(d, i) {
+                    if (d.match(".*_new")) {
+                    d3.select(this).append("th").text("old")
+                    d3.select(this).append("th").text("new")
+                    d3.select(this).append("th").text("diff")
+                    d3.select(this).append("th").text("ratio")
+                    } else {
+                        if (!d.match(".*_(diff|ratio)"))
+                        d3.select(this).append("th").text(d)
+                    }
+            })
 
-    console.log(table_columns)
-
+    const header = table.selectAll("th");
     const tbody = table.append("tbody");
     const selectField = document.getElementById("diff-column_fields").value;
 
     let totals = {};
     for (let c in numeric_columns)
-	    totals[numeric_columns[c]] = d3.sum(data, d => d[numeric_columns[c]]);
+            totals[numeric_columns[c]] = d3.sum(data, d => d[numeric_columns[c]]);
 
     // Threshold Logics
     let h_input, l_input, h_filter = 1.0, l_filter = 0.005;
@@ -104,12 +101,9 @@ const tabulate = (data, table_columns, numeric_columns) => {
         d3.select("#diff-html-table").text("No valid data available for given range")
     }
 
-    function bgcolor(x) {
-	    return d3.scaleLinear()
-	             .domain([-1.0, -0.999, -0.8, 0.0, +0.8, +0.999, +1.0])
-		     .range(["lightgreen", "limegreen", "green", "whitesmoke", "red", "darkred", "pink"])(x);
-    }
-
+    const bgcolor = d3.scaleLinear()
+                      .domain([-1.0, -0.99, -0.25, 0.0, 0.25, 0.99, 1.0])
+                      .range(["seagreen", "darkgreen", "green", "white", "firebrick", "darkred", "lightcoral"]);
 
     const cells = rows
 	.each(function(d) {
@@ -119,19 +113,16 @@ const tabulate = (data, table_columns, numeric_columns) => {
 				let name = column.replace("_new", "")
 				let val = (+d[name + "_new"] - d[name + "_old"]) / (+d[name + "_new"] + d[name + "_old"])
 
-				d3.select(this).append("td").text(d3.format(".2%")(d[name + "_old"]))
-				//.style("background-color", 
-				//d3.scaleLinear().domain([0, 0.1]).range(["white", "red"])(d[name + "_old"]))
-
-				d3.select(this).append("td").text(d3.format(".2%")(d[name + "_new"]))
-				//.style("background-color", 
-				//d3.scaleLinear().domain([0, 0.1]).range(["white", "red"])(d[name + "_new"]))
-
-				d3.select(this).append("td").text(d3.format("+.2%")(d[name + "_diff"]))
-				.style("background-color", bgcolor(val))
-
-				d3.select(this).append("td").text(d3.format(".3f")(d[name + "_ratio"]))
-				.style("background-color", bgcolor(val))
+				d3.select(this).append("td")
+				  .text(d3.format(".2%")(d[name + "_old"]))
+				d3.select(this).append("td")
+				  .text(d3.format(".2%")(d[name + "_new"]))
+				d3.select(this).append("td")
+				  .text(d3.format("+.2%")(d[name + "_diff"]))
+				  .style("background-color", bgcolor(val))
+				d3.select(this).append("td")
+				  .text(d3.format(".3f")(d[name + "_ratio"]))
+				  .style("background-color", bgcolor(val))
 
 			} else {
 				if (!column.match(".*_(old|diff|ratio)")) {
@@ -141,29 +132,15 @@ const tabulate = (data, table_columns, numeric_columns) => {
 		}
 	});
         header.on("click", (event, d) => {
+	    if (event.target.innerText.match("(old|new|diff|ratio)"))
+		d = d.replace("new", event.target.innerText)
+
             if (toggle_sort) {
-                rows.sort(function (a, b) {
-                    if (a[d] < b[d]) {
-                        return -1;
-                    } else if (a[d] > b[d]) {
-                        return 1;
-                    } else {
-                        return 0;
-                    }
-                })
-                toggle_sort = false;
-            }else{
-                rows.sort(function (a, b) {
-                    if (a[d] < b[d]) {
-                        return 1;
-                    } else if (a[d] > b[d]) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                })
-                toggle_sort = true;
+                rows.sort(function (a, b) { return a[d] < b[d] ? -1 : 1; })
+            } else {
+                rows.sort(function (a, b) { return a[d] > b[d] ? -1 : 1; })
             }
+	    toggle_sort = !toggle_sort;
         }
         )
 }
@@ -203,10 +180,6 @@ const load_CSV = file => {
 			data.columns.push(c_ratio);
 		}
 	});
-
-	console.log(data[0]);
-	console.log(data.columns);
-
 	tabulate(data, table_columns, numeric_columns);
 	});
 };
