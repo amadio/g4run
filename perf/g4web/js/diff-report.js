@@ -6,7 +6,7 @@ const all_reports = [ 'pythia', 'pythia-cpu', 'pythia-cache' ];
 // Getting the Options for selecting the report i.e. CSV File
 const report_selection = () => {
     all_reports.forEach(file => {
-        d3.select("#diff-report-selection").append("option").text(file);
+        d3.select("#report-selection").append("option").text(file);
     })
 }
 let toggle_sort = true;
@@ -17,13 +17,13 @@ const name_fields = numeric_columns => {
     for (let i = 0; i < numeric_columns.length; i++) {
 	if (numeric_columns[i].match(".*_new")) {
 		name = numeric_columns[i].replace("_new", "");
-                d3.selectAll("#diff-column_fields")
-		  .append("option").text(name).attr("class", "diff-csv-columns");
+                d3.selectAll("#column_fields")
+		  .append("option").text(name).attr("class", "csv-columns");
 	}
     }
 
     // Removing Duplicate Entries in Dropdown
-    document.querySelectorAll(".diff-csv-columns").forEach((option) => {
+    document.querySelectorAll(".csv-columns").forEach((option) => {
         if (options.includes(option.value)) {
             option.remove();
         } else {
@@ -35,7 +35,7 @@ const name_fields = numeric_columns => {
 // Convert the CSV into Tables
 const tabulate = (data, table_columns, numeric_columns) => {
 
-    const table = d3.select("#diff-html-table").append("table").attr("id", "diff-report-table");
+    const table = d3.select("#html-table").append("table").attr("id", "report-table");
 
     table.append("thead").append("tr");
     table.select("tr").selectAll("th")
@@ -58,7 +58,7 @@ const tabulate = (data, table_columns, numeric_columns) => {
 
     const header = table.selectAll("th");
     const tbody = table.append("tbody");
-    const selectField = document.getElementById("diff-column_fields").value;
+    const selectField = document.getElementById("column_fields").value;
 
     let totals = {};
     for (let c in numeric_columns)
@@ -66,8 +66,8 @@ const tabulate = (data, table_columns, numeric_columns) => {
 
     // Threshold Logics
     let h_input, l_input, h_filter = 1.0, l_filter = 0.005;
-    h_input = document.getElementById("diff-h_threshold");
-    l_input = document.getElementById("diff-l_threshold");
+    h_input = document.getElementById("h_threshold");
+    l_input = document.getElementById("l_threshold");
 
     if (h_input.value)
 	    h_filter = parseFloat(h_input.value);
@@ -98,7 +98,7 @@ const tabulate = (data, table_columns, numeric_columns) => {
     // If there are no entries then report for the same
     if (h_filter >= 0 && l_filter >= 0 && count == 0) {
         d3.select("table").remove();
-        d3.select("#diff-html-table").text("No valid data available for given range")
+        d3.select("#html-table").text("No valid data available for given range")
     }
 
     const bgcolor = d3.scaleLinear()
@@ -185,15 +185,15 @@ const load_CSV = file => {
 };
 
 // Download the CSV file on clicking the Button
-document.getElementById("diff-csv-download").addEventListener("click", () => {
+document.getElementById("csv-download").addEventListener("click", () => {
     window.open(`data/${csv_report}-diff.csv`);
 })
 
 // Update the page on selecting the other Data File (CSV) for generating reports
-document.getElementById("diff-report-selection").addEventListener("change", (e) => {
+document.getElementById("report-selection").addEventListener("change", (e) => {
     csv_report = e.target.value;
-    document.getElementById("diff-html-table").innerHTML = "";
-    d3.selectAll(".diff-csv-columns").remove();
+    document.getElementById("html-table").innerHTML = "";
+    d3.selectAll(".csv-columns").remove();
     load_CSV(csv_report);
 })
 
@@ -202,18 +202,18 @@ load_CSV(csv_report);
 report_selection();
 
 // Apply Button for Thresholds
-document.getElementById("diff-apply-btn").addEventListener("click", () => {
-    d3.select("#diff-report-table").remove();
+document.getElementById("apply-btn").addEventListener("click", () => {
+    d3.select("#report-table").remove();
     load_CSV(csv_report);
 })
 
 // Reset the reports without filters
-document.getElementById("diff-reset-filter").addEventListener("click", () => {
-    const h_input = document.getElementById("diff-h_threshold");
-    const l_input = document.getElementById("diff-l_threshold");
+document.getElementById("reset-filter").addEventListener("click", () => {
+    const h_input = document.getElementById("h_threshold");
+    const l_input = document.getElementById("l_threshold");
     h_input.value = "";
     l_input.value = "";
-    d3.selectAll("diff-report-table").remove();
-    d3.select("#diff-html-table").text("");
+    d3.selectAll("report-table").remove();
+    d3.select("#html-table").text("");
     load_CSV(csv_report);
 })

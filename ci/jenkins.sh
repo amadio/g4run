@@ -134,5 +134,6 @@ for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
 	git -C ${REPOSITORY} worktree remove ${SOURCE_DIR}
 done
 
-sed -i -e "s/#000/${GIT_PREVIOUS_COMMIT}/" -e "s/#111/${GIT_COMMIT}/" \
-	${WORKSPACE}/build/g4run/perf/html/script.js
+sed -i -e "s/@before@/${GIT_PREVIOUS_COMMIT}/" \
+       -e "s/@after@/${GIT_COMMIT}/" ${WORKSPACE}/build/g4run/perf/html/index.html
+sed -i -e "s/@after@/${GIT_COMMIT}/" ${WORKSPACE}/build/g4run/perf/html/metrics.html

@@ -55,8 +55,9 @@ const selection_fields = numeric_columns => {
     })
 }
 
-const width = d3.select("#treemaps").node().getBoundingClientRect().width-10;
-const height = d3.select("#treemaps").node().getBoundingClientRect().height-10;
+const width = document.getElementById("commit").getBoundingClientRect().width - 32;
+const height = window.innerHeight - 200;
+
 // Creating the child parent realtions from the data available
 const stratify = d3.stratify().parentId(d => d.id.substring(0, d.id.lastIndexOf(";")));
 
@@ -76,7 +77,7 @@ const render = (data,extent_array,numeric_columns) => {
     treemap(root);
 
     // Append the treemap to its respective div
-    d3.select("#treemaps").selectAll(".node")
+    d3.select("#treemap").selectAll(".node")
         .data(root.leaves())
         .enter().append("div").attr("class", "node").attr("title", d => d.id.split(/;/g).join("\n") + `\n${tooltip_metric} = ` + format(d.data[tooltip_metric]))
         .style("left", d => d.x0 + "px")
@@ -192,7 +193,7 @@ treemap_selection();
 
 document.getElementById("treemap-selection").addEventListener("change", (e) => {
     csv_report = e.target.value;
-    document.getElementById("treemaps").innerHTML = "";
+    document.getElementById("treemap").innerHTML = "";
     document.getElementById("treemap-area").options.length = 0;
     document.getElementById("treemap-color").options.length = 0;
     document.getElementById("treemap-tooltip").options.length = 0;
@@ -204,18 +205,18 @@ document.getElementById("treemap-selection").addEventListener("change", (e) => {
 
 document.getElementById("treemap-area").addEventListener("change", e => {
     area_metric = e.target.value;
-    document.getElementById("treemaps").innerHTML = "";
+    document.getElementById("treemap").innerHTML = "";
     load_CSV(csv_report);
 })
 
 document.getElementById("treemap-color").addEventListener("change", e => {
     color_metric = e.target.value;
-    document.getElementById("treemaps").innerHTML = "";
+    document.getElementById("treemap").innerHTML = "";
     load_CSV(csv_report);
 })
 
 document.getElementById("treemap-tooltip").addEventListener("change", e => {
     tooltip_metric = e.target.value;
-    document.getElementById("treemaps").innerHTML = "";
+    document.getElementById("treemap").innerHTML = "";
     load_CSV(csv_report);
 })

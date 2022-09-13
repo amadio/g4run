@@ -8,12 +8,12 @@ const all_reports = [ 'pythia' ];
 // Dropdown for TreeMap Selection
 const treemap_selection = () => {
     all_reports.forEach(file => {
-        d3.select("#diff-treemap-selection").append("option").text(file);
+        d3.select("#treemap-selection").append("option").text(file);
     })
 }
 
-const width = d3.select("#diff-treemaps").node().getBoundingClientRect().width-10;
-const height = d3.select("#diff-treemaps").node().getBoundingClientRect().height-10;
+const width = document.getElementById("commit").getBoundingClientRect().width - 32;
+const height = window.innerHeight - 200;
 
 // Creating the child parent realtions from the data available
 const stratify = d3.stratify().parentId(d => d.id.substring(0, d.id.lastIndexOf(";")));
@@ -43,11 +43,11 @@ const render = data => {
     treemap(root);
 
     // Append the treemap to its respective div
-    d3.select("#diff-treemaps").selectAll(".diff-node")
+    d3.select("#treemap").selectAll(".node")
         .data(root.leaves())
 	.enter()
 	.append("div")
-	.attr("class", "diff-node")
+	.attr("class", "node")
 	.attr("title", function(d) {
               return d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n")
               + "\n" 
@@ -66,10 +66,10 @@ const render = data => {
                    .range(["white", "black", "black", "white"])
                    .interpolate(d3.interpolateRgb.gamma(2.2))(change(d)))
         .append("div")
-        .attr("class", "diff-node-label")
+        .attr("class", "node-label")
         .text(d => d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n"))
         .append("div")
-        .attr("class", "diff-node-value")
+        .attr("class", "node-value")
         .text(function(d) {
 		return d3.format("+.2%")(d.data.overhead_new - d.data.overhead_old) + " " 
 		     + d3.format(".3")(d.data.cycles_new / d.data.cycles_old) + " (" 
@@ -86,8 +86,8 @@ const load_CSV = file => {
 load_CSV(csv_report);
 treemap_selection();
 
-document.getElementById("diff-treemap-selection").addEventListener("change", (e) => {
+document.getElementById("treemap-selection").addEventListener("change", (e) => {
     csv_report = e.target.value;
-    document.getElementById("diff-treemaps").innerHTML = "";
+    document.getElementById("treemap").innerHTML = "";
     load_CSV(csv_report);
 })

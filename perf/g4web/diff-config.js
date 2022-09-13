@@ -1,4 +1,27 @@
-const diff_statistics = document.getElementById("performance-difference");
-diff_statistics.innerHTML = `Before: 391.48s, 3.206e+13 cycles, 4.835e+13 instructions <br>
-                             After: 395.20s, 3.195e+13 cycles, 4.834e+13 instructions<br>
-                             Speedup: -0.95% (time), +0.32% (cycles), +0.01% (instructions)<br>`;
+document.getElementById("performance-difference").innerHTML = `
+<table class="w3-table-all" style="width:50%; margin-top: 8px;">
+  <tr>
+    <th>Metric</th>
+    <th>Before</th>
+    <th>After</th>
+    <th>Speedup</th>
+  </tr>
+  <tr>
+   <td><b>Cycles</b></td>
+   <td>38634679093840</td>
+   <td>38233276796582</td>
+   <td>+1.04%</td>
+  </tr>
+  <tr>
+   <td><b>Samples</b></td>
+   <td>5790156</td>
+   <td>5733354</td>
+   <td>+0.98%</td>
+  </tr>
+  <tr>
+   <td><b>Time [s]</b></td>
+   <td>413.6</td>
+   <td>413.6</td>
+   <td>-0.01%</td>
+  </tr>
+</table>`;

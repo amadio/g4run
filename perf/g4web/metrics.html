@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-safety.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Geant4 Performance Metrics Report</title>
+  </head>
+  <body style="width:100vw; height:100vh;" class="w3-light-gray">
+    <header class="w3-container w3-safety-blue">
+      <h3>Geant4 Performance Metrics Report</h3>
+      <p id="commit" class="w3-small">For Geant4 commit @after@</p>
+    </header>
+    <div class="w3-bar w3-dark-gray" style="padding: 0px 32px;">
+      <button class="w3-bar-item w3-button w3-mobile" onclick="openTab('default-tab')">Home</button>
+      <button class="w3-bar-item w3-button w3-mobile" onclick="openTab('flamegraph-tab')">Flamegraphs</button>
+      <button class="w3-bar-item w3-button w3-mobile" onclick="openTab('treemap-tab')">Treemaps</button>
+      <button class="w3-bar-item w3-button w3-mobile" onclick="openTab('scatter-plot-tab')">Scatter Plots</button>
+      <a class="w3-bar-item w3-button w3-mobile" href="index.html">Difference Report</a>
+    </div>
+    <main class="w3-container w3-small w3-light-gray">
+      <div id="default-tab" class="w3-container tab" style="display:block">
+        <form style="display:flex; gap: 16px; flex-wrap: wrap; padding: 8px 0px">
+          <select id="report-selection" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+          <button type="submit" id="csv-download" class="w3-button w3-gray" >Download CSV</button>
+          <input class="w3-input w3-border" style="width:auto" type="number" id="l_threshold" placeholder="Lower Threshold">
+          <input class="w3-input w3-border" style="width:auto" type="number" id="h_threshold" placeholder="Higher Threshold">
+          <select id="column_fields" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+          <button class="w3-button w3-gray" id="apply-btn">Apply</button>
+          <button class="w3-button w3-gray" id="reset-filter">Reset</button>
+        </form>
+        <div id="html-table" class="w3-table-all" style="display: block; overflow-x: scroll"></div>
+      </div>
+
+      <div id="flamegraph-tab" class="w3-container tab" style="display:none">
+       <select id="flame-selection" class="w3-select w3-border"
+       style="width:auto; margin: 8px 0; padding: 8px;"></select>
+       <div id="flamegraph"><object type="image/svg+xml" id="flame-object"
+       style="width: 100%;"></object></div>
+      </div>
+
+      <div id="treemap-tab" class="w3-container tab" style="display:none;">
+        <form id="treemap-header" style="display:flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0px;">
+          <select id="treemap-selection" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+          <label class="w3-text-gray">Area</label>
+          <select id="treemap-area" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+          <label>Colour</label>
+          <select id="treemap-color" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+          <label>Tooltip</label>
+          <select id="treemap-tooltip"class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+        </form>
+        <div id="treemap"></div>
+      </div>
+
+    <div id="scatter-plot-tab" class="w3-container tab" style="display:none;">
+      <form id="scatter-plot-customization" style="display:flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0px;">
+        <select id="scatter-plot-selection" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+        <label class="w3-text-gray">X-Axis</label>
+        <select id="scatter-plot-x-axis" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+        <label class="w3-text-gray">Y-Axis</label>
+        <select id="scatter-plot-y-axis" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+        <label class="w3-text-gray">Radius</label>
+        <select id="scatter-plot-circle-radius"  class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+        <label class="w3-text-gray">Colour</label>
+        <select id="scatter-plot-color" class="w3-select w3-border" style="width:auto; padding: 8px 16px;"></select>
+        <span style="display:flex; align-content: center; align-items: center; padding: 8px 0px; gap: 16px;">
+        <input class="w3-check" type="checkbox" id="selection-mode-toggle" style="position: static"></input>
+        <label class="w3-text-gray">Selection Mode</label>
+        </span>
+      </form>
+      <div id="scatter-plot"></div>
+      <div id="spider-tooltip"></div>
+    </div>
+
+    </main>
+  </body>
+  <script src="./script.js"></script>
+  <script src="./js/raw-report.js" type="module"></script>
+  <script src="./js/treemap.js" type="module"></script>
+  <script src="./js/flamegraph.js" type="module"></script>
+  <script src="./js/scatter-plot.js" type="module"></script>
+  <!--
+  <script src="./js/sunburst.js" type="module"></script>
+  -->
+</html>

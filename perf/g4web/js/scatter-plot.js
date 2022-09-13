@@ -65,8 +65,11 @@ const selection_fields = numeric_columns => {
 
 const margin = { top: 10, right: 10, bottom: 30, left: 80 }
 
-const width = d3.select("#scatter-plot").node().getBoundingClientRect().width - margin.left - margin.right;
-const height = d3.select("#scatter-plot").node().getBoundingClientRect().height - margin.top - margin.bottom;
+const width = document.getElementById("commit").getBoundingClientRect().width - margin.left - margin.right - 64;
+const height = window.innerHeight - 200 - margin.top - margin.bottom;
+
+if (width < 800) width = 800;
+if (height < 450) height = 450;
 
 let selection_mode = document.getElementById('selection-mode-toggle').checked;
 
@@ -206,7 +209,6 @@ const render = (data, extent_array, numeric_columns) => {
     const yAxis = plot_area.append("g").attr('transform', `translate(0,0)`)
         .call(d3.axisLeft(y));
 
-
     const tooltip = d3.select("#spider-tooltip")
         .style("position", "absolute")
         .style("visibility", "hidden")
@@ -216,6 +218,7 @@ const render = (data, extent_array, numeric_columns) => {
         .style("border-width", "1px")
         .style("border-radius", "5px")
         .style("padding", "10px");
+
     const mouseover = (event, d) => {
         d3.selectAll(".spider-plot-svg").remove();
         spiderPlot(numeric_columns, d, extent_array);

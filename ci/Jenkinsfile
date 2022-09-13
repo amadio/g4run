@@ -77,7 +77,7 @@ pipeline {
 				allowMissing: false,
 				alwaysLinkToLastBuild: true,
 				reportDir: 'build/g4run/perf/html',
-				reportFiles: 'diff.html',
+				reportFiles: 'index.html',
 				reportTitles: 'Performance Report',
 				reportName: 'Performance Report'
 			])

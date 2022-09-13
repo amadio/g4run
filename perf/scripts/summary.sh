@@ -25,7 +25,8 @@ T_SPEEDUP=$(bc -l <<< "100.0 * (${T_OLD} - ${T_NEW}) / ${T_OLD}")
 rm -f ${F_OLD} ${F_NEW}
 
 cat <<-EOF
-document.getElementById("performance-difference").innerHTML = \`<table>
+document.getElementById("performance-difference").innerHTML = \`
+<table class="w3-table-all" style="width:50%; margin-top: 8px;">
   <tr>
     <th>Metric</th>
     <th>Before</th>
@@ -36,19 +37,19 @@ document.getElementById("performance-difference").innerHTML = \`<table>
    <td><b>Cycles</b></td>
    <td>${C_OLD}</td>
    <td>${C_NEW}</td>
-   <td>$(printf "%.2f%%" ${C_SPEEDUP})</td>
+   <td>$(printf "%+.2f%%" ${C_SPEEDUP})</td>
   </tr>
   <tr>
    <td><b>Samples</b></td>
    <td>${S_OLD}</td>
    <td>${S_NEW}</td>
-   <td>$(printf "%.2f%%" ${S_SPEEDUP})</td>
+   <td>$(printf "%+.2f%%" ${S_SPEEDUP})</td>
   </tr>
   <tr>
    <td><b>Time [s]</b></td>
    <td>$(printf "%.1f" ${T_OLD})</td>
    <td>$(printf "%.1f" ${T_NEW})</td>
-   <td>$(printf "%.2f%%" ${T_SPEEDUP})</td>
+   <td>$(printf "%+.2f%%" ${T_SPEEDUP})</td>
   </tr>
 </table>\`;
 EOF
