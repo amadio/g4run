@@ -152,6 +152,12 @@ const load_CSV = file => {
 	let table_columns = data.columns;
 	let numeric_columns = [];
 
+	if (data.columns.includes("cycles_new")) {
+	  data.sort(function (a, b) { return +a["cycles_new"] > +b["cycles_new"] ? -1 : 1; })
+	} else if (data.columns.includes("instructions_new")) {
+	  data.sort(function (a, b) { return +a["instructions_new"] > +b["instructions_new"] ? -1 : 1; })
+	}
+
 	table_columns.forEach(cols => {
 		if (isNaN(data[0][cols]) == false) {
 			numeric_columns.push(cols)
