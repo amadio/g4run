@@ -10,13 +10,13 @@ for TEST in $@; do
 	if [[ -f ${TEST}.perf ]]; then
 		perf2csv ${TEST}.perf ${TEST}.csv &
 		perf2treemap ${TEST}.perf treemap-${TEST}.csv &
-		perf script report stackcollapse -i ${TEST}.perf >| ${TEST}.stacks &
+		perf script -i ${TEST}.perf | stackcollapse.pl --addrs >| ${TEST}.stacks &
 
 	fi
 
 	if [[ -f ${TEST}.perf.old ]]; then
 		perf2csv ${TEST}.perf.old ${TEST}.old.csv &
-		perf script report stackcollapse -i ${TEST}.perf.old >| ${TEST}.stacks.old &
+		perf script -i ${TEST}.perf.old | stackcollapse.pl --addrs >| ${TEST}.stacks.old &
 		csv-diff.sh ${TEST}.perf{.old,} ${TEST}-diff.csv &
 		treemap-diff.sh ${TEST}.perf{.old,} treemap-diff-${TEST}.csv &
 		[[ -d html ]] && summary.sh ${TEST}.perf{.old,} >| html/diff-config.js &
