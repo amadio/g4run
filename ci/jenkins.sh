@@ -125,8 +125,10 @@ for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
 	cmake -S ${SOURCE_DIR} -B ${BINARY_DIR} "${BUILD_OPTIONS[@]}"
 	cmake --build ${BINARY_DIR} --parallel $(($(nproc) - 2)) --target install
 
-	(cd ${BINARY_DIR} && ctest -VV)
+	(cd ${BINARY_DIR} && ctest -VV -R record)
 done
+
+(cd ${BINARY_DIR} && ctest -VV -R report)
 
 for VERSION in ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT}; do
 	SHA=$(git -C ${REPOSITORY} rev-parse --short $VERSION)
