@@ -1,4 +1,4 @@
-import * as d3 from "https://cdn.skypack.dev/d3@7";
+import {interpolateRdGn} from "./interpolateRdGn.js"
 
 // TreeMap Data Selectors
 let csv_report = "pythia";
@@ -22,16 +22,28 @@ const treemap = d3.treemap().size([width, height]).padding(1).round(true);
 const format = d3.format("+.2%");
 const fmt = d3.format(",.3e");
 
-function change(d) {
+function absolute_change(d) {
+  return 50.0 * (d.data.overhead_new - d.data.overhead_old);
+}
+
+function relative_change(d) {
   var before = +d.data.cycles_old;
   var after = +d.data.cycles_new;
   return (after - before) / (after + before);
 }
 
-function bgcolor(x) {
-  return d3.scaleLinear()
-           .domain([-1.0, -0.999, -0.8, 0.0, +0.8, +0.999, +1.0])
-           .range(["lightgreen", "limegreen", "green", "whitesmoke", "red", "darkred", "pink"])(x);
+function node_value(d, relative) {
+  let str = d3.format(".2%")(+d.data.overhead_old) + " → " + d3.format(".2%")(+d.data.overhead_new)
+  if (relative)
+    str += " (" + d3.format("+.2%")(relative_change(d)) + ")";
+  else
+    str += " (" + d3.format("+.2%")(d.data.overhead_new - d.data.overhead_old) + ")";
+
+  return str;
+}
+
+function tooltip(d, relative) {
+    return d.id.replace("all;", "").split(";").join(" / ") + ": " + node_value(d, relative);
 }
 
 const render = data => {
@@ -42,39 +54,30 @@ const render = data => {
 
     treemap(root);
 
+	// Select coloring by absolute/relative change
+	const relative = !document.getElementById("absolute").checked;
+	const change = relative ? relative_change : absolute_change;
+
     // Append the treemap to its respective div
     d3.select("#treemap").selectAll(".node")
         .data(root.leaves())
 	.enter()
 	.append("div")
 	.attr("class", "node")
-	.attr("title", function(d) {
-              return d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n")
-              + "\n" 
-	      + d3.format("+.2%")(d.data.overhead_new - d.data.overhead_old) + " " 
-	      + d3.format(".3")(d.data.cycles_new / d.data.cycles_old) + " (" 
-	      + d3.format(".2%")(+d.data.overhead_old) + " / "
-	      + d3.format(".2%")(+d.data.overhead_new) + ")";
-        })
-        .style("left", d => d.x0 + "px")
-        .style("top", d => d.y0 + "px")
-        .style("width", d => d.x1 - d.x0 + "px")
-        .style("height", d => d.y1 - d.y0 + "px")
-        .style("background", d => bgcolor(change(d)))
-	.style("color", d => d3.scaleLinear()
-                   .domain([-0.5001, -0.5, 0.5, 0.5001])
-                   .range(["white", "black", "black", "white"])
-                   .interpolate(d3.interpolateRgb.gamma(2.2))(change(d)))
-        .append("div")
-        .attr("class", "node-label")
-        .text(d => d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n"))
-        .append("div")
-        .attr("class", "node-value")
-        .text(function(d) {
-		return d3.format("+.2%")(d.data.overhead_new - d.data.overhead_old) + " " 
-		     + d3.format(".3")(d.data.cycles_new / d.data.cycles_old) + " (" 
-		     + d3.format(".2%")(+d.data.overhead_old) + " / "
-		     + d3.format(".2%")(+d.data.overhead_new) + ")"; })
+	.attr("title", d => tooltip(d, relative))
+    .style("left", d => d.x0 + "px")
+    .style("top", d => d.y0 + "px")
+    .style("width", d => d.x1 - d.x0 + "px")
+    .style("height", d => d.y1 - d.y0 + "px")
+    .style("background", d => interpolateRdGn(change(d)))
+    .append("div")
+    .attr("class", "node-label")
+    .text(d => d.id.substring(d.id.lastIndexOf(";") + 1).split(/::/g).join("\n"))
+  	.style("color", d => Math.abs(change(d)) < 0.5 ? "black" : "white")
+    .append("div")
+    .attr("class", "node-value")
+    .text(d => node_value(d, relative))
+	.style("color", d => Math.abs(change(d)) < 0.5 ? "black" : "white")
 }
 
 const load_CSV = file => {
@@ -85,6 +88,11 @@ const load_CSV = file => {
 
 load_CSV(csv_report);
 treemap_selection();
+
+document.getElementsByName("change-type").forEach(e => e.addEventListener("click", () => { 
+    document.getElementById("treemap").innerHTML = "";
+	load_CSV(csv_report)
+}));
 
 document.getElementById("treemap-selection").addEventListener("change", (e) => {
     csv_report = e.target.value;

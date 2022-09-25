@@ -1,4 +1,5 @@
-import * as d3 from "https://cdn.skypack.dev/d3@7";
+import tabulate from "./tabulate.js"
+import {metrics, is_applicable} from "./metrics.js"
 
 let csv_report = "pythia";
 
@@ -12,221 +13,44 @@ const report_selection = () => {
     })
 }
 
-let toggle_sort = true;
-// Selection Fields for metrics
-const name_fields = numeric_columns => {
-
-    const options = [];
-    for (let i = 0; i < numeric_columns.length; i++) {
-        d3.selectAll("#column_fields").append("option").text(numeric_columns[i]).attr("class", "csv-columns");
-    }
-
-    // Removing Duplicate Entries in Dropdown
-    document.querySelectorAll(".csv-columns").forEach((option) => {
-        if (options.includes(option.value)) {
-            option.remove();
-        } else {
-            options.push(option.value);
-        }
-    })
-}
-
-// Convert the CSV into Tables
-const tabulate = (data, table_columns, numeric_columns, extent_array) => {
-    2
-    const table = d3.select("#html-table").append("table").attr("id", "report-table");
-    table.append("thead").append("tr");
-    const header = table.select("tr").selectAll("th").data(table_columns).enter().append("th").text(d => d);
-    const tbody = table.append("tbody");
-    const selectField = document.getElementById("column_fields").value;
-
-    // Threshold Logics
-    let h_input, l_input, h_filter, l_filter;
-    h_input = document.getElementById("h_threshold");
-    l_input = document.getElementById("l_threshold");
-    h_filter = parseFloat(h_input.value);
-    l_filter = parseFloat(l_input.value);
-
-    // Count to check if there are no available entries
-    let count = 0;
-    const rows = tbody.selectAll("tr").data(data.filter(d => {
-        if (d.cycles == 0 || d.instructions == 0) {
-            return false;
-        }
-
-        let compare_value = d[selectField];
-        if (h_filter >= 0 && l_filter >= 0) {
-            if (compare_value >= l_filter && compare_value <= h_filter) {
-                count++;
-                return d;
-            } else {
-                return null;
-            }
-        }
-        return d;
-    })).enter().append("tr");
-
-    // If there are no entries then report for the same
-    if (h_filter >= 0 && l_filter >= 0 && count == 0) {
-        d3.select("table").remove();
-        d3.select("#html-table").text("No valid data available for given range")
-    }
-
-    const cells = rows.selectAll('td')
-        .data(row => (
-            table_columns.map(column => {
-                if (column == "cycles" || column == "instructions" || column == "Branch_Miss" || column == "cycles_ukP" || column == "L1_dcache" || column == "L1_icache_load_misses") {
-                    return { column: column, value: row[column] + "%" }
-                }
-                return { column: column, value: row[column] };
-            }
-            )
-        ))
-        .enter()
-        .append('td')
-        .text(d => d.value).style("background-color", d => {
-            if (numeric_columns.indexOf(d.column) != -1) {
-                const max_col = extent_array[numeric_columns.indexOf(d.column)]
-                return d3.scaleLinear().domain([max_col[0] / 100, 75 * max_col[1] / 100, 95 * max_col[1] / 100]).range(["green", "white", "red"])(parseFloat(d.value));
-            }
-        });
-
-    header.on("click", (event, d) => {
-        if (toggle_sort) {
-            rows.sort(function (a, b) {
-                if (a[d] < b[d]) {
-                    return -1;
-                } else if (a[d] > b[d]) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            })
-            toggle_sort = false;
-        }else{
-            rows.sort(function (a, b) {
-                if (a[d] < b[d]) {
-                    return 1;
-                } else if (a[d] > b[d]) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            })
-            toggle_sort = true;
-        }
-    }
-    )
-}
-
 // Load the CSV data into HTML using d3
 const load_CSV = file => {
-    d3.csv(`data/${file}.csv`, d3.autoType).then(data => {
-        let table_columns = data.columns;
-        let numeric_columns = [];
+  d3.csv(`data/${file}.csv`, d3.autoType).then(data => {
 
-        if (data.columns.includes("cycles")) {
-          data.sort(function (a, b) { return +a["cycles"] > +b["cycles"] ? -1 : 1; })
-        } else if (data.columns.includes("instructions")) {
-          data.sort(function (a, b) { return +a["instructions"] > +b["instructions"] ? -1 : 1; })
-        }
+  /* select which columns consist of numeric values */
+  let columns = data.columns
+  let numeric_columns = columns.filter(c => !isNaN(data[0][c]))
 
-        table_columns.forEach(cols => {
-            if (isNaN(data[0][cols]) == false) {
-                numeric_columns.push(cols)
-            }
-        });
+  /* sort data based on the first numeric column by default */
+  const e = numeric_columns[0]
+  data.sort(function (a, b) { return a[e] > b[e] ? -1 : 1; })
 
-        /* 
-        If Cycles and Instructions are there then Add CPI, IPC, IPB and filter the data as follows
-        Cycles, Instructions : Percent of Total
-        IPB, IPC, CPI : Respective numeric ratios
-        Branch_Misses : Percent of branches/branch_misses
-        */
-        if (numeric_columns.includes("cycles") && numeric_columns.includes("instructions")) {
-            let cycles_sum = d3.sum(data, d => d.cycles);
-            let instructions_sum = d3.sum(data, d => d.instructions);
-            data.filter(d => {
-                d.CPI = Math.round(d.cycles / d.instructions * 1000) / 1000;
-                d.IPC = Math.round(d.instructions / d.cycles * 1000) / 1000;
-                d.IPB = Math.round(d.instructions / d.branches * 1000) / 1000;
-                d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
-                d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
-            });
+  /* filter out symbols with very few samples (less than 0.1% of total) */
+  const e_total = d3.sum(data, d => d[e])
+  data = data.filter(d => d[e] > 0.001 * e_total);
 
-            let derived_metrics = [];
-            if (numeric_columns.includes("branches")) {
-                derived_metrics = ["CPI", "IPC", "IPB"];
-            } else {
-                derived_metrics = ["CPI", "IPC"];
-            }
-            table_columns.splice(table_columns.indexOf("instructions") + 1, 0, ...derived_metrics);
-            numeric_columns.splice(numeric_columns.indexOf("instructions") + 1, 0, ...derived_metrics);
+  /* add derived metrics based on available recorded events */
+  let derived_metrics = []
+  for (let metric in metrics) {
+    if (!is_applicable(metrics[metric], numeric_columns))
+      continue;
 
-        } else if (numeric_columns.includes("instructions")) {
-            let instructions_sum = d3.sum(data, d => d.instructions);
+    metrics[metric].apply(data)
+    derived_metrics.push(metric)
+  }
 
-            data.filter(d => {
-                d.instructions = Math.round((d.instructions * 100 / instructions_sum) * 100) / 100;
-            })
-        } else if (numeric_columns.includes("cycles")) {
-            let cycles_sum = d3.sum(data, d => d.cycles);
+  /* add derived metric to data columns */
+  columns.splice(numeric_columns.length, 0, ...derived_metrics);
 
-            data.filter(d => {
-                d.cycles = Math.round((d.cycles * 100 / cycles_sum) * 100) / 100;
-            })
-        } else if (numeric_columns.includes("cycles_ukP")) {
-            let cycles_sum = d3.sum(data, d => d.cycles_ukP);
+  /* normalize numeric columns */
+  numeric_columns.forEach(c => {
+    const total = d3.sum(data, d => d[c]);
+    data.filter(d => d[c] = d3.format(".2%")(d[c] / total));
+  });
 
-            data.filter(d => {
-                d.cycles_ukP = Math.round((d.cycles_ukP * 100 / cycles_sum) * 100) / 100;
-            })
-        }
-
-        if (numeric_columns.includes("branches") && numeric_columns.includes("branch_misses")) {
-
-            data.filter(d => {
-                d.Branch_Miss = Math.round((d.branches / d.branch_misses)) / 100;
-                delete d.branches;
-                delete d.branch_misses;
-            });
-            numeric_columns.splice(numeric_columns.indexOf("IPB" + 1), 0, "Branch_Miss");
-            numeric_columns = numeric_columns.filter(d => d !== "branch_misses" && d !== "branches");
-            table_columns.splice(table_columns.indexOf("comm"), 0, "Branch_Miss");
-            table_columns = table_columns.filter(d => d !== "branch_misses" && d !== "branches");
-
-        }
-
-        if (numeric_columns.includes("L1_dcache_loads") && numeric_columns.includes("L1_dcache_load_misses")) {
-            let L1_icache_load_misses_sum = d3.sum(data, d => d.L1_icache_load_misses);
-            data.filter(d => {
-                d.L1_dcache = Math.round((d.L1_dcache_load_misses * 100 / d.L1_dcache_loads) * 100) / 100;
-                d.L1_icache_load_misses = Math.round((d.L1_icache_load_misses * 100 / L1_icache_load_misses_sum) * 100) / 100;
-            });
-
-            table_columns.splice(table_columns.indexOf("instructions") + 1, 0, "L1_dcache");
-            table_columns = table_columns.filter(d => d !== "L1_dcache_loads" && d !== "L1_dcache_load_misses");
-            numeric_columns.splice(numeric_columns.indexOf("instructions") + 1, 0, "L1_dcache");
-            numeric_columns = numeric_columns.filter(d => d !== "L1_dcache_loads" && d !== "L1_dcache_load_misses");
-        }
-        name_fields(numeric_columns);
-        const extent_array = [];
-        numeric_columns.forEach((i) => {
-            const value_array = [];
-            data.filter(d => {
-                if (d['cycles'] == 0 || d['instructions'] == 0) {
-                    return false;
-                }
-                if (!isNaN(d[i]) || isFinite(d[i])) {
-                    value_array.push(d[i]);
-                }
-            })
-
-            extent_array.push(d3.extent(value_array));
-        });
-        tabulate(data, table_columns, numeric_columns, extent_array);
-    });
-};
+  tabulate("#html-table", data, columns);
+  });
+}
 
 // Download the CSV file on clicking the Button
 document.getElementById("csv-download").addEventListener("click", () => {
