@@ -13,13 +13,13 @@
 .node-label {
     color: black;
     padding: 4px;
-    line-height: 1em;
+    line-height: 1.25em;
     white-space: pre;
 }
 
 .node-value {
-    font-size: 12px;
-    margin-top: 1px;
+    font-size: 10px;
+    margin-top: 2px;
 }
 
 #scatter-plot {
@@ -35,3 +35,5 @@
 .tooltip {
     display: none;
 }
+
+th { text-transform: uppercase; }
