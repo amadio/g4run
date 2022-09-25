@@ -14,26 +14,6 @@ const report_selection = () => {
   })
 }
 
-const name_fields = numeric_columns => {
-  const options = [];
-  for (let i = 0; i < numeric_columns.length; i++) {
-    if (numeric_columns[i].match(".*_new")) {
-      name = numeric_columns[i].replace("_new", "");
-      d3.selectAll("#column_fields")
-        .append("option").text(name).attr("class", "csv-columns");
-    }
-  }
-
-  // Removing Duplicate Entries in Dropdown
-  document.querySelectorAll(".csv-columns").forEach((option) => {
-    if (options.includes(option.value)) {
-      option.remove();
-    } else {
-      options.push(option.value);
-    }
-  })
-}
-
 // Convert the CSV into Tables
 const tabulate = (target, data, columns) => {
   var table = d3.select(target).append("table").attr("id", "report-table");
@@ -64,44 +44,7 @@ const tabulate = (target, data, columns) => {
           }
         })
 
-  const selectField = document.getElementById("column_fields").value;
-
-  // Threshold Logics
-  let h_input, l_input, h_filter = 1.0, l_filter = 0.005;
-  h_input = document.getElementById("h_threshold");
-  l_input = document.getElementById("l_threshold");
-
-  if (h_input.value)
-    h_filter = parseFloat(h_input.value);
-
-  if (l_input.value)
-    l_filter = parseFloat(l_input.value);
-
-  // Count to check if there are no available entries
-  let count = 0;
-  const rows = tbody.selectAll("tr").data(data.filter(d => {
-    if (d.cycles_new == 0)
-      return false;
-
-    let compare_value = d[selectField + "_new"];
-
-    if (h_filter >= 0 && l_filter >= 0) {
-      if (compare_value >= l_filter && compare_value <= h_filter) {
-        count++;
-        return d;
-      } else {
-        return null;
-      }
-    }
-
-    return d;
-  })).enter().append("tr");
-
-  // If there are no entries then report for the same
-  if (h_filter >= 0 && l_filter >= 0 && count == 0) {
-    d3.select("table").remove();
-    d3.select("#html-table").text("No valid data available for given range")
-  }
+  const rows = tbody.selectAll("tr").data(data).enter().append("tr");
 
   const cells = rows.each(function(d) {
     for (let c in columns) {
@@ -163,8 +106,6 @@ const load_CSV = file => {
     const e = numeric_columns[0]
     data.sort(function (a, b) { return a[e] > b[e] ? -1 : 1; })
 
-    name_fields(numeric_columns);
-
     /* set filter to false by default */
     data.filter(d => d.filter = false);
 
@@ -219,20 +160,3 @@ document.getElementById("report-selection").addEventListener("change", (e) => {
 // Initialize the page to be viewed by default reports
 load_CSV(csv_report);
 report_selection();
-
-// Apply Button for Thresholds
-document.getElementById("apply-btn").addEventListener("click", () => {
-  d3.select("#report-table").remove();
-  load_CSV(csv_report);
-})
-
-// Reset the reports without filters
-document.getElementById("reset-filter").addEventListener("click", () => {
-  const h_input = document.getElementById("h_threshold");
-  const l_input = document.getElementById("l_threshold");
-  h_input.value = "";
-  l_input.value = "";
-  d3.selectAll("report-table").remove();
-  d3.select("#html-table").text("");
-  load_CSV(csv_report);
-})
