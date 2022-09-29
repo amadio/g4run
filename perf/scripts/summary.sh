@@ -26,7 +26,7 @@ rm -f ${F_OLD} ${F_NEW}
 
 cat <<-EOF
 document.getElementById("performance-difference").innerHTML = \`
-<table class="w3-table-all" style="width:50%; margin-top: 8px;">
+<table class="w3-table-all" style="width:auto; margin-top: 8px;">
   <tr>
     <th>Metric</th>
     <th>Before</th>
