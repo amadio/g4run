@@ -23,7 +23,7 @@ BEGINFILE {
 	}
 }
 
-/\[.\]/ && $event["cycles"] > 0 {
+/\[.\]/ && $1 > 0 {
 	comm = $nevents
 	dso = $(nevents + 1)
 	symbol = gensub(".*\\] " , "", "g")
