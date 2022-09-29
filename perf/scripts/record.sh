@@ -11,8 +11,8 @@ NAME=$1
 
 shift
 
-perf record -a -g -e cycles:pp -F500 -o "${NAME}.perf" -- $@
+perf record -a -g -e cycles:pp -F100 -o "${NAME}.perf" -- $@
 
 for M in ${!METRICS[@]}; do
-	perf record -e "${METRICS[$M]}" -o "${NAME}-${M}.perf" -- $@
+	perf record -F100 -e "${METRICS[$M]}" -o "${NAME}-${M}.perf" -- $@
 done
