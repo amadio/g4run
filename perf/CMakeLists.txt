@@ -60,7 +60,7 @@ foreach(PRIMARY ${PRIMARIES})
   set_tests_properties(${TEST}-record
     PROPERTIES
       LABELS "perf;record"
-      ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE DEPENDS g4run)
+      ENVIRONMENT "${GEANT4_DATASETS}" PROCESSORS ${NCORES} RUN_SERIAL TRUE DEPENDS g4run TIMEOUT 3000)
 
   add_test(NAME ${TEST}-report COMMAND
     sh -c "${CMAKE_CURRENT_SOURCE_DIR}/scripts/report.sh ${TEST}")
