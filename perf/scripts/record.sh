@@ -4,7 +4,7 @@ declare -A METRICS
 
 METRICS=(
   [cpu]="{cycles,instructions,branches,branch-misses}"
-  [cache]="{cycles,instructions,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses}"
+  [cache]="{instructions,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,L1-icache-load-misses}"
 )
 
 NAME=$1
