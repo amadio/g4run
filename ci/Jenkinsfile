@@ -24,6 +24,7 @@ pipeline {
 			jobCredentialId: 'jenkins',
 			useAlternativeCredential: true
 		)
+		timeout(time: 2, unit: 'HOURS')
 		timestamps()
 	}
 
