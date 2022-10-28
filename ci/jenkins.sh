@@ -41,6 +41,11 @@ esac
 git -C ${REPOSITORY} fetch origin ${GIT_COMMIT}
 git -C ${REPOSITORY} fetch origin ${GIT_PREVIOUS_COMMIT}
 
+if ! git diff --name-only ${GIT_PREVIOUS_COMMIT} ${GIT_COMMIT} | grep -q ^source; then
+	echo "No changes in source/ directory, skipping performance report"
+	exit 0
+fi
+
 echo "Comparing ${GIT_PREVIOUS_COMMIT} (before) with ${GIT_COMMIT} (after)"
 
 rm -rf ${WORKSPACE}/build
